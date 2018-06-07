@@ -1,0 +1,39 @@
+{
+  "name": "slate-mark-hotkeys",
+  "description": "A Slate plugin to toggle marks based on hotkeys.",
+  "version": "0.1.0",
+  "license": "MIT",
+  "repository": "git://github.com/davidchang/slate-mark-hotkeys.git",
+  "main": "./lib/index.js",
+  "dependencies": {
+    "is-hotkey": "^0.0.3",
+    "type-of": "^2.0.1"
+  },
+  "peerDependencies": {
+    "slate": ">=0.29.0",
+    "slate-react": ">=0.9.0",
+    "react": "^0.14.0 || ^15.0.0 || ^16.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.10.1",
+    "browserify": "^13.0.1",
+    "slate": "^0.30.1",
+    "slate-react": "^0.10.1",
+    "uglify-js": "^2.7.0"
+  },
+  "scripts": {
+    "build": "babel --out-dir ./lib ./src",
+    "build:max":
+      "mkdir -p ./dist && NODE_ENV=production browserify ./src/index.js --transform babelify --transform envify --transform [ browserify-global-shim --global ] --standalone SlateMarkHotkeys > ./dist/slate-mark-hotkeys.js",
+    "build:min":
+      "mkdir -p ./dist && NODE_ENV=production browserify ./src/index.js --transform babelify --transform envify --transform [ browserify-global-shim --global ] --transform uglifyify --standalone SlateMarkHotkeys | uglifyjs > ./dist/slate-mark-hotkeys.min.js",
+    "clean": "rm -rf ./dist ./lib ./node_modules",
+    "prepublish": "yarn run build:max && yarn run build:min",
+    "watch": "babel --watch --out-dir ./lib ./src --source-maps inline"
+  },
+  "browserify-global-shim": {
+    "slate": "Slate",
+    "slate-react": "SlateReact"
+  },
+  "keywords": ["slate"]
+}
