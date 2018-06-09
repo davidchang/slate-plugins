@@ -19,6 +19,10 @@ var _slateMarkHotkeys = require('./slate-mark-hotkeys');
 
 var _slateMarkHotkeys2 = _interopRequireDefault(_slateMarkHotkeys);
 
+var _slateAutoReplaceIframe = require('./slate-auto-replace-iframe');
+
+var _slateAutoReplaceIframe2 = _interopRequireDefault(_slateAutoReplaceIframe);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -33,7 +37,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  * @type {Array}
  */
 
-var EXAMPLES = [['slate-mark-hotkeys', _slateMarkHotkeys2.default, '/slate-mark-hotkeys']];
+var EXAMPLES = [['slate-mark-hotkeys', _slateMarkHotkeys2.default, '/slate-mark-hotkeys'], ['slate-auto-replace-iframe', _slateAutoReplaceIframe2.default, '/slate-auto-replace-iframe']];
 
 /**
  * App.
@@ -141,7 +145,206 @@ var router = _react2.default.createElement(
 var root = document.body.querySelector('main');
 _reactDom2.default.render(router, root);
 
-},{"./slate-mark-hotkeys":2,"react":411,"react-dom":229,"react-router-dom":373}],2:[function(require,module,exports){
+},{"./slate-auto-replace-iframe":2,"./slate-mark-hotkeys":4,"react":411,"react-dom":229,"react-router-dom":373}],2:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _slateAutoReplaceIframe = require('slate-auto-replace-iframe');
+
+var _slateAutoReplaceIframe2 = _interopRequireDefault(_slateAutoReplaceIframe);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _value = require('./value.json');
+
+var _value2 = _interopRequireDefault(_value);
+
+var _slateReact = require('slate-react');
+
+var _slate = require('slate');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Example.
+ *
+ * @type {Component}
+ */
+
+var Example = function (_React$Component) {
+  _inherits(Example, _React$Component);
+
+  function Example() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Example);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Example.__proto__ || Object.getPrototypeOf(Example)).call.apply(_ref, [this].concat(args))), _this), _this.plugins = [(0, _slateAutoReplaceIframe2.default)()], _this.state = {
+      value: _slate.Value.fromJSON(_value2.default)
+    }, _this.onChange = function (_ref2) {
+      var value = _ref2.value;
+
+      _this.setState({ value: value });
+    }, _this.render = function () {
+      return _react2.default.createElement(_slateReact.Editor, {
+        value: _this.state.value,
+        plugins: _this.plugins,
+        onChange: _this.onChange,
+        renderNode: (0, _slateAutoReplaceIframe.renderNodeHOF)()
+      });
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  return Example;
+}(_react2.default.Component);
+
+/**
+ * Export.
+ *
+ * @type {Component}
+ */
+
+exports.default = Example;
+
+},{"./value.json":3,"react":411,"slate":442,"slate-auto-replace-iframe":448,"slate-react":419}],3:[function(require,module,exports){
+module.exports={
+  "document": {
+    "nodes": [
+      {
+        "object": "block",
+        "type": "paragraph",
+        "nodes": [
+          {
+            "object": "text",
+            "leaves": [
+              {
+                "text":
+                  "Press enter at the end of the blocks below and see them replaced with their respective iframes"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "object": "block",
+        "type": "paragraph",
+        "nodes": [
+          {
+            "object": "text",
+            "leaves": [
+              {
+                "text": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "object": "block",
+        "type": "paragraph",
+        "nodes": [
+          {
+            "object": "text",
+            "leaves": [
+              {
+                "text": "https://www.youtube.com/watch?v=67jqkiEUm6o"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "object": "block",
+        "type": "paragraph",
+        "nodes": [
+          {
+            "object": "text",
+            "leaves": [
+              {
+                "text": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "object": "block",
+        "type": "paragraph",
+        "nodes": [
+          {
+            "object": "text",
+            "leaves": [
+              {
+                "text": "https://vimeo.com/channels/staffpicks/273671092"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "object": "block",
+        "type": "paragraph",
+        "nodes": [
+          {
+            "object": "text",
+            "leaves": [
+              {
+                "text": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "object": "block",
+        "type": "paragraph",
+        "nodes": [
+          {
+            "object": "text",
+            "leaves": [
+              {
+                "text": "https://www.twitch.tv/btssmash"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "object": "block",
+        "type": "paragraph",
+        "nodes": [
+          {
+            "object": "text",
+            "leaves": [
+              {
+                "text": ""
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+
+},{}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -219,7 +422,7 @@ var Example = function (_React$Component) {
 
 exports.default = Example;
 
-},{"./value.json":3,"react":411,"slate":438,"slate-mark-hotkeys":443,"slate-react":417}],3:[function(require,module,exports){
+},{"./value.json":5,"react":411,"slate":442,"slate-mark-hotkeys":449,"slate-react":419}],5:[function(require,module,exports){
 module.exports={
   "document": {
     "nodes": [
@@ -322,400 +525,7 @@ module.exports={
   }
 }
 
-},{}],4:[function(require,module,exports){
-(function (process){
-/**
- * This is the web browser implementation of `debug()`.
- *
- * Expose `debug()` as the module.
- */
-
-exports = module.exports = require('./debug');
-exports.log = log;
-exports.formatArgs = formatArgs;
-exports.save = save;
-exports.load = load;
-exports.useColors = useColors;
-exports.storage = 'undefined' != typeof chrome
-               && 'undefined' != typeof chrome.storage
-                  ? chrome.storage.local
-                  : localstorage();
-
-/**
- * Colors.
- */
-
-exports.colors = [
-  'lightseagreen',
-  'forestgreen',
-  'goldenrod',
-  'dodgerblue',
-  'darkorchid',
-  'crimson'
-];
-
-/**
- * Currently only WebKit-based Web Inspectors, Firefox >= v31,
- * and the Firebug extension (any Firefox version) are known
- * to support "%c" CSS customizations.
- *
- * TODO: add a `localStorage` variable to explicitly enable/disable colors
- */
-
-function useColors() {
-  // NB: In an Electron preload script, document will be defined but not fully
-  // initialized. Since we know we're in Chrome, we'll just detect this case
-  // explicitly
-  if (typeof window !== 'undefined' && window.process && window.process.type === 'renderer') {
-    return true;
-  }
-
-  // is webkit? http://stackoverflow.com/a/16459606/376773
-  // document is undefined in react-native: https://github.com/facebook/react-native/pull/1632
-  return (typeof document !== 'undefined' && document.documentElement && document.documentElement.style && document.documentElement.style.WebkitAppearance) ||
-    // is firebug? http://stackoverflow.com/a/398120/376773
-    (typeof window !== 'undefined' && window.console && (window.console.firebug || (window.console.exception && window.console.table))) ||
-    // is firefox >= v31?
-    // https://developer.mozilla.org/en-US/docs/Tools/Web_Console#Styling_messages
-    (typeof navigator !== 'undefined' && navigator.userAgent && navigator.userAgent.toLowerCase().match(/firefox\/(\d+)/) && parseInt(RegExp.$1, 10) >= 31) ||
-    // double check webkit in userAgent just in case we are in a worker
-    (typeof navigator !== 'undefined' && navigator.userAgent && navigator.userAgent.toLowerCase().match(/applewebkit\/(\d+)/));
-}
-
-/**
- * Map %j to `JSON.stringify()`, since no Web Inspectors do that by default.
- */
-
-exports.formatters.j = function(v) {
-  try {
-    return JSON.stringify(v);
-  } catch (err) {
-    return '[UnexpectedJSONParseError]: ' + err.message;
-  }
-};
-
-
-/**
- * Colorize log arguments if enabled.
- *
- * @api public
- */
-
-function formatArgs(args) {
-  var useColors = this.useColors;
-
-  args[0] = (useColors ? '%c' : '')
-    + this.namespace
-    + (useColors ? ' %c' : ' ')
-    + args[0]
-    + (useColors ? '%c ' : ' ')
-    + '+' + exports.humanize(this.diff);
-
-  if (!useColors) return;
-
-  var c = 'color: ' + this.color;
-  args.splice(1, 0, c, 'color: inherit')
-
-  // the final "%c" is somewhat tricky, because there could be other
-  // arguments passed either before or after the %c, so we need to
-  // figure out the correct index to insert the CSS into
-  var index = 0;
-  var lastC = 0;
-  args[0].replace(/%[a-zA-Z%]/g, function(match) {
-    if ('%%' === match) return;
-    index++;
-    if ('%c' === match) {
-      // we only are interested in the *last* %c
-      // (the user may have provided their own)
-      lastC = index;
-    }
-  });
-
-  args.splice(lastC, 0, c);
-}
-
-/**
- * Invokes `console.log()` when available.
- * No-op when `console.log` is not a "function".
- *
- * @api public
- */
-
-function log() {
-  // this hackery is required for IE8/9, where
-  // the `console.log` function doesn't have 'apply'
-  return 'object' === typeof console
-    && console.log
-    && Function.prototype.apply.call(console.log, console, arguments);
-}
-
-/**
- * Save `namespaces`.
- *
- * @param {String} namespaces
- * @api private
- */
-
-function save(namespaces) {
-  try {
-    if (null == namespaces) {
-      exports.storage.removeItem('debug');
-    } else {
-      exports.storage.debug = namespaces;
-    }
-  } catch(e) {}
-}
-
-/**
- * Load `namespaces`.
- *
- * @return {String} returns the previously persisted debug modes
- * @api private
- */
-
-function load() {
-  var r;
-  try {
-    r = exports.storage.debug;
-  } catch(e) {}
-
-  // If debug isn't set in LS, and we're in Electron, try to load $DEBUG
-  if (!r && typeof process !== 'undefined' && 'env' in process) {
-    r = process.env.DEBUG;
-  }
-
-  return r;
-}
-
-/**
- * Enable namespaces listed in `localStorage.debug` initially.
- */
-
-exports.enable(load());
-
-/**
- * Localstorage attempts to return the localstorage.
- *
- * This is necessary because safari throws
- * when a user disables cookies/localstorage
- * and you attempt to access it.
- *
- * @return {LocalStorage}
- * @api private
- */
-
-function localstorage() {
-  try {
-    return window.localStorage;
-  } catch (e) {}
-}
-
-}).call(this,require('_process'))
-},{"./debug":5,"_process":222}],5:[function(require,module,exports){
-
-/**
- * This is the common logic for both the Node.js and web browser
- * implementations of `debug()`.
- *
- * Expose `debug()` as the module.
- */
-
-exports = module.exports = createDebug.debug = createDebug['default'] = createDebug;
-exports.coerce = coerce;
-exports.disable = disable;
-exports.enable = enable;
-exports.enabled = enabled;
-exports.humanize = require('ms');
-
-/**
- * The currently active debug mode names, and names to skip.
- */
-
-exports.names = [];
-exports.skips = [];
-
-/**
- * Map of special "%n" handling functions, for the debug "format" argument.
- *
- * Valid key names are a single, lower or upper-case letter, i.e. "n" and "N".
- */
-
-exports.formatters = {};
-
-/**
- * Previous log timestamp.
- */
-
-var prevTime;
-
-/**
- * Select a color.
- * @param {String} namespace
- * @return {Number}
- * @api private
- */
-
-function selectColor(namespace) {
-  var hash = 0, i;
-
-  for (i in namespace) {
-    hash  = ((hash << 5) - hash) + namespace.charCodeAt(i);
-    hash |= 0; // Convert to 32bit integer
-  }
-
-  return exports.colors[Math.abs(hash) % exports.colors.length];
-}
-
-/**
- * Create a debugger with the given `namespace`.
- *
- * @param {String} namespace
- * @return {Function}
- * @api public
- */
-
-function createDebug(namespace) {
-
-  function debug() {
-    // disabled?
-    if (!debug.enabled) return;
-
-    var self = debug;
-
-    // set `diff` timestamp
-    var curr = +new Date();
-    var ms = curr - (prevTime || curr);
-    self.diff = ms;
-    self.prev = prevTime;
-    self.curr = curr;
-    prevTime = curr;
-
-    // turn the `arguments` into a proper Array
-    var args = new Array(arguments.length);
-    for (var i = 0; i < args.length; i++) {
-      args[i] = arguments[i];
-    }
-
-    args[0] = exports.coerce(args[0]);
-
-    if ('string' !== typeof args[0]) {
-      // anything else let's inspect with %O
-      args.unshift('%O');
-    }
-
-    // apply any `formatters` transformations
-    var index = 0;
-    args[0] = args[0].replace(/%([a-zA-Z%])/g, function(match, format) {
-      // if we encounter an escaped % then don't increase the array index
-      if (match === '%%') return match;
-      index++;
-      var formatter = exports.formatters[format];
-      if ('function' === typeof formatter) {
-        var val = args[index];
-        match = formatter.call(self, val);
-
-        // now we need to remove `args[index]` since it's inlined in the `format`
-        args.splice(index, 1);
-        index--;
-      }
-      return match;
-    });
-
-    // apply env-specific formatting (colors, etc.)
-    exports.formatArgs.call(self, args);
-
-    var logFn = debug.log || exports.log || console.log.bind(console);
-    logFn.apply(self, args);
-  }
-
-  debug.namespace = namespace;
-  debug.enabled = exports.enabled(namespace);
-  debug.useColors = exports.useColors();
-  debug.color = selectColor(namespace);
-
-  // env-specific initialization logic for debug instances
-  if ('function' === typeof exports.init) {
-    exports.init(debug);
-  }
-
-  return debug;
-}
-
-/**
- * Enables a debug mode by namespaces. This can include modes
- * separated by a colon and wildcards.
- *
- * @param {String} namespaces
- * @api public
- */
-
-function enable(namespaces) {
-  exports.save(namespaces);
-
-  exports.names = [];
-  exports.skips = [];
-
-  var split = (typeof namespaces === 'string' ? namespaces : '').split(/[\s,]+/);
-  var len = split.length;
-
-  for (var i = 0; i < len; i++) {
-    if (!split[i]) continue; // ignore empty strings
-    namespaces = split[i].replace(/\*/g, '.*?');
-    if (namespaces[0] === '-') {
-      exports.skips.push(new RegExp('^' + namespaces.substr(1) + '$'));
-    } else {
-      exports.names.push(new RegExp('^' + namespaces + '$'));
-    }
-  }
-}
-
-/**
- * Disable debug output.
- *
- * @api public
- */
-
-function disable() {
-  exports.enable('');
-}
-
-/**
- * Returns true if the given mode name is enabled, false otherwise.
- *
- * @param {String} name
- * @return {Boolean}
- * @api public
- */
-
-function enabled(name) {
-  var i, len;
-  for (i = 0, len = exports.skips.length; i < len; i++) {
-    if (exports.skips[i].test(name)) {
-      return false;
-    }
-  }
-  for (i = 0, len = exports.names.length; i < len; i++) {
-    if (exports.names[i].test(name)) {
-      return true;
-    }
-  }
-  return false;
-}
-
-/**
- * Coerce `val`.
- *
- * @param {Mixed} val
- * @return {Mixed}
- * @api private
- */
-
-function coerce(val) {
-  if (val instanceof Error) return val.stack || val.message;
-  return val;
-}
-
-},{"ms":218}],6:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 'use strict';
 
 var GROUP_LEFT_TO_RIGHT,
@@ -2212,7 +2022,7 @@ var createLocation = exports.createLocation = function createLocation(path, stat
 var locationsAreEqual = exports.locationsAreEqual = function locationsAreEqual(a, b) {
   return a.pathname === b.pathname && a.search === b.search && a.hash === b.hash && a.key === b.key && (0, _valueEqual2.default)(a.state, b.state);
 };
-},{"./PathUtils":36,"resolve-pathname":412,"value-equal":441}],36:[function(require,module,exports){
+},{"./PathUtils":36,"resolve-pathname":412,"value-equal":446}],36:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -2581,7 +2391,7 @@ var createBrowserHistory = function createBrowserHistory() {
 };
 
 exports.default = createBrowserHistory;
-},{"./DOMUtils":34,"./LocationUtils":35,"./PathUtils":36,"./createTransitionManager":40,"invariant":43,"warning":442}],38:[function(require,module,exports){
+},{"./DOMUtils":34,"./LocationUtils":35,"./PathUtils":36,"./createTransitionManager":40,"invariant":43,"warning":447}],38:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -2904,7 +2714,7 @@ var createHashHistory = function createHashHistory() {
 };
 
 exports.default = createHashHistory;
-},{"./DOMUtils":34,"./LocationUtils":35,"./PathUtils":36,"./createTransitionManager":40,"invariant":43,"warning":442}],39:[function(require,module,exports){
+},{"./DOMUtils":34,"./LocationUtils":35,"./PathUtils":36,"./createTransitionManager":40,"invariant":43,"warning":447}],39:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -3075,7 +2885,7 @@ var createMemoryHistory = function createMemoryHistory() {
 };
 
 exports.default = createMemoryHistory;
-},{"./LocationUtils":35,"./PathUtils":36,"./createTransitionManager":40,"warning":442}],40:[function(require,module,exports){
+},{"./LocationUtils":35,"./PathUtils":36,"./createTransitionManager":40,"warning":447}],40:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -3161,7 +2971,7 @@ var createTransitionManager = function createTransitionManager() {
 };
 
 exports.default = createTransitionManager;
-},{"warning":442}],41:[function(require,module,exports){
+},{"warning":447}],41:[function(require,module,exports){
 /**
  * Copyright 2015, Yahoo! Inc.
  * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
@@ -32959,7 +32769,7 @@ Route.childContextTypes = {
   router: _propTypes2.default.object.isRequired
 };
 exports.default = Route;
-},{"./matchPath":383,"prop-types":227,"react":411,"warning":442}],379:[function(require,module,exports){
+},{"./matchPath":383,"prop-types":227,"react":411,"warning":447}],379:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -33079,7 +32889,7 @@ Router.childContextTypes = {
   router: _propTypes2.default.object.isRequired
 };
 exports.default = Router;
-},{"invariant":43,"prop-types":227,"react":411,"warning":442}],380:[function(require,module,exports){
+},{"invariant":43,"prop-types":227,"react":411,"warning":447}],380:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -33345,7 +33155,7 @@ Switch.propTypes = {
   location: _propTypes2.default.object
 };
 exports.default = Switch;
-},{"./matchPath":383,"prop-types":227,"react":411,"warning":442}],382:[function(require,module,exports){
+},{"./matchPath":383,"prop-types":227,"react":411,"warning":447}],382:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -36517,255 +36327,7 @@ var index = {
 exports.default = index;
 
 
-},{"isomorphic-base64":49,"slate":438}],415:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
-var slate = require('slate');
-var immutable = require('immutable');
-
-var _extends = Object.assign || function (target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i];
-
-    for (var key in source) {
-      if (Object.prototype.hasOwnProperty.call(source, key)) {
-        target[key] = source[key];
-      }
-    }
-  }
-
-  return target;
-};
-
-/**
- * Deserialize a plain text `string` to a Slate value.
- *
- * @param {String} string
- * @param {Object} options
- *   @property {Boolean} toJSON
- *   @property {String|Object|Block} defaultBlock
- *   @property {Array|Set} defaultMarks
- * @return {Value}
- */
-
-function deserialize(string) {
-  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  var _options$defaultBlock = options.defaultBlock,
-      defaultBlock = _options$defaultBlock === undefined ? 'line' : _options$defaultBlock,
-      _options$defaultMarks = options.defaultMarks,
-      defaultMarks = _options$defaultMarks === undefined ? [] : _options$defaultMarks,
-      _options$toJSON = options.toJSON,
-      toJSON = _options$toJSON === undefined ? false : _options$toJSON;
-
-
-  if (immutable.Set.isSet(defaultMarks)) {
-    defaultMarks = defaultMarks.toArray();
-  }
-
-  defaultBlock = slate.Node.createProperties(defaultBlock);
-  defaultMarks = defaultMarks.map(slate.Mark.createProperties);
-
-  var json = {
-    object: 'value',
-    document: {
-      object: 'document',
-      data: {},
-      nodes: string.split('\n').map(function (line) {
-        return _extends({}, defaultBlock, {
-          object: 'block',
-          isVoid: false,
-          data: {},
-          nodes: [{
-            object: 'text',
-            leaves: [{
-              object: 'leaf',
-              text: line,
-              marks: defaultMarks
-            }]
-          }]
-        });
-      })
-    }
-  };
-
-  var ret = toJSON ? json : slate.Value.fromJSON(json);
-  return ret;
-}
-
-/**
- * Serialize a Slate `value` to a plain text string.
- *
- * @param {Value} value
- * @return {String}
- */
-
-function serialize(value) {
-  return serializeNode(value.document);
-}
-
-/**
- * Serialize a `node` to plain text.
- *
- * @param {Node} node
- * @return {String}
- */
-
-function serializeNode(node) {
-  if (node.object == 'document' || node.object == 'block' && slate.Block.isBlockList(node.nodes)) {
-    return node.nodes.map(serializeNode).join('\n');
-  } else {
-    return node.text;
-  }
-}
-
-/**
- * Export.
- *
- * @type {Object}
- */
-
-var index = {
-  deserialize: deserialize,
-  serialize: serialize
-};
-
-exports.default = index;
-
-
-},{"immutable":42,"slate":438}],416:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
-var slate = require('slate');
-
-/**
- * Create a prop type checker for Slate objects with `name` and `validate`.
- *
- * @param {String} name
- * @param {Function} validate
- * @return {Function}
- */
-
-function create(name, validate) {
-  function check(isRequired, props, propName, componentName, location) {
-    var value = props[propName];
-    if (value == null && !isRequired) return null;
-    if (value == null && isRequired) return new Error('The ' + location + ' `' + propName + '` is marked as required in `' + componentName + '`, but it was not supplied.');
-    if (validate(value)) return null;
-    return new Error('Invalid ' + location + ' `' + propName + '` supplied to `' + componentName + '`, expected a Slate `' + name + '` but received: ' + value);
-  }
-
-  function propType() {
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return check.apply(undefined, [false].concat(args));
-  }
-
-  propType.isRequired = function () {
-    for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-      args[_key2] = arguments[_key2];
-    }
-
-    return check.apply(undefined, [true].concat(args));
-  };
-
-  return propType;
-}
-
-/**
- * Prop type checkers.
- *
- * @type {Object}
- */
-
-var Types = {
-  block: create('Block', function (v) {
-    return slate.Block.isBlock(v);
-  }),
-  blocks: create('List<Block>', function (v) {
-    return slate.Block.isBlockList(v);
-  }),
-  change: create('Change', function (v) {
-    return slate.Change.isChange(v);
-  }),
-  character: create('Character', function (v) {
-    return slate.Character.isCharacter(v);
-  }),
-  characters: create('List<Character>', function (v) {
-    return slate.Character.isCharacterList(v);
-  }),
-  data: create('Data', function (v) {
-    return slate.Data.isData(v);
-  }),
-  document: create('Document', function (v) {
-    return slate.Document.isDocument(v);
-  }),
-  history: create('History', function (v) {
-    return slate.History.isHistory(v);
-  }),
-  inline: create('Inline', function (v) {
-    return slate.Inline.isInline(v);
-  }),
-  inlines: create('Inline', function (v) {
-    return slate.Inline.isInlineList(v);
-  }),
-  leaf: create('Leaf', function (v) {
-    return slate.Leaf.isLeaf(v);
-  }),
-  leaves: create('List<Leaf>', function (v) {
-    return slate.Leaf.isLeafList(v);
-  }),
-  mark: create('Mark', function (v) {
-    return slate.Mark.isMark(v);
-  }),
-  marks: create('Set<Mark>', function (v) {
-    return slate.Mark.isMarkSet(v);
-  }),
-  node: create('Node', function (v) {
-    return slate.Node.isNode(v);
-  }),
-  nodes: create('List<Node>', function (v) {
-    return slate.Node.isNodeList(v);
-  }),
-  range: create('Range', function (v) {
-    return slate.Range.isRange(v);
-  }),
-  ranges: create('List<Range>', function (v) {
-    return slate.Range.isRangeList(v);
-  }),
-  schema: create('Schema', function (v) {
-    return slate.Schema.isSchema(v);
-  }),
-  stack: create('Stack', function (v) {
-    return slate.Stack.isStack(v);
-  }),
-  value: create('Value', function (v) {
-    return slate.Value.isValue(v);
-  }),
-  text: create('Text', function (v) {
-    return slate.Text.isText(v);
-  }),
-  texts: create('List<Text>', function (v) {
-    return slate.Text.isTextList(v);
-  })
-
-  /**
-   * Export.
-   *
-   * @type {Object}
-   */
-
-};
-
-exports.default = Types;
-
-
-},{"slate":438}],417:[function(require,module,exports){
+},{"isomorphic-base64":49,"slate":442}],415:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', { value: true });
@@ -36773,119 +36335,6 @@ Object.defineProperty(exports, '__esModule', { value: true });
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
 var browser = _interopDefault(require('is-in-browser'));
-var isHotkey = require('is-hotkey');
-var Debug = _interopDefault(require('debug'));
-var React = _interopDefault(require('react'));
-var Types = _interopDefault(require('prop-types'));
-var SlateTypes = _interopDefault(require('slate-prop-types'));
-var ImmutableTypes = _interopDefault(require('react-immutable-proptypes'));
-var logger = _interopDefault(require('slate-dev-logger'));
-var slate = require('slate');
-var getWindow = _interopDefault(require('get-window'));
-var isBackward = _interopDefault(require('selection-is-backward'));
-var throttle = _interopDefault(require('lodash/throttle'));
-var Base64 = _interopDefault(require('slate-base64-serializer'));
-var Plain = _interopDefault(require('slate-plain-serializer'));
-var reactDom = require('react-dom');
-var Portal = _interopDefault(require('react-portal'));
-
-/**
- * Event handlers used by Slate plugins.
- *
- * @type {Array}
- */
-
-var EVENT_HANDLERS = ['onBeforeInput', 'onBlur', 'onClick', 'onCompositionEnd', 'onCompositionStart', 'onCopy', 'onCut', 'onDragEnd', 'onDragEnter', 'onDragExit', 'onDragLeave', 'onDragOver', 'onDragStart', 'onDrop', 'onInput', 'onFocus', 'onKeyDown', 'onKeyUp', 'onPaste', 'onSelect'];
-
-/**
- * Export.
- *
- * @type {Array}
- */
-
-var classCallCheck = function (instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-};
-
-var createClass = function () {
-  function defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];
-      descriptor.enumerable = descriptor.enumerable || false;
-      descriptor.configurable = true;
-      if ("value" in descriptor) descriptor.writable = true;
-      Object.defineProperty(target, descriptor.key, descriptor);
-    }
-  }
-
-  return function (Constructor, protoProps, staticProps) {
-    if (protoProps) defineProperties(Constructor.prototype, protoProps);
-    if (staticProps) defineProperties(Constructor, staticProps);
-    return Constructor;
-  };
-}();
-
-
-
-
-
-
-
-var _extends = Object.assign || function (target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i];
-
-    for (var key in source) {
-      if (Object.prototype.hasOwnProperty.call(source, key)) {
-        target[key] = source[key];
-      }
-    }
-  }
-
-  return target;
-};
-
-
-
-var inherits = function (subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-  }
-
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      enumerable: false,
-      writable: true,
-      configurable: true
-    }
-  });
-  if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-};
-
-
-
-
-
-
-
-
-
-
-
-var possibleConstructorReturn = function (self, call) {
-  if (!self) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return call && (typeof call === "object" || typeof call === "function") ? call : self;
-};
-
-
-
-
 
 var slicedToArray = function () {
   function sliceIterator(arr, i) {
@@ -36925,32 +36374,8 @@ var slicedToArray = function () {
   };
 }();
 
-
-
-
-
-
-
-
-
-
-
-
-
-var toConsumableArray = function (arr) {
-  if (Array.isArray(arr)) {
-    for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
-
-    return arr2;
-  } else {
-    return Array.from(arr);
-  }
-};
-
-var PLUGIN_PROPS = [].concat(toConsumableArray(EVENT_HANDLERS), ['decorateNode', 'onChange', 'renderMark', 'renderNode', 'renderPlaceholder', 'renderPortal', 'schema', 'validateNode']);
-
 /**
- * Export.
+ * Browser matching rules.
  *
  * @type {Array}
  */
@@ -37098,6 +36523,7 @@ if (browser) {
  */
 
 var IS_CHROME = BROWSER === 'chrome';
+var IS_OPERA = BROWSER === 'opera';
 var IS_FIREFOX = BROWSER === 'firefox';
 var IS_SAFARI = BROWSER === 'safari';
 var IS_IE = BROWSER === 'ie';
@@ -37106,4436 +36532,24 @@ var IS_EDGE = BROWSER === 'edge';
 var IS_ANDROID = OS === 'android';
 var IS_IOS = OS === 'ios';
 var IS_MAC = OS === 'macos';
-
+var IS_WINDOWS = OS === 'windows';
 
 var SUPPORTED_EVENTS = EVENTS;
 
-var IS_APPLE = IS_IOS || IS_MAC;
-
-/**
- * Hotkeys.
- *
- * @type {Function}
- */
-
-var BOLD = isHotkey.isKeyHotkey('mod+b');
-var ITALIC = isHotkey.isKeyHotkey('mod+i');
-
-var ENTER = isHotkey.isKeyHotkey('enter');
-var SHIFT_ENTER = isHotkey.isKeyHotkey('shift+enter');
-var SPLIT_BLOCK = function SPLIT_BLOCK(e) {
-  return ENTER(e) || SHIFT_ENTER(e);
-};
-
-var BACKSPACE = isHotkey.isKeyHotkey('backspace');
-var SHIFT_BACKSPACE = isHotkey.isKeyHotkey('shift+backspace');
-var DELETE = isHotkey.isKeyHotkey('delete');
-var SHIFT_DELETE = isHotkey.isKeyHotkey('shift+delete');
-var DELETE_BACKWARD = function DELETE_BACKWARD(e) {
-  return BACKSPACE(e) || SHIFT_BACKSPACE(e);
-};
-var DELETE_FORWARD = function DELETE_FORWARD(e) {
-  return DELETE(e) || SHIFT_DELETE(e);
-};
-
-var DELETE_CHAR_BACKWARD_MAC = isHotkey.isKeyHotkey('ctrl+h');
-var DELETE_CHAR_FORWARD_MAC = isHotkey.isKeyHotkey('ctrl+d');
-var DELETE_CHAR_BACKWARD = function DELETE_CHAR_BACKWARD(e) {
-  return DELETE_BACKWARD(e) || IS_APPLE && DELETE_CHAR_BACKWARD_MAC(e);
-};
-var DELETE_CHAR_FORWARD = function DELETE_CHAR_FORWARD(e) {
-  return DELETE_FORWARD(e) || IS_APPLE && DELETE_CHAR_FORWARD_MAC(e);
-};
-
-var DELETE_LINE_BACKWARD_MAC = isHotkey.isKeyHotkey('cmd+backspace');
-var DELETE_LINE_FORWARD_MAC = isHotkey.isKeyHotkey('ctrl+k');
-var DELETE_LINE_BACKWARD = function DELETE_LINE_BACKWARD(e) {
-  return IS_APPLE && DELETE_LINE_BACKWARD_MAC(e);
-};
-var DELETE_LINE_FORWARD = function DELETE_LINE_FORWARD(e) {
-  return IS_APPLE && DELETE_LINE_FORWARD_MAC(e);
-};
-
-var DELETE_WORD_BACKWARD_MAC = isHotkey.isKeyHotkey('option+backspace');
-var DELETE_WORD_BACKWARD_PC = isHotkey.isKeyHotkey('ctrl+backspace');
-var DELETE_WORD_FORWARD_MAC = isHotkey.isKeyHotkey('option+delete');
-var DELETE_WORD_FORWARD_PC = isHotkey.isKeyHotkey('ctrl+delete');
-var DELETE_WORD_BACKWARD = function DELETE_WORD_BACKWARD(e) {
-  return IS_APPLE ? DELETE_WORD_BACKWARD_MAC(e) : DELETE_WORD_BACKWARD_PC(e);
-};
-var DELETE_WORD_FORWARD = function DELETE_WORD_FORWARD(e) {
-  return IS_APPLE ? DELETE_WORD_FORWARD_MAC(e) : DELETE_WORD_FORWARD_PC(e);
-};
-
-var RIGHT_ARROW = isHotkey.isKeyHotkey('right');
-var LEFT_ARROW = isHotkey.isKeyHotkey('left');
-var COLLAPSE_CHAR_FORWARD = function COLLAPSE_CHAR_FORWARD(e) {
-  return RIGHT_ARROW(e) && !EXTEND_CHAR_FORWARD(e);
-};
-var COLLAPSE_CHAR_BACKWARD = function COLLAPSE_CHAR_BACKWARD(e) {
-  return LEFT_ARROW(e) && !EXTEND_CHAR_BACKWARD(e);
-};
-
-var COLLAPSE_LINE_BACKWARD_MAC = isHotkey.isKeyHotkey('option+up');
-var COLLAPSE_LINE_FORWARD_MAC = isHotkey.isKeyHotkey('option+down');
-var COLLAPSE_LINE_BACKWARD = function COLLAPSE_LINE_BACKWARD(e) {
-  return IS_APPLE && COLLAPSE_LINE_BACKWARD_MAC(e);
-};
-var COLLAPSE_LINE_FORWARD = function COLLAPSE_LINE_FORWARD(e) {
-  return IS_APPLE && COLLAPSE_LINE_FORWARD_MAC(e);
-};
-
-var EXTEND_CHAR_FORWARD = isHotkey.isKeyHotkey('shift+right');
-var EXTEND_CHAR_BACKWARD = isHotkey.isKeyHotkey('shift+left');
-
-var EXTEND_LINE_BACKWARD_MAC = isHotkey.isKeyHotkey('option+shift+up');
-var EXTEND_LINE_FORWARD_MAC = isHotkey.isKeyHotkey('option+shift+down');
-var EXTEND_LINE_BACKWARD = function EXTEND_LINE_BACKWARD(e) {
-  return IS_APPLE && EXTEND_LINE_BACKWARD_MAC(e);
-};
-var EXTEND_LINE_FORWARD = function EXTEND_LINE_FORWARD(e) {
-  return IS_APPLE && EXTEND_LINE_FORWARD_MAC(e);
-};
-
-var UNDO = isHotkey.isKeyHotkey('mod+z');
-var REDO_MAC = isHotkey.isKeyHotkey('mod+shift+z');
-var REDO_PC = isHotkey.isKeyHotkey('mod+y');
-var REDO = function REDO(e) {
-  return IS_APPLE ? REDO_MAC(e) : REDO_PC(e);
-};
-
-var TRANSPOSE_CHARACTER_MAC = isHotkey.isKeyHotkey('ctrl+t');
-var TRANSPOSE_CHARACTER = function TRANSPOSE_CHARACTER(e) {
-  return IS_APPLE && TRANSPOSE_CHARACTER_MAC(e);
-};
-
-var CONTENTEDITABLE = function CONTENTEDITABLE(e) {
-  return BOLD(e) || DELETE_CHAR_BACKWARD(e) || DELETE_CHAR_FORWARD(e) || DELETE_LINE_BACKWARD(e) || DELETE_LINE_FORWARD(e) || DELETE_WORD_BACKWARD(e) || DELETE_WORD_FORWARD(e) || ITALIC(e) || REDO(e) || SPLIT_BLOCK(e) || TRANSPOSE_CHARACTER(e) || UNDO(e);
-};
-
-var COMPOSING = function COMPOSING(e) {
-  return e.key == 'ArrowDown' || e.key == 'ArrowLeft' || e.key == 'ArrowRight' || e.key == 'ArrowUp' || e.key == 'Backspace' || e.key == 'Enter';
-};
-
-/**
- * Export.
- *
- * @type {Object}
- */
-
-var HOTKEYS = {
-  BOLD: BOLD,
-  COLLAPSE_LINE_BACKWARD: COLLAPSE_LINE_BACKWARD,
-  COLLAPSE_LINE_FORWARD: COLLAPSE_LINE_FORWARD,
-  COLLAPSE_CHAR_FORWARD: COLLAPSE_CHAR_FORWARD,
-  COLLAPSE_CHAR_BACKWARD: COLLAPSE_CHAR_BACKWARD,
-  COMPOSING: COMPOSING,
-  CONTENTEDITABLE: CONTENTEDITABLE,
-  DELETE_CHAR_BACKWARD: DELETE_CHAR_BACKWARD,
-  DELETE_CHAR_FORWARD: DELETE_CHAR_FORWARD,
-  DELETE_LINE_BACKWARD: DELETE_LINE_BACKWARD,
-  DELETE_LINE_FORWARD: DELETE_LINE_FORWARD,
-  DELETE_WORD_BACKWARD: DELETE_WORD_BACKWARD,
-  DELETE_WORD_FORWARD: DELETE_WORD_FORWARD,
-  EXTEND_LINE_BACKWARD: EXTEND_LINE_BACKWARD,
-  EXTEND_LINE_FORWARD: EXTEND_LINE_FORWARD,
-  EXTEND_CHAR_FORWARD: EXTEND_CHAR_FORWARD,
-  EXTEND_CHAR_BACKWARD: EXTEND_CHAR_BACKWARD,
-  ITALIC: ITALIC,
-  REDO: REDO,
-  SPLIT_BLOCK: SPLIT_BLOCK,
-  UNDO: UNDO
-};
-
-/**
- * Offset key parser regex.
- *
- * @type {RegExp}
- */
-
-var PARSER = /^(\w+)(?::(\d+))?$/;
-
-/**
- * Parse an offset key `string`.
- *
- * @param {String} string
- * @return {Object}
- */
-
-function parse(string) {
-  var matches = PARSER.exec(string);
-
-  if (!matches) {
-    throw new Error("Invalid offset key string \"" + string + "\".");
-  }
-
-  var _matches = slicedToArray(matches, 3),
-      original = _matches[0],
-      key = _matches[1],
-      index = _matches[2]; // eslint-disable-line no-unused-vars
-
-
-  return {
-    key: key,
-    index: parseInt(index, 10)
-  };
-}
-
-/**
- * Stringify an offset key `object`.
- *
- * @param {Object} object
- *   @property {String} key
- *   @property {Number} index
- * @return {String}
- */
-
-function stringify(object) {
-  return object.key + ":" + object.index;
-}
-
-/**
- * Export.
- *
- * @type {Object}
- */
-
-var OffsetKey = {
-  parse: parse,
-  stringify: stringify
-};
-
-/**
- * Debugger.
- *
- * @type {Function}
- */
-
-var debug = Debug('slate:leaves');
-
-/**
- * Leaf.
- *
- * @type {Component}
- */
-
-var Leaf = function (_React$Component) {
-  inherits(Leaf, _React$Component);
-
-  function Leaf() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
-    classCallCheck(this, Leaf);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = possibleConstructorReturn(this, (_ref = Leaf.__proto__ || Object.getPrototypeOf(Leaf)).call.apply(_ref, [this].concat(args))), _this), _initialiseProps.call(_this), _temp), possibleConstructorReturn(_this, _ret);
-  }
-  /**
-   * Property types.
-   *
-   * @type {Object}
-   */
-
-  /**
-   * Debug.
-   *
-   * @param {String} message
-   * @param {Mixed} ...args
-   */
-
-  createClass(Leaf, [{
-    key: 'shouldComponentUpdate',
-
-
-    /**
-     * Should component update?
-     *
-     * @param {Object} props
-     * @return {Boolean}
-     */
-
-    value: function shouldComponentUpdate(props) {
-      // If any of the regular properties have changed, re-render.
-      if (props.index != this.props.index || props.marks != this.props.marks || props.text != this.props.text || props.parent != this.props.parent) {
-        return true;
-      }
-
-      // Otherwise, don't update.
-      return false;
-    }
-
-    /**
-     * Render the leaf.
-     *
-     * @return {Element}
-     */
-
-  }, {
-    key: 'render',
-    value: function render() {
-      this.debug('render', this);
-
-      var _props = this.props,
-          node = _props.node,
-          index = _props.index;
-
-      var offsetKey = OffsetKey.stringify({
-        key: node.key,
-        index: index
-      });
-
-      return React.createElement(
-        'span',
-        { 'data-offset-key': offsetKey },
-        this.renderMarks()
-      );
-    }
-
-    /**
-     * Render all of the leaf's mark components.
-     *
-     * @return {Element}
-     */
-
-  }, {
-    key: 'renderMarks',
-    value: function renderMarks() {
-      var _props2 = this.props,
-          marks = _props2.marks,
-          node = _props2.node,
-          offset = _props2.offset,
-          text = _props2.text,
-          editor = _props2.editor;
-      var stack = editor.stack;
-
-      var leaf = this.renderText();
-
-      return marks.reduce(function (children, mark) {
-        var props = { editor: editor, mark: mark, marks: marks, node: node, offset: offset, text: text, children: children };
-        var element = stack.find('renderMark', props);
-        return element || children;
-      }, leaf);
-    }
-
-    /**
-     * Render the text content of the leaf, accounting for browsers.
-     *
-     * @return {Element}
-     */
-
-  }, {
-    key: 'renderText',
-    value: function renderText() {
-      var _props3 = this.props,
-          block = _props3.block,
-          node = _props3.node,
-          parent = _props3.parent,
-          text = _props3.text,
-          index = _props3.index,
-          leaves = _props3.leaves;
-
-      // COMPAT: If the text is empty and the only child, we need to render a
-      // line break when copying and pasting to support expected plain text.
-
-      if (text == '' && parent.kind == 'block' && parent.text == '') {
-        return React.createElement(
-          'span',
-          { 'data-slate-zero-width': 'n' },
-          '\u200B'
-        );
-      }
-
-      // COMPAT: Render text inside void nodes with a zero-width space.
-      // So the node can contain selection but the text is not visible.
-      if (parent.isVoid) return React.createElement(
-        'span',
-        { 'data-slate-zero-width': 'z' },
-        '\u200B'
-      );
-
-      // COMPAT: If the text is empty, it's because it's on the edge of an inline
-      // void node, so we render a zero-width space so that the selection can be
-      // inserted next to it still.
-      if (text == '') return React.createElement(
-        'span',
-        { 'data-slate-zero-width': 'z' },
-        '\u200B'
-      );
-
-      // COMPAT: Browsers will collapse trailing new lines at the end of blocks,
-      // so we need to add an extra trailing new lines to prevent that.
-      var lastText = block.getLastText();
-      var lastChar = text.charAt(text.length - 1);
-      var isLastText = node == lastText;
-      var isLastLeaf = index == leaves.size - 1;
-      if (isLastText && isLastLeaf && lastChar == '\n') return text + '\n';
-
-      // Otherwise, just return the text.
-      return text;
-    }
-  }]);
-  return Leaf;
-}(React.Component);
-
-/**
- * Export.
- *
- * @type {Component}
- */
-
-Leaf.propTypes = {
-  block: SlateTypes.block.isRequired,
-  editor: Types.object.isRequired,
-  index: Types.number.isRequired,
-  leaves: SlateTypes.leaves.isRequired,
-  marks: SlateTypes.marks.isRequired,
-  node: SlateTypes.node.isRequired,
-  offset: Types.number.isRequired,
-  parent: SlateTypes.node.isRequired,
-  text: Types.string.isRequired };
-
-var _initialiseProps = function _initialiseProps() {
-  var _this2 = this;
-
-  this.debug = function (message) {
-    for (var _len2 = arguments.length, args = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-      args[_key2 - 1] = arguments[_key2];
-    }
-
-    debug.apply(undefined, [message, _this2.props.node.key + '-' + _this2.props.index].concat(args));
-  };
-};
-
-var debug$1 = Debug('slate:node');
-
-/**
- * Text.
- *
- * @type {Component}
- */
-
-var Text = function (_React$Component) {
-  inherits(Text, _React$Component);
-
-  function Text() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
-    classCallCheck(this, Text);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = possibleConstructorReturn(this, (_ref = Text.__proto__ || Object.getPrototypeOf(Text)).call.apply(_ref, [this].concat(args))), _this), _initialiseProps$1.call(_this), _temp), possibleConstructorReturn(_this, _ret);
-  }
-  /**
-   * Property types.
-   *
-   * @type {Object}
-   */
-
-  /**
-   * Default prop types.
-   *
-   * @type {Object}
-   */
-
-  /**
-   * Debug.
-   *
-   * @param {String} message
-   * @param {Mixed} ...args
-   */
-
-  /**
-   * Should the node update?
-   *
-   * @param {Object} nextProps
-   * @param {Object} value
-   * @return {Boolean}
-   */
-
-  createClass(Text, [{
-    key: 'render',
-
-
-    /**
-     * Render.
-     *
-     * @return {Element}
-     */
-
-    value: function render() {
-      var _this2 = this;
-
-      this.debug('render', this);
-
-      var _props = this.props,
-          decorations = _props.decorations,
-          editor = _props.editor,
-          node = _props.node,
-          style = _props.style;
-      var value = editor.value;
-      var document = value.document;
-      var key = node.key;
-
-
-      var decs = decorations.filter(function (d) {
-        var startKey = d.startKey,
-            endKey = d.endKey;
-
-        if (startKey == key || endKey == key) return true;
-        var startsBefore = document.areDescendantsSorted(startKey, key);
-        var endsAfter = document.areDescendantsSorted(key, endKey);
-        return startsBefore && endsAfter;
-      });
-
-      var leaves = node.getLeaves(decs);
-      var offset = 0;
-
-      var children = leaves.map(function (leaf, i) {
-        var child = _this2.renderLeaf(leaves, leaf, i, offset);
-        offset += leaf.text.length;
-        return child;
-      });
-
-      return React.createElement(
-        'span',
-        { 'data-key': key, style: style },
-        children
-      );
-    }
-
-    /**
-     * Render a single leaf given a `leaf` and `offset`.
-     *
-     * @param {List<Leaf>} leaves
-     * @param {Leaf} leaf
-     * @param {Number} index
-     * @param {Number} offset
-     * @return {Element} leaf
-     */
-
-  }]);
-  return Text;
-}(React.Component);
-
-/**
- * Export.
- *
- * @type {Component}
- */
-
-Text.propTypes = {
-  block: SlateTypes.block,
-  decorations: ImmutableTypes.list.isRequired,
-  editor: Types.object.isRequired,
-  node: SlateTypes.node.isRequired,
-  parent: SlateTypes.node.isRequired,
-  style: Types.object };
-Text.defaultProps = {
-  style: null };
-
-var _initialiseProps$1 = function _initialiseProps() {
-  var _this3 = this;
-
-  this.debug = function (message) {
-    for (var _len2 = arguments.length, args = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-      args[_key2 - 1] = arguments[_key2];
-    }
-
-    var node = _this3.props.node;
-    var key = node.key;
-
-    debug$1.apply(undefined, [message, key + ' (text)'].concat(args));
-  };
-
-  this.shouldComponentUpdate = function (nextProps) {
-    var props = _this3.props;
-
-    var n = nextProps;
-    var p = props;
-
-    // If the node has changed, update. PERF: There are cases where it will have
-    // changed, but it's properties will be exactly the same (eg. copy-paste)
-    // which this won't catch. But that's rare and not a drag on performance, so
-    // for simplicity we just let them through.
-    if (n.node != p.node) return true;
-
-    // If the node parent is a block node, and it was the last child of the
-    // block, re-render to cleanup extra `\n`.
-    if (n.parent.object == 'block') {
-      var pLast = p.parent.nodes.last();
-      var nLast = n.parent.nodes.last();
-      if (p.node == pLast && n.node != nLast) return true;
-    }
-
-    // Re-render if the current decorations have changed.
-    if (!n.decorations.equals(p.decorations)) return true;
-
-    // Otherwise, don't update.
-    return false;
-  };
-
-  this.renderLeaf = function (leaves, leaf, index, offset) {
-    var _props2 = _this3.props,
-        block = _props2.block,
-        node = _props2.node,
-        parent = _props2.parent,
-        editor = _props2.editor;
-    var text = leaf.text,
-        marks = leaf.marks;
-
-
-    return React.createElement(Leaf, {
-      key: node.key + '-' + index,
-      block: block,
-      editor: editor,
-      index: index,
-      marks: marks,
-      node: node,
-      offset: offset,
-      parent: parent,
-      leaves: leaves,
-      text: text
-    });
-  };
-};
-
-var debug$2 = Debug('slate:void');
-
-/**
- * Void.
- *
- * @type {Component}
- */
-
-var Void = function (_React$Component) {
-  inherits(Void, _React$Component);
-
-  function Void() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
-    classCallCheck(this, Void);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = possibleConstructorReturn(this, (_ref = Void.__proto__ || Object.getPrototypeOf(Void)).call.apply(_ref, [this].concat(args))), _this), _initialiseProps$2.call(_this), _temp), possibleConstructorReturn(_this, _ret);
-  }
-  /**
-   * Property types.
-   *
-   * @type {Object}
-   */
-
-  /**
-   * Debug.
-   *
-   * @param {String} message
-   * @param {Mixed} ...args
-   */
-
-  createClass(Void, [{
-    key: 'render',
-
-
-    /**
-     * Render.
-     *
-     * @return {Element}
-     */
-
-    value: function render() {
-      var props = this.props;
-      var children = props.children,
-          node = props.node,
-          readOnly = props.readOnly;
-
-      var Tag = node.object == 'block' ? 'div' : 'span';
-      var style = {
-        height: '0',
-        color: 'transparent',
-        outline: 'none'
-      };
-
-      var spacer = React.createElement(
-        Tag,
-        {
-          contentEditable: true,
-          'data-slate-spacer': true,
-          suppressContentEditableWarning: true,
-          style: style
-        },
-        this.renderText()
-      );
-
-      var content = React.createElement(
-        Tag,
-        { draggable: readOnly ? null : true },
-        children
-      );
-
-      this.debug('render', { props: props });
-
-      return React.createElement(
-        Tag,
-        {
-          'data-slate-void': true,
-          'data-key': node.key,
-          contentEditable: readOnly ? null : false
-        },
-        readOnly ? null : spacer,
-        content
-      );
-    }
-
-    /**
-     * Render the void node's text node, which will catch the cursor when it the
-     * void node is navigated to with the arrow keys.
-     *
-     * Having this text node there means the browser continues to manage the
-     * selection natively, so it keeps track of the right offset when moving
-     * across the block.
-     *
-     * @return {Element}
-     */
-
-  }]);
-  return Void;
-}(React.Component);
-
-/**
- * Export.
- *
- * @type {Component}
- */
-
-Void.propTypes = {
-  block: SlateTypes.block,
-  children: Types.any.isRequired,
-  editor: Types.object.isRequired,
-  node: SlateTypes.node.isRequired,
-  parent: SlateTypes.node.isRequired,
-  readOnly: Types.bool.isRequired };
-
-var _initialiseProps$2 = function _initialiseProps() {
-  var _this2 = this;
-
-  this.debug = function (message) {
-    for (var _len2 = arguments.length, args = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-      args[_key2 - 1] = arguments[_key2];
-    }
-
-    var node = _this2.props.node;
-    var key = node.key,
-        type = node.type;
-
-    var id = key + ' (' + type + ')';
-    debug$2.apply(undefined, [message, '' + id].concat(args));
-  };
-
-  this.renderText = function () {
-    var _props = _this2.props,
-        block = _props.block,
-        decorations = _props.decorations,
-        isSelected = _props.isSelected,
-        node = _props.node,
-        readOnly = _props.readOnly,
-        editor = _props.editor;
-
-    var child = node.getFirstText();
-    return React.createElement(Text, {
-      block: node.object == 'block' ? node : block,
-      decorations: decorations,
-      editor: editor,
-      isSelected: isSelected,
-      key: child.key,
-      node: child,
-      parent: node,
-      readOnly: readOnly
-    });
-  };
-};
-
-var debug$3 = Debug('slate:node');
-
-/**
- * Node.
- *
- * @type {Component}
- */
-
-var Node = function (_React$Component) {
-  inherits(Node, _React$Component);
-
-  function Node() {
-    var _ref;
-
-    var _temp, _this, _ret;
-
-    classCallCheck(this, Node);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = possibleConstructorReturn(this, (_ref = Node.__proto__ || Object.getPrototypeOf(Node)).call.apply(_ref, [this].concat(args))), _this), _initialiseProps$3.call(_this), _temp), possibleConstructorReturn(_this, _ret);
-  }
-  /**
-   * Property types.
-   *
-   * @type {Object}
-   */
-
-  /**
-   * Debug.
-   *
-   * @param {String} message
-   * @param {Mixed} ...args
-   */
-
-  /**
-   * Should the node update?
-   *
-   * @param {Object} nextProps
-   * @param {Object} value
-   * @return {Boolean}
-   */
-
-  createClass(Node, [{
-    key: 'render',
-
-
-    /**
-     * Render.
-     *
-     * @return {Element}
-     */
-
-    value: function render() {
-      var _this2 = this;
-
-      this.debug('render', this);
-
-      var _props = this.props,
-          editor = _props.editor,
-          isSelected = _props.isSelected,
-          node = _props.node,
-          parent = _props.parent,
-          readOnly = _props.readOnly;
-      var value = editor.value;
-      var selection = value.selection;
-      var stack = editor.stack;
-
-      var indexes = node.getSelectionIndexes(selection, isSelected);
-      var children = node.nodes.toArray().map(function (child, i) {
-        var isChildSelected = !!indexes && indexes.start <= i && i < indexes.end;
-        return _this2.renderNode(child, isChildSelected);
-      });
-
-      // Attributes that the developer must to mix into the element in their
-      // custom node renderer component.
-      var attributes = { 'data-key': node.key
-
-        // If it's a block node with inline children, add the proper `dir` attribute
-        // for text direction.
-      };if (node.object == 'block' && node.nodes.first().object != 'block') {
-        var direction = node.getTextDirection();
-        if (direction == 'rtl') attributes.dir = 'rtl';
-      }
-
-      var props = {
-        key: node.key,
-        editor: editor,
-        isSelected: isSelected,
-        node: node,
-        parent: parent,
-        readOnly: readOnly
-      };
-
-      var placeholder = stack.find('renderPlaceholder', props);
-
-      if (placeholder) {
-        placeholder = React.cloneElement(placeholder, {
-          key: node.key + '-placeholder'
-        });
-        children = [placeholder].concat(toConsumableArray(children));
-      }
-
-      var element = stack.find('renderNode', _extends({}, props, {
-        attributes: attributes,
-        children: children
-      }));
-
-      return node.isVoid ? React.createElement(
-        Void,
-        this.props,
-        element
-      ) : element;
-    }
-
-    /**
-     * Render a `child` node.
-     *
-     * @param {Node} child
-     * @param {Boolean} isSelected
-     * @return {Element}
-     */
-
-  }]);
-  return Node;
-}(React.Component);
-
-/**
- * Export.
- *
- * @type {Component}
- */
-
-Node.propTypes = {
-  block: SlateTypes.block,
-  decorations: ImmutableTypes.list.isRequired,
-  editor: Types.object.isRequired,
-  isSelected: Types.bool.isRequired,
-  node: SlateTypes.node.isRequired,
-  parent: SlateTypes.node.isRequired,
-  readOnly: Types.bool.isRequired };
-
-var _initialiseProps$3 = function _initialiseProps() {
-  var _this3 = this;
-
-  this.debug = function (message) {
-    for (var _len2 = arguments.length, args = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-      args[_key2 - 1] = arguments[_key2];
-    }
-
-    var node = _this3.props.node;
-    var key = node.key,
-        type = node.type;
-
-    debug$3.apply(undefined, [message, key + ' (' + type + ')'].concat(args));
-  };
-
-  this.shouldComponentUpdate = function (nextProps) {
-    var props = _this3.props;
-    var stack = props.editor.stack;
-
-    var shouldUpdate = stack.find('shouldNodeComponentUpdate', props, nextProps);
-    var n = nextProps;
-    var p = props;
-
-    // If the `Component` has a custom logic to determine whether the component
-    // needs to be updated or not, return true if it returns true. If it returns
-    // false, we need to ignore it, because it shouldn't be allowed it.
-    if (shouldUpdate != null) {
-      if (shouldUpdate) {
-        return true;
-      }
-
-      if (shouldUpdate === false) {
-        logger.warn("Returning false in `shouldNodeComponentUpdate` does not disable Slate's internal `shouldComponentUpdate` logic. If you want to prevent updates, use React's `shouldComponentUpdate` instead.");
-      }
-    }
-
-    // If the `readOnly` status has changed, re-render in case there is any
-    // user-land logic that depends on it, like nested editable contents.
-    if (n.readOnly != p.readOnly) return true;
-
-    // If the node has changed, update. PERF: There are cases where it will have
-    // changed, but it's properties will be exactly the same (eg. copy-paste)
-    // which this won't catch. But that's rare and not a drag on performance, so
-    // for simplicity we just let them through.
-    if (n.node != p.node) return true;
-
-    // If the selection value of the node or of some of its children has changed,
-    // re-render in case there is any user-land logic depends on it to render.
-    // if the node is selected update it, even if it was already selected: the
-    // selection value of some of its children could have been changed and they
-    // need to be rendered again.
-    if (n.isSelected || p.isSelected) return true;
-
-    // If the decorations have changed, update.
-    if (!n.decorations.equals(p.decorations)) return true;
-
-    // Otherwise, don't update.
-    return false;
-  };
-
-  this.renderNode = function (child, isSelected) {
-    var _props2 = _this3.props,
-        block = _props2.block,
-        decorations = _props2.decorations,
-        editor = _props2.editor,
-        node = _props2.node,
-        readOnly = _props2.readOnly;
-    var stack = editor.stack;
-
-    var Component = child.object == 'text' ? Text : Node;
-    var decs = decorations.concat(node.getDecorations(stack));
-    return React.createElement(Component, {
-      block: node.object == 'block' ? node : block,
-      decorations: decs,
-      editor: editor,
-      isSelected: isSelected,
-      key: child.key,
-      node: child,
-      parent: node,
-      readOnly: readOnly
-    });
-  };
-};
-
-function findDOMNode(key) {
-  var win = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : window;
-
-  if (slate.Node.isNode(key)) {
-    key = key.key;
-  }
-
-  var el = win.document.querySelector('[data-key="' + key + '"]');
-
-  if (!el) {
-    throw new Error('Unable to find a DOM node for "' + key + '". This is often because of forgetting to add `props.attributes` to a custom component.');
-  }
-
-  return el;
-}
-
-/**
- * Export.
- *
- * @type {Function}
- */
-
-function findDOMPoint(key, offset) {
-  var win = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : window;
-
-  var el = findDOMNode(key, win);
-  var start = 0;
-  var n = void 0;
-
-  // COMPAT: In IE, this method's arguments are not optional, so we have to
-  // pass in all four even though the last two are defaults. (2017/10/25)
-  var iterator = win.document.createNodeIterator(el, NodeFilter.SHOW_TEXT, function () {
-    return NodeFilter.FILTER_ACCEPT;
-  }, false);
-
-  while (n = iterator.nextNode()) {
-    var length = n.textContent.length;
-
-    var end = start + length;
-
-    if (offset <= end) {
-      var o = offset - start;
-      return { node: n, offset: o };
-    }
-
-    start = end;
-  }
-
-  return null;
-}
-
-/**
- * Export.
- *
- * @type {Function}
- */
-
-function findDOMRange(range) {
-  var win = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : window;
-  var anchorKey = range.anchorKey,
-      anchorOffset = range.anchorOffset,
-      focusKey = range.focusKey,
-      focusOffset = range.focusOffset,
-      isBackward$$1 = range.isBackward,
-      isCollapsed = range.isCollapsed;
-
-  var anchor = findDOMPoint(anchorKey, anchorOffset, win);
-  var focus = isCollapsed ? anchor : findDOMPoint(focusKey, focusOffset, win);
-  if (!anchor || !focus) return null;
-
-  var r = win.document.createRange();
-  var start = isBackward$$1 ? focus : anchor;
-  var end = isBackward$$1 ? anchor : focus;
-  r.setStart(start.node, start.offset);
-  r.setEnd(end.node, end.offset);
-  return r;
-}
-
-/**
- * Export.
- *
- * @type {Function}
- */
-
-var ZERO_WIDTH_ATTRIBUTE = 'data-slate-zero-width';
-var ZERO_WIDTH_SELECTOR = '[' + ZERO_WIDTH_ATTRIBUTE + ']';
-var OFFSET_KEY_ATTRIBUTE = 'data-offset-key';
-var RANGE_SELECTOR = '[' + OFFSET_KEY_ATTRIBUTE + ']';
-var TEXT_SELECTOR = '[data-key]';
-var VOID_SELECTOR = '[data-slate-void]';
-
-/**
- * Find a Slate point from a DOM selection's `nativeNode` and `nativeOffset`.
- *
- * @param {Element} nativeNode
- * @param {Number} nativeOffset
- * @param {Value} value
- * @return {Object}
- */
-
-function findPoint(nativeNode, nativeOffset, value) {
-  var _normalizeNodeAndOffs = normalizeNodeAndOffset(nativeNode, nativeOffset),
-      nearestNode = _normalizeNodeAndOffs.node,
-      nearestOffset = _normalizeNodeAndOffs.offset;
-
-  var window = getWindow(nativeNode);
-  var parentNode = nearestNode.parentNode;
-
-  var rangeNode = parentNode.closest(RANGE_SELECTOR);
-  var offset = void 0;
-  var node = void 0;
-
-  // Calculate how far into the text node the `nearestNode` is, so that we can
-  // determine what the offset relative to the text node is.
-  if (rangeNode) {
-    var range = window.document.createRange();
-    var textNode = rangeNode.closest(TEXT_SELECTOR);
-    range.setStart(textNode, 0);
-    range.setEnd(nearestNode, nearestOffset);
-    node = textNode;
-    offset = range.toString().length;
-  } else {
-    // For void nodes, the element with the offset key will be a cousin, not an
-    // ancestor, so find it by going down from the nearest void parent.
-    var voidNode = parentNode.closest(VOID_SELECTOR);
-    if (!voidNode) return null;
-    rangeNode = voidNode.querySelector(RANGE_SELECTOR);
-    if (!rangeNode) return null;
-    node = rangeNode;
-    offset = node.textContent.length;
-  }
-
-  // COMPAT: If the parent node is a Slate zero-width space, this is because the
-  // text node should have no characters. However, during IME composition the
-  // ASCII characters will be prepended to the zero-width space, so subtract 1
-  // from the offset to account for the zero-width space character.
-  if (offset == node.textContent.length && parentNode.hasAttribute(ZERO_WIDTH_ATTRIBUTE)) {
-    offset--;
-  }
-
-  // Get the string value of the offset key attribute.
-  var offsetKey = rangeNode.getAttribute(OFFSET_KEY_ATTRIBUTE);
-  if (!offsetKey) return null;
-
-  var _OffsetKey$parse = OffsetKey.parse(offsetKey),
-      key = _OffsetKey$parse.key;
-
-  // COMPAT: If someone is clicking from one Slate editor into another, the
-  // select event fires twice, once for the old editor's `element` first, and
-  // then afterwards for the correct `element`. (2017/03/03)
-
-
-  if (!value.document.hasDescendant(key)) return null;
-
-  return {
-    key: key,
-    offset: offset
-  };
-}
-
-/**
- * From a DOM selection's `node` and `offset`, normalize so that it always
- * refers to a text node.
- *
- * @param {Element} node
- * @param {Number} offset
- * @return {Object}
- */
-
-function normalizeNodeAndOffset(node, offset) {
-  // If it's an element node, its offset refers to the index of its children
-  // including comment nodes, so try to find the right text child node.
-  if (node.nodeType == 1 && node.childNodes.length) {
-    var isLast = offset == node.childNodes.length;
-    var direction = isLast ? 'backward' : 'forward';
-    var index = isLast ? offset - 1 : offset;
-    node = getEditableChild(node, index, direction);
-
-    // If the node has children, traverse until we have a leaf node. Leaf nodes
-    // can be either text nodes, or other void DOM nodes.
-    while (node.nodeType == 1 && node.childNodes.length) {
-      var i = isLast ? node.childNodes.length - 1 : 0;
-      node = getEditableChild(node, i, direction);
-    }
-
-    // Determine the new offset inside the text node.
-    offset = isLast ? node.textContent.length : 0;
-  }
-
-  // Return the node and offset.
-  return { node: node, offset: offset };
-}
-
-/**
- * Get the nearest editable child at `index` in a `parent`, preferring
- * `direction`.
- *
- * @param {Element} parent
- * @param {Number} index
- * @param {String} direction ('forward' or 'backward')
- * @return {Element|Null}
- */
-
-function getEditableChild(parent, index, direction) {
-  var childNodes = parent.childNodes;
-
-  var child = childNodes[index];
-  var i = index;
-  var triedForward = false;
-  var triedBackward = false;
-
-  // While the child is a comment node, or an element node with no children,
-  // keep iterating to find a sibling non-void, non-comment node.
-  while (child.nodeType == 8 || child.nodeType == 1 && child.childNodes.length == 0 || child.nodeType == 1 && child.getAttribute('contenteditable') == 'false') {
-    if (triedForward && triedBackward) break;
-
-    if (i >= childNodes.length) {
-      triedForward = true;
-      i = index - 1;
-      direction = 'backward';
-      continue;
-    }
-
-    if (i < 0) {
-      triedBackward = true;
-      i = index + 1;
-      direction = 'forward';
-      continue;
-    }
-
-    child = childNodes[i];
-    if (direction == 'forward') i++;
-    if (direction == 'backward') i--;
-  }
-
-  return child || null;
-}
-
-/**
- * Export.
- *
- * @type {Function}
- */
-
-function findRange(native, value) {
-  var el = native.anchorNode || native.startContainer;
-  if (!el) return null;
-
-  var window = getWindow(el);
-
-  // If the `native` object is a DOM `Range` or `StaticRange` object, change it
-  // into something that looks like a DOM `Selection` instead.
-  if (native instanceof window.Range || window.StaticRange && native instanceof window.StaticRange) {
-    native = {
-      anchorNode: native.startContainer,
-      anchorOffset: native.startOffset,
-      focusNode: native.endContainer,
-      focusOffset: native.endOffset
-    };
-  }
-
-  var _native = native,
-      anchorNode = _native.anchorNode,
-      anchorOffset = _native.anchorOffset,
-      focusNode = _native.focusNode,
-      focusOffset = _native.focusOffset,
-      isCollapsed = _native.isCollapsed;
-
-  var anchor = findPoint(anchorNode, anchorOffset, value);
-  var focus = isCollapsed ? anchor : findPoint(focusNode, focusOffset, value);
-  if (!anchor || !focus) return null;
-
-  // COMPAT: ??? The Edge browser seems to have a case where if you select the
-  // last word of a span, it sets the endContainer to the containing span.
-  // `selection-is-backward` doesn't handle this case.
-  if (IS_IE || IS_EDGE) {
-    var domAnchor = findDOMPoint(anchor.key, anchor.offset);
-    var domFocus = findDOMPoint(focus.key, focus.offset);
-
-    native = {
-      anchorNode: domAnchor.node,
-      anchorOffset: domAnchor.offset,
-      focusNode: domFocus.node,
-      focusOffset: domFocus.offset
-    };
-  }
-
-  var range = slate.Range.create({
-    anchorKey: anchor.key,
-    anchorOffset: anchor.offset,
-    focusKey: focus.key,
-    focusOffset: focus.offset,
-    isBackward: isCollapsed ? false : isBackward(native),
-    isFocused: true
-  });
-
-  return range;
-}
-
-/**
- * Export.
- *
- * @type {Function}
- */
-
-var OVERFLOWS = ['auto', 'overlay', 'scroll'];
-
-/**
- * Detect whether we are running IOS version 11
- */
-
-var IS_IOS_11 = IS_IOS && !!window.navigator.userAgent.match(/os 11_/i);
-
-/**
- * Find the nearest parent with scrolling, or window.
- *
- * @param {el} Element
- */
-
-function findScrollContainer(el, window) {
-  var parent = el.parentNode;
-  var scroller = void 0;
-
-  while (!scroller) {
-    if (!parent.parentNode) break;
-
-    var style = window.getComputedStyle(parent);
-    var overflowY = style.overflowY;
-
-
-    if (OVERFLOWS.includes(overflowY)) {
-      scroller = parent;
-      break;
-    }
-
-    parent = parent.parentNode;
-  }
-
-  // COMPAT: Because Chrome does not allow doucment.body.scrollTop, we're
-  // assuming that window.scrollTo() should be used if the scrollable element
-  // turns out to be document.body or document.documentElement. This will work
-  // unless body is intentionally set to scrollable by restricting its height
-  // (e.g. height: 100vh).
-  if (!scroller) {
-    return window.document.body;
-  }
-
-  return scroller;
-}
-
-/**
- * Scroll the current selection's focus point into view if needed.
- *
- * @param {Selection} selection
- */
-
-function scrollToSelection(selection) {
-  if (IS_IOS_11) return;
-  if (!selection.anchorNode) return;
-
-  var window = getWindow(selection.anchorNode);
-  var scroller = findScrollContainer(selection.anchorNode, window);
-  var isWindow = scroller == window.document.body || scroller == window.document.documentElement;
-  var backward = isBackward(selection);
-
-  var range = selection.getRangeAt(0).cloneRange();
-  range.collapse(backward);
-  var cursorRect = range.getBoundingClientRect();
-
-  // COMPAT: range.getBoundingClientRect() returns 0s in Safari when range is
-  // collapsed. Expanding the range by 1 is a relatively effective workaround
-  // for vertical scroll, although horizontal may be off by 1 character.
-  // https://bugs.webkit.org/show_bug.cgi?id=138949
-  // https://bugs.chromium.org/p/chromium/issues/detail?id=435438
-  if (IS_SAFARI) {
-    if (range.collapsed && cursorRect.top == 0 && cursorRect.height == 0) {
-      if (range.startOffset == 0) {
-        range.setEnd(range.endContainer, 1);
-      } else {
-        range.setStart(range.startContainer, range.startOffset - 1);
-      }
-
-      cursorRect = range.getBoundingClientRect();
-
-      if (cursorRect.top == 0 && cursorRect.height == 0) {
-        if (range.getClientRects().length) {
-          cursorRect = range.getClientRects()[0];
-        }
-      }
-    }
-  }
-
-  var width = void 0;
-  var height = void 0;
-  var yOffset = void 0;
-  var xOffset = void 0;
-  var scrollerTop = 0;
-  var scrollerLeft = 0;
-  var scrollerBordersY = 0;
-  var scrollerBordersX = 0;
-  var scrollerPaddingTop = 0;
-  var scrollerPaddingBottom = 0;
-  var scrollerPaddingLeft = 0;
-  var scrollerPaddingRight = 0;
-
-  if (isWindow) {
-    var innerWidth = window.innerWidth,
-        innerHeight = window.innerHeight,
-        pageYOffset = window.pageYOffset,
-        pageXOffset = window.pageXOffset;
-
-    width = innerWidth;
-    height = innerHeight;
-    yOffset = pageYOffset;
-    xOffset = pageXOffset;
-  } else {
-    var offsetWidth = scroller.offsetWidth,
-        offsetHeight = scroller.offsetHeight,
-        scrollTop = scroller.scrollTop,
-        scrollLeft = scroller.scrollLeft;
-
-    var _window$getComputedSt = window.getComputedStyle(scroller),
-        borderTopWidth = _window$getComputedSt.borderTopWidth,
-        borderBottomWidth = _window$getComputedSt.borderBottomWidth,
-        borderLeftWidth = _window$getComputedSt.borderLeftWidth,
-        borderRightWidth = _window$getComputedSt.borderRightWidth,
-        paddingTop = _window$getComputedSt.paddingTop,
-        paddingBottom = _window$getComputedSt.paddingBottom,
-        paddingLeft = _window$getComputedSt.paddingLeft,
-        paddingRight = _window$getComputedSt.paddingRight;
-
-    var scrollerRect = scroller.getBoundingClientRect();
-    width = offsetWidth;
-    height = offsetHeight;
-    scrollerTop = scrollerRect.top + parseInt(borderTopWidth, 10);
-    scrollerLeft = scrollerRect.left + parseInt(borderLeftWidth, 10);
-    scrollerBordersY = parseInt(borderTopWidth, 10) + parseInt(borderBottomWidth, 10);
-    scrollerBordersX = parseInt(borderLeftWidth, 10) + parseInt(borderRightWidth, 10);
-    scrollerPaddingTop = parseInt(paddingTop, 10);
-    scrollerPaddingBottom = parseInt(paddingBottom, 10);
-    scrollerPaddingLeft = parseInt(paddingLeft, 10);
-    scrollerPaddingRight = parseInt(paddingRight, 10);
-    yOffset = scrollTop;
-    xOffset = scrollLeft;
-  }
-
-  var cursorTop = cursorRect.top + yOffset - scrollerTop;
-  var cursorLeft = cursorRect.left + xOffset - scrollerLeft;
-
-  var x = xOffset;
-  var y = yOffset;
-
-  if (cursorLeft < xOffset) {
-    // selection to the left of viewport
-    x = cursorLeft - scrollerPaddingLeft;
-  } else if (cursorLeft + cursorRect.width + scrollerBordersX > xOffset + width) {
-    // selection to the right of viewport
-    x = cursorLeft + scrollerBordersX + scrollerPaddingRight - width;
-  }
-
-  if (cursorTop < yOffset) {
-    // selection above viewport
-    y = cursorTop - scrollerPaddingTop;
-  } else if (cursorTop + cursorRect.height + scrollerBordersY > yOffset + height) {
-    // selection below viewport
-    y = cursorTop + scrollerBordersY + scrollerPaddingBottom + cursorRect.height - height;
-  }
-
-  if (isWindow) {
-    window.scrollTo(x, y);
-  } else {
-    scroller.scrollTop = y;
-    scroller.scrollLeft = x;
-  }
-}
-
-/**
- * Export.
- *
- * @type {Function}
- */
-
-var debug$4 = Debug('slate:content');
-
-/**
- * Content.
- *
- * @type {Component}
- */
-
-var Content = function (_React$Component) {
-  inherits(Content, _React$Component);
-
-  /**
-   * Constructor.
-   *
-   * @param {Object} props
-   */
-
-  /**
-   * Property types.
-   *
-   * @type {Object}
-   */
-
-  function Content(props) {
-    classCallCheck(this, Content);
-
-    var _this = possibleConstructorReturn(this, (Content.__proto__ || Object.getPrototypeOf(Content)).call(this, props));
-
-    _this.componentDidMount = function () {
-      var editor = _this.props.editor;
-
-      var window = getWindow(_this.element);
-
-      window.document.addEventListener('selectionchange', _this.onNativeSelectionChange);
-
-      // COMPAT: Restrict scope of `beforeinput` to mobile.
-      if ((IS_IOS || IS_ANDROID) && SUPPORTED_EVENTS.beforeinput) {
-        _this.element.addEventListener('beforeinput', _this.onNativeBeforeInput);
-      }
-
-      _this.updateSelection();
-
-      if (_this.props.autoFocus) {
-        editor.focus();
-      }
-    };
-
-    _this.componentDidUpdate = function () {
-      _this.updateSelection();
-    };
-
-    _this.updateSelection = function () {
-      var editor = _this.props.editor;
-      var value = editor.value;
-      var selection = value.selection;
-      var isBackward$$1 = selection.isBackward;
-
-      var window = getWindow(_this.element);
-      var native = window.getSelection();
-      var rangeCount = native.rangeCount,
-          anchorNode = native.anchorNode;
-
-      // If both selections are blurred, do nothing.
-
-      if (!rangeCount && selection.isBlurred) return;
-
-      // If the selection has been blurred, but is still inside the editor in the
-      // DOM, blur it manually.
-      if (selection.isBlurred) {
-        if (!_this.isInEditor(anchorNode)) return;
-        native.removeAllRanges();
-        _this.element.blur();
-        debug$4('updateSelection', { selection: selection, native: native });
-        return;
-      }
-
-      // If the selection isn't set, do nothing.
-      if (selection.isUnset) return;
-
-      // Otherwise, figure out which DOM nodes should be selected...
-      var current = !!rangeCount && native.getRangeAt(0);
-      var range = findDOMRange(selection, window);
-
-      if (!range) {
-        logger.error('Unable to find a native DOM range from the current selection.', { selection: selection });
-        return;
-      }
-
-      var startContainer = range.startContainer,
-          startOffset = range.startOffset,
-          endContainer = range.endContainer,
-          endOffset = range.endOffset;
-
-      // If the new range matches the current selection, there is nothing to fix.
-      // COMPAT: The native `Range` object always has it's "start" first and "end"
-      // last in the DOM. It has no concept of "backwards/forwards", so we have
-      // to check both orientations here. (2017/10/31)
-
-      if (current) {
-        if (startContainer == current.startContainer && startOffset == current.startOffset && endContainer == current.endContainer && endOffset == current.endOffset || startContainer == current.endContainer && startOffset == current.endOffset && endContainer == current.startContainer && endOffset == current.startOffset) {
-          return;
-        }
-      }
-
-      // Otherwise, set the `isUpdatingSelection` flag and update the selection.
-      _this.tmp.isUpdatingSelection = true;
-      native.removeAllRanges();
-
-      // COMPAT: IE 11 does not support Selection.setBaseAndExtent
-      if (native.setBaseAndExtent) {
-        // COMPAT: Since the DOM range has no concept of backwards/forwards
-        // we need to check and do the right thing here.
-        if (isBackward$$1) {
-          native.setBaseAndExtent(range.endContainer, range.endOffset, range.startContainer, range.startOffset);
-        } else {
-          native.setBaseAndExtent(range.startContainer, range.startOffset, range.endContainer, range.endOffset);
-        }
-      } else {
-        // COMPAT: IE 11 does not support Selection.extend, fallback to addRange
-        native.addRange(range);
-      }
-
-      // Scroll to the selection, in case it's out of view.
-      scrollToSelection(native);
-
-      // Then unset the `isUpdatingSelection` flag after a delay.
-      setTimeout(function () {
-        // COMPAT: In Firefox, it's not enough to create a range, you also need to
-        // focus the contenteditable element too. (2016/11/16)
-        if (IS_FIREFOX && _this.element) _this.element.focus();
-        _this.tmp.isUpdatingSelection = false;
-      });
-
-      debug$4('updateSelection', { selection: selection, native: native });
-    };
-
-    _this.ref = function (element) {
-      _this.element = element;
-    };
-
-    _this.isInEditor = function (target) {
-      var element = _this.element;
-      // COMPAT: Text nodes don't have `isContentEditable` property. So, when
-      // `target` is a text node use its parent node for check.
-
-      var el = target.nodeType === 3 ? target.parentNode : target;
-      return el.isContentEditable && (el === element || el.closest('[data-slate-editor]') === element);
-    };
-
-    _this.onNativeBeforeInput = function (event) {
-      if (_this.props.readOnly) return;
-      if (!_this.isInEditor(event.target)) return;
-
-      var _event$getTargetRange = event.getTargetRanges(),
-          _event$getTargetRange2 = slicedToArray(_event$getTargetRange, 1),
-          targetRange = _event$getTargetRange2[0];
-
-      if (!targetRange) return;
-
-      var editor = _this.props.editor;
-
-
-      switch (event.inputType) {
-        case 'deleteContentBackward':
-          {
-            event.preventDefault();
-
-            var range = findRange(targetRange, editor.value);
-            editor.change(function (change) {
-              return change.deleteAtRange(range);
-            });
-            break;
-          }
-
-        case 'insertLineBreak': // intentional fallthru
-        case 'insertParagraph':
-          {
-            event.preventDefault();
-            var _range = findRange(targetRange, editor.value);
-
-            editor.change(function (change) {
-              if (change.value.isInVoid) {
-                change.collapseToStartOfNextText();
-              } else {
-                change.splitBlockAtRange(_range);
-              }
-            });
-            break;
-          }
-
-        case 'insertReplacementText': // intentional fallthru
-        case 'insertText':
-          {
-            // `data` should have the text for the `insertText` input type and
-            // `dataTransfer` should have the text for the `insertReplacementText`
-            // input type, but Safari uses `insertText` for spell check replacements
-            // and sets `data` to `null`.
-            var text = event.data == null ? event.dataTransfer.getData('text/plain') : event.data;
-
-            if (text == null) return;
-
-            event.preventDefault();
-
-            var value = editor.value;
-            var selection = value.selection;
-
-            var _range2 = findRange(targetRange, value);
-
-            editor.change(function (change) {
-              change.insertTextAtRange(_range2, text, selection.marks);
-
-              // If the text was successfully inserted, and the selection had marks
-              // on it, unset the selection's marks.
-              if (selection.marks && value.document != change.value.document) {
-                change.select({ marks: null });
-              }
-            });
-
-            break;
-          }
-      }
-    };
-
-    _this.onNativeSelectionChange = throttle(function (event) {
-      if (_this.props.readOnly) return;
-
-      var window = getWindow(event.target);
-      var activeElement = window.document.activeElement;
-
-      if (activeElement !== _this.element) return;
-
-      _this.props.onSelect(event);
-    }, 100);
-
-    _this.renderNode = function (child, isSelected) {
-      var _this$props = _this.props,
-          editor = _this$props.editor,
-          readOnly = _this$props.readOnly;
-      var value = editor.value;
-      var document = value.document,
-          decorations = value.decorations;
-      var stack = editor.stack;
-
-      var decs = document.getDecorations(stack);
-      if (decorations) decs = decorations.concat(decs);
-      return React.createElement(Node, {
-        block: null,
-        editor: editor,
-        decorations: decs,
-        isSelected: isSelected,
-        key: child.key,
-        node: child,
-        parent: document,
-        readOnly: readOnly
-      });
-    };
-
-    _this.tmp = {};
-    _this.tmp.key = 0;
-    _this.tmp.isUpdatingSelection = false;
-
-    EVENT_HANDLERS.forEach(function (handler) {
-      _this[handler] = function (event) {
-        _this.onEvent(handler, event);
-      };
-    });
-    return _this;
-  }
-
-  /**
-   * When the editor first mounts in the DOM we need to:
-   *
-   *   - Add native DOM event listeners.
-   *   - Update the selection, in case it starts focused.
-   *   - Focus the editor if `autoFocus` is set.
-   */
-
-  /**
-   * Default properties.
-   *
-   * @type {Object}
-   */
-
-  createClass(Content, [{
-    key: 'componentWillUnmount',
-
-
-    /**
-     * When unmounting, remove DOM event listeners.
-     */
-
-    value: function componentWillUnmount() {
-      var window = getWindow(this.element);
-
-      if (window) {
-        window.document.removeEventListener('selectionchange', this.onNativeSelectionChange);
-      }
-
-      // COMPAT: Restrict scope of `beforeinput` to mobile.
-      if ((IS_IOS || IS_ANDROID) && SUPPORTED_EVENTS.beforeinput) {
-        this.element.removeEventListener('beforeinput', this.onNativeBeforeInput);
-      }
-    }
-
-    /**
-     * On update, update the selection.
-     */
-
-    /**
-     * Update the native DOM selection to reflect the internal model.
-     */
-
-    /**
-     * The React ref method to set the root content element locally.
-     *
-     * @param {Element} element
-     */
-
-    /**
-     * Check if an event `target` is fired from within the contenteditable
-     * element. This should be false for edits happening in non-contenteditable
-     * children, such as void nodes and other nested Slate editors.
-     *
-     * @param {Element} target
-     * @return {Boolean}
-     */
-
-  }, {
-    key: 'onEvent',
-
-
-    /**
-     * On `event` with `handler`.
-     *
-     * @param {String} handler
-     * @param {Event} event
-     */
-
-    value: function onEvent(handler, event) {
-      debug$4('onEvent', handler);
-
-      // COMPAT: Composition events can change the DOM out of under React, so we
-      // increment this key to ensure that a full re-render happens. (2017/10/16)
-      if (handler == 'onCompositionEnd') {
-        this.tmp.key++;
-      }
-
-      // Ignore `onBlur`, `onFocus` and `onSelect` events generated
-      // programmatically while updating selection.
-      if (this.tmp.isUpdatingSelection && (handler == 'onSelect' || handler == 'onBlur' || handler == 'onFocus')) {
-        return;
-      }
-
-      // COMPAT: There are situations where a select event will fire with a new
-      // native selection that resolves to the same internal position. In those
-      // cases we don't need to trigger any changes, since our internal model is
-      // already up to date, but we do want to update the native selection again
-      // to make sure it is in sync. (2017/10/16)
-      if (handler == 'onSelect') {
-        var editor = this.props.editor;
-        var value = editor.value;
-        var selection = value.selection;
-
-        var window = getWindow(event.target);
-        var native = window.getSelection();
-        var range = findRange(native, value);
-
-        if (range && range.equals(selection)) {
-          this.updateSelection();
-          return;
-        }
-      }
-
-      // Don't handle drag events coming from embedded editors.
-      if (handler == 'onDragEnd' || handler == 'onDragEnter' || handler == 'onDragExit' || handler == 'onDragLeave' || handler == 'onDragOver' || handler == 'onDragStart') {
-        var target = event.target;
-
-        var targetEditorNode = target.closest('[data-slate-editor]');
-        if (targetEditorNode !== this.element) return;
-      }
-
-      // Some events require being in editable in the editor, so if the event
-      // target isn't, ignore them.
-      if (handler == 'onBeforeInput' || handler == 'onBlur' || handler == 'onCompositionEnd' || handler == 'onCompositionStart' || handler == 'onCopy' || handler == 'onCut' || handler == 'onFocus' || handler == 'onInput' || handler == 'onKeyDown' || handler == 'onKeyUp' || handler == 'onPaste' || handler == 'onSelect') {
-        if (!this.isInEditor(event.target)) return;
-      }
-
-      this.props[handler](event);
-    }
-
-    /**
-     * On a native `beforeinput` event, use the additional range information
-     * provided by the event to manipulate text exactly as the browser would.
-     *
-     * This is currently only used on iOS and Android.
-     *
-     * @param {InputEvent} event
-     */
-
-    /**
-     * On native `selectionchange` event, trigger the `onSelect` handler. This is
-     * needed to account for React's `onSelect` being non-standard and not firing
-     * until after a selection has been released. This causes issues in situations
-     * where another change happens while a selection is being made.
-     *
-     * @param {Event} event
-     */
-
-  }, {
-    key: 'render',
-
-
-    /**
-     * Render the editor content.
-     *
-     * @return {Element}
-     */
-
-    value: function render() {
-      var _this2 = this;
-
-      var props = this.props;
-      var className = props.className,
-          readOnly = props.readOnly,
-          editor = props.editor,
-          tabIndex = props.tabIndex,
-          role = props.role,
-          tagName = props.tagName;
-      var value = editor.value;
-
-      var Container = tagName;
-      var document = value.document,
-          selection = value.selection;
-
-      var indexes = document.getSelectionIndexes(selection, selection.isFocused);
-      var children = document.nodes.toArray().map(function (child, i) {
-        var isSelected = !!indexes && indexes.start <= i && i < indexes.end;
-        return _this2.renderNode(child, isSelected);
-      });
-
-      var handlers = EVENT_HANDLERS.reduce(function (obj, handler) {
-        obj[handler] = _this2[handler];
-        return obj;
-      }, {});
-
-      var style = _extends({
-        // Prevent the default outline styles.
-        outline: 'none',
-        // Preserve adjacent whitespace and new lines.
-        whiteSpace: 'pre-wrap',
-        // Allow words to break if they are too long.
-        wordWrap: 'break-word'
-      }, readOnly ? {} : { WebkitUserModify: 'read-write-plaintext-only' }, props.style);
-
-      // COMPAT: In Firefox, spellchecking can remove entire wrapping elements
-      // including inline ones like `<a>`, which is jarring for the user but also
-      // causes the DOM to get into an irreconcilable value. (2016/09/01)
-      var spellCheck = IS_FIREFOX ? false : props.spellCheck;
-
-      debug$4('render', { props: props });
-
-      return React.createElement(
-        Container,
-        _extends({}, handlers, {
-          'data-slate-editor': true,
-          key: this.tmp.key,
-          ref: this.ref,
-          'data-key': document.key,
-          contentEditable: readOnly ? null : true,
-          suppressContentEditableWarning: true,
-          className: className,
-          onBlur: this.onBlur,
-          onFocus: this.onFocus,
-          onCompositionEnd: this.onCompositionEnd,
-          onCompositionStart: this.onCompositionStart,
-          onCopy: this.onCopy,
-          onCut: this.onCut,
-          onDragEnd: this.onDragEnd,
-          onDragOver: this.onDragOver,
-          onDragStart: this.onDragStart,
-          onDrop: this.onDrop,
-          onInput: this.onInput,
-          onKeyDown: this.onKeyDown,
-          onKeyUp: this.onKeyUp,
-          onPaste: this.onPaste,
-          onSelect: this.onSelect,
-          autoCorrect: props.autoCorrect ? 'on' : 'off',
-          spellCheck: spellCheck,
-          style: style,
-          role: readOnly ? null : role || 'textbox',
-          tabIndex: tabIndex
-          // COMPAT: The Grammarly Chrome extension works by changing the DOM out
-          // from under `contenteditable` elements, which leads to weird behaviors
-          // so we have to disable it like this. (2017/04/24)
-          , 'data-gramm': false
-        }),
-        children,
-        this.props.children
-      );
-    }
-
-    /**
-     * Render a `child` node of the document.
-     *
-     * @param {Node} child
-     * @param {Boolean} isSelected
-     * @return {Element}
-     */
-
-  }]);
-  return Content;
-}(React.Component);
-
-/**
- * Mix in handler prop types.
- */
-
-Content.propTypes = {
-  autoCorrect: Types.bool.isRequired,
-  autoFocus: Types.bool.isRequired,
-  children: Types.any.isRequired,
-  className: Types.string,
-  editor: Types.object.isRequired,
-  readOnly: Types.bool.isRequired,
-  role: Types.string,
-  spellCheck: Types.bool.isRequired,
-  style: Types.object,
-  tabIndex: Types.number,
-  tagName: Types.string };
-Content.defaultProps = {
-  style: {},
-  tagName: 'div' };
-EVENT_HANDLERS.forEach(function (handler) {
-  Content.propTypes[handler] = Types.func.isRequired;
-});
-
-/**
- * Export.
- *
- * @type {Component}
- */
-
-function cloneFragment(event, value) {
-  var fragment = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : value.fragment;
-
-  var window = getWindow(event.target);
-  var native = window.getSelection();
-  var startKey = value.startKey,
-      endKey = value.endKey,
-      startText = value.startText,
-      endBlock = value.endBlock,
-      endInline = value.endInline;
-
-  var isVoidBlock = endBlock && endBlock.isVoid;
-  var isVoidInline = endInline && endInline.isVoid;
-  var isVoid = isVoidBlock || isVoidInline;
-
-  // If the selection is collapsed, and it isn't inside a void node, abort.
-  if (native.isCollapsed && !isVoid) return;
-
-  // Create a fake selection so that we can add a Base64-encoded copy of the
-  // fragment to the HTML, to decode on future pastes.
-  var encoded = Base64.serializeNode(fragment);
-  var range = native.getRangeAt(0);
-  var contents = range.cloneContents();
-  var attach = contents.childNodes[0];
-
-  // If the end node is a void node, we need to move the end of the range from
-  // the void node's spacer span, to the end of the void node's content.
-  if (isVoid) {
-    var _r = range.cloneRange();
-    var n = isVoidBlock ? endBlock : endInline;
-    var node = findDOMNode(n, window);
-    _r.setEndAfter(node);
-    contents = _r.cloneContents();
-    attach = contents.childNodes[contents.childNodes.length - 1].firstChild;
-  }
-
-  // COMPAT: in Safari and Chrome when selecting a single marked word,
-  // marks are not preserved when copying.
-  // If the attatched is not void, and the startKey and endKey is the same,
-  // check if there is marks involved. If so, set the range start just before the
-  // startText node
-  if ((IS_CHROME || IS_SAFARI) && !isVoid && startKey === endKey) {
-    var hasMarks = startText.characters.slice(value.selection.anchorOffset, value.selection.focusOffset).filter(function (char) {
-      return char.marks.size !== 0;
-    }).size !== 0;
-    if (hasMarks) {
-      var _r2 = range.cloneRange();
-      var _node = findDOMNode(startText, window);
-      _r2.setStartBefore(_node);
-      contents = _r2.cloneContents();
-      attach = contents.childNodes[contents.childNodes.length - 1].firstChild;
-    }
-  }
-
-  // Remove any zero-width space spans from the cloned DOM so that they don't
-  // show up elsewhere when pasted.
-  [].slice.call(contents.querySelectorAll(ZERO_WIDTH_SELECTOR)).forEach(function (zw) {
-    var isNewline = zw.getAttribute(ZERO_WIDTH_ATTRIBUTE) === 'n';
-    zw.textContent = isNewline ? '\n' : '';
-  });
-
-  // COMPAT: In Chrome and Safari, if the last element in the selection to
-  // copy has `contenteditable="false"` the copy will fail, and nothing will
-  // be put in the clipboard. So we remove them all. (2017/05/04)
-  if (IS_CHROME || IS_SAFARI) {
-    var els = [].slice.call(contents.querySelectorAll('[contenteditable="false"]'));
-    els.forEach(function (el) {
-      return el.removeAttribute('contenteditable');
-    });
-  }
-
-  // Set a `data-slate-fragment` attribute on a non-empty node, so it shows up
-  // in the HTML, and can be used for intra-Slate pasting. If it's a text
-  // node, wrap it in a `<span>` so we have something to set an attribute on.
-  if (attach.nodeType == 3) {
-    var span = window.document.createElement('span');
-
-    // COMPAT: In Chrome and Safari, if we don't add the `white-space` style
-    // then leading and trailing spaces will be ignored. (2017/09/21)
-    span.style.whiteSpace = 'pre';
-
-    span.appendChild(attach);
-    contents.appendChild(span);
-    attach = span;
-  }
-
-  attach.setAttribute('data-slate-fragment', encoded);
-
-  // Add the phony content to the DOM, and select it, so it will be copied.
-  var editor = window.document.querySelector('[data-slate-editor]');
-  var div = window.document.createElement('div');
-  div.setAttribute('contenteditable', true);
-  div.style.position = 'absolute';
-  div.style.left = '-9999px';
-
-  // COMPAT: In Firefox, the viewport jumps to find the phony div, so it
-  // should be created at the current scroll offset with `style.top`.
-  // The box model attributes which can interact with 'top' are also reset.
-  div.style.border = '0px';
-  div.style.padding = '0px';
-  div.style.margin = '0px';
-  div.style.top = (window.pageYOffset || window.document.documentElement.scrollTop) + 'px';
-
-  div.appendChild(contents);
-  editor.appendChild(div);
-
-  // COMPAT: In Firefox, trying to use the terser `native.selectAllChildren`
-  // throws an error, so we use the older `range` equivalent. (2016/06/21)
-  var r = window.document.createRange();
-  r.selectNodeContents(div);
-  native.removeAllRanges();
-  native.addRange(r);
-
-  // Revert to the previous selection right after copying.
-  window.requestAnimationFrame(function () {
-    editor.removeChild(div);
-    native.removeAllRanges();
-    native.addRange(range);
-  });
-}
-
-/**
- * Find a Slate node from a DOM `element`.
- *
- * @param {Element} element
- * @param {Value} value
- * @return {Node|Null}
- */
-
-function findNode(element, value) {
-  var closest = element.closest('[data-key]');
-  if (!closest) return null;
-
-  var key = closest.getAttribute('data-key');
-  if (!key) return null;
-
-  var node = value.document.getNode(key);
-  return node || null;
-}
-
-/**
- * Export.
- *
- * @type {Function}
- */
-
-function getEventRange(event, value) {
-  if (event.nativeEvent) {
-    event = event.nativeEvent;
-  }
-
-  var _event = event,
-      x = _event.x,
-      y = _event.y,
-      target = _event.target;
-
-  if (x == null || y == null) return null;
-
-  var document = value.document;
-
-  var node = findNode(target, value);
-  if (!node) return null;
-
-  // If the drop target is inside a void node, move it into either the next or
-  // previous node, depending on which side the `x` and `y` coordinates are
-  // closest to.
-  if (node.isVoid) {
-    var rect = target.getBoundingClientRect();
-    var isPrevious = node.object == 'inline' ? x - rect.left < rect.left + rect.width - x : y - rect.top < rect.top + rect.height - y;
-
-    var text = node.getFirstText();
-    var _range = slate.Range.create();
-    return isPrevious ? _range.moveToEndOf(document.getPreviousText(text.key)) : _range.moveToStartOf(document.getNextText(text.key));
-  }
-
-  // Else resolve a range from the caret position where the drop occured.
-  var window = getWindow(target);
-  var native = void 0;
-
-  // COMPAT: In Firefox, `caretRangeFromPoint` doesn't exist. (2016/07/25)
-  if (window.document.caretRangeFromPoint) {
-    native = window.document.caretRangeFromPoint(x, y);
-  } else {
-    var position = window.document.caretPositionFromPoint(x, y);
-    native = window.document.createRange();
-    native.setStart(position.offsetNode, position.offset);
-    native.setEnd(position.offsetNode, position.offset);
-  }
-
-  // Resolve a Slate range from the DOM range.
-  var range = findRange(native, value);
-  if (!range) return null;
-
-  return range;
-}
-
-/**
- * Export.
- *
- * @type {Function}
- */
-
-/**
- * The transfer types that Slate recognizes.
- *
- * @type {Object}
- */
-
-var TRANSFER_TYPES = {
-  FRAGMENT: 'application/x-slate-fragment',
-  HTML: 'text/html',
-  NODE: 'application/x-slate-node',
-  RICH: 'text/rtf',
-  TEXT: 'text/plain'
-
-  /**
-   * Export.
-   *
-   * @type {Object}
-   */
-
-};
-
-var FRAGMENT = TRANSFER_TYPES.FRAGMENT;
-var HTML = TRANSFER_TYPES.HTML;
-var NODE = TRANSFER_TYPES.NODE;
-var RICH = TRANSFER_TYPES.RICH;
-var TEXT = TRANSFER_TYPES.TEXT;
-
-/**
- * Fragment matching regexp for HTML nodes.
- *
- * @type {RegExp}
- */
-
-var FRAGMENT_MATCHER = / data-slate-fragment="([^\s"]+)"/;
-
-/**
- * Get the transfer data from an `event`.
- *
- * @param {Event} event
- * @return {Object}
- */
-
-function getEventTransfer(event) {
-  if (event.nativeEvent) {
-    event = event.nativeEvent;
-  }
-
-  var transfer = event.dataTransfer || event.clipboardData;
-  var fragment = getType(transfer, FRAGMENT);
-  var node = getType(transfer, NODE);
-  var html = getType(transfer, HTML);
-  var rich = getType(transfer, RICH);
-  var text = getType(transfer, TEXT);
-  var files = void 0;
-
-  // If there isn't a fragment, but there is HTML, check to see if the HTML is
-  // actually an encoded fragment.
-  if (!fragment && html && ~html.indexOf(' data-slate-fragment="')) {
-    var matches = FRAGMENT_MATCHER.exec(html);
-
-    var _matches = slicedToArray(matches, 2),
-        full = _matches[0],
-        encoded = _matches[1]; // eslint-disable-line no-unused-vars
-
-
-    if (encoded) fragment = encoded;
-  }
-
-  // COMPAT: Edge doesn't handle custom data types
-  // These will be embedded in text/plain in this case (2017/7/12)
-  if (text) {
-    var embeddedTypes = getEmbeddedTypes(text);
-
-    if (embeddedTypes[FRAGMENT]) fragment = embeddedTypes[FRAGMENT];
-    if (embeddedTypes[NODE]) node = embeddedTypes[NODE];
-    if (embeddedTypes[TEXT]) text = embeddedTypes[TEXT];
-  }
-
-  // Decode a fragment or node if they exist.
-  if (fragment) fragment = Base64.deserializeNode(fragment);
-  if (node) node = Base64.deserializeNode(node);
-
-  // COMPAT: Edge sometimes throws 'NotSupportedError'
-  // when accessing `transfer.items` (2017/7/12)
-  try {
-    // Get and normalize files if they exist.
-    if (transfer.items && transfer.items.length) {
-      files = Array.from(transfer.items).map(function (item) {
-        return item.kind == 'file' ? item.getAsFile() : null;
-      }).filter(function (exists) {
-        return exists;
-      });
-    } else if (transfer.files && transfer.files.length) {
-      files = Array.from(transfer.files);
-    }
-  } catch (err) {
-    if (transfer.files && transfer.files.length) {
-      files = Array.from(transfer.files);
-    }
-  }
-
-  // Determine the type of the data.
-  var data = { files: files, fragment: fragment, html: html, node: node, rich: rich, text: text };
-  data.type = getTransferType(data);
-  return data;
-}
-
-/**
- * Takes text input, checks whether contains embedded data
- * and returns object with original text +/- additional data
- *
- * @param {String} text
- * @return {Object}
- */
-
-function getEmbeddedTypes(text) {
-  var prefix = 'SLATE-DATA-EMBED::';
-
-  if (text.substring(0, prefix.length) != prefix) {
-    return { TEXT: text };
-  }
-
-  // Attempt to parse, if fails then just standard text/plain
-  // Otherwise, already had data embedded
-  try {
-    return JSON.parse(text.substring(prefix.length));
-  } catch (err) {
-    throw new Error('Unable to parse custom Slate drag event data.');
-  }
-}
-
-/**
- * Get the type of a transfer from its `data`.
- *
- * @param {Object} data
- * @return {String}
- */
-
-function getTransferType(data) {
-  if (data.fragment) return 'fragment';
-  if (data.node) return 'node';
-
-  // COMPAT: Microsoft Word adds an image of the selected text to the data.
-  // Since files are preferred over HTML or text, this would cause the type to
-  // be considered `files`. But it also adds rich text data so we can check
-  // for that and properly set the type to `html` or `text`. (2016/11/21)
-  if (data.rich && data.html) return 'html';
-  if (data.rich && data.text) return 'text';
-
-  if (data.files && data.files.length) return 'files';
-  if (data.html) return 'html';
-  if (data.text) return 'text';
-  return 'unknown';
-}
-
-/**
- * Get one of types `TYPES.FRAGMENT`, `TYPES.NODE`, `text/html`, `text/rtf` or
- * `text/plain` from transfers's `data` if possible, otherwise return null.
- *
- * @param {Object} transfer
- * @param {String} type
- * @return {String}
- */
-
-function getType(transfer, type) {
-  if (!transfer.types || !transfer.types.length) {
-    // COMPAT: In IE 11, there is no `types` field but `getData('Text')`
-    // is supported`. (2017/06/23)
-    return type == TEXT ? transfer.getData('Text') || null : null;
-  }
-
-  // COMPAT: In Edge, transfer.types doesn't respond to `indexOf`. (2017/10/25)
-  var types = Array.from(transfer.types);
-
-  return types.indexOf(type) !== -1 ? transfer.getData(type) || null : null;
-}
-
-/**
- * Export.
- *
- * @type {Function}
- */
-
-var TEXT$1 = TRANSFER_TYPES.TEXT;
-
-/**
- * Set data with `type` and `content` on an `event`.
- *
- * COMPAT: In Edge, custom types throw errors, so embed all non-standard
- * types in text/plain compound object. (2017/7/12)
- *
- * @param {Event} event
- * @param {String} type
- * @param {String} content
- */
-
-function setEventTransfer(event, type, content) {
-  var mime = TRANSFER_TYPES[type.toUpperCase()];
-
-  if (!mime) {
-    throw new Error('Cannot set unknown transfer type "' + mime + '".');
-  }
-
-  if (event.nativeEvent) {
-    event = event.nativeEvent;
-  }
-
-  var transfer = event.dataTransfer || event.clipboardData;
-
-  try {
-    transfer.setData(mime, content);
-  } catch (err) {
-    var prefix = 'SLATE-DATA-EMBED::';
-    var text = transfer.getData(TEXT$1);
-    var obj = {};
-
-    // If the existing plain text data is prefixed, it's Slate JSON data.
-    if (text.substring(0, prefix.length) === prefix) {
-      try {
-        obj = JSON.parse(text.substring(prefix.length));
-      } catch (e) {
-        throw new Error('Failed to parse Slate data from `DataTransfer` object.');
-      }
-    } else {
-      // Otherwise, it's just set it as is.
-      obj[TEXT$1] = text;
-    }
-
-    obj[mime] = content;
-    var string = '' + prefix + JSON.stringify(obj);
-    transfer.setData(TEXT$1, string);
-  }
-}
-
-/**
- * Export.
- *
- * @type {Function}
- */
-
-var debug$5 = Debug('slate:after');
-
-/**
- * The after plugin.
- *
- * @return {Object}
- */
-
-function AfterPlugin() {
-  var isDraggingInternally = null;
-
-  /**
-   * On before input, correct any browser inconsistencies.
-   *
-   * @param {Event} event
-   * @param {Change} change
-   * @param {Editor} editor
-   */
-
-  function onBeforeInput(event, change, editor) {
-    debug$5('onBeforeInput', { event: event });
-
-    event.preventDefault();
-    change.insertText(event.data);
-  }
-
-  /**
-   * On blur.
-   *
-   * @param {Event} event
-   * @param {Change} change
-   * @param {Editor} editor
-   */
-
-  function onBlur(event, change, editor) {
-    debug$5('onBlur', { event: event });
-
-    change.blur();
-  }
-
-  /**
-   * On click.
-   *
-   * @param {Event} event
-   * @param {Change} change
-   * @param {Editor} editor
-   */
-
-  function onClick(event, change, editor) {
-    if (editor.props.readOnly) return true;
-
-    var value = change.value;
-    var document = value.document;
-
-    var node = findNode(event.target, value);
-    var isVoid = node && (node.isVoid || document.hasVoidParent(node.key));
-
-    if (isVoid) {
-      // COMPAT: In Chrome & Safari, selections that are at the zero offset of
-      // an inline node will be automatically replaced to be at the last offset
-      // of a previous inline node, which screws us up, so we always want to set
-      // it to the end of the node. (2016/11/29)
-      change.focus().collapseToEndOf(node);
-    }
-
-    debug$5('onClick', { event: event });
-  }
-
-  /**
-   * On copy.
-   *
-   * @param {Event} event
-   * @param {Change} change
-   * @param {Editor} editor
-   */
-
-  function onCopy(event, change, editor) {
-    debug$5('onCopy', { event: event });
-
-    cloneFragment(event, change.value);
-  }
-
-  /**
-   * On cut.
-   *
-   * @param {Event} event
-   * @param {Change} change
-   * @param {Editor} editor
-   */
-
-  function onCut(event, change, editor) {
-    debug$5('onCut', { event: event });
-
-    cloneFragment(event, change.value);
-    var window = getWindow(event.target);
-
-    // Once the fake cut content has successfully been added to the clipboard,
-    // delete the content in the current selection.
-    window.requestAnimationFrame(function () {
-      // If user cuts a void block node or a void inline node,
-      // manually removes it since selection is collapsed in this case.
-      var value = change.value;
-      var endBlock = value.endBlock,
-          endInline = value.endInline,
-          isCollapsed = value.isCollapsed;
-
-      var isVoidBlock = endBlock && endBlock.isVoid && isCollapsed;
-      var isVoidInline = endInline && endInline.isVoid && isCollapsed;
-
-      if (isVoidBlock) {
-        editor.change(function (c) {
-          return c.removeNodeByKey(endBlock.key);
-        });
-      } else if (isVoidInline) {
-        editor.change(function (c) {
-          return c.removeNodeByKey(endInline.key);
-        });
-      } else {
-        editor.change(function (c) {
-          return c.delete();
-        });
-      }
-    });
-  }
-
-  /**
-   * On drag end.
-   *
-   * @param {Event} event
-   * @param {Change} change
-   * @param {Editor} editor
-   */
-
-  function onDragEnd(event, change, editor) {
-    debug$5('onDragEnd', { event: event });
-
-    isDraggingInternally = null;
-  }
-
-  /**
-   * On drag over.
-   *
-   * @param {Event} event
-   * @param {Change} change
-   * @param {Editor} editor
-   */
-
-  function onDragOver(event, change, editor) {
-    debug$5('onDragOver', { event: event });
-
-    isDraggingInternally = false;
-  }
-
-  /**
-   * On drag start.
-   *
-   * @param {Event} event
-   * @param {Change} change
-   * @param {Editor} editor
-   */
-
-  function onDragStart(event, change, editor) {
-    debug$5('onDragStart', { event: event });
-
-    isDraggingInternally = true;
-
-    var value = change.value;
-    var document = value.document;
-
-    var node = findNode(event.target, value);
-    var isVoid = node && (node.isVoid || document.hasVoidParent(node.key));
-
-    if (isVoid) {
-      var encoded = Base64.serializeNode(node, { preserveKeys: true });
-      setEventTransfer(event, 'node', encoded);
-    } else {
-      var fragment = value.fragment;
-
-      var _encoded = Base64.serializeNode(fragment);
-      setEventTransfer(event, 'fragment', _encoded);
-    }
-  }
-
-  /**
-   * On drop.
-   *
-   * @param {Event} event
-   * @param {Change} change
-   * @param {Editor} editor
-   */
-
-  function onDrop(event, change, editor) {
-    debug$5('onDrop', { event: event });
-
-    var value = change.value;
-    var document = value.document,
-        selection = value.selection;
-
-    var window = getWindow(event.target);
-    var target = getEventRange(event, value);
-    if (!target) return;
-
-    var transfer = getEventTransfer(event);
-    var type = transfer.type,
-        fragment = transfer.fragment,
-        node = transfer.node,
-        text = transfer.text;
-
-
-    change.focus();
-
-    // If the drag is internal and the target is after the selection, it
-    // needs to account for the selection's content being deleted.
-    if (isDraggingInternally && selection.endKey == target.endKey && selection.endOffset < target.endOffset) {
-      target = target.move(selection.startKey == selection.endKey ? 0 - selection.endOffset + selection.startOffset : 0 - selection.endOffset);
-    }
-
-    if (isDraggingInternally) {
-      change.delete();
-    }
-
-    change.select(target);
-
-    if (type == 'text' || type == 'html') {
-      var _target = target,
-          anchorKey = _target.anchorKey;
-
-      var hasVoidParent = document.hasVoidParent(anchorKey);
-
-      if (hasVoidParent) {
-        var n = document.getNode(anchorKey);
-
-        while (hasVoidParent) {
-          n = document.getNextText(n.key);
-          if (!n) break;
-          hasVoidParent = document.hasVoidParent(n.key);
-        }
-
-        if (n) change.collapseToStartOf(n);
-      }
-
-      if (text) {
-        text.split('\n').forEach(function (line, i) {
-          if (i > 0) change.splitBlock();
-          change.insertText(line);
-        });
-      }
-    }
-
-    if (type == 'fragment') {
-      change.insertFragment(fragment);
-    }
-
-    if (type == 'node' && slate.Block.isBlock(node)) {
-      change.insertBlock(node.regenerateKey()).removeNodeByKey(node.key);
-    }
-
-    if (type == 'node' && slate.Inline.isInline(node)) {
-      change.insertInline(node.regenerateKey()).removeNodeByKey(node.key);
-    }
-
-    // COMPAT: React's onSelect event breaks after an onDrop event
-    // has fired in a node: https://github.com/facebook/react/issues/11379.
-    // Until this is fixed in React, we dispatch a mouseup event on that
-    // DOM node, since that will make it go back to normal.
-    var focusNode = document.getNode(target.focusKey);
-    var el = findDOMNode(focusNode, window);
-    if (!el) return;
-
-    el.dispatchEvent(new MouseEvent('mouseup', {
-      view: window,
-      bubbles: true,
-      cancelable: true
-    }));
-  }
-
-  /**
-   * On input.
-   *
-   * @param {Event} eventvent
-   * @param {Change} change
-   */
-
-  function onInput(event, change, editor) {
-    debug$5('onInput', { event: event });
-
-    var window = getWindow(event.target);
-    var value = change.value;
-
-    // Get the selection point.
-
-    var native = window.getSelection();
-    var anchorNode = native.anchorNode,
-        anchorOffset = native.anchorOffset;
-
-    var point = findPoint(anchorNode, anchorOffset, value);
-    if (!point) return;
-
-    // Get the text node and leaf in question.
-    var document = value.document,
-        selection = value.selection;
-
-    var node = document.getDescendant(point.key);
-    var block = document.getClosestBlock(node.key);
-    var leaves = node.getLeaves();
-    var lastText = block.getLastText();
-    var lastLeaf = leaves.last();
-    var start = 0;
-    var end = 0;
-
-    var leaf = leaves.find(function (r) {
-      start = end;
-      end += r.text.length;
-      if (end >= point.offset) return true;
-    }) || lastLeaf;
-
-    // Get the text information.
-    var text = leaf.text;
-    var textContent = anchorNode.textContent;
-
-    var isLastText = node == lastText;
-    var isLastLeaf = leaf == lastLeaf;
-    var lastChar = textContent.charAt(textContent.length - 1);
-
-    // COMPAT: If this is the last leaf, and the DOM text ends in a new line,
-    // we will have added another new line in <Leaf>'s render method to account
-    // for browsers collapsing a single trailing new lines, so remove it.
-    if (isLastText && isLastLeaf && lastChar == '\n') {
-      textContent = textContent.slice(0, -1);
-    }
-
-    // If the text is no different, abort.
-    if (textContent == text) return;
-
-    // Determine what the selection should be after changing the text.
-    var delta = textContent.length - text.length;
-    var corrected = selection.collapseToEnd().move(delta);
-    var entire = selection.moveAnchorTo(point.key, start).moveFocusTo(point.key, end);
-
-    // Change the current value to have the leaf's text replaced.
-    change.insertTextAtRange(entire, textContent, leaf.marks).select(corrected);
-  }
-
-  /**
-   * On key down.
-   *
-   * @param {Event} event
-   * @param {Change} change
-   * @param {Editor} editor
-   */
-
-  function onKeyDown(event, change, editor) {
-    debug$5('onKeyDown', { event: event });
-
-    var value = change.value;
-
-    // COMPAT: In iOS, some of these hotkeys are handled in the
-    // `onNativeBeforeInput` handler of the `<Content>` component in order to
-    // preserve native autocorrect behavior, so they shouldn't be handled here.
-
-    if (HOTKEYS.SPLIT_BLOCK(event) && !IS_IOS) {
-      return value.isInVoid ? change.collapseToStartOfNextText() : change.splitBlock();
-    }
-
-    if (HOTKEYS.DELETE_CHAR_BACKWARD(event) && !IS_IOS) {
-      return change.deleteCharBackward();
-    }
-
-    if (HOTKEYS.DELETE_CHAR_FORWARD(event) && !IS_IOS) {
-      return change.deleteCharForward();
-    }
-
-    if (HOTKEYS.DELETE_LINE_BACKWARD(event)) {
-      return change.deleteLineBackward();
-    }
-
-    if (HOTKEYS.DELETE_LINE_FORWARD(event)) {
-      return change.deleteLineForward();
-    }
-
-    if (HOTKEYS.DELETE_WORD_BACKWARD(event)) {
-      return change.deleteWordBackward();
-    }
-
-    if (HOTKEYS.DELETE_WORD_FORWARD(event)) {
-      return change.deleteWordForward();
-    }
-
-    if (HOTKEYS.REDO(event)) {
-      return change.redo();
-    }
-
-    if (HOTKEYS.UNDO(event)) {
-      return change.undo();
-    }
-
-    // COMPAT: Certain browsers don't handle the selection updates properly. In
-    // Chrome, the selection isn't properly extended. And in Firefox, the
-    // selection isn't properly collapsed. (2017/10/17)
-    if (HOTKEYS.COLLAPSE_LINE_BACKWARD(event)) {
-      event.preventDefault();
-      return change.collapseLineBackward();
-    }
-
-    if (HOTKEYS.COLLAPSE_LINE_FORWARD(event)) {
-      event.preventDefault();
-      return change.collapseLineForward();
-    }
-
-    if (HOTKEYS.EXTEND_LINE_BACKWARD(event)) {
-      event.preventDefault();
-      return change.extendLineBackward();
-    }
-
-    if (HOTKEYS.EXTEND_LINE_FORWARD(event)) {
-      event.preventDefault();
-      return change.extendLineForward();
-    }
-
-    // COMPAT: If a void node is selected, or a zero-width text node adjacent to
-    // an inline is selected, we need to handle these hotkeys manually because
-    // browsers won't know what to do.
-    if (HOTKEYS.COLLAPSE_CHAR_BACKWARD(event)) {
-      var document = value.document,
-          isInVoid = value.isInVoid,
-          previousText = value.previousText,
-          startText = value.startText;
-
-      var isPreviousInVoid = previousText && document.hasVoidParent(previousText.key);
-      if (isInVoid || isPreviousInVoid || startText.text == '') {
-        event.preventDefault();
-        return change.collapseCharBackward();
-      }
-    }
-
-    if (HOTKEYS.COLLAPSE_CHAR_FORWARD(event)) {
-      var _document = value.document,
-          _isInVoid = value.isInVoid,
-          nextText = value.nextText,
-          _startText = value.startText;
-
-      var isNextInVoid = nextText && _document.hasVoidParent(nextText.key);
-      if (_isInVoid || isNextInVoid || _startText.text == '') {
-        event.preventDefault();
-        return change.collapseCharForward();
-      }
-    }
-
-    if (HOTKEYS.EXTEND_CHAR_BACKWARD(event)) {
-      var _document2 = value.document,
-          _isInVoid2 = value.isInVoid,
-          _previousText = value.previousText,
-          _startText2 = value.startText;
-
-      var _isPreviousInVoid = _previousText && _document2.hasVoidParent(_previousText.key);
-      if (_isInVoid2 || _isPreviousInVoid || _startText2.text == '') {
-        event.preventDefault();
-        return change.extendCharBackward();
-      }
-    }
-
-    if (HOTKEYS.EXTEND_CHAR_FORWARD(event)) {
-      var _document3 = value.document,
-          _isInVoid3 = value.isInVoid,
-          _nextText = value.nextText,
-          _startText3 = value.startText;
-
-      var _isNextInVoid = _nextText && _document3.hasVoidParent(_nextText.key);
-      if (_isInVoid3 || _isNextInVoid || _startText3.text == '') {
-        event.preventDefault();
-        return change.extendCharForward();
-      }
-    }
-  }
-
-  /**
-   * On paste.
-   *
-   * @param {Event} event
-   * @param {Change} change
-   * @param {Editor} editor
-   */
-
-  function onPaste(event, change, editor) {
-    debug$5('onPaste', { event: event });
-
-    var transfer = getEventTransfer(event);
-    var type = transfer.type,
-        fragment = transfer.fragment,
-        text = transfer.text;
-
-
-    if (type == 'fragment') {
-      change.insertFragment(fragment);
-    }
-
-    if (type == 'text' || type == 'html') {
-      if (!text) return;
-      var value = change.value;
-      var document = value.document,
-          selection = value.selection,
-          startBlock = value.startBlock;
-
-      if (startBlock.isVoid) return;
-
-      var defaultBlock = startBlock;
-      var defaultMarks = document.getInsertMarksAtRange(selection);
-      var frag = Plain.deserialize(text, { defaultBlock: defaultBlock, defaultMarks: defaultMarks }).document;
-      change.insertFragment(frag);
-    }
-  }
-
-  /**
-   * On select.
-   *
-   * @param {Event} event
-   * @param {Change} change
-   * @param {Editor} editor
-   */
-
-  function onSelect(event, change, editor) {
-    debug$5('onSelect', { event: event });
-
-    var window = getWindow(event.target);
-    var value = change.value;
-    var document = value.document;
-
-    var native = window.getSelection();
-
-    // If there are no ranges, the editor was blurred natively.
-    if (!native.rangeCount) {
-      change.blur();
-      return;
-    }
-
-    // Otherwise, determine the Slate selection from the native one.
-    var range = findRange(native, value);
-    if (!range) return;
-
-    var _range = range,
-        anchorKey = _range.anchorKey,
-        anchorOffset = _range.anchorOffset,
-        focusKey = _range.focusKey,
-        focusOffset = _range.focusOffset;
-
-    var anchorText = document.getNode(anchorKey);
-    var focusText = document.getNode(focusKey);
-    var anchorInline = document.getClosestInline(anchorKey);
-    var focusInline = document.getClosestInline(focusKey);
-    var focusBlock = document.getClosestBlock(focusKey);
-    var anchorBlock = document.getClosestBlock(anchorKey);
-
-    // COMPAT: If the anchor point is at the start of a non-void, and the
-    // focus point is inside a void node with an offset that isn't `0`, set
-    // the focus offset to `0`. This is due to void nodes <span>'s being
-    // positioned off screen, resulting in the offset always being greater
-    // than `0`. Since we can't know what it really should be, and since an
-    // offset of `0` is less destructive because it creates a hanging
-    // selection, go with `0`. (2017/09/07)
-    if (anchorBlock && !anchorBlock.isVoid && anchorOffset == 0 && focusBlock && focusBlock.isVoid && focusOffset != 0) {
-      range = range.set('focusOffset', 0);
-    }
-
-    // COMPAT: If the selection is at the end of a non-void inline node, and
-    // there is a node after it, put it in the node after instead. This
-    // standardizes the behavior, since it's indistinguishable to the user.
-    if (anchorInline && !anchorInline.isVoid && anchorOffset == anchorText.text.length) {
-      var block = document.getClosestBlock(anchorKey);
-      var next = block.getNextText(anchorKey);
-      if (next) range = range.moveAnchorTo(next.key, 0);
-    }
-
-    if (focusInline && !focusInline.isVoid && focusOffset == focusText.text.length) {
-      var _block = document.getClosestBlock(focusKey);
-      var _next = _block.getNextText(focusKey);
-      if (_next) range = range.moveFocusTo(_next.key, 0);
-    }
-
-    range = range.normalize(document);
-    change.select(range);
-  }
-
-  /**
-   * Render editor.
-   *
-   * @param {Object} props
-   * @param {Editor} editor
-   * @return {Object}
-   */
-
-  function renderEditor(props, editor) {
-    var handlers = EVENT_HANDLERS.reduce(function (obj, handler) {
-      obj[handler] = editor[handler];
-      return obj;
-    }, {});
-
-    return React.createElement(Content, _extends({}, handlers, {
-      autoCorrect: props.autoCorrect,
-      autoFocus: props.autoFocus,
-      className: props.className,
-      children: props.children,
-      editor: editor,
-      readOnly: props.readOnly,
-      role: props.role,
-      spellCheck: props.spellCheck,
-      style: props.style,
-      tabIndex: props.tabIndex,
-      tagName: props.tagName
-    }));
-  }
-
-  /**
-   * Render node.
-   *
-   * @param {Object} props
-   * @return {Element}
-   */
-
-  function renderNode(props) {
-    var attributes = props.attributes,
-        children = props.children,
-        node = props.node;
-
-    if (node.object != 'block' && node.object != 'inline') return;
-    var Tag = node.object == 'block' ? 'div' : 'span';
-    var style = { position: 'relative' };
-    return React.createElement(
-      Tag,
-      _extends({}, attributes, { style: style }),
-      children
-    );
-  }
-
-  /**
-   * Render placeholder.
-   *
-   * @param {Object} props
-   * @return {Element}
-   */
-
-  function renderPlaceholder(props) {
-    var editor = props.editor,
-        node = props.node;
-
-    if (!editor.props.placeholder) return;
-    if (editor.state.isComposing) return;
-    if (node.object != 'block') return;
-    if (!slate.Text.isTextList(node.nodes)) return;
-    if (node.text != '') return;
-    if (editor.value.document.getBlocks().size > 1) return;
-
-    var style = {
-      pointerEvents: 'none',
-      display: 'inline-block',
-      width: '0',
-      maxWidth: '100%',
-      whiteSpace: 'nowrap',
-      opacity: '0.333'
-    };
-
-    return React.createElement(
-      'span',
-      { contentEditable: false, style: style },
-      editor.props.placeholder
-    );
-  }
-
-  /**
-   * Return the plugin.
-   *
-   * @type {Object}
-   */
-
-  return {
-    onBeforeInput: onBeforeInput,
-    onBlur: onBlur,
-    onClick: onClick,
-    onCopy: onCopy,
-    onCut: onCut,
-    onDragEnd: onDragEnd,
-    onDragOver: onDragOver,
-    onDragStart: onDragStart,
-    onDrop: onDrop,
-    onInput: onInput,
-    onKeyDown: onKeyDown,
-    onPaste: onPaste,
-    onSelect: onSelect,
-    renderEditor: renderEditor,
-    renderNode: renderNode,
-    renderPlaceholder: renderPlaceholder
-  };
-}
-
-/**
- * Export.
- *
- * @type {Object}
- */
-
-var debug$6 = Debug('slate:before');
-
-/**
- * The core before plugin.
- *
- * @return {Object}
- */
-
-function BeforePlugin() {
-  var activeElement = null;
-  var compositionCount = 0;
-  var isComposing = false;
-  var isCopying = false;
-  var isDragging = false;
-
-  /**
-   * On before input.
-   *
-   * @param {Event} event
-   * @param {Change} change
-   * @param {Editor} editor
-   */
-
-  function onBeforeInput(event, change, editor) {
-    if (editor.props.readOnly) return true;
-
-    // COMPAT: React's `onBeforeInput` synthetic event is based on the native
-    // `keypress` and `textInput` events. In browsers that support the native
-    // `beforeinput` event, we instead use that event to trigger text insertion,
-    // since it provides more useful information about the range being affected
-    // and also preserves compatibility with iOS autocorrect, which would be
-    // broken if we called `preventDefault()` on React's synthetic event here.
-    // Since native `onbeforeinput` mainly benefits autocorrect and spellcheck
-    // for mobile, on desktop it brings IME issue, limit its scope for now.
-    if ((IS_IOS || IS_ANDROID) && SUPPORTED_EVENTS.beforeinput) return true;
-
-    debug$6('onBeforeInput', { event: event });
-  }
-
-  /**
-   * On blur.
-   *
-   * @param {Event} event
-   * @param {Change} change
-   * @param {Editor} editor
-   */
-
-  function onBlur(event, change, editor) {
-    if (isCopying) return true;
-    if (editor.props.readOnly) return true;
-
-    var value = change.value;
-    var relatedTarget = event.relatedTarget,
-        target = event.target;
-
-    var window = getWindow(target);
-
-    // COMPAT: If the current `activeElement` is still the previous one, this is
-    // due to the window being blurred when the tab itself becomes unfocused, so
-    // we want to abort early to allow to editor to stay focused when the tab
-    // becomes focused again.
-    if (activeElement == window.document.activeElement) return true;
-
-    // COMPAT: The `relatedTarget` can be null when the new focus target is not
-    // a "focusable" element (eg. a `<div>` without `tabindex` set).
-    if (relatedTarget) {
-      var el = reactDom.findDOMNode(editor);
-
-      // COMPAT: The event should be ignored if the focus is returning to the
-      // editor from an embedded editable element (eg. an <input> element inside
-      // a void node).
-      if (relatedTarget == el) return true;
-
-      // COMPAT: The event should be ignored if the focus is moving from the
-      // editor to inside a void node's spacer element.
-      if (relatedTarget.hasAttribute('data-slate-spacer')) return true;
-
-      // COMPAT: The event should be ignored if the focus is moving to a non-
-      // editable section of an element that isn't a void node (eg. a list item
-      // of the check list example).
-      var node = findNode(relatedTarget, value);
-      if (el.contains(relatedTarget) && node && !node.isVoid) return true;
-    }
-
-    debug$6('onBlur', { event: event });
-  }
-
-  /**
-   * On change.
-   *
-   * @param {Change} change
-   * @param {Editor} editor
-   */
-
-  function onChange(change, editor) {
-    var value = change.value;
-
-    // If the value's schema isn't the editor's schema, update it. This can
-    // happen on the initialization of the editor, or if the schema changes.
-    // This change isn't save into history since only schema is updated.
-
-    if (value.schema != editor.schema) {
-      change.setValue({ schema: editor.schema }, { save: false }).normalize();
-    }
-
-    debug$6('onChange');
-  }
-
-  /**
-   * On composition end.
-   *
-   * @param {Event} event
-   * @param {Change} change
-   * @param {Editor} editor
-   */
-
-  function onCompositionEnd(event, change, editor) {
-    var n = compositionCount;
-
-    // The `count` check here ensures that if another composition starts
-    // before the timeout has closed out this one, we will abort unsetting the
-    // `isComposing` flag, since a composition is still in affect.
-    window.requestAnimationFrame(function () {
-      if (compositionCount > n) return;
-      isComposing = false;
-
-      // HACK: we need to re-render the editor here so that it will update its
-      // placeholder in case one is currently rendered. This should be handled
-      // differently ideally, in a less invasive way?
-      editor.setState({ isComposing: false });
-    });
-
-    debug$6('onCompositionEnd', { event: event });
-  }
-
-  /**
-   * On composition start.
-   *
-   * @param {Event} event
-   * @param {Change} change
-   * @param {Editor} editor
-   */
-
-  function onCompositionStart(event, change, editor) {
-    isComposing = true;
-    compositionCount++;
-
-    // HACK: we need to re-render the editor here so that it will update its
-    // placeholder in case one is currently rendered. This should be handled
-    // differently ideally, in a less invasive way?
-    editor.setState({ isComposing: true });
-
-    debug$6('onCompositionStart', { event: event });
-  }
-
-  /**
-   * On copy.
-   *
-   * @param {Event} event
-   * @param {Change} change
-   * @param {Editor} editor
-   */
-
-  function onCopy(event, change, editor) {
-    var window = getWindow(event.target);
-    isCopying = true;
-    window.requestAnimationFrame(function () {
-      return isCopying = false;
-    });
-
-    debug$6('onCopy', { event: event });
-  }
-
-  /**
-   * On cut.
-   *
-   * @param {Event} event
-   * @param {Change} change
-   * @param {Editor} editor
-   */
-
-  function onCut(event, change, editor) {
-    if (editor.props.readOnly) return true;
-
-    var window = getWindow(event.target);
-    isCopying = true;
-    window.requestAnimationFrame(function () {
-      return isCopying = false;
-    });
-
-    debug$6('onCut', { event: event });
-  }
-
-  /**
-   * On drag end.
-   *
-   * @param {Event} event
-   * @param {Change} change
-   * @param {Editor} editor
-   */
-
-  function onDragEnd(event, change, editor) {
-    isDragging = false;
-
-    debug$6('onDragEnd', { event: event });
-  }
-
-  /**
-   * On drag enter.
-   *
-   * @param {Event} event
-   * @param {Change} change
-   * @param {Editor} editor
-   */
-
-  function onDragEnter(event, change, editor) {
-    debug$6('onDragEnter', { event: event });
-  }
-
-  /**
-   * On drag exit.
-   *
-   * @param {Event} event
-   * @param {Change} change
-   * @param {Editor} editor
-   */
-
-  function onDragExit(event, change, editor) {
-    debug$6('onDragExit', { event: event });
-  }
-
-  /**
-   * On drag leave.
-   *
-   * @param {Event} event
-   * @param {Change} change
-   * @param {Editor} editor
-   */
-
-  function onDragLeave(event, change, editor) {
-    debug$6('onDragLeave', { event: event });
-  }
-
-  /**
-   * On drag over.
-   *
-   * @param {Event} event
-   * @param {Change} change
-   * @param {Editor} editor
-   */
-
-  function onDragOver(event, change, editor) {
-    // If the target is inside a void node, and only in this case,
-    // call `preventDefault` to signal that drops are allowed.
-    // When the target is editable, dropping is already allowed by
-    // default, and calling `preventDefault` hides the cursor.
-    var node = findNode(event.target, editor.value);
-    if (node.isVoid) event.preventDefault();
-
-    // If a drag is already in progress, don't do this again.
-    if (isDragging) return true;
-
-    isDragging = true;
-    event.nativeEvent.dataTransfer.dropEffect = 'move';
-
-    debug$6('onDragOver', { event: event });
-  }
-
-  /**
-   * On drag start.
-   *
-   * @param {Event} event
-   * @param {Change} change
-   * @param {Editor} editor
-   */
-
-  function onDragStart(event, change, editor) {
-    isDragging = true;
-
-    debug$6('onDragStart', { event: event });
-  }
-
-  /**
-   * On drop.
-   *
-   * @param {Event} event
-   * @param {Change} change
-   * @param {Editor} editor
-   */
-
-  function onDrop(event, change, editor) {
-    // Stop propagation so the event isn't visible to parent editors.
-    event.stopPropagation();
-
-    // Nothing happens in read-only mode.
-    if (editor.props.readOnly) return true;
-
-    // Prevent default so the DOM's value isn't corrupted.
-    event.preventDefault();
-
-    debug$6('onDrop', { event: event });
-  }
-
-  /**
-   * On focus.
-   *
-   * @param {Event} event
-   * @param {Change} change
-   * @param {Editor} editor
-   */
-
-  function onFocus(event, change, editor) {
-    if (isCopying) return true;
-    if (editor.props.readOnly) return true;
-
-    var el = reactDom.findDOMNode(editor);
-
-    // Save the new `activeElement`.
-    var window = getWindow(event.target);
-    activeElement = window.document.activeElement;
-
-    // COMPAT: If the editor has nested editable elements, the focus can go to
-    // those elements. In Firefox, this must be prevented because it results in
-    // issues with keyboard navigation. (2017/03/30)
-    if (IS_FIREFOX && event.target != el) {
-      el.focus();
-      return true;
-    }
-
-    debug$6('onFocus', { event: event });
-  }
-
-  /**
-   * On input.
-   *
-   * @param {Event} event
-   * @param {Change} change
-   * @param {Editor} editor
-   */
-
-  function onInput(event, change, editor) {
-    if (isComposing) return true;
-    if (change.value.isBlurred) return true;
-
-    debug$6('onInput', { event: event });
-  }
-
-  /**
-   * On key down.
-   *
-   * @param {Event} event
-   * @param {Change} change
-   * @param {Editor} editor
-   */
-
-  function onKeyDown(event, change, editor) {
-    if (editor.props.readOnly) return true;
-
-    // When composing, we need to prevent all hotkeys from executing while
-    // typing. However, certain characters also move the selection before
-    // we're able to handle it, so prevent their default behavior.
-    if (isComposing) {
-      if (HOTKEYS.COMPOSING(event)) event.preventDefault();
-      return true;
-    }
-
-    // Certain hotkeys have native behavior in contenteditable elements which
-    // will cause our value to be out of sync, so prevent them.
-    if (HOTKEYS.CONTENTEDITABLE(event) && !IS_IOS) {
-      event.preventDefault();
-    }
-
-    debug$6('onKeyDown', { event: event });
-  }
-
-  /**
-   * On paste.
-   *
-   * @param {Event} event
-   * @param {Change} change
-   * @param {Editor} editor
-   */
-
-  function onPaste(event, change, editor) {
-    if (editor.props.readOnly) return true;
-
-    // Prevent defaults so the DOM state isn't corrupted.
-    event.preventDefault();
-
-    debug$6('onPaste', { event: event });
-  }
-
-  /**
-   * On select.
-   *
-   * @param {Event} event
-   * @param {Change} change
-   * @param {Editor} editor
-   */
-
-  function onSelect(event, change, editor) {
-    if (isCopying) return true;
-    if (isComposing) return true;
-    if (editor.props.readOnly) return true;
-
-    // Save the new `activeElement`.
-    var window = getWindow(event.target);
-    activeElement = window.document.activeElement;
-
-    debug$6('onSelect', { event: event });
-  }
-
-  /**
-   * Return the plugin.
-   *
-   * @type {Object}
-   */
-
-  return {
-    onBeforeInput: onBeforeInput,
-    onBlur: onBlur,
-    onChange: onChange,
-    onCompositionEnd: onCompositionEnd,
-    onCompositionStart: onCompositionStart,
-    onCopy: onCopy,
-    onCut: onCut,
-    onDragEnd: onDragEnd,
-    onDragEnter: onDragEnter,
-    onDragExit: onDragExit,
-    onDragLeave: onDragLeave,
-    onDragOver: onDragOver,
-    onDragStart: onDragStart,
-    onDrop: onDrop,
-    onFocus: onFocus,
-    onInput: onInput,
-    onKeyDown: onKeyDown,
-    onPaste: onPaste,
-    onSelect: onSelect
-  };
-}
-
-/**
- * Export.
- *
- * @type {Object}
- */
-
-/**
- * Noop.
- *
- * @return {Void}
- */
-
-function noop() {}
-
-/**
- * Export.
- *
- * @type {Function}
- */
-
-var debug$7 = Debug('slate:editor');
-
-/**
- * Editor.
- *
- * @type {Component}
- */
-
-var Editor = function (_React$Component) {
-  inherits(Editor, _React$Component);
-
-  /**
-   * Constructor.
-   *
-   * @param {Object} props
-   */
-
-  /**
-   * Property types.
-   *
-   * @type {Object}
-   */
-
-  function Editor(props) {
-    classCallCheck(this, Editor);
-
-    var _this = possibleConstructorReturn(this, (Editor.__proto__ || Object.getPrototypeOf(Editor)).call(this, props));
-
-    _initialiseProps$4.call(_this);
-
-    _this.state = {};
-    _this.tmp = {};
-    _this.tmp.updates = 0;
-    _this.tmp.resolves = 0;
-
-    // Resolve the plugins and create a stack and schema from them.
-    var plugins = _this.resolvePlugins(props.plugins, props.schema);
-    var stack = slate.Stack.create({ plugins: plugins });
-    var schema = slate.Schema.create({ plugins: plugins });
-    _this.state.schema = schema;
-    _this.state.stack = stack;
-
-    // Run `onChange` on the passed-in value because we need to ensure that it
-    // is normalized, and queue the resulting change.
-    var change = props.value.change();
-    stack.run('onChange', change, _this);
-    _this.queueChange(change);
-    _this.state.value = change.value;
-
-    // Create a bound event handler for each event.
-    EVENT_HANDLERS.forEach(function (handler) {
-      _this[handler] = function () {
-        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-          args[_key] = arguments[_key];
-        }
-
-        _this.onEvent.apply(_this, [handler].concat(args));
-      };
-    });
-    return _this;
-  }
-
-  /**
-   * When the `props` are updated, create a new `Stack` if necessary and run
-   * `onChange` to ensure the value is normalized.
-   *
-   * @param {Object} props
-   */
-
-  /**
-   * Default properties.
-   *
-   * @type {Object}
-   */
-
-  /**
-   * When the component first mounts, flush any temporary changes.
-   */
-
-  /**
-   * When the component updates, flush any temporary change.
-   */
-
-  /**
-   * Queue a `change` object, to be able to flush it later. This is required for
-   * when a change needs to be applied to the value, but because of the React
-   * lifecycle we can't apply that change immediately. So we cache it here and
-   * later can call `this.flushChange()` to flush it.
-   *
-   * @param {Change} change
-   */
-
-  /**
-   * Flush a temporarily stored `change` object, for when a change needed to be
-   * made but couldn't because of React's lifecycle.
-   */
-
-  /**
-   * Perform a change on the editor, passing `...args` to `change.call`.
-   *
-   * @param {Mixed} ...args
-   */
-
-  /**
-   * Programmatically blur the editor.
-   */
-
-  /**
-   * Programmatically focus the editor.
-   */
-
-  createClass(Editor, [{
-    key: 'render',
-
-
-    /**
-     * Render the editor.
-     *
-     * @return {Element}
-     */
-
-    value: function render() {
-      debug$7('render', this);
-
-      var children = this.stack.map('renderPortal', this.value, this).map(function (child, i) {
-        return React.createElement(
-          Portal,
-          { key: i, isOpened: true },
-          child
-        );
-      });
-
-      var props = _extends({}, this.props, { children: children });
-      var tree = this.stack.render('renderEditor', props, this);
-      return tree;
-    }
-
-    /**
-     * Resolve an array of plugins from `plugins` and `schema` props.
-     *
-     * In addition to the plugins provided in props, this will initialize three
-     * other plugins:
-     *
-     * - The top-level editor plugin, which allows for top-level handlers, etc.
-     * - The two "core" plugins, one before all the other and one after.
-     *
-     * @param {Array|Void} plugins
-     * @param {Schema|Object|Void} schema
-     * @return {Array}
-     */
-
-  }, {
-    key: 'schema',
-
-
-    /**
-     * Getters for exposing public properties of the editor's state.
-     */
-
-    get: function get$$1() {
-      return this.state.schema;
-    }
-  }, {
-    key: 'stack',
-    get: function get$$1() {
-      return this.state.stack;
-    }
-  }, {
-    key: 'value',
-    get: function get$$1() {
-      return this.state.value;
-    }
-
-    /**
-     * On event.
-     *
-     * @param {String} handler
-     * @param {Event} event
-     */
-
-    /**
-     * On change.
-     *
-     * @param {Change} change
-     */
-
-  }]);
-  return Editor;
-}(React.Component);
-
-/**
- * Mix in the property types for the event handlers.
- */
-
-Editor.propTypes = {
-  autoCorrect: Types.bool,
-  autoFocus: Types.bool,
-  className: Types.string,
-  onChange: Types.func,
-  placeholder: Types.any,
-  plugins: Types.array,
-  readOnly: Types.bool,
-  role: Types.string,
-  schema: Types.object,
-  spellCheck: Types.bool,
-  style: Types.object,
-  tabIndex: Types.number,
-  value: SlateTypes.value.isRequired };
-Editor.defaultProps = {
-  autoFocus: false,
-  autoCorrect: true,
-  onChange: noop,
-  plugins: [],
-  readOnly: false,
-  schema: {},
-  spellCheck: true };
-
-var _initialiseProps$4 = function _initialiseProps() {
-  var _this2 = this;
-
-  this.componentWillReceiveProps = function (props) {
-    var schema = _this2.schema,
-        stack = _this2.stack;
-
-    // Increment the updates counter as a baseline.
-
-    _this2.tmp.updates++;
-
-    // If the plugins or the schema have changed, we need to re-resolve the
-    // plugins, since it will result in a new stack and new validations.
-    if (props.plugins != _this2.props.plugins || props.schema != _this2.props.schema) {
-      var plugins = _this2.resolvePlugins(props.plugins, props.schema);
-      stack = slate.Stack.create({ plugins: plugins });
-      schema = slate.Schema.create({ plugins: plugins });
-      _this2.setState({ schema: schema, stack: stack });
-
-      // Increment the resolves counter.
-      _this2.tmp.resolves++;
-
-      // If we've resolved a few times already, and it's exactly in line with
-      // the updates, then warn the user that they may be doing something wrong.
-      if (_this2.tmp.resolves > 5 && _this2.tmp.resolves == _this2.tmp.updates) {
-        logger.warn('A Slate <Editor> is re-resolving `props.plugins` or `props.schema` on each update, which leads to poor performance. This is often due to passing in a new `schema` or `plugins` prop with each render by declaring them inline in your render function. Do not do this!');
-      }
-    }
-
-    // Run `onChange` on the passed-in value because we need to ensure that it
-    // is normalized, and queue the resulting change.
-    var change = props.value.change();
-    stack.run('onChange', change, _this2);
-    _this2.queueChange(change);
-    _this2.setState({ value: change.value });
-  };
-
-  this.componentDidMount = function () {
-    _this2.flushChange();
-  };
-
-  this.componentDidUpdate = function () {
-    _this2.flushChange();
-  };
-
-  this.queueChange = function (change) {
-    if (change.operations.size) {
-      debug$7('queueChange', { change: change });
-      _this2.tmp.change = change;
-    }
-  };
-
-  this.flushChange = function () {
-    var change = _this2.tmp.change;
-
-
-    if (change) {
-      debug$7('flushChange', { change: change });
-      delete _this2.tmp.change;
-      _this2.props.onChange(change);
-    }
-  };
-
-  this.change = function () {
-    var _value$change;
-
-    var change = (_value$change = _this2.value.change()).call.apply(_value$change, arguments);
-    _this2.onChange(change);
-  };
-
-  this.blur = function () {
-    _this2.change(function (c) {
-      return c.blur();
-    });
-  };
-
-  this.focus = function () {
-    _this2.change(function (c) {
-      return c.focus();
-    });
-  };
-
-  this.onEvent = function (handler, event) {
-    _this2.change(function (change) {
-      _this2.stack.run(handler, event, change, _this2);
-    });
-  };
-
-  this.onChange = function (change) {
-    debug$7('onChange', { change: change });
-
-    _this2.stack.run('onChange', change, _this2);
-    var value = change.value;
-    var onChange = _this2.props.onChange;
-
-    if (value == _this2.value) return;
-    onChange(change);
-  };
-
-  this.resolvePlugins = function (plugins, schema) {
-    var beforePlugin = BeforePlugin();
-    var afterPlugin = AfterPlugin();
-    var editorPlugin = {
-      schema: schema || {}
-    };
-
-    var _loop = function _loop(_prop) {
-      // Skip `onChange` because the editor's `onChange` is special.
-      if (_prop == 'onChange') return 'continue';
-
-      // Skip `schema` because it can't be proxied easily, so it must be
-      // passed in as an argument to this function instead.
-      if (_prop == 'schema') return 'continue';
-
-      // Define a function that will just proxies into `props`.
-      editorPlugin[_prop] = function () {
-        var _props;
-
-        return _this2.props[_prop] && (_props = _this2.props)[_prop].apply(_props, arguments);
-      };
-    };
-
-    var _iteratorNormalCompletion2 = true;
-    var _didIteratorError2 = false;
-    var _iteratorError2 = undefined;
-
-    try {
-      for (var _iterator2 = PLUGIN_PROPS[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-        var _prop = _step2.value;
-
-        var _ret = _loop(_prop);
-
-        if (_ret === 'continue') continue;
-      }
-    } catch (err) {
-      _didIteratorError2 = true;
-      _iteratorError2 = err;
-    } finally {
-      try {
-        if (!_iteratorNormalCompletion2 && _iterator2.return) {
-          _iterator2.return();
-        }
-      } finally {
-        if (_didIteratorError2) {
-          throw _iteratorError2;
-        }
-      }
-    }
-
-    return [beforePlugin, editorPlugin].concat(toConsumableArray(plugins || []), [afterPlugin]);
-  };
-};
-
-var _iteratorNormalCompletion$1 = true;
-var _didIteratorError$1 = false;
-var _iteratorError$1 = undefined;
-
-try {
-  for (var _iterator$1 = EVENT_HANDLERS[Symbol.iterator](), _step$1; !(_iteratorNormalCompletion$1 = (_step$1 = _iterator$1.next()).done); _iteratorNormalCompletion$1 = true) {
-    var prop = _step$1.value;
-
-    Editor.propTypes[prop] = Types.func;
-  }
-
-  /**
-   * Export.
-   *
-   * @type {Component}
-   */
-} catch (err) {
-  _didIteratorError$1 = true;
-  _iteratorError$1 = err;
-} finally {
-  try {
-    if (!_iteratorNormalCompletion$1 && _iterator$1.return) {
-      _iterator$1.return();
-    }
-  } finally {
-    if (_didIteratorError$1) {
-      throw _iteratorError$1;
-    }
-  }
-}
-
-var index = {
-  Editor: Editor,
-  cloneFragment: cloneFragment,
-  findDOMNode: findDOMNode,
-  findDOMRange: findDOMRange,
-  findNode: findNode,
-  findRange: findRange,
-  getEventRange: getEventRange,
-  getEventTransfer: getEventTransfer,
-  setEventTransfer: setEventTransfer,
-  AfterPlugin: AfterPlugin,
-  BeforePlugin: BeforePlugin
-};
-
-exports.Editor = Editor;
-exports.cloneFragment = cloneFragment;
-exports.findDOMNode = findDOMNode;
-exports.findDOMRange = findDOMRange;
-exports.findNode = findNode;
-exports.findRange = findRange;
-exports.getEventRange = getEventRange;
-exports.getEventTransfer = getEventTransfer;
-exports.setEventTransfer = setEventTransfer;
-exports.AfterPlugin = AfterPlugin;
-exports.BeforePlugin = BeforePlugin;
-exports.default = index;
-
-
-},{"debug":4,"get-window":32,"is-hotkey":45,"is-in-browser":46,"lodash/throttle":429,"prop-types":434,"react":411,"react-dom":229,"react-immutable-proptypes":355,"react-portal":356,"selection-is-backward":413,"slate":438,"slate-base64-serializer":414,"slate-dev-logger":436,"slate-plain-serializer":415,"slate-prop-types":416}],418:[function(require,module,exports){
-arguments[4][59][0].apply(exports,arguments)
-},{"./_root":423,"dup":59}],419:[function(require,module,exports){
-arguments[4][84][0].apply(exports,arguments)
-},{"./_Symbol":418,"./_getRawTag":421,"./_objectToString":422,"dup":84}],420:[function(require,module,exports){
-arguments[4][128][0].apply(exports,arguments)
-},{"dup":128}],421:[function(require,module,exports){
-arguments[4][134][0].apply(exports,arguments)
-},{"./_Symbol":418,"dup":134}],422:[function(require,module,exports){
-arguments[4][171][0].apply(exports,arguments)
-},{"dup":171}],423:[function(require,module,exports){
-arguments[4][175][0].apply(exports,arguments)
-},{"./_freeGlobal":420,"dup":175}],424:[function(require,module,exports){
-var isObject = require('./isObject'),
-    now = require('./now'),
-    toNumber = require('./toNumber');
-
-/** Error message constants. */
-var FUNC_ERROR_TEXT = 'Expected a function';
-
-/* Built-in method references for those with the same name as other `lodash` methods. */
-var nativeMax = Math.max,
-    nativeMin = Math.min;
-
-/**
- * Creates a debounced function that delays invoking `func` until after `wait`
- * milliseconds have elapsed since the last time the debounced function was
- * invoked. The debounced function comes with a `cancel` method to cancel
- * delayed `func` invocations and a `flush` method to immediately invoke them.
- * Provide `options` to indicate whether `func` should be invoked on the
- * leading and/or trailing edge of the `wait` timeout. The `func` is invoked
- * with the last arguments provided to the debounced function. Subsequent
- * calls to the debounced function return the result of the last `func`
- * invocation.
- *
- * **Note:** If `leading` and `trailing` options are `true`, `func` is
- * invoked on the trailing edge of the timeout only if the debounced function
- * is invoked more than once during the `wait` timeout.
- *
- * If `wait` is `0` and `leading` is `false`, `func` invocation is deferred
- * until to the next tick, similar to `setTimeout` with a timeout of `0`.
- *
- * See [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
- * for details over the differences between `_.debounce` and `_.throttle`.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Function
- * @param {Function} func The function to debounce.
- * @param {number} [wait=0] The number of milliseconds to delay.
- * @param {Object} [options={}] The options object.
- * @param {boolean} [options.leading=false]
- *  Specify invoking on the leading edge of the timeout.
- * @param {number} [options.maxWait]
- *  The maximum time `func` is allowed to be delayed before it's invoked.
- * @param {boolean} [options.trailing=true]
- *  Specify invoking on the trailing edge of the timeout.
- * @returns {Function} Returns the new debounced function.
- * @example
- *
- * // Avoid costly calculations while the window size is in flux.
- * jQuery(window).on('resize', _.debounce(calculateLayout, 150));
- *
- * // Invoke `sendMail` when clicked, debouncing subsequent calls.
- * jQuery(element).on('click', _.debounce(sendMail, 300, {
- *   'leading': true,
- *   'trailing': false
- * }));
- *
- * // Ensure `batchLog` is invoked once after 1 second of debounced calls.
- * var debounced = _.debounce(batchLog, 250, { 'maxWait': 1000 });
- * var source = new EventSource('/stream');
- * jQuery(source).on('message', debounced);
- *
- * // Cancel the trailing debounced invocation.
- * jQuery(window).on('popstate', debounced.cancel);
- */
-function debounce(func, wait, options) {
-  var lastArgs,
-      lastThis,
-      maxWait,
-      result,
-      timerId,
-      lastCallTime,
-      lastInvokeTime = 0,
-      leading = false,
-      maxing = false,
-      trailing = true;
-
-  if (typeof func != 'function') {
-    throw new TypeError(FUNC_ERROR_TEXT);
-  }
-  wait = toNumber(wait) || 0;
-  if (isObject(options)) {
-    leading = !!options.leading;
-    maxing = 'maxWait' in options;
-    maxWait = maxing ? nativeMax(toNumber(options.maxWait) || 0, wait) : maxWait;
-    trailing = 'trailing' in options ? !!options.trailing : trailing;
-  }
-
-  function invokeFunc(time) {
-    var args = lastArgs,
-        thisArg = lastThis;
-
-    lastArgs = lastThis = undefined;
-    lastInvokeTime = time;
-    result = func.apply(thisArg, args);
-    return result;
-  }
-
-  function leadingEdge(time) {
-    // Reset any `maxWait` timer.
-    lastInvokeTime = time;
-    // Start the timer for the trailing edge.
-    timerId = setTimeout(timerExpired, wait);
-    // Invoke the leading edge.
-    return leading ? invokeFunc(time) : result;
-  }
-
-  function remainingWait(time) {
-    var timeSinceLastCall = time - lastCallTime,
-        timeSinceLastInvoke = time - lastInvokeTime,
-        timeWaiting = wait - timeSinceLastCall;
-
-    return maxing
-      ? nativeMin(timeWaiting, maxWait - timeSinceLastInvoke)
-      : timeWaiting;
-  }
-
-  function shouldInvoke(time) {
-    var timeSinceLastCall = time - lastCallTime,
-        timeSinceLastInvoke = time - lastInvokeTime;
-
-    // Either this is the first call, activity has stopped and we're at the
-    // trailing edge, the system time has gone backwards and we're treating
-    // it as the trailing edge, or we've hit the `maxWait` limit.
-    return (lastCallTime === undefined || (timeSinceLastCall >= wait) ||
-      (timeSinceLastCall < 0) || (maxing && timeSinceLastInvoke >= maxWait));
-  }
-
-  function timerExpired() {
-    var time = now();
-    if (shouldInvoke(time)) {
-      return trailingEdge(time);
-    }
-    // Restart the timer.
-    timerId = setTimeout(timerExpired, remainingWait(time));
-  }
-
-  function trailingEdge(time) {
-    timerId = undefined;
-
-    // Only invoke if we have `lastArgs` which means `func` has been
-    // debounced at least once.
-    if (trailing && lastArgs) {
-      return invokeFunc(time);
-    }
-    lastArgs = lastThis = undefined;
-    return result;
-  }
-
-  function cancel() {
-    if (timerId !== undefined) {
-      clearTimeout(timerId);
-    }
-    lastInvokeTime = 0;
-    lastArgs = lastCallTime = lastThis = timerId = undefined;
-  }
-
-  function flush() {
-    return timerId === undefined ? result : trailingEdge(now());
-  }
-
-  function debounced() {
-    var time = now(),
-        isInvoking = shouldInvoke(time);
-
-    lastArgs = arguments;
-    lastThis = this;
-    lastCallTime = time;
-
-    if (isInvoking) {
-      if (timerId === undefined) {
-        return leadingEdge(lastCallTime);
-      }
-      if (maxing) {
-        // Handle invocations in a tight loop.
-        timerId = setTimeout(timerExpired, wait);
-        return invokeFunc(lastCallTime);
-      }
-    }
-    if (timerId === undefined) {
-      timerId = setTimeout(timerExpired, wait);
-    }
-    return result;
-  }
-  debounced.cancel = cancel;
-  debounced.flush = flush;
-  return debounced;
-}
-
-module.exports = debounce;
-
-},{"./isObject":425,"./now":428,"./toNumber":430}],425:[function(require,module,exports){
-arguments[4][202][0].apply(exports,arguments)
-},{"dup":202}],426:[function(require,module,exports){
-arguments[4][203][0].apply(exports,arguments)
-},{"dup":203}],427:[function(require,module,exports){
-arguments[4][205][0].apply(exports,arguments)
-},{"./_baseGetTag":419,"./isObjectLike":426,"dup":205}],428:[function(require,module,exports){
-var root = require('./_root');
-
-/**
- * Gets the timestamp of the number of milliseconds that have elapsed since
- * the Unix epoch (1 January 1970 00:00:00 UTC).
- *
- * @static
- * @memberOf _
- * @since 2.4.0
- * @category Date
- * @returns {number} Returns the timestamp.
- * @example
- *
- * _.defer(function(stamp) {
- *   console.log(_.now() - stamp);
- * }, _.now());
- * // => Logs the number of milliseconds it took for the deferred invocation.
- */
-var now = function() {
-  return root.Date.now();
-};
-
-module.exports = now;
-
-},{"./_root":423}],429:[function(require,module,exports){
-var debounce = require('./debounce'),
-    isObject = require('./isObject');
-
-/** Error message constants. */
-var FUNC_ERROR_TEXT = 'Expected a function';
-
-/**
- * Creates a throttled function that only invokes `func` at most once per
- * every `wait` milliseconds. The throttled function comes with a `cancel`
- * method to cancel delayed `func` invocations and a `flush` method to
- * immediately invoke them. Provide `options` to indicate whether `func`
- * should be invoked on the leading and/or trailing edge of the `wait`
- * timeout. The `func` is invoked with the last arguments provided to the
- * throttled function. Subsequent calls to the throttled function return the
- * result of the last `func` invocation.
- *
- * **Note:** If `leading` and `trailing` options are `true`, `func` is
- * invoked on the trailing edge of the timeout only if the throttled function
- * is invoked more than once during the `wait` timeout.
- *
- * If `wait` is `0` and `leading` is `false`, `func` invocation is deferred
- * until to the next tick, similar to `setTimeout` with a timeout of `0`.
- *
- * See [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
- * for details over the differences between `_.throttle` and `_.debounce`.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Function
- * @param {Function} func The function to throttle.
- * @param {number} [wait=0] The number of milliseconds to throttle invocations to.
- * @param {Object} [options={}] The options object.
- * @param {boolean} [options.leading=true]
- *  Specify invoking on the leading edge of the timeout.
- * @param {boolean} [options.trailing=true]
- *  Specify invoking on the trailing edge of the timeout.
- * @returns {Function} Returns the new throttled function.
- * @example
- *
- * // Avoid excessively updating the position while scrolling.
- * jQuery(window).on('scroll', _.throttle(updatePosition, 100));
- *
- * // Invoke `renewToken` when the click event is fired, but not more than once every 5 minutes.
- * var throttled = _.throttle(renewToken, 300000, { 'trailing': false });
- * jQuery(element).on('click', throttled);
- *
- * // Cancel the trailing throttled invocation.
- * jQuery(window).on('popstate', throttled.cancel);
- */
-function throttle(func, wait, options) {
-  var leading = true,
-      trailing = true;
-
-  if (typeof func != 'function') {
-    throw new TypeError(FUNC_ERROR_TEXT);
-  }
-  if (isObject(options)) {
-    leading = 'leading' in options ? !!options.leading : leading;
-    trailing = 'trailing' in options ? !!options.trailing : trailing;
-  }
-  return debounce(func, wait, {
-    'leading': leading,
-    'maxWait': wait,
-    'trailing': trailing
-  });
-}
-
-module.exports = throttle;
-
-},{"./debounce":424,"./isObject":425}],430:[function(require,module,exports){
-var isObject = require('./isObject'),
-    isSymbol = require('./isSymbol');
-
-/** Used as references for various `Number` constants. */
-var NAN = 0 / 0;
-
-/** Used to match leading and trailing whitespace. */
-var reTrim = /^\s+|\s+$/g;
-
-/** Used to detect bad signed hexadecimal string values. */
-var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
-
-/** Used to detect binary string values. */
-var reIsBinary = /^0b[01]+$/i;
-
-/** Used to detect octal string values. */
-var reIsOctal = /^0o[0-7]+$/i;
-
-/** Built-in method references without a dependency on `root`. */
-var freeParseInt = parseInt;
-
-/**
- * Converts `value` to a number.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to process.
- * @returns {number} Returns the number.
- * @example
- *
- * _.toNumber(3.2);
- * // => 3.2
- *
- * _.toNumber(Number.MIN_VALUE);
- * // => 5e-324
- *
- * _.toNumber(Infinity);
- * // => Infinity
- *
- * _.toNumber('3.2');
- * // => 3.2
- */
-function toNumber(value) {
-  if (typeof value == 'number') {
-    return value;
-  }
-  if (isSymbol(value)) {
-    return NAN;
-  }
-  if (isObject(value)) {
-    var other = typeof value.valueOf == 'function' ? value.valueOf() : value;
-    value = isObject(other) ? (other + '') : other;
-  }
-  if (typeof value != 'string') {
-    return value === 0 ? value : +value;
-  }
-  value = value.replace(reTrim, '');
-  var isBinary = reIsBinary.test(value);
-  return (isBinary || reIsOctal.test(value))
-    ? freeParseInt(value.slice(2), isBinary ? 2 : 8)
-    : (reIsBadHex.test(value) ? NAN : +value);
-}
-
-module.exports = toNumber;
-
-},{"./isObject":425,"./isSymbol":427}],431:[function(require,module,exports){
-arguments[4][357][0].apply(exports,arguments)
-},{"./lib/ReactPropTypesSecret":435,"dup":357,"fbjs/lib/invariant":23,"fbjs/lib/warning":30}],432:[function(require,module,exports){
-arguments[4][358][0].apply(exports,arguments)
-},{"./lib/ReactPropTypesSecret":435,"dup":358,"fbjs/lib/emptyFunction":15,"fbjs/lib/invariant":23}],433:[function(require,module,exports){
-arguments[4][359][0].apply(exports,arguments)
-},{"./checkPropTypes":431,"./lib/ReactPropTypesSecret":435,"dup":359,"fbjs/lib/emptyFunction":15,"fbjs/lib/invariant":23,"fbjs/lib/warning":30}],434:[function(require,module,exports){
-arguments[4][360][0].apply(exports,arguments)
-},{"./factoryWithThrowingShims":432,"./factoryWithTypeCheckers":433,"dup":360}],435:[function(require,module,exports){
-arguments[4][228][0].apply(exports,arguments)
-},{"dup":228}],436:[function(require,module,exports){
+exports.IS_CHROME = IS_CHROME;
+exports.IS_OPERA = IS_OPERA;
+exports.IS_FIREFOX = IS_FIREFOX;
+exports.IS_SAFARI = IS_SAFARI;
+exports.IS_IE = IS_IE;
+exports.IS_EDGE = IS_EDGE;
+exports.IS_ANDROID = IS_ANDROID;
+exports.IS_IOS = IS_IOS;
+exports.IS_MAC = IS_MAC;
+exports.IS_WINDOWS = IS_WINDOWS;
+exports.SUPPORTED_EVENTS = SUPPORTED_EVENTS;
+
+
+},{"is-in-browser":46}],416:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -41877,7 +36891,5519 @@ exports.default = index;
 
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],437:[function(require,module,exports){
+},{}],417:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+var isHotkey = require('is-hotkey');
+var slateDevEnvironment = require('slate-dev-environment');
+
+/**
+ * Is Apple?
+ *
+ * @type {Boolean}
+ */
+
+var IS_APPLE = slateDevEnvironment.IS_IOS || slateDevEnvironment.IS_MAC;
+
+/**
+ * Hotkeys.
+ *
+ * @type {Function}
+ */
+
+var isBold = isHotkey.isKeyHotkey('mod+b');
+var isItalic = isHotkey.isKeyHotkey('mod+i');
+
+var isEnter = isHotkey.isKeyHotkey('enter');
+var isShiftEnter = isHotkey.isKeyHotkey('shift+enter');
+var isSplitBlock = function isSplitBlock(e) {
+  return isEnter(e) || isShiftEnter(e);
+};
+
+var isBackspace = isHotkey.isKeyHotkey('backspace');
+var isShiftBackspace = isHotkey.isKeyHotkey('shift+backspace');
+var isDelete = isHotkey.isKeyHotkey('delete');
+var isShiftDelete = isHotkey.isKeyHotkey('shift+delete');
+var isDeleteBackward = function isDeleteBackward(e) {
+  return isBackspace(e) || isShiftBackspace(e);
+};
+var isDeleteForward = function isDeleteForward(e) {
+  return isDelete(e) || isShiftDelete(e);
+};
+
+var isDeleteCharBackwardMac = isHotkey.isKeyHotkey('ctrl+h');
+var isDeleteCharForwardMac = isHotkey.isKeyHotkey('ctrl+d');
+var isDeleteCharBackward = function isDeleteCharBackward(e) {
+  return isDeleteBackward(e) || IS_APPLE && isDeleteCharBackwardMac(e);
+};
+var isDeleteCharForward = function isDeleteCharForward(e) {
+  return isDeleteForward(e) || IS_APPLE && isDeleteCharForwardMac(e);
+};
+
+var isDeleteLineBackwardMac = function isDeleteLineBackwardMac(e) {
+  return isHotkey.isKeyHotkey('cmd+shift+backspace', e) || isHotkey.isKeyHotkey('cmd+backspace', e);
+};
+var isDeleteLineForwardMac = isHotkey.isKeyHotkey('ctrl+k');
+var isDeleteLineBackward = function isDeleteLineBackward(e) {
+  return IS_APPLE && isDeleteLineBackwardMac(e);
+};
+var isDeleteLineForward = function isDeleteLineForward(e) {
+  return IS_APPLE && isDeleteLineForwardMac(e);
+};
+
+var isDeleteWordBackwardMac = function isDeleteWordBackwardMac(e) {
+  return isHotkey.isKeyHotkey('shift+option+backspace', e) || isHotkey.isKeyHotkey('option+backspace', e);
+};
+var isDeleteWordBackwardPC = isHotkey.isKeyHotkey('ctrl+backspace');
+var isDeleteWordForwardMac = function isDeleteWordForwardMac(e) {
+  return isHotkey.isKeyHotkey('shift+option+delete', e) || isHotkey.isKeyHotkey('option+delete', e);
+};
+var isDeleteWordForwardPC = isHotkey.isKeyHotkey('ctrl+delete');
+var isDeleteWordBackward = function isDeleteWordBackward(e) {
+  return IS_APPLE ? isDeleteWordBackwardMac(e) : isDeleteWordBackwardPC(e);
+};
+var isDeleteWordForward = function isDeleteWordForward(e) {
+  return IS_APPLE ? isDeleteWordForwardMac(e) : isDeleteWordForwardPC(e);
+};
+
+var isExtendCharForward = isHotkey.isKeyHotkey('shift+right');
+var isExtendCharBackward = isHotkey.isKeyHotkey('shift+left');
+
+var isRightArrow = isHotkey.isKeyHotkey('right');
+var isLeftArrow = isHotkey.isKeyHotkey('left');
+var isCollapseCharForward = function isCollapseCharForward(e) {
+  return isRightArrow(e) && !isExtendCharForward(e);
+};
+var isCollapseCharBackward = function isCollapseCharBackward(e) {
+  return isLeftArrow(e) && !isExtendCharBackward(e);
+};
+
+var isCollapseLineBackwardMac = isHotkey.isKeyHotkey('option+up');
+var isCollapseLineForwardMac = isHotkey.isKeyHotkey('option+down');
+var isCollapseLineBackward = function isCollapseLineBackward(e) {
+  return IS_APPLE && isCollapseLineBackwardMac(e);
+};
+var isCollapseLineForward = function isCollapseLineForward(e) {
+  return IS_APPLE && isCollapseLineForwardMac(e);
+};
+
+var isExtendLineBackwardMac = isHotkey.isKeyHotkey('option+shift+up');
+var isExtendLineForwardMac = isHotkey.isKeyHotkey('option+shift+down');
+var isExtendLineBackward = function isExtendLineBackward(e) {
+  return IS_APPLE && isExtendLineBackwardMac(e);
+};
+var isExtendLineForward = function isExtendLineForward(e) {
+  return IS_APPLE && isExtendLineForwardMac(e);
+};
+
+var isUndo = isHotkey.isKeyHotkey('mod+z');
+var isRedoMac = isHotkey.isKeyHotkey('mod+shift+z');
+var isRedoPC = isHotkey.isKeyHotkey('mod+y');
+var isRedo = function isRedo(e) {
+  return IS_APPLE ? isRedoMac(e) : isRedoPC(e);
+};
+
+var isTransposeCharacterMac = isHotkey.isKeyHotkey('ctrl+t');
+var isTransposeCharacter = function isTransposeCharacter(e) {
+  return IS_APPLE && isTransposeCharacterMac(e);
+};
+
+var isContentEditable = function isContentEditable(e) {
+  return isBold(e) || isDeleteCharBackward(e) || isDeleteCharForward(e) || isDeleteLineBackward(e) || isDeleteLineForward(e) || isDeleteWordBackward(e) || isDeleteWordForward(e) || isItalic(e) || isRedo(e) || isSplitBlock(e) || isTransposeCharacter(e) || isUndo(e);
+};
+
+var isComposing = function isComposing(e) {
+  return e.key == 'ArrowDown' || e.key == 'ArrowLeft' || e.key == 'ArrowRight' || e.key == 'ArrowUp' || e.key == 'Backspace' || e.key == 'Enter';
+};
+
+/**
+ * Export.
+ *
+ * @type {Object}
+ */
+
+var index = {
+  isBold: isBold,
+  isCollapseCharBackward: isCollapseCharBackward,
+  isCollapseCharForward: isCollapseCharForward,
+  isCollapseLineBackward: isCollapseLineBackward,
+  isCollapseLineForward: isCollapseLineForward,
+  isComposing: isComposing,
+  isContentEditable: isContentEditable,
+  isDeleteCharBackward: isDeleteCharBackward,
+  isDeleteCharForward: isDeleteCharForward,
+  isDeleteLineBackward: isDeleteLineBackward,
+  isDeleteLineForward: isDeleteLineForward,
+  isDeleteWordBackward: isDeleteWordBackward,
+  isDeleteWordForward: isDeleteWordForward,
+  isExtendCharBackward: isExtendCharBackward,
+  isExtendCharForward: isExtendCharForward,
+  isExtendLineBackward: isExtendLineBackward,
+  isExtendLineForward: isExtendLineForward,
+  isItalic: isItalic,
+  isRedo: isRedo,
+  isSplitBlock: isSplitBlock,
+  isUndo: isUndo
+};
+
+exports.default = index;
+
+
+},{"is-hotkey":45,"slate-dev-environment":415}],418:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+var slate = require('slate');
+
+/**
+ * Create a prop type checker for Slate objects with `name` and `validate`.
+ *
+ * @param {String} name
+ * @param {Function} validate
+ * @return {Function}
+ */
+
+function create(name, validate) {
+  function check(isRequired, props, propName, componentName, location) {
+    var value = props[propName];
+    if (value == null && !isRequired) return null;
+    if (value == null && isRequired) return new Error('The ' + location + ' `' + propName + '` is marked as required in `' + componentName + '`, but it was not supplied.');
+    if (validate(value)) return null;
+    return new Error('Invalid ' + location + ' `' + propName + '` supplied to `' + componentName + '`, expected a Slate `' + name + '` but received: ' + value);
+  }
+
+  function propType() {
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return check.apply(undefined, [false].concat(args));
+  }
+
+  propType.isRequired = function () {
+    for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+      args[_key2] = arguments[_key2];
+    }
+
+    return check.apply(undefined, [true].concat(args));
+  };
+
+  return propType;
+}
+
+/**
+ * Prop type checkers.
+ *
+ * @type {Object}
+ */
+
+var Types = {
+  block: create('Block', function (v) {
+    return slate.Block.isBlock(v);
+  }),
+  blocks: create('List<Block>', function (v) {
+    return slate.Block.isBlockList(v);
+  }),
+  change: create('Change', function (v) {
+    return slate.Change.isChange(v);
+  }),
+  character: create('Character', function (v) {
+    return slate.Character.isCharacter(v);
+  }),
+  characters: create('List<Character>', function (v) {
+    return slate.Character.isCharacterList(v);
+  }),
+  data: create('Data', function (v) {
+    return slate.Data.isData(v);
+  }),
+  document: create('Document', function (v) {
+    return slate.Document.isDocument(v);
+  }),
+  history: create('History', function (v) {
+    return slate.History.isHistory(v);
+  }),
+  inline: create('Inline', function (v) {
+    return slate.Inline.isInline(v);
+  }),
+  inlines: create('Inline', function (v) {
+    return slate.Inline.isInlineList(v);
+  }),
+  leaf: create('Leaf', function (v) {
+    return slate.Leaf.isLeaf(v);
+  }),
+  leaves: create('List<Leaf>', function (v) {
+    return slate.Leaf.isLeafList(v);
+  }),
+  mark: create('Mark', function (v) {
+    return slate.Mark.isMark(v);
+  }),
+  marks: create('Set<Mark>', function (v) {
+    return slate.Mark.isMarkSet(v);
+  }),
+  node: create('Node', function (v) {
+    return slate.Node.isNode(v);
+  }),
+  nodes: create('List<Node>', function (v) {
+    return slate.Node.isNodeList(v);
+  }),
+  range: create('Range', function (v) {
+    return slate.Range.isRange(v);
+  }),
+  ranges: create('List<Range>', function (v) {
+    return slate.Range.isRangeList(v);
+  }),
+  schema: create('Schema', function (v) {
+    return slate.Schema.isSchema(v);
+  }),
+  stack: create('Stack', function (v) {
+    return slate.Stack.isStack(v);
+  }),
+  value: create('Value', function (v) {
+    return slate.Value.isValue(v);
+  }),
+  text: create('Text', function (v) {
+    return slate.Text.isText(v);
+  }),
+  texts: create('List<Text>', function (v) {
+    return slate.Text.isTextList(v);
+  })
+
+  /**
+   * Export.
+   *
+   * @type {Object}
+   */
+
+};
+
+exports.default = Types;
+
+
+},{"slate":442}],419:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+
+var Debug = _interopDefault(require('debug'));
+var React = _interopDefault(require('react'));
+var Types = _interopDefault(require('prop-types'));
+var SlateTypes = _interopDefault(require('slate-prop-types'));
+var ImmutableTypes = _interopDefault(require('react-immutable-proptypes'));
+var immutable = require('immutable');
+var logger = _interopDefault(require('slate-dev-logger'));
+var slate = require('slate');
+var getWindow = _interopDefault(require('get-window'));
+var isBackward = _interopDefault(require('selection-is-backward'));
+var slateDevEnvironment = require('slate-dev-environment');
+var throttle = _interopDefault(require('lodash/throttle'));
+var Base64 = _interopDefault(require('slate-base64-serializer'));
+var Plain = _interopDefault(require('slate-plain-serializer'));
+var Hotkeys = _interopDefault(require('slate-hotkeys'));
+var reactDom = require('react-dom');
+var Portal = _interopDefault(require('react-portal'));
+
+/**
+ * Event handlers used by Slate plugins.
+ *
+ * @type {Array}
+ */
+
+var EVENT_HANDLERS = ['onBeforeInput', 'onBlur', 'onClick', 'onCompositionEnd', 'onCompositionStart', 'onCopy', 'onCut', 'onDragEnd', 'onDragEnter', 'onDragExit', 'onDragLeave', 'onDragOver', 'onDragStart', 'onDrop', 'onInput', 'onFocus', 'onKeyDown', 'onKeyUp', 'onPaste', 'onSelect'];
+
+var classCallCheck = function (instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+};
+
+var createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+}();
+
+
+
+
+
+var defineProperty = function (obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+};
+
+var _extends = Object.assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];
+
+    for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }
+
+  return target;
+};
+
+
+
+var inherits = function (subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      enumerable: false,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+};
+
+
+
+
+
+
+
+
+
+
+
+var possibleConstructorReturn = function (self, call) {
+  if (!self) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return call && (typeof call === "object" || typeof call === "function") ? call : self;
+};
+
+
+
+
+
+var slicedToArray = function () {
+  function sliceIterator(arr, i) {
+    var _arr = [];
+    var _n = true;
+    var _d = false;
+    var _e = undefined;
+
+    try {
+      for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+        _arr.push(_s.value);
+
+        if (i && _arr.length === i) break;
+      }
+    } catch (err) {
+      _d = true;
+      _e = err;
+    } finally {
+      try {
+        if (!_n && _i["return"]) _i["return"]();
+      } finally {
+        if (_d) throw _e;
+      }
+    }
+
+    return _arr;
+  }
+
+  return function (arr, i) {
+    if (Array.isArray(arr)) {
+      return arr;
+    } else if (Symbol.iterator in Object(arr)) {
+      return sliceIterator(arr, i);
+    } else {
+      throw new TypeError("Invalid attempt to destructure non-iterable instance");
+    }
+  };
+}();
+
+
+
+
+
+
+
+
+
+
+
+
+
+var toConsumableArray = function (arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
+
+    return arr2;
+  } else {
+    return Array.from(arr);
+  }
+};
+
+/**
+ * Props that can be defined by plugins.
+ *
+ * @type {Array}
+ */
+
+var PLUGIN_PROPS = [].concat(toConsumableArray(EVENT_HANDLERS), ['decorateNode', 'onChange', 'renderMark', 'renderNode', 'renderPlaceholder', 'renderPortal', 'schema', 'validateNode']);
+
+/**
+ * Offset key parser regex.
+ *
+ * @type {RegExp}
+ */
+
+var PARSER = /^([\w-]+)(?::(\d+))?$/;
+
+/**
+ * Parse an offset key `string`.
+ *
+ * @param {String} string
+ * @return {Object}
+ */
+
+function parse(string) {
+  var matches = PARSER.exec(string);
+
+  if (!matches) {
+    throw new Error("Invalid offset key string \"" + string + "\".");
+  }
+
+  var _matches = slicedToArray(matches, 3),
+      original = _matches[0],
+      key = _matches[1],
+      index = _matches[2]; // eslint-disable-line no-unused-vars
+
+
+  return {
+    key: key,
+    index: parseInt(index, 10)
+  };
+}
+
+/**
+ * Stringify an offset key `object`.
+ *
+ * @param {Object} object
+ *   @property {String} key
+ *   @property {Number} index
+ * @return {String}
+ */
+
+function stringify(object) {
+  return object.key + ":" + object.index;
+}
+
+/**
+ * Export.
+ *
+ * @type {Object}
+ */
+
+var OffsetKey = {
+  parse: parse,
+  stringify: stringify
+};
+
+/**
+ * Debugger.
+ *
+ * @type {Function}
+ */
+
+var debug = Debug('slate:leaves');
+
+/**
+ * Leaf.
+ *
+ * @type {Component}
+ */
+
+var Leaf = function (_React$Component) {
+  inherits(Leaf, _React$Component);
+
+  function Leaf() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    classCallCheck(this, Leaf);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = possibleConstructorReturn(this, (_ref = Leaf.__proto__ || Object.getPrototypeOf(Leaf)).call.apply(_ref, [this].concat(args))), _this), _initialiseProps.call(_this), _temp), possibleConstructorReturn(_this, _ret);
+  }
+  /**
+   * Property types.
+   *
+   * @type {Object}
+   */
+
+  /**
+   * Debug.
+   *
+   * @param {String} message
+   * @param {Mixed} ...args
+   */
+
+  createClass(Leaf, [{
+    key: 'shouldComponentUpdate',
+
+
+    /**
+     * Should component update?
+     *
+     * @param {Object} props
+     * @return {Boolean}
+     */
+
+    value: function shouldComponentUpdate(props) {
+      // If any of the regular properties have changed, re-render.
+      if (props.index != this.props.index || props.marks != this.props.marks || props.text != this.props.text || props.parent != this.props.parent) {
+        return true;
+      }
+
+      // Otherwise, don't update.
+      return false;
+    }
+
+    /**
+     * Render the leaf.
+     *
+     * @return {Element}
+     */
+
+  }, {
+    key: 'render',
+    value: function render() {
+      this.debug('render', this);
+
+      var _props = this.props,
+          node = _props.node,
+          index = _props.index;
+
+      var offsetKey = OffsetKey.stringify({
+        key: node.key,
+        index: index
+      });
+
+      return React.createElement(
+        'span',
+        { 'data-offset-key': offsetKey },
+        this.renderMarks()
+      );
+    }
+
+    /**
+     * Render all of the leaf's mark components.
+     *
+     * @return {Element}
+     */
+
+  }, {
+    key: 'renderMarks',
+    value: function renderMarks() {
+      var _props2 = this.props,
+          marks = _props2.marks,
+          node = _props2.node,
+          offset = _props2.offset,
+          text = _props2.text,
+          editor = _props2.editor;
+      var stack = editor.stack;
+
+      var leaf = this.renderText();
+      var attributes = {
+        'data-slate-leaf': true
+      };
+
+      return marks.reduce(function (children, mark) {
+        var props = {
+          editor: editor,
+          mark: mark,
+          marks: marks,
+          node: node,
+          offset: offset,
+          text: text,
+          children: children,
+          attributes: attributes
+        };
+        var element = stack.find('renderMark', props);
+        return element || children;
+      }, leaf);
+    }
+
+    /**
+     * Render the text content of the leaf, accounting for browsers.
+     *
+     * @return {Element}
+     */
+
+  }, {
+    key: 'renderText',
+    value: function renderText() {
+      var _props3 = this.props,
+          block = _props3.block,
+          node = _props3.node,
+          parent = _props3.parent,
+          text = _props3.text,
+          index = _props3.index,
+          leaves = _props3.leaves;
+
+      // COMPAT: Render text inside void nodes with a zero-width space.
+      // So the node can contain selection but the text is not visible.
+
+      if (parent.isVoid) {
+        return React.createElement(
+          'span',
+          { 'data-slate-zero-width': 'z' },
+          '\u200B'
+        );
+      }
+
+      // COMPAT: If this is the last text node in an empty block, render a zero-
+      // width space that will convert into a line break when copying and pasting
+      // to support expected plain text.
+      if (text === '' && parent.object === 'block' && parent.text === '' && parent.nodes.size === 1) {
+        return React.createElement(
+          'span',
+          { 'data-slate-zero-width': 'n' },
+          '\u200B'
+        );
+      }
+
+      // COMPAT: If the text is empty, it's because it's on the edge of an inline
+      // void node, so we render a zero-width space so that the selection can be
+      // inserted next to it still.
+      if (text === '') {
+        return React.createElement(
+          'span',
+          { 'data-slate-zero-width': 'z' },
+          '\u200B'
+        );
+      }
+
+      // COMPAT: Browsers will collapse trailing new lines at the end of blocks,
+      // so we need to add an extra trailing new lines to prevent that.
+      var lastText = block.getLastText();
+      var lastChar = text.charAt(text.length - 1);
+      var isLastText = node === lastText;
+      var isLastLeaf = index === leaves.size - 1;
+      if (isLastText && isLastLeaf && lastChar === '\n') return text + '\n';
+
+      // Otherwise, just return the text.
+      return text;
+    }
+  }]);
+  return Leaf;
+}(React.Component);
+
+/**
+ * Export.
+ *
+ * @type {Component}
+ */
+
+Leaf.propTypes = {
+  block: SlateTypes.block.isRequired,
+  editor: Types.object.isRequired,
+  index: Types.number.isRequired,
+  leaves: SlateTypes.leaves.isRequired,
+  marks: SlateTypes.marks.isRequired,
+  node: SlateTypes.node.isRequired,
+  offset: Types.number.isRequired,
+  parent: SlateTypes.node.isRequired,
+  text: Types.string.isRequired };
+
+var _initialiseProps = function _initialiseProps() {
+  var _this2 = this;
+
+  this.debug = function (message) {
+    for (var _len2 = arguments.length, args = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+      args[_key2 - 1] = arguments[_key2];
+    }
+
+    debug.apply(undefined, [message, _this2.props.node.key + '-' + _this2.props.index].concat(args));
+  };
+};
+
+/**
+ * Debug.
+ *
+ * @type {Function}
+ */
+
+var debug$1 = Debug('slate:node');
+
+/**
+ * Text.
+ *
+ * @type {Component}
+ */
+
+var Text = function (_React$Component) {
+  inherits(Text, _React$Component);
+
+  function Text() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    classCallCheck(this, Text);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = possibleConstructorReturn(this, (_ref = Text.__proto__ || Object.getPrototypeOf(Text)).call.apply(_ref, [this].concat(args))), _this), _initialiseProps$1.call(_this), _temp), possibleConstructorReturn(_this, _ret);
+  }
+  /**
+   * Property types.
+   *
+   * @type {Object}
+   */
+
+  /**
+   * Default prop types.
+   *
+   * @type {Object}
+   */
+
+  /**
+   * Debug.
+   *
+   * @param {String} message
+   * @param {Mixed} ...args
+   */
+
+  /**
+   * Should the node update?
+   *
+   * @param {Object} nextProps
+   * @param {Object} value
+   * @return {Boolean}
+   */
+
+  createClass(Text, [{
+    key: 'render',
+
+
+    /**
+     * Render.
+     *
+     * @return {Element}
+     */
+
+    value: function render() {
+      var _this2 = this;
+
+      this.debug('render', this);
+
+      var _props = this.props,
+          decorations = _props.decorations,
+          editor = _props.editor,
+          node = _props.node,
+          style = _props.style;
+      var value = editor.value;
+      var document = value.document;
+      var key = node.key;
+
+
+      var decs = decorations.filter(function (d) {
+        var startKey = d.startKey,
+            endKey = d.endKey;
+
+        if (startKey == key || endKey == key) return true;
+        if (startKey === endKey) return false;
+        var startsBefore = document.areDescendantsSorted(startKey, key);
+        if (!startsBefore) return false;
+        var endsAfter = document.areDescendantsSorted(key, endKey);
+        return endsAfter;
+      });
+
+      // PERF: Take advantage of cache by avoiding arguments
+      var leaves = decs.size === 0 ? node.getLeaves() : node.getLeaves(decs);
+      var offset = 0;
+
+      var children = leaves.map(function (leaf, i) {
+        var child = _this2.renderLeaf(leaves, leaf, i, offset);
+        offset += leaf.text.length;
+        return child;
+      });
+
+      return React.createElement(
+        'span',
+        { 'data-key': key, style: style },
+        children
+      );
+    }
+
+    /**
+     * Render a single leaf given a `leaf` and `offset`.
+     *
+     * @param {List<Leaf>} leaves
+     * @param {Leaf} leaf
+     * @param {Number} index
+     * @param {Number} offset
+     * @return {Element} leaf
+     */
+
+  }]);
+  return Text;
+}(React.Component);
+
+/**
+ * Export.
+ *
+ * @type {Component}
+ */
+
+Text.propTypes = {
+  block: SlateTypes.block,
+  decorations: ImmutableTypes.list.isRequired,
+  editor: Types.object.isRequired,
+  node: SlateTypes.node.isRequired,
+  parent: SlateTypes.node.isRequired,
+  style: Types.object };
+Text.defaultProps = {
+  style: null };
+
+var _initialiseProps$1 = function _initialiseProps() {
+  var _this3 = this;
+
+  this.debug = function (message) {
+    for (var _len2 = arguments.length, args = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+      args[_key2 - 1] = arguments[_key2];
+    }
+
+    var node = _this3.props.node;
+    var key = node.key;
+
+    debug$1.apply(undefined, [message, key + ' (text)'].concat(args));
+  };
+
+  this.shouldComponentUpdate = function (nextProps) {
+    var props = _this3.props;
+
+    var n = nextProps;
+    var p = props;
+
+    // If the node has changed, update. PERF: There are cases where it will have
+    // changed, but it's properties will be exactly the same (eg. copy-paste)
+    // which this won't catch. But that's rare and not a drag on performance, so
+    // for simplicity we just let them through.
+    if (n.node != p.node) return true;
+
+    // If the node parent is a block node, and it was the last child of the
+    // block, re-render to cleanup extra `\n`.
+    if (n.parent.object == 'block') {
+      var pLast = p.parent.nodes.last();
+      var nLast = n.parent.nodes.last();
+      if (p.node == pLast && n.node != nLast) return true;
+    }
+
+    // Re-render if the current decorations have changed.
+    if (!n.decorations.equals(p.decorations)) return true;
+
+    // Otherwise, don't update.
+    return false;
+  };
+
+  this.renderLeaf = function (leaves, leaf, index, offset) {
+    var _props2 = _this3.props,
+        block = _props2.block,
+        node = _props2.node,
+        parent = _props2.parent,
+        editor = _props2.editor;
+    var text = leaf.text,
+        marks = leaf.marks;
+
+
+    return React.createElement(Leaf, {
+      key: node.key + '-' + index,
+      block: block,
+      editor: editor,
+      index: index,
+      marks: marks,
+      node: node,
+      offset: offset,
+      parent: parent,
+      leaves: leaves,
+      text: text
+    });
+  };
+};
+
+/**
+ * Debug.
+ *
+ * @type {Function}
+ */
+
+var debug$2 = Debug('slate:void');
+
+/**
+ * Void.
+ *
+ * @type {Component}
+ */
+
+var Void = function (_React$Component) {
+  inherits(Void, _React$Component);
+
+  function Void() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    classCallCheck(this, Void);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = possibleConstructorReturn(this, (_ref = Void.__proto__ || Object.getPrototypeOf(Void)).call.apply(_ref, [this].concat(args))), _this), _initialiseProps$2.call(_this), _temp), possibleConstructorReturn(_this, _ret);
+  }
+  /**
+   * Property types.
+   *
+   * @type {Object}
+   */
+
+  /**
+   * Debug.
+   *
+   * @param {String} message
+   * @param {Mixed} ...args
+   */
+
+  createClass(Void, [{
+    key: 'render',
+
+
+    /**
+     * Render.
+     *
+     * @return {Element}
+     */
+
+    value: function render() {
+      var props = this.props;
+      var children = props.children,
+          node = props.node,
+          readOnly = props.readOnly;
+
+      var Tag = node.object == 'block' ? 'div' : 'span';
+      var style = {
+        height: '0',
+        color: 'transparent',
+        outline: 'none'
+      };
+
+      var spacer = React.createElement(
+        Tag,
+        { 'data-slate-spacer': true, style: style },
+        this.renderText()
+      );
+
+      var content = React.createElement(
+        Tag,
+        { contentEditable: readOnly ? null : false },
+        children
+      );
+
+      this.debug('render', { props: props });
+
+      return React.createElement(
+        Tag,
+        { 'data-slate-void': true, 'data-key': node.key },
+        readOnly ? null : spacer,
+        content
+      );
+    }
+
+    /**
+     * Render the void node's text node, which will catch the cursor when it the
+     * void node is navigated to with the arrow keys.
+     *
+     * Having this text node there means the browser continues to manage the
+     * selection natively, so it keeps track of the right offset when moving
+     * across the block.
+     *
+     * @return {Element}
+     */
+
+  }]);
+  return Void;
+}(React.Component);
+
+/**
+ * Export.
+ *
+ * @type {Component}
+ */
+
+Void.propTypes = {
+  block: SlateTypes.block,
+  children: Types.any.isRequired,
+  editor: Types.object.isRequired,
+  node: SlateTypes.node.isRequired,
+  parent: SlateTypes.node.isRequired,
+  readOnly: Types.bool.isRequired };
+
+var _initialiseProps$2 = function _initialiseProps() {
+  var _this2 = this;
+
+  this.debug = function (message) {
+    for (var _len2 = arguments.length, args = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+      args[_key2 - 1] = arguments[_key2];
+    }
+
+    var node = _this2.props.node;
+    var key = node.key,
+        type = node.type;
+
+    var id = key + ' (' + type + ')';
+    debug$2.apply(undefined, [message, '' + id].concat(args));
+  };
+
+  this.renderText = function () {
+    var _props = _this2.props,
+        block = _props.block,
+        decorations = _props.decorations,
+        isSelected = _props.isSelected,
+        node = _props.node,
+        readOnly = _props.readOnly,
+        editor = _props.editor;
+
+    var child = node.getFirstText();
+    return React.createElement(Text, {
+      block: node.object == 'block' ? node : block,
+      decorations: decorations,
+      editor: editor,
+      isSelected: isSelected,
+      key: child.key,
+      node: child,
+      parent: node,
+      readOnly: readOnly
+    });
+  };
+};
+
+/**
+ * Split the decorations in lists of relevant decorations for each child.
+ *
+ * @param {Node} node
+ * @param {List} decorations
+ * @return {Array<List<Decoration>>}
+ */
+
+function getChildrenDecorations(node, decorations) {
+  var activeDecorations = immutable.Set().asMutable();
+  var childrenDecorations = [];
+
+  orderChildDecorations(node, decorations).forEach(function (item) {
+    if (item.isRangeStart) {
+      // Item is a decoration start
+      activeDecorations.add(item.decoration);
+    } else if (item.isRangeEnd) {
+      // item is a decoration end
+      activeDecorations.remove(item.decoration);
+    } else {
+      // Item is a child node
+      childrenDecorations.push(activeDecorations.toList());
+    }
+  });
+
+  return childrenDecorations;
+}
+
+/**
+ * Orders the children of provided node and its decoration endpoints (start, end)
+ * so that decorations can be passed only to relevant children (see use in Node.render())
+ *
+ * @param {Node} node
+ * @param {List} decorations
+ * @return {Array<Item>}
+ *
+ * where type Item =
+ * {
+ *   child: Node,
+ *   // Index of the child in its parent
+ *   index: number
+ * }
+ * or {
+ *   // True if this represents the start of the given decoration
+ *   isRangeStart: boolean,
+ *   // True if this represents the end of the given decoration
+ *   isRangeEnd: boolean,
+ *   decoration: Range
+ * }
+ */
+
+function orderChildDecorations(node, decorations) {
+  if (decorations.isEmpty()) {
+    return node.nodes.toArray().map(function (child, index) {
+      return {
+        child: child,
+        index: index
+      };
+    });
+  }
+
+  // Map each key to its global order
+  var keyOrders = defineProperty({}, node.key, 0);
+  var globalOrder = 1;
+  node.forEachDescendant(function (child) {
+    keyOrders[child.key] = globalOrder;
+    globalOrder = globalOrder + 1;
+  });
+
+  var childNodes = node.nodes.toArray();
+
+  var endPoints = childNodes.map(function (child, index) {
+    return {
+      child: child,
+      index: index,
+      order: keyOrders[child.key]
+    };
+  });
+
+  decorations.forEach(function (decoration) {
+    // Range start.
+    // A rangeStart should be before the child containing its startKey, in order
+    // to consider it active before going down the child.
+    var startKeyOrder = keyOrders[decoration.startKey];
+    var containingChildOrder = startKeyOrder === undefined ? 0 : getContainingChildOrder(childNodes, keyOrders, startKeyOrder);
+    endPoints.push({
+      isRangeStart: true,
+      order: containingChildOrder - 0.5,
+      decoration: decoration
+    });
+
+    // Range end.
+    var endKeyOrder = (keyOrders[decoration.endKey] || globalOrder) + 0.5;
+    endPoints.push({
+      isRangeEnd: true,
+      order: endKeyOrder,
+      decoration: decoration
+    });
+  });
+
+  return endPoints.sort(function (a, b) {
+    return a.order > b.order ? 1 : -1;
+  });
+}
+
+/*
+ * Returns the key order of the child right before the given order.
+ */
+
+function getContainingChildOrder(children, keyOrders, order) {
+  // Find the first child that is after the given key
+  var nextChildIndex = children.findIndex(function (child) {
+    return order < keyOrders[child.key];
+  });
+
+  if (nextChildIndex <= 0) {
+    return 0;
+  }
+
+  var containingChild = children[nextChildIndex - 1];
+  return keyOrders[containingChild.key];
+}
+
+/**
+ * Debug.
+ *
+ * @type {Function}
+ */
+
+var debug$3 = Debug('slate:node');
+
+/**
+ * Node.
+ *
+ * @type {Component}
+ */
+
+var Node = function (_React$Component) {
+  inherits(Node, _React$Component);
+
+  function Node() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    classCallCheck(this, Node);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = possibleConstructorReturn(this, (_ref = Node.__proto__ || Object.getPrototypeOf(Node)).call.apply(_ref, [this].concat(args))), _this), _initialiseProps$3.call(_this), _temp), possibleConstructorReturn(_this, _ret);
+  }
+  /**
+   * Property types.
+   *
+   * @type {Object}
+   */
+
+  /**
+   * Debug.
+   *
+   * @param {String} message
+   * @param {Mixed} ...args
+   */
+
+  /**
+   * Should the node update?
+   *
+   * @param {Object} nextProps
+   * @param {Object} value
+   * @return {Boolean}
+   */
+
+  createClass(Node, [{
+    key: 'render',
+
+
+    /**
+     * Render.
+     *
+     * @return {Element}
+     */
+
+    value: function render() {
+      var _this2 = this;
+
+      this.debug('render', this);
+      var _props = this.props,
+          editor = _props.editor,
+          isSelected = _props.isSelected,
+          node = _props.node,
+          decorations = _props.decorations,
+          parent = _props.parent,
+          readOnly = _props.readOnly;
+      var value = editor.value;
+      var selection = value.selection;
+      var stack = editor.stack;
+
+      var indexes = node.getSelectionIndexes(selection, isSelected);
+      var decs = decorations.concat(node.getDecorations(stack));
+      var childrenDecorations = getChildrenDecorations(node, decs);
+
+      var children = [];
+      node.nodes.forEach(function (child, i) {
+        var isChildSelected = !!indexes && indexes.start <= i && i < indexes.end;
+
+        children.push(_this2.renderNode(child, isChildSelected, childrenDecorations[i]));
+      });
+
+      // Attributes that the developer must mix into the element in their
+      // custom node renderer component.
+      var attributes = { 'data-key': node.key
+
+        // If it's a block node with inline children, add the proper `dir` attribute
+        // for text direction.
+      };if (node.object == 'block' && node.nodes.first().object != 'block') {
+        var direction = node.getTextDirection();
+        if (direction == 'rtl') attributes.dir = 'rtl';
+      }
+
+      var props = {
+        key: node.key,
+        editor: editor,
+        isSelected: isSelected,
+        node: node,
+        parent: parent,
+        readOnly: readOnly
+      };
+
+      var placeholder = stack.find('renderPlaceholder', props);
+
+      if (placeholder) {
+        placeholder = React.cloneElement(placeholder, {
+          key: node.key + '-placeholder'
+        });
+        children = [placeholder].concat(toConsumableArray(children));
+      }
+
+      var element = stack.find('renderNode', _extends({}, props, {
+        attributes: attributes,
+        children: children
+      }));
+
+      return node.isVoid ? React.createElement(
+        Void,
+        this.props,
+        element
+      ) : element;
+    }
+
+    /**
+     * Render a `child` node.
+     *
+     * @param {Node} child
+     * @param {Boolean} isSelected
+     * @param {Array<Decoration>} decorations
+     * @return {Element}
+     */
+
+  }]);
+  return Node;
+}(React.Component);
+
+/**
+ * Export.
+ *
+ * @type {Component}
+ */
+
+Node.propTypes = {
+  block: SlateTypes.block,
+  decorations: ImmutableTypes.list.isRequired,
+  editor: Types.object.isRequired,
+  isSelected: Types.bool.isRequired,
+  node: SlateTypes.node.isRequired,
+  parent: SlateTypes.node.isRequired,
+  readOnly: Types.bool.isRequired };
+
+var _initialiseProps$3 = function _initialiseProps() {
+  var _this3 = this;
+
+  this.debug = function (message) {
+    for (var _len2 = arguments.length, args = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+      args[_key2 - 1] = arguments[_key2];
+    }
+
+    var node = _this3.props.node;
+    var key = node.key,
+        type = node.type;
+
+    debug$3.apply(undefined, [message, key + ' (' + type + ')'].concat(args));
+  };
+
+  this.shouldComponentUpdate = function (nextProps) {
+    var props = _this3.props;
+    var stack = props.editor.stack;
+
+    var shouldUpdate = stack.find('shouldNodeComponentUpdate', props, nextProps);
+    var n = nextProps;
+    var p = props;
+
+    // If the `Component` has a custom logic to determine whether the component
+    // needs to be updated or not, return true if it returns true. If it returns
+    // false, we need to ignore it, because it shouldn't be allowed it.
+    if (shouldUpdate != null) {
+      if (shouldUpdate) {
+        return true;
+      }
+
+      if (shouldUpdate === false) {
+        logger.warn("Returning false in `shouldNodeComponentUpdate` does not disable Slate's internal `shouldComponentUpdate` logic. If you want to prevent updates, use React's `shouldComponentUpdate` instead.");
+      }
+    }
+
+    // If the `readOnly` status has changed, re-render in case there is any
+    // user-land logic that depends on it, like nested editable contents.
+    if (n.readOnly != p.readOnly) return true;
+
+    // If the node has changed, update. PERF: There are cases where it will have
+    // changed, but it's properties will be exactly the same (eg. copy-paste)
+    // which this won't catch. But that's rare and not a drag on performance, so
+    // for simplicity we just let them through.
+    if (n.node != p.node) return true;
+
+    // If the selection value of the node or of some of its children has changed,
+    // re-render in case there is any user-land logic depends on it to render.
+    // if the node is selected update it, even if it was already selected: the
+    // selection value of some of its children could have been changed and they
+    // need to be rendered again.
+    if (n.isSelected || p.isSelected) return true;
+
+    // If the decorations have changed, update.
+    if (!n.decorations.equals(p.decorations)) return true;
+
+    // Otherwise, don't update.
+    return false;
+  };
+
+  this.renderNode = function (child, isSelected, decorations) {
+    var _props2 = _this3.props,
+        block = _props2.block,
+        editor = _props2.editor,
+        node = _props2.node,
+        readOnly = _props2.readOnly;
+
+    var Component = child.object == 'text' ? Text : Node;
+
+    return React.createElement(Component, {
+      block: node.object == 'block' ? node : block,
+      decorations: decorations,
+      editor: editor,
+      isSelected: isSelected,
+      key: child.key,
+      node: child,
+      parent: node,
+      readOnly: readOnly
+    });
+  };
+};
+
+/**
+ * Find the DOM node for a `key`.
+ *
+ * @param {String|Node} key
+ * @param {Window} win (optional)
+ * @return {Element}
+ */
+
+function findDOMNode(key) {
+  var win = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : window;
+
+  if (slate.Node.isNode(key)) {
+    key = key.key;
+  }
+
+  var el = win.document.querySelector('[data-key="' + key + '"]');
+
+  if (!el) {
+    throw new Error('Unable to find a DOM node for "' + key + '". This is often because of forgetting to add `props.attributes` to a custom component.');
+  }
+
+  return el;
+}
+
+/**
+ * Find a native DOM selection point from a Slate `key` and `offset`.
+ *
+ * @param {String} key
+ * @param {Number} offset
+ * @param {Window} win (optional)
+ * @return {Object|Null}
+ */
+
+function findDOMPoint(key, offset) {
+  var win = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : window;
+
+  var el = findDOMNode(key, win);
+  var start = 0;
+  var n = void 0;
+
+  // COMPAT: In IE, this method's arguments are not optional, so we have to
+  // pass in all four even though the last two are defaults. (2017/10/25)
+  var iterator = win.document.createNodeIterator(el, NodeFilter.SHOW_TEXT, function () {
+    return NodeFilter.FILTER_ACCEPT;
+  }, false);
+
+  while (n = iterator.nextNode()) {
+    var length = n.textContent.length;
+
+    var end = start + length;
+
+    if (offset <= end) {
+      var o = offset - start;
+      return { node: n, offset: o >= 0 ? o : 0 };
+    }
+
+    start = end;
+  }
+
+  return null;
+}
+
+/**
+ * Find a native DOM range Slate `range`.
+ *
+ * @param {Range} range
+ * @param {Window} win (optional)
+ * @return {Object|Null}
+ */
+
+function findDOMRange(range) {
+  var win = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : window;
+  var anchorKey = range.anchorKey,
+      anchorOffset = range.anchorOffset,
+      focusKey = range.focusKey,
+      focusOffset = range.focusOffset,
+      isBackward$$1 = range.isBackward,
+      isCollapsed = range.isCollapsed;
+
+  var anchor = findDOMPoint(anchorKey, anchorOffset, win);
+  var focus = isCollapsed ? anchor : findDOMPoint(focusKey, focusOffset, win);
+  if (!anchor || !focus) return null;
+
+  var r = win.document.createRange();
+  var start = isBackward$$1 ? focus : anchor;
+  var end = isBackward$$1 ? anchor : focus;
+  r.setStart(start.node, start.offset);
+  r.setEnd(end.node, end.offset);
+  return r;
+}
+
+/**
+ * Constants.
+ *
+ * @type {String}
+ */
+
+var ZERO_WIDTH_ATTRIBUTE = 'data-slate-zero-width';
+var ZERO_WIDTH_SELECTOR = '[' + ZERO_WIDTH_ATTRIBUTE + ']';
+var OFFSET_KEY_ATTRIBUTE = 'data-offset-key';
+var RANGE_SELECTOR = '[' + OFFSET_KEY_ATTRIBUTE + ']';
+var TEXT_SELECTOR = '[data-key]';
+var VOID_SELECTOR = '[data-slate-void]';
+
+/**
+ * Find a Slate point from a DOM selection's `nativeNode` and `nativeOffset`.
+ *
+ * @param {Element} nativeNode
+ * @param {Number} nativeOffset
+ * @param {Value} value
+ * @return {Object}
+ */
+
+function findPoint(nativeNode, nativeOffset, value) {
+  var _normalizeNodeAndOffs = normalizeNodeAndOffset(nativeNode, nativeOffset),
+      nearestNode = _normalizeNodeAndOffs.node,
+      nearestOffset = _normalizeNodeAndOffs.offset;
+
+  var window = getWindow(nativeNode);
+  var parentNode = nearestNode.parentNode;
+
+  var rangeNode = parentNode.closest(RANGE_SELECTOR);
+  var offset = void 0;
+  var node = void 0;
+
+  // Calculate how far into the text node the `nearestNode` is, so that we can
+  // determine what the offset relative to the text node is.
+  if (rangeNode) {
+    var range = window.document.createRange();
+    var textNode = rangeNode.closest(TEXT_SELECTOR);
+    range.setStart(textNode, 0);
+    range.setEnd(nearestNode, nearestOffset);
+    node = textNode;
+    offset = range.toString().length;
+  } else {
+    // For void nodes, the element with the offset key will be a cousin, not an
+    // ancestor, so find it by going down from the nearest void parent.
+    var voidNode = parentNode.closest(VOID_SELECTOR);
+    if (!voidNode) return null;
+    rangeNode = voidNode.querySelector(RANGE_SELECTOR);
+    if (!rangeNode) return null;
+    node = rangeNode;
+    offset = node.textContent.length;
+  }
+
+  // COMPAT: If the parent node is a Slate zero-width space, this is because the
+  // text node should have no characters. However, during IME composition the
+  // ASCII characters will be prepended to the zero-width space, so subtract 1
+  // from the offset to account for the zero-width space character.
+  if (offset == node.textContent.length && parentNode.hasAttribute(ZERO_WIDTH_ATTRIBUTE)) {
+    offset--;
+  }
+
+  // Get the string value of the offset key attribute.
+  var offsetKey = rangeNode.getAttribute(OFFSET_KEY_ATTRIBUTE);
+  if (!offsetKey) return null;
+
+  var _OffsetKey$parse = OffsetKey.parse(offsetKey),
+      key = _OffsetKey$parse.key;
+
+  // COMPAT: If someone is clicking from one Slate editor into another, the
+  // select event fires twice, once for the old editor's `element` first, and
+  // then afterwards for the correct `element`. (2017/03/03)
+
+
+  if (!value.document.hasDescendant(key)) return null;
+
+  return {
+    key: key,
+    offset: offset
+  };
+}
+
+/**
+ * From a DOM selection's `node` and `offset`, normalize so that it always
+ * refers to a text node.
+ *
+ * @param {Element} node
+ * @param {Number} offset
+ * @return {Object}
+ */
+
+function normalizeNodeAndOffset(node, offset) {
+  // If it's an element node, its offset refers to the index of its children
+  // including comment nodes, so try to find the right text child node.
+  if (node.nodeType == 1 && node.childNodes.length) {
+    var isLast = offset == node.childNodes.length;
+    var direction = isLast ? 'backward' : 'forward';
+    var index = isLast ? offset - 1 : offset;
+    node = getEditableChild(node, index, direction);
+
+    // If the node has children, traverse until we have a leaf node. Leaf nodes
+    // can be either text nodes, or other void DOM nodes.
+    while (node.nodeType == 1 && node.childNodes.length) {
+      var i = isLast ? node.childNodes.length - 1 : 0;
+      node = getEditableChild(node, i, direction);
+    }
+
+    // Determine the new offset inside the text node.
+    offset = isLast ? node.textContent.length : 0;
+  }
+
+  // Return the node and offset.
+  return { node: node, offset: offset };
+}
+
+/**
+ * Get the nearest editable child at `index` in a `parent`, preferring
+ * `direction`.
+ *
+ * @param {Element} parent
+ * @param {Number} index
+ * @param {String} direction ('forward' or 'backward')
+ * @return {Element|Null}
+ */
+
+function getEditableChild(parent, index, direction) {
+  var childNodes = parent.childNodes;
+
+  var child = childNodes[index];
+  var i = index;
+  var triedForward = false;
+  var triedBackward = false;
+
+  // While the child is a comment node, or an element node with no children,
+  // keep iterating to find a sibling non-void, non-comment node.
+  while (child.nodeType == 8 || child.nodeType == 1 && child.childNodes.length == 0 || child.nodeType == 1 && child.getAttribute('contenteditable') == 'false') {
+    if (triedForward && triedBackward) break;
+
+    if (i >= childNodes.length) {
+      triedForward = true;
+      i = index - 1;
+      direction = 'backward';
+      continue;
+    }
+
+    if (i < 0) {
+      triedBackward = true;
+      i = index + 1;
+      direction = 'forward';
+      continue;
+    }
+
+    child = childNodes[i];
+    if (direction == 'forward') i++;
+    if (direction == 'backward') i--;
+  }
+
+  return child || null;
+}
+
+/**
+ * Find a Slate range from a DOM `native` selection.
+ *
+ * @param {Selection} native
+ * @param {Value} value
+ * @return {Range}
+ */
+
+function findRange(native, value) {
+  var el = native.anchorNode || native.startContainer;
+  if (!el) return null;
+
+  var window = getWindow(el);
+
+  // If the `native` object is a DOM `Range` or `StaticRange` object, change it
+  // into something that looks like a DOM `Selection` instead.
+  if (native instanceof window.Range || window.StaticRange && native instanceof window.StaticRange) {
+    native = {
+      anchorNode: native.startContainer,
+      anchorOffset: native.startOffset,
+      focusNode: native.endContainer,
+      focusOffset: native.endOffset
+    };
+  }
+
+  var _native = native,
+      anchorNode = _native.anchorNode,
+      anchorOffset = _native.anchorOffset,
+      focusNode = _native.focusNode,
+      focusOffset = _native.focusOffset,
+      isCollapsed = _native.isCollapsed;
+
+  var anchor = findPoint(anchorNode, anchorOffset, value);
+  var focus = isCollapsed ? anchor : findPoint(focusNode, focusOffset, value);
+  if (!anchor || !focus) return null;
+
+  // COMPAT: ??? The Edge browser seems to have a case where if you select the
+  // last word of a span, it sets the endContainer to the containing span.
+  // `selection-is-backward` doesn't handle this case.
+  if (slateDevEnvironment.IS_IE || slateDevEnvironment.IS_EDGE) {
+    var domAnchor = findDOMPoint(anchor.key, anchor.offset);
+    var domFocus = findDOMPoint(focus.key, focus.offset);
+
+    native = {
+      anchorNode: domAnchor.node,
+      anchorOffset: domAnchor.offset,
+      focusNode: domFocus.node,
+      focusOffset: domFocus.offset
+    };
+  }
+
+  var range = slate.Range.create({
+    anchorKey: anchor.key,
+    anchorOffset: anchor.offset,
+    focusKey: focus.key,
+    focusOffset: focus.offset,
+    isBackward: isCollapsed ? false : isBackward(native),
+    isFocused: true
+  });
+
+  return range;
+}
+
+/**
+ * CSS overflow values that would cause scrolling.
+ *
+ * @type {Array}
+ */
+
+var OVERFLOWS = ['auto', 'overlay', 'scroll'];
+
+/**
+ * Detect whether we are running IOS version 11
+ */
+
+var IS_IOS_11 = slateDevEnvironment.IS_IOS && !!window.navigator.userAgent.match(/os 11_/i);
+
+/**
+ * Find the nearest parent with scrolling, or window.
+ *
+ * @param {el} Element
+ */
+
+function findScrollContainer(el, window) {
+  var parent = el.parentNode;
+  var scroller = void 0;
+
+  while (!scroller) {
+    if (!parent.parentNode) break;
+
+    var style = window.getComputedStyle(parent);
+    var overflowY = style.overflowY;
+
+
+    if (OVERFLOWS.includes(overflowY)) {
+      scroller = parent;
+      break;
+    }
+
+    parent = parent.parentNode;
+  }
+
+  // COMPAT: Because Chrome does not allow doucment.body.scrollTop, we're
+  // assuming that window.scrollTo() should be used if the scrollable element
+  // turns out to be document.body or document.documentElement. This will work
+  // unless body is intentionally set to scrollable by restricting its height
+  // (e.g. height: 100vh).
+  if (!scroller) {
+    return window.document.body;
+  }
+
+  return scroller;
+}
+
+/**
+ * Scroll the current selection's focus point into view if needed.
+ *
+ * @param {Selection} selection
+ */
+
+function scrollToSelection(selection) {
+  if (IS_IOS_11) return;
+  if (!selection.anchorNode) return;
+
+  var window = getWindow(selection.anchorNode);
+  var scroller = findScrollContainer(selection.anchorNode, window);
+  var isWindow = scroller == window.document.body || scroller == window.document.documentElement;
+  var backward = isBackward(selection);
+
+  var range = selection.getRangeAt(0).cloneRange();
+  range.collapse(backward);
+  var cursorRect = range.getBoundingClientRect();
+
+  // COMPAT: range.getBoundingClientRect() returns 0s in Safari when range is
+  // collapsed. Expanding the range by 1 is a relatively effective workaround
+  // for vertical scroll, although horizontal may be off by 1 character.
+  // https://bugs.webkit.org/show_bug.cgi?id=138949
+  // https://bugs.chromium.org/p/chromium/issues/detail?id=435438
+  if (slateDevEnvironment.IS_SAFARI) {
+    if (range.collapsed && cursorRect.top == 0 && cursorRect.height == 0) {
+      if (range.startOffset == 0) {
+        range.setEnd(range.endContainer, 1);
+      } else {
+        range.setStart(range.startContainer, range.startOffset - 1);
+      }
+
+      cursorRect = range.getBoundingClientRect();
+
+      if (cursorRect.top == 0 && cursorRect.height == 0) {
+        if (range.getClientRects().length) {
+          cursorRect = range.getClientRects()[0];
+        }
+      }
+    }
+  }
+
+  var width = void 0;
+  var height = void 0;
+  var yOffset = void 0;
+  var xOffset = void 0;
+  var scrollerTop = 0;
+  var scrollerLeft = 0;
+  var scrollerBordersY = 0;
+  var scrollerBordersX = 0;
+  var scrollerPaddingTop = 0;
+  var scrollerPaddingBottom = 0;
+  var scrollerPaddingLeft = 0;
+  var scrollerPaddingRight = 0;
+
+  if (isWindow) {
+    var innerWidth = window.innerWidth,
+        innerHeight = window.innerHeight,
+        pageYOffset = window.pageYOffset,
+        pageXOffset = window.pageXOffset;
+
+    width = innerWidth;
+    height = innerHeight;
+    yOffset = pageYOffset;
+    xOffset = pageXOffset;
+  } else {
+    var offsetWidth = scroller.offsetWidth,
+        offsetHeight = scroller.offsetHeight,
+        scrollTop = scroller.scrollTop,
+        scrollLeft = scroller.scrollLeft;
+
+    var _window$getComputedSt = window.getComputedStyle(scroller),
+        borderTopWidth = _window$getComputedSt.borderTopWidth,
+        borderBottomWidth = _window$getComputedSt.borderBottomWidth,
+        borderLeftWidth = _window$getComputedSt.borderLeftWidth,
+        borderRightWidth = _window$getComputedSt.borderRightWidth,
+        paddingTop = _window$getComputedSt.paddingTop,
+        paddingBottom = _window$getComputedSt.paddingBottom,
+        paddingLeft = _window$getComputedSt.paddingLeft,
+        paddingRight = _window$getComputedSt.paddingRight;
+
+    var scrollerRect = scroller.getBoundingClientRect();
+    width = offsetWidth;
+    height = offsetHeight;
+    scrollerTop = scrollerRect.top + parseInt(borderTopWidth, 10);
+    scrollerLeft = scrollerRect.left + parseInt(borderLeftWidth, 10);
+    scrollerBordersY = parseInt(borderTopWidth, 10) + parseInt(borderBottomWidth, 10);
+    scrollerBordersX = parseInt(borderLeftWidth, 10) + parseInt(borderRightWidth, 10);
+    scrollerPaddingTop = parseInt(paddingTop, 10);
+    scrollerPaddingBottom = parseInt(paddingBottom, 10);
+    scrollerPaddingLeft = parseInt(paddingLeft, 10);
+    scrollerPaddingRight = parseInt(paddingRight, 10);
+    yOffset = scrollTop;
+    xOffset = scrollLeft;
+  }
+
+  var cursorTop = cursorRect.top + yOffset - scrollerTop;
+  var cursorLeft = cursorRect.left + xOffset - scrollerLeft;
+
+  var x = xOffset;
+  var y = yOffset;
+
+  if (cursorLeft < xOffset) {
+    // selection to the left of viewport
+    x = cursorLeft - scrollerPaddingLeft;
+  } else if (cursorLeft + cursorRect.width + scrollerBordersX > xOffset + width) {
+    // selection to the right of viewport
+    x = cursorLeft + scrollerBordersX + scrollerPaddingRight - width;
+  }
+
+  if (cursorTop < yOffset) {
+    // selection above viewport
+    y = cursorTop - scrollerPaddingTop;
+  } else if (cursorTop + cursorRect.height + scrollerBordersY > yOffset + height) {
+    // selection below viewport
+    y = cursorTop + scrollerBordersY + scrollerPaddingBottom + cursorRect.height - height;
+  }
+
+  if (isWindow) {
+    window.scrollTo(x, y);
+  } else {
+    scroller.scrollTop = y;
+    scroller.scrollLeft = x;
+  }
+}
+
+/**
+ * COMPAT: if we are in <= IE11 and the selection contains
+ * tables, `removeAllRanges()` will throw
+ * "unable to complete the operation due to error 800a025e"
+ *
+ * @param {Selection} selection document selection
+ */
+
+function removeAllRanges(selection) {
+  var doc = window.document;
+  if (doc && doc.body.createTextRange) {
+    // All IE but Edge
+    var range = doc.body.createTextRange();
+    range.collapse();
+    range.select();
+  } else {
+    selection.removeAllRanges();
+  }
+}
+
+/**
+ * Debug.
+ *
+ * @type {Function}
+ */
+
+var debug$4 = Debug('slate:content');
+
+/**
+ * Content.
+ *
+ * @type {Component}
+ */
+
+var Content = function (_React$Component) {
+  inherits(Content, _React$Component);
+
+  /**
+   * Constructor.
+   *
+   * @param {Object} props
+   */
+
+  /**
+   * Property types.
+   *
+   * @type {Object}
+   */
+
+  function Content(props) {
+    classCallCheck(this, Content);
+
+    var _this = possibleConstructorReturn(this, (Content.__proto__ || Object.getPrototypeOf(Content)).call(this, props));
+
+    _this.componentDidMount = function () {
+      var window = getWindow(_this.element);
+
+      window.document.addEventListener('selectionchange', _this.onNativeSelectionChange);
+
+      // COMPAT: Restrict scope of `beforeinput` to mobile.
+      if ((slateDevEnvironment.IS_IOS || slateDevEnvironment.IS_ANDROID) && slateDevEnvironment.SUPPORTED_EVENTS.beforeinput) {
+        _this.element.addEventListener('beforeinput', _this.onNativeBeforeInput);
+      }
+
+      _this.updateSelection();
+    };
+
+    _this.componentDidUpdate = function () {
+      _this.updateSelection();
+    };
+
+    _this.updateSelection = function () {
+      var editor = _this.props.editor;
+      var value = editor.value;
+      var selection = value.selection;
+      var isBackward$$1 = selection.isBackward;
+
+      var window = getWindow(_this.element);
+      var native = window.getSelection();
+      var rangeCount = native.rangeCount,
+          anchorNode = native.anchorNode;
+
+      // If both selections are blurred, do nothing.
+
+      if (!rangeCount && selection.isBlurred) return;
+
+      // If the selection has been blurred, but is still inside the editor in the
+      // DOM, blur it manually.
+      if (selection.isBlurred) {
+        if (!_this.isInEditor(anchorNode)) return;
+        removeAllRanges(native);
+        _this.element.blur();
+        debug$4('updateSelection', { selection: selection, native: native });
+        return;
+      }
+
+      // If the selection isn't set, do nothing.
+      if (selection.isUnset) return;
+
+      // Otherwise, figure out which DOM nodes should be selected...
+      var current = !!rangeCount && native.getRangeAt(0);
+      var range = findDOMRange(selection, window);
+
+      if (!range) {
+        logger.error('Unable to find a native DOM range from the current selection.', { selection: selection });
+        return;
+      }
+
+      var startContainer = range.startContainer,
+          startOffset = range.startOffset,
+          endContainer = range.endContainer,
+          endOffset = range.endOffset;
+
+      // If the new range matches the current selection, there is nothing to fix.
+      // COMPAT: The native `Range` object always has it's "start" first and "end"
+      // last in the DOM. It has no concept of "backwards/forwards", so we have
+      // to check both orientations here. (2017/10/31)
+
+      if (current) {
+        if (startContainer == current.startContainer && startOffset == current.startOffset && endContainer == current.endContainer && endOffset == current.endOffset || startContainer == current.endContainer && startOffset == current.endOffset && endContainer == current.startContainer && endOffset == current.startOffset) {
+          return;
+        }
+      }
+
+      // Otherwise, set the `isUpdatingSelection` flag and update the selection.
+      _this.tmp.isUpdatingSelection = true;
+      removeAllRanges(native);
+
+      // COMPAT: IE 11 does not support Selection.setBaseAndExtent
+      if (native.setBaseAndExtent) {
+        // COMPAT: Since the DOM range has no concept of backwards/forwards
+        // we need to check and do the right thing here.
+        if (isBackward$$1) {
+          native.setBaseAndExtent(range.endContainer, range.endOffset, range.startContainer, range.startOffset);
+        } else {
+          native.setBaseAndExtent(range.startContainer, range.startOffset, range.endContainer, range.endOffset);
+        }
+      } else {
+        // COMPAT: IE 11 does not support Selection.extend, fallback to addRange
+        native.addRange(range);
+      }
+
+      // Scroll to the selection, in case it's out of view.
+      scrollToSelection(native);
+
+      // Then unset the `isUpdatingSelection` flag after a delay.
+      setTimeout(function () {
+        // COMPAT: In Firefox, it's not enough to create a range, you also need to
+        // focus the contenteditable element too. (2016/11/16)
+        if (slateDevEnvironment.IS_FIREFOX && _this.element) _this.element.focus();
+        _this.tmp.isUpdatingSelection = false;
+      });
+
+      debug$4('updateSelection', { selection: selection, native: native });
+    };
+
+    _this.ref = function (element) {
+      _this.element = element;
+    };
+
+    _this.isInEditor = function (target) {
+      var element = _this.element;
+      // COMPAT: Text nodes don't have `isContentEditable` property. So, when
+      // `target` is a text node use its parent node for check.
+
+      var el = target.nodeType === 3 ? target.parentNode : target;
+      return el.isContentEditable && (el === element || el.closest('[data-slate-editor]') === element);
+    };
+
+    _this.onNativeBeforeInput = function (event) {
+      if (_this.props.readOnly) return;
+      if (!_this.isInEditor(event.target)) return;
+
+      var _event$getTargetRange = event.getTargetRanges(),
+          _event$getTargetRange2 = slicedToArray(_event$getTargetRange, 1),
+          targetRange = _event$getTargetRange2[0];
+
+      if (!targetRange) return;
+
+      var editor = _this.props.editor;
+
+
+      switch (event.inputType) {
+        case 'deleteContentBackward':
+          {
+            event.preventDefault();
+
+            var range = findRange(targetRange, editor.value);
+            editor.change(function (change) {
+              return change.deleteAtRange(range);
+            });
+            break;
+          }
+
+        case 'insertLineBreak': // intentional fallthru
+        case 'insertParagraph':
+          {
+            event.preventDefault();
+            var _range = findRange(targetRange, editor.value);
+
+            editor.change(function (change) {
+              if (change.value.isInVoid) {
+                change.collapseToStartOfNextText();
+              } else {
+                change.splitBlockAtRange(_range);
+              }
+            });
+            break;
+          }
+
+        case 'insertReplacementText': // intentional fallthru
+        case 'insertText':
+          {
+            // `data` should have the text for the `insertText` input type and
+            // `dataTransfer` should have the text for the `insertReplacementText`
+            // input type, but Safari uses `insertText` for spell check replacements
+            // and sets `data` to `null`.
+            var text = event.data == null ? event.dataTransfer.getData('text/plain') : event.data;
+
+            if (text == null) return;
+
+            event.preventDefault();
+
+            var value = editor.value;
+            var selection = value.selection;
+
+            var _range2 = findRange(targetRange, value);
+
+            editor.change(function (change) {
+              change.insertTextAtRange(_range2, text, selection.marks);
+
+              // If the text was successfully inserted, and the selection had marks
+              // on it, unset the selection's marks.
+              if (selection.marks && value.document != change.value.document) {
+                change.select({ marks: null });
+              }
+            });
+
+            break;
+          }
+      }
+    };
+
+    _this.onNativeSelectionChange = throttle(function (event) {
+      if (_this.props.readOnly) return;
+
+      var window = getWindow(event.target);
+      var activeElement = window.document.activeElement;
+
+      if (activeElement !== _this.element) return;
+
+      _this.props.onSelect(event);
+    }, 100);
+
+    _this.renderNode = function (child, isSelected, decorations) {
+      var _this$props = _this.props,
+          editor = _this$props.editor,
+          readOnly = _this$props.readOnly;
+      var value = editor.value;
+      var document = value.document;
+
+
+      return React.createElement(Node, {
+        block: null,
+        editor: editor,
+        decorations: decorations,
+        isSelected: isSelected,
+        key: child.key,
+        node: child,
+        parent: document,
+        readOnly: readOnly
+      });
+    };
+
+    _this.tmp = {};
+    _this.tmp.isUpdatingSelection = false;
+
+    EVENT_HANDLERS.forEach(function (handler) {
+      _this[handler] = function (event) {
+        _this.onEvent(handler, event);
+      };
+    });
+    return _this;
+  }
+
+  /**
+   * When the editor first mounts in the DOM we need to:
+   *
+   *   - Add native DOM event listeners.
+   *   - Update the selection, in case it starts focused.
+   */
+
+  /**
+   * Default properties.
+   *
+   * @type {Object}
+   */
+
+  createClass(Content, [{
+    key: 'componentWillUnmount',
+
+
+    /**
+     * When unmounting, remove DOM event listeners.
+     */
+
+    value: function componentWillUnmount() {
+      var window = getWindow(this.element);
+
+      if (window) {
+        window.document.removeEventListener('selectionchange', this.onNativeSelectionChange);
+      }
+
+      // COMPAT: Restrict scope of `beforeinput` to mobile.
+      if ((slateDevEnvironment.IS_IOS || slateDevEnvironment.IS_ANDROID) && slateDevEnvironment.SUPPORTED_EVENTS.beforeinput) {
+        this.element.removeEventListener('beforeinput', this.onNativeBeforeInput);
+      }
+    }
+
+    /**
+     * On update, update the selection.
+     */
+
+    /**
+     * Update the native DOM selection to reflect the internal model.
+     */
+
+    /**
+     * The React ref method to set the root content element locally.
+     *
+     * @param {Element} element
+     */
+
+    /**
+     * Check if an event `target` is fired from within the contenteditable
+     * element. This should be false for edits happening in non-contenteditable
+     * children, such as void nodes and other nested Slate editors.
+     *
+     * @param {Element} target
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'onEvent',
+
+
+    /**
+     * On `event` with `handler`.
+     *
+     * @param {String} handler
+     * @param {Event} event
+     */
+
+    value: function onEvent(handler, event) {
+      debug$4('onEvent', handler);
+
+      // Ignore `onBlur`, `onFocus` and `onSelect` events generated
+      // programmatically while updating selection.
+      if (this.tmp.isUpdatingSelection && (handler == 'onSelect' || handler == 'onBlur' || handler == 'onFocus')) {
+        return;
+      }
+
+      // COMPAT: There are situations where a select event will fire with a new
+      // native selection that resolves to the same internal position. In those
+      // cases we don't need to trigger any changes, since our internal model is
+      // already up to date, but we do want to update the native selection again
+      // to make sure it is in sync. (2017/10/16)
+      if (handler == 'onSelect') {
+        var editor = this.props.editor;
+        var value = editor.value;
+        var selection = value.selection;
+
+        var window = getWindow(event.target);
+        var native = window.getSelection();
+        var range = findRange(native, value);
+
+        if (range && range.equals(selection)) {
+          this.updateSelection();
+          return;
+        }
+      }
+
+      // Don't handle drag and drop events coming from embedded editors.
+      if (handler == 'onDragEnd' || handler == 'onDragEnter' || handler == 'onDragExit' || handler == 'onDragLeave' || handler == 'onDragOver' || handler == 'onDragStart' || handler == 'onDrop') {
+        var target = event.target;
+
+        var targetEditorNode = target.closest('[data-slate-editor]');
+        if (targetEditorNode !== this.element) return;
+      }
+
+      // Some events require being in editable in the editor, so if the event
+      // target isn't, ignore them.
+      if (handler == 'onBeforeInput' || handler == 'onBlur' || handler == 'onCompositionEnd' || handler == 'onCompositionStart' || handler == 'onCopy' || handler == 'onCut' || handler == 'onFocus' || handler == 'onInput' || handler == 'onKeyDown' || handler == 'onKeyUp' || handler == 'onPaste' || handler == 'onSelect') {
+        if (!this.isInEditor(event.target)) return;
+      }
+
+      this.props[handler](event);
+    }
+
+    /**
+     * On a native `beforeinput` event, use the additional range information
+     * provided by the event to manipulate text exactly as the browser would.
+     *
+     * This is currently only used on iOS and Android.
+     *
+     * @param {InputEvent} event
+     */
+
+    /**
+     * On native `selectionchange` event, trigger the `onSelect` handler. This is
+     * needed to account for React's `onSelect` being non-standard and not firing
+     * until after a selection has been released. This causes issues in situations
+     * where another change happens while a selection is being made.
+     *
+     * @param {Event} event
+     */
+
+  }, {
+    key: 'render',
+
+
+    /**
+     * Render the editor content.
+     *
+     * @return {Element}
+     */
+
+    value: function render() {
+      var _this2 = this;
+
+      var props = this.props;
+      var className = props.className,
+          readOnly = props.readOnly,
+          editor = props.editor,
+          tabIndex = props.tabIndex,
+          role = props.role,
+          tagName = props.tagName,
+          spellCheck = props.spellCheck;
+      var value = editor.value,
+          stack = editor.stack;
+
+      var Container = tagName;
+      var document = value.document,
+          selection = value.selection,
+          decorations = value.decorations;
+
+      var indexes = document.getSelectionIndexes(selection, selection.isFocused);
+      var decs = document.getDecorations(stack).concat(decorations || []);
+      var childrenDecorations = getChildrenDecorations(document, decs);
+
+      var children = document.nodes.toArray().map(function (child, i) {
+        var isSelected = !!indexes && indexes.start <= i && i < indexes.end;
+
+        return _this2.renderNode(child, isSelected, childrenDecorations[i]);
+      });
+
+      var handlers = EVENT_HANDLERS.reduce(function (obj, handler) {
+        obj[handler] = _this2[handler];
+        return obj;
+      }, {});
+
+      var style = _extends({
+        // Prevent the default outline styles.
+        outline: 'none',
+        // Preserve adjacent whitespace and new lines.
+        whiteSpace: 'pre-wrap',
+        // Allow words to break if they are too long.
+        wordWrap: 'break-word'
+      }, readOnly ? {} : { WebkitUserModify: 'read-write-plaintext-only' }, props.style);
+
+      debug$4('render', { props: props });
+
+      return React.createElement(
+        Container,
+        _extends({}, handlers, {
+          'data-slate-editor': true,
+          ref: this.ref,
+          'data-key': document.key,
+          contentEditable: readOnly ? null : true,
+          suppressContentEditableWarning: true,
+          className: className,
+          onBlur: this.onBlur,
+          onFocus: this.onFocus,
+          onCompositionEnd: this.onCompositionEnd,
+          onCompositionStart: this.onCompositionStart,
+          onCopy: this.onCopy,
+          onCut: this.onCut,
+          onDragEnd: this.onDragEnd,
+          onDragOver: this.onDragOver,
+          onDragStart: this.onDragStart,
+          onDrop: this.onDrop,
+          onInput: this.onInput,
+          onKeyDown: this.onKeyDown,
+          onKeyUp: this.onKeyUp,
+          onPaste: this.onPaste,
+          onSelect: this.onSelect,
+          autoCorrect: props.autoCorrect ? 'on' : 'off',
+          spellCheck: spellCheck,
+          style: style,
+          role: readOnly ? null : role || 'textbox',
+          tabIndex: tabIndex
+          // COMPAT: The Grammarly Chrome extension works by changing the DOM out
+          // from under `contenteditable` elements, which leads to weird behaviors
+          // so we have to disable it like this. (2017/04/24)
+          , 'data-gramm': false
+        }),
+        children,
+        this.props.children
+      );
+    }
+
+    /**
+     * Render a `child` node of the document.
+     *
+     * @param {Node} child
+     * @param {Boolean} isSelected
+     * @return {Element}
+     */
+
+  }]);
+  return Content;
+}(React.Component);
+
+/**
+ * Mix in handler prop types.
+ */
+
+Content.propTypes = {
+  autoCorrect: Types.bool.isRequired,
+  children: Types.any.isRequired,
+  className: Types.string,
+  editor: Types.object.isRequired,
+  readOnly: Types.bool.isRequired,
+  role: Types.string,
+  spellCheck: Types.bool.isRequired,
+  style: Types.object,
+  tabIndex: Types.number,
+  tagName: Types.string };
+Content.defaultProps = {
+  style: {},
+  tagName: 'div' };
+EVENT_HANDLERS.forEach(function (handler) {
+  Content.propTypes[handler] = Types.func.isRequired;
+});
+
+/**
+ * The transfer types that Slate recognizes.
+ *
+ * @type {Object}
+ */
+
+var TRANSFER_TYPES = {
+  FRAGMENT: 'application/x-slate-fragment',
+  HTML: 'text/html',
+  NODE: 'application/x-slate-node',
+  RICH: 'text/rtf',
+  TEXT: 'text/plain'
+
+  /**
+   * Export.
+   *
+   * @type {Object}
+   */
+
+};
+
+var FRAGMENT = TRANSFER_TYPES.FRAGMENT;
+var HTML = TRANSFER_TYPES.HTML;
+var TEXT = TRANSFER_TYPES.TEXT;
+
+/**
+ * Prepares a Slate document fragment to be copied to the clipboard.
+ *
+ * @param {Event} event
+ * @param {Value} value
+ * @param {Document} [fragment]
+ */
+
+function cloneFragment(event, value) {
+  var fragment = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : value.fragment;
+
+  var window = getWindow(event.target);
+  var native = window.getSelection();
+  var startKey = value.startKey,
+      endKey = value.endKey,
+      startText = value.startText;
+
+  var startVoid = value.document.getClosestVoid(startKey);
+  var endVoid = value.document.getClosestVoid(endKey);
+
+  // If the selection is collapsed, and it isn't inside a void node, abort.
+  if (native.isCollapsed && !startVoid) return;
+
+  // Create a fake selection so that we can add a Base64-encoded copy of the
+  // fragment to the HTML, to decode on future pastes.
+  var encoded = Base64.serializeNode(fragment);
+  var range = native.getRangeAt(0);
+  var contents = range.cloneContents();
+  var attach = contents.childNodes[0];
+
+  // Make sure attach is a non-empty node, since empty nodes will not get copied
+  contents.childNodes.forEach(function (node) {
+    if (node.innerText && node.innerText.trim() !== '') {
+      attach = node;
+    }
+  });
+
+  // COMPAT: If the end node is a void node, we need to move the end of the
+  // range from the void node's spacer span, to the end of the void node's
+  // content, since the spacer is before void's content in the DOM.
+  if (endVoid) {
+    var r = range.cloneRange();
+    var node = findDOMNode(endVoid, window);
+    r.setEndAfter(node);
+    contents = r.cloneContents();
+  }
+
+  // COMPAT: If the start node is a void node, we need to attach the encoded
+  // fragment to the void node's content node instead of the spacer, because
+  // attaching it to empty `<div>/<span>` nodes will end up having it erased by
+  // most browsers. (2018/04/27)
+  if (startVoid) {
+    attach = contents.childNodes[0].childNodes[1].firstChild;
+  }
+
+  // COMPAT: in Safari and Chrome when selecting a single marked word, marks are
+  // not preserved when copying. If the attatched is not void, and the start key
+  // and endKey is the same, check if there is marks involved. If so, set the
+  // range start just before the start text node.
+  if ((slateDevEnvironment.IS_CHROME || slateDevEnvironment.IS_SAFARI || slateDevEnvironment.IS_OPERA) && !endVoid && startKey === endKey) {
+    var hasMarks = startText.characters.slice(value.selection.anchorOffset, value.selection.focusOffset).filter(function (char) {
+      return char.marks.size !== 0;
+    }).size !== 0;
+    if (hasMarks) {
+      var _r = range.cloneRange();
+      var _node = findDOMNode(startText, window);
+      _r.setStartBefore(_node);
+      contents = _r.cloneContents();
+      attach = contents.childNodes[contents.childNodes.length - 1].firstChild;
+    }
+  }
+
+  // Remove any zero-width space spans from the cloned DOM so that they don't
+  // show up elsewhere when pasted.
+  [].slice.call(contents.querySelectorAll(ZERO_WIDTH_SELECTOR)).forEach(function (zw) {
+    var isNewline = zw.getAttribute(ZERO_WIDTH_ATTRIBUTE) === 'n';
+    zw.textContent = isNewline ? '\n' : '';
+  });
+
+  // COMPAT: In Chrome and Safari, if the last element in the selection to
+  // copy has `contenteditable="false"` the copy will fail, and nothing will
+  // be put in the clipboard. So we remove them all. (2017/05/04)
+  if (slateDevEnvironment.IS_CHROME || slateDevEnvironment.IS_SAFARI || slateDevEnvironment.IS_OPERA) {
+    var els = [].slice.call(contents.querySelectorAll('[contenteditable="false"]'));
+    els.forEach(function (el) {
+      return el.removeAttribute('contenteditable');
+    });
+  }
+
+  // Set a `data-slate-fragment` attribute on a non-empty node, so it shows up
+  // in the HTML, and can be used for intra-Slate pasting. If it's a text
+  // node, wrap it in a `<span>` so we have something to set an attribute on.
+  if (attach.nodeType == 3) {
+    var span = window.document.createElement('span');
+
+    // COMPAT: In Chrome and Safari, if we don't add the `white-space` style
+    // then leading and trailing spaces will be ignored. (2017/09/21)
+    span.style.whiteSpace = 'pre';
+
+    span.appendChild(attach);
+    contents.appendChild(span);
+    attach = span;
+  }
+
+  attach.setAttribute('data-slate-fragment', encoded);
+
+  // Add the phony content to a div element. This is needed to copy the
+  // contents into the html clipboard register.
+  var div = window.document.createElement('div');
+  div.appendChild(contents);
+
+  // For browsers supporting it, we set the clipboard registers manually,
+  // since the result is more predictable.
+  if (event.clipboardData && event.clipboardData.setData) {
+    event.preventDefault();
+    event.clipboardData.setData(TEXT, native.toString());
+    event.clipboardData.setData(FRAGMENT, encoded);
+    event.clipboardData.setData(HTML, div.innerHTML);
+    return;
+  }
+
+  // COMPAT: For browser that don't support the Clipboard API's setData method,
+  // we must rely on the browser to natively copy what's selected.
+  // So we add the div (containing our content) to the DOM, and select it.
+  var editor = event.target.closest('[data-slate-editor]');
+  div.setAttribute('contenteditable', true);
+  div.style.position = 'absolute';
+  div.style.left = '-9999px';
+  editor.appendChild(div);
+  native.selectAllChildren(div);
+
+  // Revert to the previous selection right after copying.
+  window.requestAnimationFrame(function () {
+    editor.removeChild(div);
+    removeAllRanges(native);
+    native.addRange(range);
+  });
+}
+
+/**
+ * Find a Slate node from a DOM `element`.
+ *
+ * @param {Element} element
+ * @param {Value} value
+ * @return {Node|Null}
+ */
+
+function findNode(element, value) {
+  var closest = element.closest('[data-key]');
+  if (!closest) return null;
+
+  var key = closest.getAttribute('data-key');
+  if (!key) return null;
+
+  var node = value.document.getNode(key);
+  return node || null;
+}
+
+/**
+ * Get the target range from a DOM `event`.
+ *
+ * @param {Event} event
+ * @param {Value} value
+ * @return {Range}
+ */
+
+function getEventRange(event, value) {
+  if (event.nativeEvent) {
+    event = event.nativeEvent;
+  }
+
+  var _event = event,
+      x = _event.x,
+      y = _event.y,
+      target = _event.target;
+
+  if (x == null || y == null) return null;
+
+  var document = value.document;
+
+  var node = findNode(target, value);
+  if (!node) return null;
+
+  // If the drop target is inside a void node, move it into either the next or
+  // previous node, depending on which side the `x` and `y` coordinates are
+  // closest to.
+  if (node.isVoid) {
+    var rect = target.getBoundingClientRect();
+    var isPrevious = node.object == 'inline' ? x - rect.left < rect.left + rect.width - x : y - rect.top < rect.top + rect.height - y;
+
+    var text = node.getFirstText();
+    var _range = slate.Range.create();
+    return isPrevious ? _range.moveToEndOf(document.getPreviousText(text.key)) : _range.moveToStartOf(document.getNextText(text.key));
+  }
+
+  // Else resolve a range from the caret position where the drop occured.
+  var window = getWindow(target);
+  var native = void 0;
+
+  // COMPAT: In Firefox, `caretRangeFromPoint` doesn't exist. (2016/07/25)
+  if (window.document.caretRangeFromPoint) {
+    native = window.document.caretRangeFromPoint(x, y);
+  } else {
+    var position = window.document.caretPositionFromPoint(x, y);
+    native = window.document.createRange();
+    native.setStart(position.offsetNode, position.offset);
+    native.setEnd(position.offsetNode, position.offset);
+  }
+
+  // Resolve a Slate range from the DOM range.
+  var range = findRange(native, value);
+  if (!range) return null;
+
+  return range;
+}
+
+/**
+ * Transfer types.
+ *
+ * @type {String}
+ */
+
+var FRAGMENT$1 = TRANSFER_TYPES.FRAGMENT;
+var HTML$1 = TRANSFER_TYPES.HTML;
+var NODE = TRANSFER_TYPES.NODE;
+var RICH = TRANSFER_TYPES.RICH;
+var TEXT$1 = TRANSFER_TYPES.TEXT;
+
+/**
+ * Fragment matching regexp for HTML nodes.
+ *
+ * @type {RegExp}
+ */
+
+var FRAGMENT_MATCHER = / data-slate-fragment="([^\s"]+)"/;
+
+/**
+ * Get the transfer data from an `event`.
+ *
+ * @param {Event} event
+ * @return {Object}
+ */
+
+function getEventTransfer(event) {
+  if (event.nativeEvent) {
+    event = event.nativeEvent;
+  }
+
+  var transfer = event.dataTransfer || event.clipboardData;
+  var fragment = getType(transfer, FRAGMENT$1);
+  var node = getType(transfer, NODE);
+  var html = getType(transfer, HTML$1);
+  var rich = getType(transfer, RICH);
+  var text = getType(transfer, TEXT$1);
+  var files = void 0;
+
+  // If there isn't a fragment, but there is HTML, check to see if the HTML is
+  // actually an encoded fragment.
+  if (!fragment && html && ~html.indexOf(' data-slate-fragment="')) {
+    var matches = FRAGMENT_MATCHER.exec(html);
+
+    var _matches = slicedToArray(matches, 2),
+        full = _matches[0],
+        encoded = _matches[1]; // eslint-disable-line no-unused-vars
+
+
+    if (encoded) fragment = encoded;
+  }
+
+  // COMPAT: Edge doesn't handle custom data types
+  // These will be embedded in text/plain in this case (2017/7/12)
+  if (text) {
+    var embeddedTypes = getEmbeddedTypes(text);
+
+    if (embeddedTypes[FRAGMENT$1]) fragment = embeddedTypes[FRAGMENT$1];
+    if (embeddedTypes[NODE]) node = embeddedTypes[NODE];
+    if (embeddedTypes[TEXT$1]) text = embeddedTypes[TEXT$1];
+  }
+
+  // Decode a fragment or node if they exist.
+  if (fragment) fragment = Base64.deserializeNode(fragment);
+  if (node) node = Base64.deserializeNode(node);
+
+  // COMPAT: Edge sometimes throws 'NotSupportedError'
+  // when accessing `transfer.items` (2017/7/12)
+  try {
+    // Get and normalize files if they exist.
+    if (transfer.items && transfer.items.length) {
+      files = Array.from(transfer.items).map(function (item) {
+        return item.kind == 'file' ? item.getAsFile() : null;
+      }).filter(function (exists) {
+        return exists;
+      });
+    } else if (transfer.files && transfer.files.length) {
+      files = Array.from(transfer.files);
+    }
+  } catch (err) {
+    if (transfer.files && transfer.files.length) {
+      files = Array.from(transfer.files);
+    }
+  }
+
+  // Determine the type of the data.
+  var data = { files: files, fragment: fragment, html: html, node: node, rich: rich, text: text };
+  data.type = getTransferType(data);
+  return data;
+}
+
+/**
+ * Takes text input, checks whether contains embedded data
+ * and returns object with original text +/- additional data
+ *
+ * @param {String} text
+ * @return {Object}
+ */
+
+function getEmbeddedTypes(text) {
+  var prefix = 'SLATE-DATA-EMBED::';
+
+  if (text.substring(0, prefix.length) != prefix) {
+    return { TEXT: text };
+  }
+
+  // Attempt to parse, if fails then just standard text/plain
+  // Otherwise, already had data embedded
+  try {
+    return JSON.parse(text.substring(prefix.length));
+  } catch (err) {
+    throw new Error('Unable to parse custom Slate drag event data.');
+  }
+}
+
+/**
+ * Get the type of a transfer from its `data`.
+ *
+ * @param {Object} data
+ * @return {String}
+ */
+
+function getTransferType(data) {
+  if (data.fragment) return 'fragment';
+  if (data.node) return 'node';
+
+  // COMPAT: Microsoft Word adds an image of the selected text to the data.
+  // Since files are preferred over HTML or text, this would cause the type to
+  // be considered `files`. But it also adds rich text data so we can check
+  // for that and properly set the type to `html` or `text`. (2016/11/21)
+  if (data.rich && data.html) return 'html';
+  if (data.rich && data.text) return 'text';
+
+  if (data.files && data.files.length) return 'files';
+  if (data.html) return 'html';
+  if (data.text) return 'text';
+  return 'unknown';
+}
+
+/**
+ * Get one of types `TYPES.FRAGMENT`, `TYPES.NODE`, `text/html`, `text/rtf` or
+ * `text/plain` from transfers's `data` if possible, otherwise return null.
+ *
+ * @param {Object} transfer
+ * @param {String} type
+ * @return {String}
+ */
+
+function getType(transfer, type) {
+  if (!transfer.types || !transfer.types.length) {
+    // COMPAT: In IE 11, there is no `types` field but `getData('Text')`
+    // is supported`. (2017/06/23)
+    return type == TEXT$1 ? transfer.getData('Text') || null : null;
+  }
+
+  // COMPAT: In Edge, transfer.types doesn't respond to `indexOf`. (2017/10/25)
+  var types = Array.from(transfer.types);
+
+  return types.indexOf(type) !== -1 ? transfer.getData(type) || null : null;
+}
+
+/**
+ * The default plain text transfer type.
+ *
+ * @type {String}
+ */
+
+var TEXT$2 = TRANSFER_TYPES.TEXT;
+
+/**
+ * Set data with `type` and `content` on an `event`.
+ *
+ * COMPAT: In Edge, custom types throw errors, so embed all non-standard
+ * types in text/plain compound object. (2017/7/12)
+ *
+ * @param {Event} event
+ * @param {String} type
+ * @param {String} content
+ */
+
+function setEventTransfer(event, type, content) {
+  var mime = TRANSFER_TYPES[type.toUpperCase()];
+
+  if (!mime) {
+    throw new Error('Cannot set unknown transfer type "' + mime + '".');
+  }
+
+  if (event.nativeEvent) {
+    event = event.nativeEvent;
+  }
+
+  var transfer = event.dataTransfer || event.clipboardData;
+
+  try {
+    transfer.setData(mime, content);
+  } catch (err) {
+    var prefix = 'SLATE-DATA-EMBED::';
+    var text = transfer.getData(TEXT$2);
+    var obj = {};
+
+    // If the existing plain text data is prefixed, it's Slate JSON data.
+    if (text.substring(0, prefix.length) === prefix) {
+      try {
+        obj = JSON.parse(text.substring(prefix.length));
+      } catch (e) {
+        throw new Error('Failed to parse Slate data from `DataTransfer` object.');
+      }
+    } else {
+      // Otherwise, it's just set it as is.
+      obj[TEXT$2] = text;
+    }
+
+    obj[mime] = content;
+    var string = '' + prefix + JSON.stringify(obj);
+    transfer.setData(TEXT$2, string);
+  }
+}
+
+/**
+ * Debug.
+ *
+ * @type {Function}
+ */
+
+var debug$5 = Debug('slate:after');
+
+/**
+ * The after plugin.
+ *
+ * @return {Object}
+ */
+
+function AfterPlugin() {
+  var isDraggingInternally = null;
+
+  /**
+   * On before input, correct any browser inconsistencies.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onBeforeInput(event, change, editor) {
+    debug$5('onBeforeInput', { event: event });
+
+    event.preventDefault();
+    change.insertText(event.data);
+  }
+
+  /**
+   * On blur.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onBlur(event, change, editor) {
+    debug$5('onBlur', { event: event });
+
+    change.blur();
+  }
+
+  /**
+   * On click.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onClick(event, change, editor) {
+    if (editor.props.readOnly) return true;
+
+    var value = change.value;
+    var document = value.document;
+
+    var node = findNode(event.target, value);
+    var isVoid = node && (node.isVoid || document.hasVoidParent(node.key));
+
+    if (isVoid) {
+      // COMPAT: In Chrome & Safari, selections that are at the zero offset of
+      // an inline node will be automatically replaced to be at the last offset
+      // of a previous inline node, which screws us up, so we always want to set
+      // it to the end of the node. (2016/11/29)
+      change.focus().collapseToEndOf(node);
+    }
+
+    debug$5('onClick', { event: event });
+  }
+
+  /**
+   * On copy.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onCopy(event, change, editor) {
+    debug$5('onCopy', { event: event });
+
+    cloneFragment(event, change.value);
+  }
+
+  /**
+   * On cut.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onCut(event, change, editor) {
+    debug$5('onCut', { event: event });
+
+    cloneFragment(event, change.value);
+    var window = getWindow(event.target);
+
+    // Once the fake cut content has successfully been added to the clipboard,
+    // delete the content in the current selection.
+    window.requestAnimationFrame(function () {
+      // If user cuts a void block node or a void inline node,
+      // manually removes it since selection is collapsed in this case.
+      var value = change.value;
+      var endBlock = value.endBlock,
+          endInline = value.endInline,
+          isCollapsed = value.isCollapsed;
+
+      var isVoidBlock = endBlock && endBlock.isVoid && isCollapsed;
+      var isVoidInline = endInline && endInline.isVoid && isCollapsed;
+
+      if (isVoidBlock) {
+        editor.change(function (c) {
+          return c.removeNodeByKey(endBlock.key);
+        });
+      } else if (isVoidInline) {
+        editor.change(function (c) {
+          return c.removeNodeByKey(endInline.key);
+        });
+      } else {
+        editor.change(function (c) {
+          return c.delete();
+        });
+      }
+    });
+  }
+
+  /**
+   * On drag end.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onDragEnd(event, change, editor) {
+    debug$5('onDragEnd', { event: event });
+
+    isDraggingInternally = null;
+  }
+
+  /**
+   * On drag over.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onDragOver(event, change, editor) {
+    debug$5('onDragOver', { event: event });
+
+    isDraggingInternally = false;
+  }
+
+  /**
+   * On drag start.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onDragStart(event, change, editor) {
+    debug$5('onDragStart', { event: event });
+
+    isDraggingInternally = true;
+
+    var value = change.value;
+    var document = value.document;
+
+    var node = findNode(event.target, value);
+    var isVoid = node && (node.isVoid || document.hasVoidParent(node.key));
+
+    if (isVoid) {
+      var encoded = Base64.serializeNode(node, { preserveKeys: true });
+      setEventTransfer(event, 'node', encoded);
+    } else {
+      var fragment = value.fragment;
+
+      var _encoded = Base64.serializeNode(fragment);
+      setEventTransfer(event, 'fragment', _encoded);
+    }
+  }
+
+  /**
+   * On drop.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onDrop(event, change, editor) {
+    debug$5('onDrop', { event: event });
+
+    var value = change.value;
+    var document = value.document,
+        selection = value.selection;
+
+    var window = getWindow(event.target);
+    var target = getEventRange(event, value);
+    if (!target) return;
+
+    var transfer = getEventTransfer(event);
+    var type = transfer.type,
+        fragment = transfer.fragment,
+        node = transfer.node,
+        text = transfer.text;
+
+
+    change.focus();
+
+    // If the drag is internal and the target is after the selection, it
+    // needs to account for the selection's content being deleted.
+    if (isDraggingInternally && selection.endKey == target.endKey && selection.endOffset < target.endOffset) {
+      target = target.move(selection.startKey == selection.endKey ? 0 - selection.endOffset + selection.startOffset : 0 - selection.endOffset);
+    }
+
+    if (isDraggingInternally) {
+      change.delete();
+    }
+
+    change.select(target);
+
+    if (type == 'text' || type == 'html') {
+      var _target = target,
+          anchorKey = _target.anchorKey;
+
+      var hasVoidParent = document.hasVoidParent(anchorKey);
+
+      if (hasVoidParent) {
+        var n = document.getNode(anchorKey);
+
+        while (hasVoidParent) {
+          n = document.getNextText(n.key);
+          if (!n) break;
+          hasVoidParent = document.hasVoidParent(n.key);
+        }
+
+        if (n) change.collapseToStartOf(n);
+      }
+
+      if (text) {
+        text.split('\n').forEach(function (line, i) {
+          if (i > 0) change.splitBlock();
+          change.insertText(line);
+        });
+      }
+    }
+
+    if (type == 'fragment') {
+      change.insertFragment(fragment);
+    }
+
+    if (type == 'node' && slate.Block.isBlock(node)) {
+      change.insertBlock(node.regenerateKey()).removeNodeByKey(node.key);
+    }
+
+    if (type == 'node' && slate.Inline.isInline(node)) {
+      change.insertInline(node.regenerateKey()).removeNodeByKey(node.key);
+    }
+
+    // COMPAT: React's onSelect event breaks after an onDrop event
+    // has fired in a node: https://github.com/facebook/react/issues/11379.
+    // Until this is fixed in React, we dispatch a mouseup event on that
+    // DOM node, since that will make it go back to normal.
+    var focusNode = document.getNode(target.focusKey);
+    var el = findDOMNode(focusNode, window);
+    if (!el) return;
+
+    el.dispatchEvent(new MouseEvent('mouseup', {
+      view: window,
+      bubbles: true,
+      cancelable: true
+    }));
+  }
+
+  /**
+   * On input.
+   *
+   * @param {Event} eventvent
+   * @param {Change} change
+   */
+
+  function onInput(event, change, editor) {
+    debug$5('onInput', { event: event });
+
+    var window = getWindow(event.target);
+    var value = change.value;
+
+    // Get the selection point.
+
+    var native = window.getSelection();
+    var anchorNode = native.anchorNode;
+
+    var point = findPoint(anchorNode, 0, value);
+    if (!point) return;
+
+    // Get the text node and leaf in question.
+    var document = value.document,
+        selection = value.selection;
+
+    var node = document.getDescendant(point.key);
+    var block = document.getClosestBlock(node.key);
+    var leaves = node.getLeaves();
+    var lastText = block.getLastText();
+    var lastLeaf = leaves.last();
+    var start = 0;
+    var end = 0;
+
+    var leaf = leaves.find(function (r) {
+      start = end;
+      end += r.text.length;
+      if (end > point.offset) return true;
+    }) || lastLeaf;
+
+    // Get the text information.
+    var text = leaf.text;
+    var textContent = anchorNode.textContent;
+
+    var isLastText = node == lastText;
+    var isLastLeaf = leaf == lastLeaf;
+    var lastChar = textContent.charAt(textContent.length - 1);
+
+    // COMPAT: If this is the last leaf, and the DOM text ends in a new line,
+    // we will have added another new line in <Leaf>'s render method to account
+    // for browsers collapsing a single trailing new lines, so remove it.
+    if (isLastText && isLastLeaf && lastChar == '\n') {
+      textContent = textContent.slice(0, -1);
+    }
+
+    // If the text is no different, abort.
+    if (textContent == text) return;
+
+    // Determine what the selection should be after changing the text.
+    var delta = textContent.length - text.length;
+    var corrected = selection.collapseToEnd().move(delta);
+    var entire = selection.moveAnchorTo(point.key, start).moveFocusTo(point.key, end);
+
+    // Change the current value to have the leaf's text replaced.
+    change.insertTextAtRange(entire, textContent, leaf.marks).select(corrected);
+  }
+
+  /**
+   * On key down.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onKeyDown(event, change, editor) {
+    debug$5('onKeyDown', { event: event });
+
+    var value = change.value;
+
+    // COMPAT: In iOS, some of these hotkeys are handled in the
+    // `onNativeBeforeInput` handler of the `<Content>` component in order to
+    // preserve native autocorrect behavior, so they shouldn't be handled here.
+
+    if (Hotkeys.isSplitBlock(event) && !slateDevEnvironment.IS_IOS) {
+      return value.isInVoid ? change.collapseToStartOfNextText() : change.splitBlock();
+    }
+
+    if (Hotkeys.isDeleteCharBackward(event) && !slateDevEnvironment.IS_IOS) {
+      return change.deleteCharBackward();
+    }
+
+    if (Hotkeys.isDeleteCharForward(event) && !slateDevEnvironment.IS_IOS) {
+      return change.deleteCharForward();
+    }
+
+    if (Hotkeys.isDeleteLineBackward(event)) {
+      return change.deleteLineBackward();
+    }
+
+    if (Hotkeys.isDeleteLineForward(event)) {
+      return change.deleteLineForward();
+    }
+
+    if (Hotkeys.isDeleteWordBackward(event)) {
+      return change.deleteWordBackward();
+    }
+
+    if (Hotkeys.isDeleteWordForward(event)) {
+      return change.deleteWordForward();
+    }
+
+    if (Hotkeys.isRedo(event)) {
+      return change.redo();
+    }
+
+    if (Hotkeys.isUndo(event)) {
+      return change.undo();
+    }
+
+    // COMPAT: Certain browsers don't handle the selection updates properly. In
+    // Chrome, the selection isn't properly extended. And in Firefox, the
+    // selection isn't properly collapsed. (2017/10/17)
+    if (Hotkeys.isCollapseLineBackward(event)) {
+      event.preventDefault();
+      return change.collapseLineBackward();
+    }
+
+    if (Hotkeys.isCollapseLineForward(event)) {
+      event.preventDefault();
+      return change.collapseLineForward();
+    }
+
+    if (Hotkeys.isExtendLineBackward(event)) {
+      event.preventDefault();
+      return change.extendLineBackward();
+    }
+
+    if (Hotkeys.isExtendLineForward(event)) {
+      event.preventDefault();
+      return change.extendLineForward();
+    }
+
+    // COMPAT: If a void node is selected, or a zero-width text node adjacent to
+    // an inline is selected, we need to handle these hotkeys manually because
+    // browsers won't know what to do.
+    if (Hotkeys.isCollapseCharBackward(event)) {
+      var document = value.document,
+          isInVoid = value.isInVoid,
+          previousText = value.previousText,
+          startText = value.startText;
+
+      var isPreviousInVoid = previousText && document.hasVoidParent(previousText.key);
+      if (isInVoid || isPreviousInVoid || startText.text == '') {
+        event.preventDefault();
+        return change.collapseCharBackward();
+      }
+    }
+
+    if (Hotkeys.isCollapseCharForward(event)) {
+      var _document = value.document,
+          _isInVoid = value.isInVoid,
+          nextText = value.nextText,
+          _startText = value.startText;
+
+      var isNextInVoid = nextText && _document.hasVoidParent(nextText.key);
+      if (_isInVoid || isNextInVoid || _startText.text == '') {
+        event.preventDefault();
+        return change.collapseCharForward();
+      }
+    }
+
+    if (Hotkeys.isExtendCharBackward(event)) {
+      var _document2 = value.document,
+          _isInVoid2 = value.isInVoid,
+          _previousText = value.previousText,
+          _startText2 = value.startText;
+
+      var _isPreviousInVoid = _previousText && _document2.hasVoidParent(_previousText.key);
+      if (_isInVoid2 || _isPreviousInVoid || _startText2.text == '') {
+        event.preventDefault();
+        return change.extendCharBackward();
+      }
+    }
+
+    if (Hotkeys.isExtendCharForward(event)) {
+      var _document3 = value.document,
+          _isInVoid3 = value.isInVoid,
+          _nextText = value.nextText,
+          _startText3 = value.startText;
+
+      var _isNextInVoid = _nextText && _document3.hasVoidParent(_nextText.key);
+      if (_isInVoid3 || _isNextInVoid || _startText3.text == '') {
+        event.preventDefault();
+        return change.extendCharForward();
+      }
+    }
+  }
+
+  /**
+   * On paste.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onPaste(event, change, editor) {
+    debug$5('onPaste', { event: event });
+
+    var transfer = getEventTransfer(event);
+    var type = transfer.type,
+        fragment = transfer.fragment,
+        text = transfer.text;
+
+
+    if (type == 'fragment') {
+      change.insertFragment(fragment);
+    }
+
+    if (type == 'text' || type == 'html') {
+      if (!text) return;
+      var value = change.value;
+      var document = value.document,
+          selection = value.selection,
+          startBlock = value.startBlock;
+
+      if (startBlock.isVoid) return;
+
+      var defaultBlock = startBlock;
+      var defaultMarks = document.getInsertMarksAtRange(selection);
+      var frag = Plain.deserialize(text, { defaultBlock: defaultBlock, defaultMarks: defaultMarks }).document;
+      change.insertFragment(frag);
+    }
+  }
+
+  /**
+   * On select.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onSelect(event, change, editor) {
+    debug$5('onSelect', { event: event });
+
+    var window = getWindow(event.target);
+    var value = change.value;
+    var document = value.document;
+
+    var native = window.getSelection();
+
+    // If there are no ranges, the editor was blurred natively.
+    if (!native.rangeCount) {
+      change.blur();
+      return;
+    }
+
+    // Otherwise, determine the Slate selection from the native one.
+    var range = findRange(native, value);
+    if (!range) return;
+
+    var _range = range,
+        anchorKey = _range.anchorKey,
+        anchorOffset = _range.anchorOffset,
+        focusKey = _range.focusKey,
+        focusOffset = _range.focusOffset;
+
+    var anchorText = document.getNode(anchorKey);
+    var focusText = document.getNode(focusKey);
+    var anchorInline = document.getClosestInline(anchorKey);
+    var focusInline = document.getClosestInline(focusKey);
+    var focusBlock = document.getClosestBlock(focusKey);
+    var anchorBlock = document.getClosestBlock(anchorKey);
+
+    // COMPAT: If the anchor point is at the start of a non-void, and the
+    // focus point is inside a void node with an offset that isn't `0`, set
+    // the focus offset to `0`. This is due to void nodes <span>'s being
+    // positioned off screen, resulting in the offset always being greater
+    // than `0`. Since we can't know what it really should be, and since an
+    // offset of `0` is less destructive because it creates a hanging
+    // selection, go with `0`. (2017/09/07)
+    if (anchorBlock && !anchorBlock.isVoid && anchorOffset == 0 && focusBlock && focusBlock.isVoid && focusOffset != 0) {
+      range = range.set('focusOffset', 0);
+    }
+
+    // COMPAT: If the selection is at the end of a non-void inline node, and
+    // there is a node after it, put it in the node after instead. This
+    // standardizes the behavior, since it's indistinguishable to the user.
+    if (anchorInline && !anchorInline.isVoid && anchorOffset == anchorText.text.length) {
+      var block = document.getClosestBlock(anchorKey);
+      var next = block.getNextText(anchorKey);
+      if (next) range = range.moveAnchorTo(next.key, 0);
+    }
+
+    if (focusInline && !focusInline.isVoid && focusOffset == focusText.text.length) {
+      var _block = document.getClosestBlock(focusKey);
+      var _next = _block.getNextText(focusKey);
+      if (_next) range = range.moveFocusTo(_next.key, 0);
+    }
+
+    range = range.normalize(document);
+    change.select(range);
+  }
+
+  /**
+   * Render editor.
+   *
+   * @param {Object} props
+   * @param {Editor} editor
+   * @return {Object}
+   */
+
+  function renderEditor(props, editor) {
+    var handlers = EVENT_HANDLERS.reduce(function (obj, handler) {
+      obj[handler] = editor[handler];
+      return obj;
+    }, {});
+
+    return React.createElement(Content, _extends({}, handlers, {
+      autoCorrect: props.autoCorrect,
+      className: props.className,
+      children: props.children,
+      editor: editor,
+      readOnly: props.readOnly,
+      role: props.role,
+      spellCheck: props.spellCheck,
+      style: props.style,
+      tabIndex: props.tabIndex,
+      tagName: props.tagName
+    }));
+  }
+
+  /**
+   * Render node.
+   *
+   * @param {Object} props
+   * @return {Element}
+   */
+
+  function renderNode(props) {
+    var attributes = props.attributes,
+        children = props.children,
+        node = props.node;
+
+    if (node.object != 'block' && node.object != 'inline') return;
+    var Tag = node.object == 'block' ? 'div' : 'span';
+    var style = { position: 'relative' };
+    return React.createElement(
+      Tag,
+      _extends({}, attributes, { style: style }),
+      children
+    );
+  }
+
+  /**
+   * Render placeholder.
+   *
+   * @param {Object} props
+   * @return {Element}
+   */
+
+  function renderPlaceholder(props) {
+    var editor = props.editor,
+        node = props.node;
+
+    if (!editor.props.placeholder) return;
+    if (editor.state.isComposing) return;
+    if (node.object != 'block') return;
+    if (!slate.Text.isTextList(node.nodes)) return;
+    if (node.text != '') return;
+    if (editor.value.document.getBlocks().size > 1) return;
+
+    var style = {
+      pointerEvents: 'none',
+      display: 'inline-block',
+      width: '0',
+      maxWidth: '100%',
+      whiteSpace: 'nowrap',
+      opacity: '0.333'
+    };
+
+    return React.createElement(
+      'span',
+      { contentEditable: false, style: style },
+      editor.props.placeholder
+    );
+  }
+
+  /**
+   * Return the plugin.
+   *
+   * @type {Object}
+   */
+
+  return {
+    onBeforeInput: onBeforeInput,
+    onBlur: onBlur,
+    onClick: onClick,
+    onCopy: onCopy,
+    onCut: onCut,
+    onDragEnd: onDragEnd,
+    onDragOver: onDragOver,
+    onDragStart: onDragStart,
+    onDrop: onDrop,
+    onInput: onInput,
+    onKeyDown: onKeyDown,
+    onPaste: onPaste,
+    onSelect: onSelect,
+    renderEditor: renderEditor,
+    renderNode: renderNode,
+    renderPlaceholder: renderPlaceholder
+  };
+}
+
+/**
+ * Debug.
+ *
+ * @type {Function}
+ */
+
+var debug$6 = Debug('slate:before');
+
+/**
+ * The core before plugin.
+ *
+ * @return {Object}
+ */
+
+function BeforePlugin() {
+  var activeElement = null;
+  var compositionCount = 0;
+  var isComposing = false;
+  var isCopying = false;
+  var isDragging = false;
+
+  /**
+   * On before input.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onBeforeInput(event, change, editor) {
+    if (editor.props.readOnly) return true;
+
+    // COMPAT: React's `onBeforeInput` synthetic event is based on the native
+    // `keypress` and `textInput` events. In browsers that support the native
+    // `beforeinput` event, we instead use that event to trigger text insertion,
+    // since it provides more useful information about the range being affected
+    // and also preserves compatibility with iOS autocorrect, which would be
+    // broken if we called `preventDefault()` on React's synthetic event here.
+    // Since native `onbeforeinput` mainly benefits autocorrect and spellcheck
+    // for mobile, on desktop it brings IME issue, limit its scope for now.
+    if ((slateDevEnvironment.IS_IOS || slateDevEnvironment.IS_ANDROID) && slateDevEnvironment.SUPPORTED_EVENTS.beforeinput) return true;
+
+    debug$6('onBeforeInput', { event: event });
+  }
+
+  /**
+   * On blur.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onBlur(event, change, editor) {
+    if (isCopying) return true;
+    if (editor.props.readOnly) return true;
+
+    var value = change.value;
+    var relatedTarget = event.relatedTarget,
+        target = event.target;
+
+    var window = getWindow(target);
+
+    // COMPAT: If the current `activeElement` is still the previous one, this is
+    // due to the window being blurred when the tab itself becomes unfocused, so
+    // we want to abort early to allow to editor to stay focused when the tab
+    // becomes focused again.
+    if (activeElement == window.document.activeElement) return true;
+
+    // COMPAT: The `relatedTarget` can be null when the new focus target is not
+    // a "focusable" element (eg. a `<div>` without `tabindex` set).
+    if (relatedTarget) {
+      var el = reactDom.findDOMNode(editor);
+
+      // COMPAT: The event should be ignored if the focus is returning to the
+      // editor from an embedded editable element (eg. an <input> element inside
+      // a void node).
+      if (relatedTarget == el) return true;
+
+      // COMPAT: The event should be ignored if the focus is moving from the
+      // editor to inside a void node's spacer element.
+      if (relatedTarget.hasAttribute('data-slate-spacer')) return true;
+
+      // COMPAT: The event should be ignored if the focus is moving to a non-
+      // editable section of an element that isn't a void node (eg. a list item
+      // of the check list example).
+      var node = findNode(relatedTarget, value);
+      if (el.contains(relatedTarget) && node && !node.isVoid) return true;
+    }
+
+    debug$6('onBlur', { event: event });
+  }
+
+  /**
+   * On change.
+   *
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onChange(change, editor) {
+    var value = change.value;
+
+    // If the value's schema isn't the editor's schema, update it. This can
+    // happen on the initialization of the editor, or if the schema changes.
+    // This change isn't save into history since only schema is updated.
+
+    if (value.schema != editor.schema) {
+      change.setValue({ schema: editor.schema }, { save: false }).normalize();
+    }
+
+    debug$6('onChange');
+  }
+
+  /**
+   * On composition end.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onCompositionEnd(event, change, editor) {
+    var n = compositionCount;
+
+    // The `count` check here ensures that if another composition starts
+    // before the timeout has closed out this one, we will abort unsetting the
+    // `isComposing` flag, since a composition is still in affect.
+    window.requestAnimationFrame(function () {
+      if (compositionCount > n) return;
+      isComposing = false;
+
+      // HACK: we need to re-render the editor here so that it will update its
+      // placeholder in case one is currently rendered. This should be handled
+      // differently ideally, in a less invasive way?
+      // (apply force re-render if isComposing changes)
+      if (editor.state.isComposing) {
+        editor.setState({ isComposing: false });
+      }
+    });
+
+    debug$6('onCompositionEnd', { event: event });
+  }
+
+  /**
+   * On composition start.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onCompositionStart(event, change, editor) {
+    isComposing = true;
+    compositionCount++;
+
+    // HACK: we need to re-render the editor here so that it will update its
+    // placeholder in case one is currently rendered. This should be handled
+    // differently ideally, in a less invasive way?
+    // (apply force re-render if isComposing changes)
+    if (!editor.state.isComposing) {
+      editor.setState({ isComposing: true });
+    }
+
+    debug$6('onCompositionStart', { event: event });
+  }
+
+  /**
+   * On copy.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onCopy(event, change, editor) {
+    var window = getWindow(event.target);
+    isCopying = true;
+    window.requestAnimationFrame(function () {
+      return isCopying = false;
+    });
+
+    debug$6('onCopy', { event: event });
+  }
+
+  /**
+   * On cut.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onCut(event, change, editor) {
+    if (editor.props.readOnly) return true;
+
+    var window = getWindow(event.target);
+    isCopying = true;
+    window.requestAnimationFrame(function () {
+      return isCopying = false;
+    });
+
+    debug$6('onCut', { event: event });
+  }
+
+  /**
+   * On drag end.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onDragEnd(event, change, editor) {
+    isDragging = false;
+
+    debug$6('onDragEnd', { event: event });
+  }
+
+  /**
+   * On drag enter.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onDragEnter(event, change, editor) {
+    debug$6('onDragEnter', { event: event });
+  }
+
+  /**
+   * On drag exit.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onDragExit(event, change, editor) {
+    debug$6('onDragExit', { event: event });
+  }
+
+  /**
+   * On drag leave.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onDragLeave(event, change, editor) {
+    debug$6('onDragLeave', { event: event });
+  }
+
+  /**
+   * On drag over.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onDragOver(event, change, editor) {
+    // If the target is inside a void node, and only in this case,
+    // call `preventDefault` to signal that drops are allowed.
+    // When the target is editable, dropping is already allowed by
+    // default, and calling `preventDefault` hides the cursor.
+    var node = findNode(event.target, editor.value);
+    if (node.isVoid) event.preventDefault();
+
+    // If a drag is already in progress, don't do this again.
+    if (!isDragging) {
+      isDragging = true;
+      event.nativeEvent.dataTransfer.dropEffect = 'move';
+    }
+
+    debug$6('onDragOver', { event: event });
+  }
+
+  /**
+   * On drag start.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onDragStart(event, change, editor) {
+    isDragging = true;
+
+    debug$6('onDragStart', { event: event });
+  }
+
+  /**
+   * On drop.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onDrop(event, change, editor) {
+    // Nothing happens in read-only mode.
+    if (editor.props.readOnly) return true;
+
+    // Prevent default so the DOM's value isn't corrupted.
+    event.preventDefault();
+
+    debug$6('onDrop', { event: event });
+  }
+
+  /**
+   * On focus.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onFocus(event, change, editor) {
+    if (isCopying) return true;
+    if (editor.props.readOnly) return true;
+
+    var el = reactDom.findDOMNode(editor);
+
+    // Save the new `activeElement`.
+    var window = getWindow(event.target);
+    activeElement = window.document.activeElement;
+
+    // COMPAT: If the editor has nested editable elements, the focus can go to
+    // those elements. In Firefox, this must be prevented because it results in
+    // issues with keyboard navigation. (2017/03/30)
+    if (slateDevEnvironment.IS_FIREFOX && event.target != el) {
+      el.focus();
+      return true;
+    }
+
+    debug$6('onFocus', { event: event });
+  }
+
+  /**
+   * On input.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onInput(event, change, editor) {
+    if (isComposing) return true;
+    if (change.value.isBlurred) return true;
+
+    debug$6('onInput', { event: event });
+  }
+
+  /**
+   * On key down.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onKeyDown(event, change, editor) {
+    if (editor.props.readOnly) return true;
+
+    // When composing, we need to prevent all hotkeys from executing while
+    // typing. However, certain characters also move the selection before
+    // we're able to handle it, so prevent their default behavior.
+    if (isComposing) {
+      if (Hotkeys.isComposing(event)) event.preventDefault();
+      return true;
+    }
+
+    // Certain hotkeys have native behavior in contenteditable elements which
+    // will cause our value to be out of sync, so prevent them.
+    if (Hotkeys.isContentEditable(event) && !slateDevEnvironment.IS_IOS) {
+      event.preventDefault();
+    }
+
+    debug$6('onKeyDown', { event: event });
+  }
+
+  /**
+   * On paste.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onPaste(event, change, editor) {
+    if (editor.props.readOnly) return true;
+
+    // Prevent defaults so the DOM state isn't corrupted.
+    event.preventDefault();
+
+    debug$6('onPaste', { event: event });
+  }
+
+  /**
+   * On select.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onSelect(event, change, editor) {
+    if (isCopying) return true;
+    if (isComposing) return true;
+    if (editor.props.readOnly) return true;
+
+    // Save the new `activeElement`.
+    var window = getWindow(event.target);
+    activeElement = window.document.activeElement;
+
+    debug$6('onSelect', { event: event });
+  }
+
+  /**
+   * Return the plugin.
+   *
+   * @type {Object}
+   */
+
+  return {
+    onBeforeInput: onBeforeInput,
+    onBlur: onBlur,
+    onChange: onChange,
+    onCompositionEnd: onCompositionEnd,
+    onCompositionStart: onCompositionStart,
+    onCopy: onCopy,
+    onCut: onCut,
+    onDragEnd: onDragEnd,
+    onDragEnter: onDragEnter,
+    onDragExit: onDragExit,
+    onDragLeave: onDragLeave,
+    onDragOver: onDragOver,
+    onDragStart: onDragStart,
+    onDrop: onDrop,
+    onFocus: onFocus,
+    onInput: onInput,
+    onKeyDown: onKeyDown,
+    onPaste: onPaste,
+    onSelect: onSelect
+  };
+}
+
+/**
+ * Noop.
+ *
+ * @return {Void}
+ */
+
+function noop() {}
+
+/**
+ * Debug.
+ *
+ * @type {Function}
+ */
+
+var debug$7 = Debug('slate:editor');
+
+/**
+ * Editor.
+ *
+ * @type {Component}
+ */
+
+var Editor = function (_React$Component) {
+  inherits(Editor, _React$Component);
+
+  /**
+   * Constructor.
+   *
+   * @param {Object} props
+   */
+
+  /**
+   * Property types.
+   *
+   * @type {Object}
+   */
+
+  function Editor(props) {
+    classCallCheck(this, Editor);
+
+    var _this = possibleConstructorReturn(this, (Editor.__proto__ || Object.getPrototypeOf(Editor)).call(this, props));
+
+    _initialiseProps$4.call(_this);
+
+    _this.state = {};
+    _this.tmp = {};
+    _this.tmp.updates = 0;
+    _this.tmp.resolves = 0;
+
+    // Resolve the plugins and create a stack and schema from them.
+    var plugins = _this.resolvePlugins(props.plugins, props.schema);
+    var stack = slate.Stack.create({ plugins: plugins });
+    var schema = slate.Schema.create({ plugins: plugins });
+    _this.state.schema = schema;
+    _this.state.stack = stack;
+
+    // Run `onChange` on the passed-in value because we need to ensure that it
+    // is normalized, and queue the resulting change.
+    var change = props.value.change();
+    stack.run('onChange', change, _this);
+    _this.queueChange(change);
+    _this.state.value = change.value;
+
+    // Create a bound event handler for each event.
+    EVENT_HANDLERS.forEach(function (handler) {
+      _this[handler] = function () {
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+          args[_key] = arguments[_key];
+        }
+
+        _this.onEvent.apply(_this, [handler].concat(args));
+      };
+    });
+    return _this;
+  }
+
+  /**
+   * When the `props` are updated, create a new `Stack` if necessary and run
+   * `onChange` to ensure the value is normalized.
+   *
+   * @param {Object} props
+   */
+
+  /**
+   * Default properties.
+   *
+   * @type {Object}
+   */
+
+  /**
+   * When the component first mounts, flush any temporary changes,
+   * and then, focus the editor if `autoFocus` is set.
+   */
+
+  /**
+   * When the component updates, flush any temporary change.
+   */
+
+  /**
+   * Queue a `change` object, to be able to flush it later. This is required for
+   * when a change needs to be applied to the value, but because of the React
+   * lifecycle we can't apply that change immediately. So we cache it here and
+   * later can call `this.flushChange()` to flush it.
+   *
+   * @param {Change} change
+   */
+
+  /**
+   * Flush a temporarily stored `change` object, for when a change needed to be
+   * made but couldn't because of React's lifecycle.
+   */
+
+  /**
+   * Perform a change on the editor, passing `...args` to `change.call`.
+   *
+   * @param {Mixed} ...args
+   */
+
+  /**
+   * Programmatically blur the editor.
+   */
+
+  /**
+   * Programmatically focus the editor.
+   */
+
+  createClass(Editor, [{
+    key: 'render',
+
+
+    /**
+     * Render the editor.
+     *
+     * @return {Element}
+     */
+
+    value: function render() {
+      debug$7('render', this);
+
+      var children = this.stack.map('renderPortal', this.value, this).map(function (child, i) {
+        return React.createElement(
+          Portal,
+          { key: i, isOpened: true },
+          child
+        );
+      });
+
+      var props = _extends({}, this.props, { children: children });
+      var tree = this.stack.render('renderEditor', props, this);
+      return tree;
+    }
+
+    /**
+     * Resolve an array of plugins from `plugins` and `schema` props.
+     *
+     * In addition to the plugins provided in props, this will initialize three
+     * other plugins:
+     *
+     * - The top-level editor plugin, which allows for top-level handlers, etc.
+     * - The two "core" plugins, one before all the other and one after.
+     *
+     * @param {Array|Void} plugins
+     * @param {Schema|Object|Void} schema
+     * @return {Array}
+     */
+
+  }, {
+    key: 'schema',
+
+
+    /**
+     * Getters for exposing public properties of the editor's state.
+     */
+
+    get: function get$$1() {
+      return this.state.schema;
+    }
+  }, {
+    key: 'stack',
+    get: function get$$1() {
+      return this.state.stack;
+    }
+  }, {
+    key: 'value',
+    get: function get$$1() {
+      return this.state.value;
+    }
+
+    /**
+     * On event.
+     *
+     * @param {String} handler
+     * @param {Event} event
+     */
+
+    /**
+     * On change.
+     *
+     * @param {Change} change
+     */
+
+  }]);
+  return Editor;
+}(React.Component);
+
+/**
+ * Mix in the property types for the event handlers.
+ */
+
+Editor.propTypes = {
+  autoCorrect: Types.bool,
+  autoFocus: Types.bool,
+  className: Types.string,
+  onChange: Types.func,
+  placeholder: Types.any,
+  plugins: Types.array,
+  readOnly: Types.bool,
+  role: Types.string,
+  schema: Types.object,
+  spellCheck: Types.bool,
+  style: Types.object,
+  tabIndex: Types.number,
+  value: SlateTypes.value.isRequired };
+Editor.defaultProps = {
+  autoFocus: false,
+  autoCorrect: true,
+  onChange: noop,
+  plugins: [],
+  readOnly: false,
+  schema: {},
+  spellCheck: true };
+
+var _initialiseProps$4 = function _initialiseProps() {
+  var _this2 = this;
+
+  this.componentWillReceiveProps = function (props) {
+    var schema = _this2.schema,
+        stack = _this2.stack;
+
+    // Increment the updates counter as a baseline.
+
+    _this2.tmp.updates++;
+
+    // If the plugins or the schema have changed, we need to re-resolve the
+    // plugins, since it will result in a new stack and new validations.
+    if (props.plugins != _this2.props.plugins || props.schema != _this2.props.schema) {
+      var plugins = _this2.resolvePlugins(props.plugins, props.schema);
+      stack = slate.Stack.create({ plugins: plugins });
+      schema = slate.Schema.create({ plugins: plugins });
+      _this2.setState({ schema: schema, stack: stack });
+
+      // Increment the resolves counter.
+      _this2.tmp.resolves++;
+
+      // If we've resolved a few times already, and it's exactly in line with
+      // the updates, then warn the user that they may be doing something wrong.
+      if (_this2.tmp.resolves > 5 && _this2.tmp.resolves == _this2.tmp.updates) {
+        logger.warn('A Slate <Editor> is re-resolving `props.plugins` or `props.schema` on each update, which leads to poor performance. This is often due to passing in a new `schema` or `plugins` prop with each render by declaring them inline in your render function. Do not do this!');
+      }
+    }
+
+    // Run `onChange` on the passed-in value because we need to ensure that it
+    // is normalized, and queue the resulting change.
+    var change = props.value.change();
+    stack.run('onChange', change, _this2);
+    _this2.queueChange(change);
+    _this2.setState({ value: change.value });
+  };
+
+  this.componentDidMount = function () {
+    _this2.flushChange();
+
+    if (_this2.props.autoFocus) {
+      _this2.focus();
+    }
+  };
+
+  this.componentDidUpdate = function () {
+    _this2.flushChange();
+  };
+
+  this.queueChange = function (change) {
+    if (change.operations.size) {
+      debug$7('queueChange', { change: change });
+      _this2.tmp.change = change;
+    }
+  };
+
+  this.flushChange = function () {
+    var change = _this2.tmp.change;
+
+
+    if (change) {
+      debug$7('flushChange', { change: change });
+      delete _this2.tmp.change;
+      _this2.props.onChange(change);
+    }
+  };
+
+  this.change = function () {
+    var _value$change;
+
+    var change = (_value$change = _this2.value.change()).call.apply(_value$change, arguments);
+    _this2.onChange(change);
+  };
+
+  this.blur = function () {
+    _this2.change(function (c) {
+      return c.blur();
+    });
+  };
+
+  this.focus = function () {
+    _this2.change(function (c) {
+      return c.focus();
+    });
+  };
+
+  this.onEvent = function (handler, event) {
+    _this2.change(function (change) {
+      _this2.stack.run(handler, event, change, _this2);
+    });
+  };
+
+  this.onChange = function (change) {
+    debug$7('onChange', { change: change });
+
+    _this2.stack.run('onChange', change, _this2);
+    var value = change.value;
+    var onChange = _this2.props.onChange;
+
+    if (value == _this2.value) return;
+    onChange(change);
+  };
+
+  this.resolvePlugins = function (plugins, schema) {
+    var beforePlugin = BeforePlugin();
+    var afterPlugin = AfterPlugin();
+    var editorPlugin = {
+      schema: schema || {}
+    };
+
+    var _loop = function _loop(_prop) {
+      // Skip `onChange` because the editor's `onChange` is special.
+      if (_prop == 'onChange') return 'continue';
+
+      // Skip `schema` because it can't be proxied easily, so it must be
+      // passed in as an argument to this function instead.
+      if (_prop == 'schema') return 'continue';
+
+      // Define a function that will just proxies into `props`.
+      editorPlugin[_prop] = function () {
+        var _props;
+
+        return _this2.props[_prop] && (_props = _this2.props)[_prop].apply(_props, arguments);
+      };
+    };
+
+    var _iteratorNormalCompletion2 = true;
+    var _didIteratorError2 = false;
+    var _iteratorError2 = undefined;
+
+    try {
+      for (var _iterator2 = PLUGIN_PROPS[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+        var _prop = _step2.value;
+
+        var _ret = _loop(_prop);
+
+        if (_ret === 'continue') continue;
+      }
+    } catch (err) {
+      _didIteratorError2 = true;
+      _iteratorError2 = err;
+    } finally {
+      try {
+        if (!_iteratorNormalCompletion2 && _iterator2.return) {
+          _iterator2.return();
+        }
+      } finally {
+        if (_didIteratorError2) {
+          throw _iteratorError2;
+        }
+      }
+    }
+
+    return [beforePlugin, editorPlugin].concat(toConsumableArray(plugins || []), [afterPlugin]);
+  };
+};
+
+var _iteratorNormalCompletion = true;
+var _didIteratorError = false;
+var _iteratorError = undefined;
+
+try {
+  for (var _iterator = EVENT_HANDLERS[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+    var prop = _step.value;
+
+    Editor.propTypes[prop] = Types.func;
+  }
+
+  /**
+   * Export.
+   *
+   * @type {Component}
+   */
+} catch (err) {
+  _didIteratorError = true;
+  _iteratorError = err;
+} finally {
+  try {
+    if (!_iteratorNormalCompletion && _iterator.return) {
+      _iterator.return();
+    }
+  } finally {
+    if (_didIteratorError) {
+      throw _iteratorError;
+    }
+  }
+}
+
+var index = {
+  Editor: Editor,
+  cloneFragment: cloneFragment,
+  findDOMNode: findDOMNode,
+  findDOMRange: findDOMRange,
+  findNode: findNode,
+  findRange: findRange,
+  getEventRange: getEventRange,
+  getEventTransfer: getEventTransfer,
+  setEventTransfer: setEventTransfer,
+  AfterPlugin: AfterPlugin,
+  BeforePlugin: BeforePlugin
+};
+
+exports.Editor = Editor;
+exports.cloneFragment = cloneFragment;
+exports.findDOMNode = findDOMNode;
+exports.findDOMRange = findDOMRange;
+exports.findNode = findNode;
+exports.findRange = findRange;
+exports.getEventRange = getEventRange;
+exports.getEventTransfer = getEventTransfer;
+exports.setEventTransfer = setEventTransfer;
+exports.AfterPlugin = AfterPlugin;
+exports.BeforePlugin = BeforePlugin;
+exports.default = index;
+
+
+},{"debug":420,"get-window":32,"immutable":42,"lodash/throttle":433,"prop-types":438,"react":411,"react-dom":229,"react-immutable-proptypes":355,"react-portal":356,"selection-is-backward":413,"slate":442,"slate-base64-serializer":414,"slate-dev-environment":415,"slate-dev-logger":416,"slate-hotkeys":417,"slate-plain-serializer":440,"slate-prop-types":418}],420:[function(require,module,exports){
+(function (process){
+/**
+ * This is the web browser implementation of `debug()`.
+ *
+ * Expose `debug()` as the module.
+ */
+
+exports = module.exports = require('./debug');
+exports.log = log;
+exports.formatArgs = formatArgs;
+exports.save = save;
+exports.load = load;
+exports.useColors = useColors;
+exports.storage = 'undefined' != typeof chrome
+               && 'undefined' != typeof chrome.storage
+                  ? chrome.storage.local
+                  : localstorage();
+
+/**
+ * Colors.
+ */
+
+exports.colors = [
+  '#0000CC', '#0000FF', '#0033CC', '#0033FF', '#0066CC', '#0066FF', '#0099CC',
+  '#0099FF', '#00CC00', '#00CC33', '#00CC66', '#00CC99', '#00CCCC', '#00CCFF',
+  '#3300CC', '#3300FF', '#3333CC', '#3333FF', '#3366CC', '#3366FF', '#3399CC',
+  '#3399FF', '#33CC00', '#33CC33', '#33CC66', '#33CC99', '#33CCCC', '#33CCFF',
+  '#6600CC', '#6600FF', '#6633CC', '#6633FF', '#66CC00', '#66CC33', '#9900CC',
+  '#9900FF', '#9933CC', '#9933FF', '#99CC00', '#99CC33', '#CC0000', '#CC0033',
+  '#CC0066', '#CC0099', '#CC00CC', '#CC00FF', '#CC3300', '#CC3333', '#CC3366',
+  '#CC3399', '#CC33CC', '#CC33FF', '#CC6600', '#CC6633', '#CC9900', '#CC9933',
+  '#CCCC00', '#CCCC33', '#FF0000', '#FF0033', '#FF0066', '#FF0099', '#FF00CC',
+  '#FF00FF', '#FF3300', '#FF3333', '#FF3366', '#FF3399', '#FF33CC', '#FF33FF',
+  '#FF6600', '#FF6633', '#FF9900', '#FF9933', '#FFCC00', '#FFCC33'
+];
+
+/**
+ * Currently only WebKit-based Web Inspectors, Firefox >= v31,
+ * and the Firebug extension (any Firefox version) are known
+ * to support "%c" CSS customizations.
+ *
+ * TODO: add a `localStorage` variable to explicitly enable/disable colors
+ */
+
+function useColors() {
+  // NB: In an Electron preload script, document will be defined but not fully
+  // initialized. Since we know we're in Chrome, we'll just detect this case
+  // explicitly
+  if (typeof window !== 'undefined' && window.process && window.process.type === 'renderer') {
+    return true;
+  }
+
+  // Internet Explorer and Edge do not support colors.
+  if (typeof navigator !== 'undefined' && navigator.userAgent && navigator.userAgent.toLowerCase().match(/(edge|trident)\/(\d+)/)) {
+    return false;
+  }
+
+  // is webkit? http://stackoverflow.com/a/16459606/376773
+  // document is undefined in react-native: https://github.com/facebook/react-native/pull/1632
+  return (typeof document !== 'undefined' && document.documentElement && document.documentElement.style && document.documentElement.style.WebkitAppearance) ||
+    // is firebug? http://stackoverflow.com/a/398120/376773
+    (typeof window !== 'undefined' && window.console && (window.console.firebug || (window.console.exception && window.console.table))) ||
+    // is firefox >= v31?
+    // https://developer.mozilla.org/en-US/docs/Tools/Web_Console#Styling_messages
+    (typeof navigator !== 'undefined' && navigator.userAgent && navigator.userAgent.toLowerCase().match(/firefox\/(\d+)/) && parseInt(RegExp.$1, 10) >= 31) ||
+    // double check webkit in userAgent just in case we are in a worker
+    (typeof navigator !== 'undefined' && navigator.userAgent && navigator.userAgent.toLowerCase().match(/applewebkit\/(\d+)/));
+}
+
+/**
+ * Map %j to `JSON.stringify()`, since no Web Inspectors do that by default.
+ */
+
+exports.formatters.j = function(v) {
+  try {
+    return JSON.stringify(v);
+  } catch (err) {
+    return '[UnexpectedJSONParseError]: ' + err.message;
+  }
+};
+
+
+/**
+ * Colorize log arguments if enabled.
+ *
+ * @api public
+ */
+
+function formatArgs(args) {
+  var useColors = this.useColors;
+
+  args[0] = (useColors ? '%c' : '')
+    + this.namespace
+    + (useColors ? ' %c' : ' ')
+    + args[0]
+    + (useColors ? '%c ' : ' ')
+    + '+' + exports.humanize(this.diff);
+
+  if (!useColors) return;
+
+  var c = 'color: ' + this.color;
+  args.splice(1, 0, c, 'color: inherit')
+
+  // the final "%c" is somewhat tricky, because there could be other
+  // arguments passed either before or after the %c, so we need to
+  // figure out the correct index to insert the CSS into
+  var index = 0;
+  var lastC = 0;
+  args[0].replace(/%[a-zA-Z%]/g, function(match) {
+    if ('%%' === match) return;
+    index++;
+    if ('%c' === match) {
+      // we only are interested in the *last* %c
+      // (the user may have provided their own)
+      lastC = index;
+    }
+  });
+
+  args.splice(lastC, 0, c);
+}
+
+/**
+ * Invokes `console.log()` when available.
+ * No-op when `console.log` is not a "function".
+ *
+ * @api public
+ */
+
+function log() {
+  // this hackery is required for IE8/9, where
+  // the `console.log` function doesn't have 'apply'
+  return 'object' === typeof console
+    && console.log
+    && Function.prototype.apply.call(console.log, console, arguments);
+}
+
+/**
+ * Save `namespaces`.
+ *
+ * @param {String} namespaces
+ * @api private
+ */
+
+function save(namespaces) {
+  try {
+    if (null == namespaces) {
+      exports.storage.removeItem('debug');
+    } else {
+      exports.storage.debug = namespaces;
+    }
+  } catch(e) {}
+}
+
+/**
+ * Load `namespaces`.
+ *
+ * @return {String} returns the previously persisted debug modes
+ * @api private
+ */
+
+function load() {
+  var r;
+  try {
+    r = exports.storage.debug;
+  } catch(e) {}
+
+  // If debug isn't set in LS, and we're in Electron, try to load $DEBUG
+  if (!r && typeof process !== 'undefined' && 'env' in process) {
+    r = process.env.DEBUG;
+  }
+
+  return r;
+}
+
+/**
+ * Enable namespaces listed in `localStorage.debug` initially.
+ */
+
+exports.enable(load());
+
+/**
+ * Localstorage attempts to return the localstorage.
+ *
+ * This is necessary because safari throws
+ * when a user disables cookies/localstorage
+ * and you attempt to access it.
+ *
+ * @return {LocalStorage}
+ * @api private
+ */
+
+function localstorage() {
+  try {
+    return window.localStorage;
+  } catch (e) {}
+}
+
+}).call(this,require('_process'))
+},{"./debug":421,"_process":222}],421:[function(require,module,exports){
+
+/**
+ * This is the common logic for both the Node.js and web browser
+ * implementations of `debug()`.
+ *
+ * Expose `debug()` as the module.
+ */
+
+exports = module.exports = createDebug.debug = createDebug['default'] = createDebug;
+exports.coerce = coerce;
+exports.disable = disable;
+exports.enable = enable;
+exports.enabled = enabled;
+exports.humanize = require('ms');
+
+/**
+ * Active `debug` instances.
+ */
+exports.instances = [];
+
+/**
+ * The currently active debug mode names, and names to skip.
+ */
+
+exports.names = [];
+exports.skips = [];
+
+/**
+ * Map of special "%n" handling functions, for the debug "format" argument.
+ *
+ * Valid key names are a single, lower or upper-case letter, i.e. "n" and "N".
+ */
+
+exports.formatters = {};
+
+/**
+ * Select a color.
+ * @param {String} namespace
+ * @return {Number}
+ * @api private
+ */
+
+function selectColor(namespace) {
+  var hash = 0, i;
+
+  for (i in namespace) {
+    hash  = ((hash << 5) - hash) + namespace.charCodeAt(i);
+    hash |= 0; // Convert to 32bit integer
+  }
+
+  return exports.colors[Math.abs(hash) % exports.colors.length];
+}
+
+/**
+ * Create a debugger with the given `namespace`.
+ *
+ * @param {String} namespace
+ * @return {Function}
+ * @api public
+ */
+
+function createDebug(namespace) {
+
+  var prevTime;
+
+  function debug() {
+    // disabled?
+    if (!debug.enabled) return;
+
+    var self = debug;
+
+    // set `diff` timestamp
+    var curr = +new Date();
+    var ms = curr - (prevTime || curr);
+    self.diff = ms;
+    self.prev = prevTime;
+    self.curr = curr;
+    prevTime = curr;
+
+    // turn the `arguments` into a proper Array
+    var args = new Array(arguments.length);
+    for (var i = 0; i < args.length; i++) {
+      args[i] = arguments[i];
+    }
+
+    args[0] = exports.coerce(args[0]);
+
+    if ('string' !== typeof args[0]) {
+      // anything else let's inspect with %O
+      args.unshift('%O');
+    }
+
+    // apply any `formatters` transformations
+    var index = 0;
+    args[0] = args[0].replace(/%([a-zA-Z%])/g, function(match, format) {
+      // if we encounter an escaped % then don't increase the array index
+      if (match === '%%') return match;
+      index++;
+      var formatter = exports.formatters[format];
+      if ('function' === typeof formatter) {
+        var val = args[index];
+        match = formatter.call(self, val);
+
+        // now we need to remove `args[index]` since it's inlined in the `format`
+        args.splice(index, 1);
+        index--;
+      }
+      return match;
+    });
+
+    // apply env-specific formatting (colors, etc.)
+    exports.formatArgs.call(self, args);
+
+    var logFn = debug.log || exports.log || console.log.bind(console);
+    logFn.apply(self, args);
+  }
+
+  debug.namespace = namespace;
+  debug.enabled = exports.enabled(namespace);
+  debug.useColors = exports.useColors();
+  debug.color = selectColor(namespace);
+  debug.destroy = destroy;
+
+  // env-specific initialization logic for debug instances
+  if ('function' === typeof exports.init) {
+    exports.init(debug);
+  }
+
+  exports.instances.push(debug);
+
+  return debug;
+}
+
+function destroy () {
+  var index = exports.instances.indexOf(this);
+  if (index !== -1) {
+    exports.instances.splice(index, 1);
+    return true;
+  } else {
+    return false;
+  }
+}
+
+/**
+ * Enables a debug mode by namespaces. This can include modes
+ * separated by a colon and wildcards.
+ *
+ * @param {String} namespaces
+ * @api public
+ */
+
+function enable(namespaces) {
+  exports.save(namespaces);
+
+  exports.names = [];
+  exports.skips = [];
+
+  var i;
+  var split = (typeof namespaces === 'string' ? namespaces : '').split(/[\s,]+/);
+  var len = split.length;
+
+  for (i = 0; i < len; i++) {
+    if (!split[i]) continue; // ignore empty strings
+    namespaces = split[i].replace(/\*/g, '.*?');
+    if (namespaces[0] === '-') {
+      exports.skips.push(new RegExp('^' + namespaces.substr(1) + '$'));
+    } else {
+      exports.names.push(new RegExp('^' + namespaces + '$'));
+    }
+  }
+
+  for (i = 0; i < exports.instances.length; i++) {
+    var instance = exports.instances[i];
+    instance.enabled = exports.enabled(instance.namespace);
+  }
+}
+
+/**
+ * Disable debug output.
+ *
+ * @api public
+ */
+
+function disable() {
+  exports.enable('');
+}
+
+/**
+ * Returns true if the given mode name is enabled, false otherwise.
+ *
+ * @param {String} name
+ * @return {Boolean}
+ * @api public
+ */
+
+function enabled(name) {
+  if (name[name.length - 1] === '*') {
+    return true;
+  }
+  var i, len;
+  for (i = 0, len = exports.skips.length; i < len; i++) {
+    if (exports.skips[i].test(name)) {
+      return false;
+    }
+  }
+  for (i = 0, len = exports.names.length; i < len; i++) {
+    if (exports.names[i].test(name)) {
+      return true;
+    }
+  }
+  return false;
+}
+
+/**
+ * Coerce `val`.
+ *
+ * @param {Mixed} val
+ * @return {Mixed}
+ * @api private
+ */
+
+function coerce(val) {
+  if (val instanceof Error) return val.stack || val.message;
+  return val;
+}
+
+},{"ms":218}],422:[function(require,module,exports){
+arguments[4][59][0].apply(exports,arguments)
+},{"./_root":427,"dup":59}],423:[function(require,module,exports){
+arguments[4][84][0].apply(exports,arguments)
+},{"./_Symbol":422,"./_getRawTag":425,"./_objectToString":426,"dup":84}],424:[function(require,module,exports){
+arguments[4][128][0].apply(exports,arguments)
+},{"dup":128}],425:[function(require,module,exports){
+arguments[4][134][0].apply(exports,arguments)
+},{"./_Symbol":422,"dup":134}],426:[function(require,module,exports){
+arguments[4][171][0].apply(exports,arguments)
+},{"dup":171}],427:[function(require,module,exports){
+arguments[4][175][0].apply(exports,arguments)
+},{"./_freeGlobal":424,"dup":175}],428:[function(require,module,exports){
+var isObject = require('./isObject'),
+    now = require('./now'),
+    toNumber = require('./toNumber');
+
+/** Error message constants. */
+var FUNC_ERROR_TEXT = 'Expected a function';
+
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeMax = Math.max,
+    nativeMin = Math.min;
+
+/**
+ * Creates a debounced function that delays invoking `func` until after `wait`
+ * milliseconds have elapsed since the last time the debounced function was
+ * invoked. The debounced function comes with a `cancel` method to cancel
+ * delayed `func` invocations and a `flush` method to immediately invoke them.
+ * Provide `options` to indicate whether `func` should be invoked on the
+ * leading and/or trailing edge of the `wait` timeout. The `func` is invoked
+ * with the last arguments provided to the debounced function. Subsequent
+ * calls to the debounced function return the result of the last `func`
+ * invocation.
+ *
+ * **Note:** If `leading` and `trailing` options are `true`, `func` is
+ * invoked on the trailing edge of the timeout only if the debounced function
+ * is invoked more than once during the `wait` timeout.
+ *
+ * If `wait` is `0` and `leading` is `false`, `func` invocation is deferred
+ * until to the next tick, similar to `setTimeout` with a timeout of `0`.
+ *
+ * See [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
+ * for details over the differences between `_.debounce` and `_.throttle`.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Function
+ * @param {Function} func The function to debounce.
+ * @param {number} [wait=0] The number of milliseconds to delay.
+ * @param {Object} [options={}] The options object.
+ * @param {boolean} [options.leading=false]
+ *  Specify invoking on the leading edge of the timeout.
+ * @param {number} [options.maxWait]
+ *  The maximum time `func` is allowed to be delayed before it's invoked.
+ * @param {boolean} [options.trailing=true]
+ *  Specify invoking on the trailing edge of the timeout.
+ * @returns {Function} Returns the new debounced function.
+ * @example
+ *
+ * // Avoid costly calculations while the window size is in flux.
+ * jQuery(window).on('resize', _.debounce(calculateLayout, 150));
+ *
+ * // Invoke `sendMail` when clicked, debouncing subsequent calls.
+ * jQuery(element).on('click', _.debounce(sendMail, 300, {
+ *   'leading': true,
+ *   'trailing': false
+ * }));
+ *
+ * // Ensure `batchLog` is invoked once after 1 second of debounced calls.
+ * var debounced = _.debounce(batchLog, 250, { 'maxWait': 1000 });
+ * var source = new EventSource('/stream');
+ * jQuery(source).on('message', debounced);
+ *
+ * // Cancel the trailing debounced invocation.
+ * jQuery(window).on('popstate', debounced.cancel);
+ */
+function debounce(func, wait, options) {
+  var lastArgs,
+      lastThis,
+      maxWait,
+      result,
+      timerId,
+      lastCallTime,
+      lastInvokeTime = 0,
+      leading = false,
+      maxing = false,
+      trailing = true;
+
+  if (typeof func != 'function') {
+    throw new TypeError(FUNC_ERROR_TEXT);
+  }
+  wait = toNumber(wait) || 0;
+  if (isObject(options)) {
+    leading = !!options.leading;
+    maxing = 'maxWait' in options;
+    maxWait = maxing ? nativeMax(toNumber(options.maxWait) || 0, wait) : maxWait;
+    trailing = 'trailing' in options ? !!options.trailing : trailing;
+  }
+
+  function invokeFunc(time) {
+    var args = lastArgs,
+        thisArg = lastThis;
+
+    lastArgs = lastThis = undefined;
+    lastInvokeTime = time;
+    result = func.apply(thisArg, args);
+    return result;
+  }
+
+  function leadingEdge(time) {
+    // Reset any `maxWait` timer.
+    lastInvokeTime = time;
+    // Start the timer for the trailing edge.
+    timerId = setTimeout(timerExpired, wait);
+    // Invoke the leading edge.
+    return leading ? invokeFunc(time) : result;
+  }
+
+  function remainingWait(time) {
+    var timeSinceLastCall = time - lastCallTime,
+        timeSinceLastInvoke = time - lastInvokeTime,
+        timeWaiting = wait - timeSinceLastCall;
+
+    return maxing
+      ? nativeMin(timeWaiting, maxWait - timeSinceLastInvoke)
+      : timeWaiting;
+  }
+
+  function shouldInvoke(time) {
+    var timeSinceLastCall = time - lastCallTime,
+        timeSinceLastInvoke = time - lastInvokeTime;
+
+    // Either this is the first call, activity has stopped and we're at the
+    // trailing edge, the system time has gone backwards and we're treating
+    // it as the trailing edge, or we've hit the `maxWait` limit.
+    return (lastCallTime === undefined || (timeSinceLastCall >= wait) ||
+      (timeSinceLastCall < 0) || (maxing && timeSinceLastInvoke >= maxWait));
+  }
+
+  function timerExpired() {
+    var time = now();
+    if (shouldInvoke(time)) {
+      return trailingEdge(time);
+    }
+    // Restart the timer.
+    timerId = setTimeout(timerExpired, remainingWait(time));
+  }
+
+  function trailingEdge(time) {
+    timerId = undefined;
+
+    // Only invoke if we have `lastArgs` which means `func` has been
+    // debounced at least once.
+    if (trailing && lastArgs) {
+      return invokeFunc(time);
+    }
+    lastArgs = lastThis = undefined;
+    return result;
+  }
+
+  function cancel() {
+    if (timerId !== undefined) {
+      clearTimeout(timerId);
+    }
+    lastInvokeTime = 0;
+    lastArgs = lastCallTime = lastThis = timerId = undefined;
+  }
+
+  function flush() {
+    return timerId === undefined ? result : trailingEdge(now());
+  }
+
+  function debounced() {
+    var time = now(),
+        isInvoking = shouldInvoke(time);
+
+    lastArgs = arguments;
+    lastThis = this;
+    lastCallTime = time;
+
+    if (isInvoking) {
+      if (timerId === undefined) {
+        return leadingEdge(lastCallTime);
+      }
+      if (maxing) {
+        // Handle invocations in a tight loop.
+        timerId = setTimeout(timerExpired, wait);
+        return invokeFunc(lastCallTime);
+      }
+    }
+    if (timerId === undefined) {
+      timerId = setTimeout(timerExpired, wait);
+    }
+    return result;
+  }
+  debounced.cancel = cancel;
+  debounced.flush = flush;
+  return debounced;
+}
+
+module.exports = debounce;
+
+},{"./isObject":429,"./now":432,"./toNumber":434}],429:[function(require,module,exports){
+arguments[4][202][0].apply(exports,arguments)
+},{"dup":202}],430:[function(require,module,exports){
+arguments[4][203][0].apply(exports,arguments)
+},{"dup":203}],431:[function(require,module,exports){
+arguments[4][205][0].apply(exports,arguments)
+},{"./_baseGetTag":423,"./isObjectLike":430,"dup":205}],432:[function(require,module,exports){
+var root = require('./_root');
+
+/**
+ * Gets the timestamp of the number of milliseconds that have elapsed since
+ * the Unix epoch (1 January 1970 00:00:00 UTC).
+ *
+ * @static
+ * @memberOf _
+ * @since 2.4.0
+ * @category Date
+ * @returns {number} Returns the timestamp.
+ * @example
+ *
+ * _.defer(function(stamp) {
+ *   console.log(_.now() - stamp);
+ * }, _.now());
+ * // => Logs the number of milliseconds it took for the deferred invocation.
+ */
+var now = function() {
+  return root.Date.now();
+};
+
+module.exports = now;
+
+},{"./_root":427}],433:[function(require,module,exports){
+var debounce = require('./debounce'),
+    isObject = require('./isObject');
+
+/** Error message constants. */
+var FUNC_ERROR_TEXT = 'Expected a function';
+
+/**
+ * Creates a throttled function that only invokes `func` at most once per
+ * every `wait` milliseconds. The throttled function comes with a `cancel`
+ * method to cancel delayed `func` invocations and a `flush` method to
+ * immediately invoke them. Provide `options` to indicate whether `func`
+ * should be invoked on the leading and/or trailing edge of the `wait`
+ * timeout. The `func` is invoked with the last arguments provided to the
+ * throttled function. Subsequent calls to the throttled function return the
+ * result of the last `func` invocation.
+ *
+ * **Note:** If `leading` and `trailing` options are `true`, `func` is
+ * invoked on the trailing edge of the timeout only if the throttled function
+ * is invoked more than once during the `wait` timeout.
+ *
+ * If `wait` is `0` and `leading` is `false`, `func` invocation is deferred
+ * until to the next tick, similar to `setTimeout` with a timeout of `0`.
+ *
+ * See [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
+ * for details over the differences between `_.throttle` and `_.debounce`.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Function
+ * @param {Function} func The function to throttle.
+ * @param {number} [wait=0] The number of milliseconds to throttle invocations to.
+ * @param {Object} [options={}] The options object.
+ * @param {boolean} [options.leading=true]
+ *  Specify invoking on the leading edge of the timeout.
+ * @param {boolean} [options.trailing=true]
+ *  Specify invoking on the trailing edge of the timeout.
+ * @returns {Function} Returns the new throttled function.
+ * @example
+ *
+ * // Avoid excessively updating the position while scrolling.
+ * jQuery(window).on('scroll', _.throttle(updatePosition, 100));
+ *
+ * // Invoke `renewToken` when the click event is fired, but not more than once every 5 minutes.
+ * var throttled = _.throttle(renewToken, 300000, { 'trailing': false });
+ * jQuery(element).on('click', throttled);
+ *
+ * // Cancel the trailing throttled invocation.
+ * jQuery(window).on('popstate', throttled.cancel);
+ */
+function throttle(func, wait, options) {
+  var leading = true,
+      trailing = true;
+
+  if (typeof func != 'function') {
+    throw new TypeError(FUNC_ERROR_TEXT);
+  }
+  if (isObject(options)) {
+    leading = 'leading' in options ? !!options.leading : leading;
+    trailing = 'trailing' in options ? !!options.trailing : trailing;
+  }
+  return debounce(func, wait, {
+    'leading': leading,
+    'maxWait': wait,
+    'trailing': trailing
+  });
+}
+
+module.exports = throttle;
+
+},{"./debounce":428,"./isObject":429}],434:[function(require,module,exports){
+var isObject = require('./isObject'),
+    isSymbol = require('./isSymbol');
+
+/** Used as references for various `Number` constants. */
+var NAN = 0 / 0;
+
+/** Used to match leading and trailing whitespace. */
+var reTrim = /^\s+|\s+$/g;
+
+/** Used to detect bad signed hexadecimal string values. */
+var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
+
+/** Used to detect binary string values. */
+var reIsBinary = /^0b[01]+$/i;
+
+/** Used to detect octal string values. */
+var reIsOctal = /^0o[0-7]+$/i;
+
+/** Built-in method references without a dependency on `root`. */
+var freeParseInt = parseInt;
+
+/**
+ * Converts `value` to a number.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to process.
+ * @returns {number} Returns the number.
+ * @example
+ *
+ * _.toNumber(3.2);
+ * // => 3.2
+ *
+ * _.toNumber(Number.MIN_VALUE);
+ * // => 5e-324
+ *
+ * _.toNumber(Infinity);
+ * // => Infinity
+ *
+ * _.toNumber('3.2');
+ * // => 3.2
+ */
+function toNumber(value) {
+  if (typeof value == 'number') {
+    return value;
+  }
+  if (isSymbol(value)) {
+    return NAN;
+  }
+  if (isObject(value)) {
+    var other = typeof value.valueOf == 'function' ? value.valueOf() : value;
+    value = isObject(other) ? (other + '') : other;
+  }
+  if (typeof value != 'string') {
+    return value === 0 ? value : +value;
+  }
+  value = value.replace(reTrim, '');
+  var isBinary = reIsBinary.test(value);
+  return (isBinary || reIsOctal.test(value))
+    ? freeParseInt(value.slice(2), isBinary ? 2 : 8)
+    : (reIsBadHex.test(value) ? NAN : +value);
+}
+
+module.exports = toNumber;
+
+},{"./isObject":429,"./isSymbol":431}],435:[function(require,module,exports){
+arguments[4][357][0].apply(exports,arguments)
+},{"./lib/ReactPropTypesSecret":439,"dup":357,"fbjs/lib/invariant":23,"fbjs/lib/warning":30}],436:[function(require,module,exports){
+arguments[4][358][0].apply(exports,arguments)
+},{"./lib/ReactPropTypesSecret":439,"dup":358,"fbjs/lib/emptyFunction":15,"fbjs/lib/invariant":23}],437:[function(require,module,exports){
+arguments[4][359][0].apply(exports,arguments)
+},{"./checkPropTypes":435,"./lib/ReactPropTypesSecret":439,"dup":359,"fbjs/lib/emptyFunction":15,"fbjs/lib/invariant":23,"fbjs/lib/warning":30}],438:[function(require,module,exports){
+arguments[4][360][0].apply(exports,arguments)
+},{"./factoryWithThrowingShims":436,"./factoryWithTypeCheckers":437,"dup":360}],439:[function(require,module,exports){
+arguments[4][228][0].apply(exports,arguments)
+},{"dup":228}],440:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+var slate = require('slate');
+var immutable = require('immutable');
+
+var _extends = Object.assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];
+
+    for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }
+
+  return target;
+};
+
+/**
+ * Deserialize a plain text `string` to a Slate value.
+ *
+ * @param {String} string
+ * @param {Object} options
+ *   @property {Boolean} toJSON
+ *   @property {String|Object|Block} defaultBlock
+ *   @property {Array|Set} defaultMarks
+ * @return {Value}
+ */
+
+function deserialize(string) {
+  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var _options$defaultBlock = options.defaultBlock,
+      defaultBlock = _options$defaultBlock === undefined ? 'line' : _options$defaultBlock,
+      _options$defaultMarks = options.defaultMarks,
+      defaultMarks = _options$defaultMarks === undefined ? [] : _options$defaultMarks,
+      _options$toJSON = options.toJSON,
+      toJSON = _options$toJSON === undefined ? false : _options$toJSON;
+
+
+  if (immutable.Set.isSet(defaultMarks)) {
+    defaultMarks = defaultMarks.toArray();
+  }
+
+  defaultBlock = slate.Node.createProperties(defaultBlock);
+  defaultMarks = defaultMarks.map(slate.Mark.createProperties);
+
+  var json = {
+    object: 'value',
+    document: {
+      object: 'document',
+      data: {},
+      nodes: string.split('\n').map(function (line) {
+        return _extends({}, defaultBlock, {
+          object: 'block',
+          isVoid: false,
+          data: {},
+          nodes: [{
+            object: 'text',
+            leaves: [{
+              object: 'leaf',
+              text: line,
+              marks: defaultMarks
+            }]
+          }]
+        });
+      })
+    }
+  };
+
+  var ret = toJSON ? json : slate.Value.fromJSON(json);
+  return ret;
+}
+
+/**
+ * Serialize a Slate `value` to a plain text string.
+ *
+ * @param {Value} value
+ * @return {String}
+ */
+
+function serialize(value) {
+  return serializeNode(value.document);
+}
+
+/**
+ * Serialize a `node` to plain text.
+ *
+ * @param {Node} node
+ * @return {String}
+ */
+
+function serializeNode(node) {
+  if (node.object == 'document' || node.object == 'block' && slate.Block.isBlockList(node.nodes)) {
+    return node.nodes.map(serializeNode).join('\n');
+  } else {
+    return node.text;
+  }
+}
+
+/**
+ * Export.
+ *
+ * @type {Object}
+ */
+
+var index = {
+  deserialize: deserialize,
+  serialize: serialize
+};
+
+exports.default = index;
+
+
+},{"immutable":42,"slate":442}],441:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', { value: true });
@@ -41919,8 +42445,7 @@ exports.PARENT_OBJECT_INVALID = PARENT_OBJECT_INVALID;
 exports.PARENT_TYPE_INVALID = PARENT_TYPE_INVALID;
 
 
-},{}],438:[function(require,module,exports){
-(function (global){
+},{}],442:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', { value: true });
@@ -42207,243 +42732,8 @@ var MODEL_TYPES = {
 
 };
 
-var global$1 = typeof global !== "undefined" ? global :
-            typeof self !== "undefined" ? self :
-            typeof window !== "undefined" ? window : {}
-
-// shim for using process in browser
-// based off https://github.com/defunctzombie/node-process/blob/master/browser.js
-
-function defaultSetTimout() {
-    throw new Error('setTimeout has not been defined');
-}
-function defaultClearTimeout () {
-    throw new Error('clearTimeout has not been defined');
-}
-var cachedSetTimeout = defaultSetTimout;
-var cachedClearTimeout = defaultClearTimeout;
-if (typeof global$1.setTimeout === 'function') {
-    cachedSetTimeout = setTimeout;
-}
-if (typeof global$1.clearTimeout === 'function') {
-    cachedClearTimeout = clearTimeout;
-}
-
-function runTimeout(fun) {
-    if (cachedSetTimeout === setTimeout) {
-        //normal enviroments in sane situations
-        return setTimeout(fun, 0);
-    }
-    // if setTimeout wasn't available but was latter defined
-    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-        cachedSetTimeout = setTimeout;
-        return setTimeout(fun, 0);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedSetTimeout(fun, 0);
-    } catch(e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-            return cachedSetTimeout.call(null, fun, 0);
-        } catch(e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-            return cachedSetTimeout.call(this, fun, 0);
-        }
-    }
-
-
-}
-function runClearTimeout(marker) {
-    if (cachedClearTimeout === clearTimeout) {
-        //normal enviroments in sane situations
-        return clearTimeout(marker);
-    }
-    // if clearTimeout wasn't available but was latter defined
-    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-        cachedClearTimeout = clearTimeout;
-        return clearTimeout(marker);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedClearTimeout(marker);
-    } catch (e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-            return cachedClearTimeout.call(null, marker);
-        } catch (e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
-            return cachedClearTimeout.call(this, marker);
-        }
-    }
-
-
-
-}
-var queue = [];
-var draining = false;
-var currentQueue;
-var queueIndex = -1;
-
-function cleanUpNextTick() {
-    if (!draining || !currentQueue) {
-        return;
-    }
-    draining = false;
-    if (currentQueue.length) {
-        queue = currentQueue.concat(queue);
-    } else {
-        queueIndex = -1;
-    }
-    if (queue.length) {
-        drainQueue();
-    }
-}
-
-function drainQueue() {
-    if (draining) {
-        return;
-    }
-    var timeout = runTimeout(cleanUpNextTick);
-    draining = true;
-
-    var len = queue.length;
-    while(len) {
-        currentQueue = queue;
-        queue = [];
-        while (++queueIndex < len) {
-            if (currentQueue) {
-                currentQueue[queueIndex].run();
-            }
-        }
-        queueIndex = -1;
-        len = queue.length;
-    }
-    currentQueue = null;
-    draining = false;
-    runClearTimeout(timeout);
-}
-function nextTick(fun) {
-    var args = new Array(arguments.length - 1);
-    if (arguments.length > 1) {
-        for (var i = 1; i < arguments.length; i++) {
-            args[i - 1] = arguments[i];
-        }
-    }
-    queue.push(new Item(fun, args));
-    if (queue.length === 1 && !draining) {
-        runTimeout(drainQueue);
-    }
-}
-// v8 likes predictible objects
-function Item(fun, array) {
-    this.fun = fun;
-    this.array = array;
-}
-Item.prototype.run = function () {
-    this.fun.apply(null, this.array);
-};
-var title = 'browser';
-var platform = 'browser';
-var browser = true;
-var env = {};
-var argv = [];
-var version = ''; // empty string to avoid regexp issues
-var versions = {};
-var release = {};
-var config = {};
-
-function noop() {}
-
-var on = noop;
-var addListener = noop;
-var once = noop;
-var off = noop;
-var removeListener = noop;
-var removeAllListeners = noop;
-var emit = noop;
-
-function binding(name) {
-    throw new Error('process.binding is not supported');
-}
-
-function cwd () { return '/' }
-function chdir (dir) {
-    throw new Error('process.chdir is not supported');
-}
-function umask() { return 0; }
-
-// from https://github.com/kumavis/browser-process-hrtime/blob/master/index.js
-var performance = global$1.performance || {};
-var performanceNow =
-  performance.now        ||
-  performance.mozNow     ||
-  performance.msNow      ||
-  performance.oNow       ||
-  performance.webkitNow  ||
-  function(){ return (new Date()).getTime() };
-
-// generate timestamp or delta
-// see http://nodejs.org/api/process.html#process_process_hrtime
-function hrtime(previousTimestamp){
-  var clocktime = performanceNow.call(performance)*1e-3;
-  var seconds = Math.floor(clocktime);
-  var nanoseconds = Math.floor((clocktime%1)*1e9);
-  if (previousTimestamp) {
-    seconds = seconds - previousTimestamp[0];
-    nanoseconds = nanoseconds - previousTimestamp[1];
-    if (nanoseconds<0) {
-      seconds--;
-      nanoseconds += 1e9;
-    }
-  }
-  return [seconds,nanoseconds]
-}
-
-var startTime = new Date();
-function uptime() {
-  var currentTime = new Date();
-  var dif = currentTime - startTime;
-  return dif / 1000;
-}
-
-var process = {
-  nextTick: nextTick,
-  title: title,
-  browser: browser,
-  env: env,
-  argv: argv,
-  version: version,
-  versions: versions,
-  on: on,
-  addListener: addListener,
-  once: once,
-  off: off,
-  removeListener: removeListener,
-  removeAllListeners: removeAllListeners,
-  emit: emit,
-  binding: binding,
-  cwd: cwd,
-  chdir: chdir,
-  umask: umask,
-  hrtime: hrtime,
-  platform: platform,
-  release: release,
-  config: config,
-  uptime: uptime
-};
-
 /**
- * Is in development?
- *
- * @type {Boolean}
- */
-
-var IS_DEV = typeof process !== 'undefined' && process.env && "development" !== 'production';
-
-/**
- * GLOBAL: True if memoization should is enabled. Only effective when `IS_DEV`.
+ * GLOBAL: True if memoization should is enabled.
  *
  * @type {Boolean}
  */
@@ -42452,7 +42742,6 @@ var ENABLED = true;
 
 /**
  * GLOBAL: Changing this cache key will clear all previous cached results.
- * Only effective when `IS_DEV`.
  *
  * @type {Number}
  */
@@ -42494,15 +42783,11 @@ var UNSET = undefined;
  */
 
 function memoize(object, properties) {
-  var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-  var _options$takesArgumen = options.takesArguments,
-      takesArguments = _options$takesArgumen === undefined ? true : _options$takesArgumen;
-
   var _loop = function _loop(property) {
     var original = object[property];
 
     if (!original) {
-      throw new Error('Object does not have a property named "' + property + '".');
+      throw new Error("Object does not have a property named \"" + property + "\".");
     }
 
     object[property] = function () {
@@ -42510,20 +42795,24 @@ function memoize(object, properties) {
         args[_key] = arguments[_key];
       }
 
-      if (IS_DEV) {
-        // If memoization is disabled, call into the original method.
-        if (!ENABLED) return original.apply(this, args);
+      // If memoization is disabled, call into the original method.
+      if (!ENABLED) return original.apply(this, args);
 
-        // If the cache key is different, previous caches must be cleared.
-        if (CACHE_KEY !== this.__cache_key) {
-          this.__cache_key = CACHE_KEY;
-          this.__cache = new Map(); // eslint-disable-line no-undef,no-restricted-globals
-        }
+      // If the cache key is different, previous caches must be cleared.
+      if (CACHE_KEY !== this.__cache_key) {
+        this.__cache_key = CACHE_KEY;
+        this.__cache = new Map(); // eslint-disable-line no-undef,no-restricted-globals
+        this.__cache_no_args = {};
       }
 
       if (!this.__cache) {
         this.__cache = new Map(); // eslint-disable-line no-undef,no-restricted-globals
       }
+      if (!this.__cache_no_args) {
+        this.__cache_no_args = {};
+      }
+
+      var takesArguments = args.length !== 0;
 
       var cachedValue = void 0;
       var keys = void 0;
@@ -42532,7 +42821,7 @@ function memoize(object, properties) {
         keys = [property].concat(args);
         cachedValue = getIn(this.__cache, keys);
       } else {
-        cachedValue = this.__cache.get(property);
+        cachedValue = this.__cache_no_args[property];
       }
 
       // If we've got a result already, return it.
@@ -42547,7 +42836,7 @@ function memoize(object, properties) {
       if (takesArguments) {
         this.__cache = setIn(this.__cache, keys, v);
       } else {
-        this.__cache.set(property, v);
+        this.__cache_no_args[property] = v;
       }
 
       return value;
@@ -42559,7 +42848,6 @@ function memoize(object, properties) {
   var _iteratorError = undefined;
 
   try {
-
     for (var _iterator = properties[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
       var property = _step.value;
 
@@ -42941,9 +43229,7 @@ Mark.prototype[MODEL_TYPES.MARK] = true;
  * Memoize read methods.
  */
 
-memoize(Mark.prototype, ['getComponent'], {
-  takesArguments: true
-});
+memoize(Mark.prototype, ['getComponent']);
 
 /**
  * Default properties.
@@ -44570,6 +44856,78 @@ var Text = function (_Record) {
     }
 
     /**
+     * Get all of the active marks on between two offsets
+     *
+     * @return {Set<Mark>}
+     */
+
+  }, {
+    key: 'getActiveMarksBetweenOffsets',
+    value: function getActiveMarksBetweenOffsets(startOffset, endOffset) {
+      var _this2 = this;
+
+      if (startOffset === 0 && endOffset === this.characters.size) {
+        return this.getActiveMarks();
+      }
+      var startCharacter = this.characters.get(startOffset);
+      if (!startCharacter) return immutable.Set();
+      var result = startCharacter.marks;
+      if (result.size === 0) return result;
+      return result.withMutations(function (x) {
+        for (var index = startOffset + 1; index < endOffset; index++) {
+          var c = _this2.characters.get(index);
+          x.intersect(c.marks);
+          if (x.size === 0) return;
+        }
+      });
+    }
+
+    /**
+     * Get all of the active marks on the text
+     *
+     * @return {Set<Mark>}
+     */
+
+  }, {
+    key: 'getActiveMarks',
+    value: function getActiveMarks() {
+      var _this3 = this;
+
+      if (this.characters.size === 0) return immutable.Set();
+      var result = this.characters.first().marks;
+      if (result.size === 0) return result;
+
+      return result.withMutations(function (x) {
+        _this3.characters.forEach(function (c) {
+          x.intersect(c.marks);
+          if (x.size === 0) return false;
+        });
+      });
+    }
+
+    /**
+     * Get all of the marks on between two offsets
+     *
+     * @return {OrderedSet<Mark>}
+     */
+
+  }, {
+    key: 'getMarksBetweenOffsets',
+    value: function getMarksBetweenOffsets(startOffset, endOffset) {
+      var _this4 = this;
+
+      if (startOffset === 0 && endOffset === this.characters.size) {
+        return this.getMarks();
+      }
+      return new immutable.OrderedSet().withMutations(function (result) {
+        for (var index = startOffset; index < endOffset; index++) {
+          var c = _this4.characters.get(index);
+          result.union(c.marks);
+        }
+      });
+    }
+
+    /**
      * Get all of the marks on the text.
      *
      * @return {OrderedSet<Mark>}
@@ -44591,9 +44949,19 @@ var Text = function (_Record) {
   }, {
     key: 'getMarksAsArray',
     value: function getMarksAsArray() {
-      return this.characters.reduce(function (array, char) {
-        return array.concat(char.marks.toArray());
-      }, []);
+      if (this.characters.size === 0) return [];
+      var first = this.characters.first().marks;
+      var previousMark = first;
+      var result = [];
+      this.characters.forEach(function (c) {
+        // If the character marks is the same with the
+        // previous characters, we do not need to
+        // add the marks twice
+        if (c.marks === previousMark) return true;
+        previousMark = c.marks;
+        result.push(previousMark.toArray());
+      });
+      return Array.prototype.concat.apply(first.toArray(), result);
     }
 
     /**
@@ -44802,6 +45170,20 @@ var Text = function (_Record) {
     value: function validate(schema) {
       return schema.validateNode(this);
     }
+
+    /**
+     * Get the first invalid descendant
+     * PREF: Do not cache this method; because it can cause cycle reference
+     *
+     * @param {Schema} schema
+     * @returns {Text|Null}
+     */
+
+  }, {
+    key: 'getFirstInvalidDescendant',
+    value: function getFirstInvalidDescendant(schema) {
+      return this.validate(schema) ? this : null;
+    }
   }, {
     key: 'object',
 
@@ -44984,40 +45366,7 @@ Text.prototype[MODEL_TYPES.TEXT] = true;
  * Memoize read methods.
  */
 
-memoize(Text.prototype, ['getMarks', 'getMarksAsArray'], {
-  takesArguments: false
-});
-
-memoize(Text.prototype, ['getDecoratedCharacters', 'getDecorations', 'getLeaves', 'getMarksAtIndex', 'validate'], {
-  takesArguments: true
-});
-
-/**
- * Check if an `index` of a `text` node is in a `range`.
- *
- * @param {Number} index
- * @param {Text} text
- * @param {Range} range
- * @return {Boolean}
- */
-
-function isIndexInRange(index, text, range) {
-  var startKey = range.startKey,
-      startOffset = range.startOffset,
-      endKey = range.endKey,
-      endOffset = range.endOffset;
-
-
-  if (text.key == startKey && text.key == endKey) {
-    return startOffset <= index && index < endOffset;
-  } else if (text.key == startKey) {
-    return startOffset <= index;
-  } else if (text.key == endKey) {
-    return index < endOffset;
-  } else {
-    return true;
-  }
-}
+memoize(Text.prototype, ['getDecoratedCharacters', 'getDecorations', 'getLeaves', 'getActiveMarks', 'getMarks', 'getMarksAsArray', 'getMarksAtIndex', 'validate']);
 
 /**
  * Node.
@@ -45354,22 +45703,9 @@ var Node = function () {
   }, {
     key: 'getCharacters',
     value: function getCharacters() {
-      var array = this.getCharactersAsArray();
-      return new immutable.List(array);
-    }
-
-    /**
-     * Get all of the characters for every text node as an array
-     *
-     * @return {Array}
-     */
-
-  }, {
-    key: 'getCharactersAsArray',
-    value: function getCharactersAsArray() {
-      return this.nodes.reduce(function (arr, node) {
-        return node.object == 'text' ? arr.concat(node.characters.toArray()) : arr.concat(node.getCharactersAsArray());
-      }, []);
+      return this.getTexts().flatMap(function (t) {
+        return t.characters;
+      });
     }
 
     /**
@@ -45382,30 +45718,28 @@ var Node = function () {
   }, {
     key: 'getCharactersAtRange',
     value: function getCharactersAtRange(range) {
-      var array = this.getCharactersAtRangeAsArray(range);
-      return new immutable.List(array);
-    }
-
-    /**
-     * Get a list of the characters in a `range` as an array.
-     *
-     * @param {Range} range
-     * @return {Array}
-     */
-
-  }, {
-    key: 'getCharactersAtRangeAsArray',
-    value: function getCharactersAtRangeAsArray(range) {
       range = range.normalize(this);
-      if (range.isUnset) return [];
+      if (range.isUnset) return immutable.List();
+      var _range2 = range,
+          startKey = _range2.startKey,
+          endKey = _range2.endKey,
+          startOffset = _range2.startOffset,
+          endOffset = _range2.endOffset;
 
-      return this.getTextsAtRange(range).reduce(function (arr, text) {
-        var chars = text.characters.filter(function (char, i) {
-          return isIndexInRange(i, text, range);
-        }).toArray();
+      if (startKey === endKey) {
+        var endText = this.getDescendant(endKey);
+        return endText.characters.slice(startOffset, endOffset);
+      }
 
-        return arr.concat(chars);
-      }, []);
+      return this.getTextsAtRange(range).flatMap(function (t) {
+        if (t.key === startKey) {
+          return t.characters.slice(startOffset);
+        }
+        if (t.key === endKey) {
+          return t.characters.slice(0, endOffset);
+        }
+        return t.characters;
+      });
     }
 
     /**
@@ -45662,11 +45996,11 @@ var Node = function () {
       var node = this;
 
       // Make sure the children exist.
-      var _range2 = range,
-          startKey = _range2.startKey,
-          startOffset = _range2.startOffset,
-          endKey = _range2.endKey,
-          endOffset = _range2.endOffset;
+      var _range3 = range,
+          startKey = _range3.startKey,
+          startOffset = _range3.startOffset,
+          endKey = _range3.endKey,
+          endOffset = _range3.endOffset;
 
       var startText = node.assertDescendant(startKey);
       var endText = node.assertDescendant(endKey);
@@ -45797,15 +46131,17 @@ var Node = function () {
         throw new Error('Could not find a descendant node with key "' + key + '".');
       }
 
-      return ancestors
+      var result = ancestors
       // Skip this node...
-      .skipLast()
+      .shift()
       // Take parents until there are more than one child...
       .reverse().takeUntil(function (p) {
         return p.nodes.size > 1;
       })
       // And pick the highest.
       .last();
+      if (!result) return null;
+      return result;
     }
 
     /**
@@ -46003,9 +46339,13 @@ var Node = function () {
   }, {
     key: 'getMarksAsArray',
     value: function getMarksAsArray() {
-      return this.nodes.reduce(function (marks, node) {
-        return marks.concat(node.getMarksAsArray());
-      }, []);
+      // PERF: use only one concat rather than multiple concat
+      // becuase one concat is faster
+      var result = [];
+      this.nodes.forEach(function (node) {
+        result.push(node.getMarksAsArray());
+      });
+      return Array.prototype.concat.apply([], result);
     }
 
     /**
@@ -46018,8 +46358,7 @@ var Node = function () {
   }, {
     key: 'getMarksAtRange',
     value: function getMarksAtRange(range) {
-      var array = this.getMarksAtRangeAsArray(range);
-      return new immutable.Set(array);
+      return new immutable.Set(this.getOrderedMarksAtRange(range));
     }
 
     /**
@@ -46032,8 +46371,18 @@ var Node = function () {
   }, {
     key: 'getInsertMarksAtRange',
     value: function getInsertMarksAtRange(range) {
-      var array = this.getInsertMarksAtRangeAsArray(range);
-      return new immutable.Set(array);
+      range = range.normalize(this);
+      if (range.isUnset) return immutable.Set();
+      if (range.isCollapsed) {
+        // PERF: range is not cachable, use key and offset as proxies for cache
+        return this.getMarksAtPosition(range.startKey, range.startOffset);
+      }
+
+      var text = this.getDescendant(range.startKey);
+      var char = text.characters.get(range.startOffset);
+      if (!char) return immutable.Set();
+
+      return char.marks;
     }
 
     /**
@@ -46046,8 +46395,54 @@ var Node = function () {
   }, {
     key: 'getOrderedMarksAtRange',
     value: function getOrderedMarksAtRange(range) {
-      var array = this.getMarksAtRangeAsArray(range);
-      return new immutable.OrderedSet(array);
+      range = range.normalize(this);
+      if (range.isUnset) return immutable.OrderedSet();
+      if (range.isCollapsed) {
+        // PERF: range is not cachable, use key and offset as proxies for cache
+        return this.getMarksAtPosition(range.startKey, range.startOffset);
+      }
+
+      var _range4 = range,
+          startKey = _range4.startKey,
+          startOffset = _range4.startOffset,
+          endKey = _range4.endKey,
+          endOffset = _range4.endOffset;
+
+      return this.getOrderedMarksBetweenPositions(startKey, startOffset, endKey, endOffset);
+    }
+
+    /**
+     * Get a set of the marks in a `range`.
+     * PERF: arguments use key and offset for utilizing cache
+     *
+     * @param {string} startKey
+     * @param {number} startOffset
+     * @param {string} endKey
+     * @param {number} endOffset
+     * @returns {OrderedSet<Mark>}
+     */
+
+  }, {
+    key: 'getOrderedMarksBetweenPositions',
+    value: function getOrderedMarksBetweenPositions(startKey, startOffset, endKey, endOffset) {
+      if (startKey === endKey) {
+        var startText = this.getDescendant(startKey);
+        return startText.getMarksBetweenOffsets(startOffset, endOffset);
+      }
+
+      var texts = this.getTextsBetweenPositionsAsArray(startKey, endKey);
+
+      return immutable.OrderedSet().withMutations(function (result) {
+        texts.forEach(function (text) {
+          if (text.key === startKey) {
+            result.union(text.getMarksBetweenOffsets(startOffset, text.text.length));
+          } else if (text.key === endKey) {
+            result.union(text.getMarksBetweenOffsets(0, endOffset));
+          } else {
+            result.union(text.getMarks());
+          }
+        });
+      });
     }
 
     /**
@@ -46060,118 +46455,88 @@ var Node = function () {
   }, {
     key: 'getActiveMarksAtRange',
     value: function getActiveMarksAtRange(range) {
-      var array = this.getActiveMarksAtRangeAsArray(range);
-      return new immutable.Set(array);
-    }
-
-    /**
-     * Get a set of the marks in a `range`, by unioning.
-     *
-     * @param {Range} range
-     * @return {Array}
-     */
-
-  }, {
-    key: 'getMarksAtRangeAsArray',
-    value: function getMarksAtRangeAsArray(range) {
       range = range.normalize(this);
-      if (range.isUnset) return [];
-      if (range.isCollapsed) return this.getMarksAtCollapsedRangeAsArray(range);
+      if (range.isUnset) return immutable.Set();
+      if (range.isCollapsed) {
+        var _range5 = range,
+            _startKey = _range5.startKey,
+            _startOffset = _range5.startOffset;
 
-      return this.getCharactersAtRange(range).reduce(function (memo, char) {
-        if (char) {
-          char.marks.toArray().forEach(function (c) {
-            return memo.push(c);
-          });
-        }
-        return memo;
-      }, []);
-    }
-
-    /**
-     * Get a set of the marks in a `range` for insertion behavior.
-     *
-     * @param {Range} range
-     * @return {Array}
-     */
-
-  }, {
-    key: 'getInsertMarksAtRangeAsArray',
-    value: function getInsertMarksAtRangeAsArray(range) {
-      range = range.normalize(this);
-      if (range.isUnset) return [];
-      if (range.isCollapsed) return this.getMarksAtCollapsedRangeAsArray(range);
-
-      var text = this.getDescendant(range.startKey);
-      var char = text.characters.get(range.startOffset);
-      if (!char) return [];
-
-      return char.marks.toArray();
-    }
-
-    /**
-     * Get a set of marks in a `range`, by treating it as collapsed.
-     *
-     * @param {Range} range
-     * @return {Array}
-     */
-
-  }, {
-    key: 'getMarksAtCollapsedRangeAsArray',
-    value: function getMarksAtCollapsedRangeAsArray(range) {
-      if (range.isUnset) return [];
-
-      var startKey = range.startKey,
-          startOffset = range.startOffset;
-
-
-      if (startOffset == 0) {
-        var previous = this.getPreviousText(startKey);
-        if (!previous || previous.text.length == 0) return [];
-        if (this.getClosestBlock(startKey) !== this.getClosestBlock(previous.key)) {
-          return [];
-        }
-        var _char = previous.characters.get(previous.text.length - 1);
-        if (!_char) return [];
-
-        return _char.marks.toArray();
+        return this.getMarksAtPosition(_startKey, _startOffset).toSet();
       }
 
-      var text = this.getDescendant(startKey);
-      var char = text.characters.get(startOffset - 1);
-      if (!char) return [];
+      var _range6 = range,
+          startKey = _range6.startKey,
+          endKey = _range6.endKey,
+          startOffset = _range6.startOffset,
+          endOffset = _range6.endOffset;
 
-      return char.marks.toArray();
+      var startText = this.getDescendant(startKey);
+
+      if (startKey !== endKey) {
+        while (startKey !== endKey && endOffset === 0) {
+          var _endText = this.getPreviousText(endKey);
+          endKey = _endText.key;
+          endOffset = _endText.text.length;
+        }
+
+        while (startKey !== endKey && startOffset === startText.text.length) {
+          startText = this.getNextText(startKey);
+          startKey = startText.key;
+          startOffset = 0;
+        }
+      }
+
+      if (startKey === endKey) {
+        return startText.getActiveMarksBetweenOffsets(startOffset, endOffset);
+      }
+
+      var startMarks = startText.getActiveMarksBetweenOffsets(startOffset, startText.text.length);
+      if (startMarks.size === 0) return immutable.Set();
+      var endText = this.getDescendant(endKey);
+      var endMarks = endText.getActiveMarksBetweenOffsets(0, endOffset);
+      var marks = startMarks.intersect(endMarks);
+      // If marks is already empty, the active marks is empty
+      if (marks.size === 0) return marks;
+
+      var text = this.getNextText(startKey);
+      while (text.key !== endKey) {
+        if (text.text.length !== 0) {
+          marks = marks.intersect(text.getActiveMarks());
+          if (marks.size === 0) return immutable.Set();
+        }
+        text = this.getNextText(text.key);
+      }
+      return marks;
     }
 
     /**
-     * Get a set of marks in a `range`, by intersecting.
+     * Get a set of marks in a `position`, the equivalent of a collapsed range
      *
-     * @param {Range} range
-     * @return {Array}
+     * @param {string} key
+     * @param {number} offset
+     * @return {OrderedSet}
      */
 
   }, {
-    key: 'getActiveMarksAtRangeAsArray',
-    value: function getActiveMarksAtRangeAsArray(range) {
-      range = range.normalize(this);
-      if (range.isUnset) return [];
-      if (range.isCollapsed) return this.getMarksAtCollapsedRangeAsArray(range);
+    key: 'getMarksAtPosition',
+    value: function getMarksAtPosition(key, offset) {
+      if (offset == 0) {
+        var previous = this.getPreviousText(key);
+        if (!previous || previous.text.length == 0) return immutable.OrderedSet();
+        if (this.getClosestBlock(key) !== this.getClosestBlock(previous.key)) {
+          return immutable.OrderedSet();
+        }
 
-      // Otherwise, get a set of the marks for each character in the range.
-      var chars = this.getCharactersAtRange(range);
-      var first = chars.first();
-      if (!first) return [];
+        var _char = previous.characters.last();
+        if (!_char) return immutable.OrderedSet();
+        return new immutable.OrderedSet(_char.marks);
+      }
 
-      var memo = first.marks;
-
-      chars.slice(1).forEach(function (char) {
-        var marks = char ? char.marks : [];
-        memo = memo.intersect(marks);
-        return memo.size != 0;
-      });
-
-      return memo.toArray();
+      var text = this.getDescendant(key);
+      var char = text.characters.get(offset - 1);
+      if (!char) return immutable.OrderedSet();
+      return new immutable.OrderedSet(char.marks);
     }
 
     /**
@@ -46355,9 +46720,9 @@ var Node = function () {
         throw new Error('The range must be collapsed to calculcate its offset.');
       }
 
-      var _range3 = range,
-          startKey = _range3.startKey,
-          startOffset = _range3.startOffset;
+      var _range7 = range,
+          startKey = _range7.startKey,
+          startOffset = _range7.startOffset;
 
       return this.getOffset(startKey) + startOffset;
     }
@@ -46681,8 +47046,38 @@ var Node = function () {
   }, {
     key: 'getTextsAtRange',
     value: function getTextsAtRange(range) {
-      var array = this.getTextsAtRangeAsArray(range);
-      return new immutable.List(array);
+      range = range.normalize(this);
+      if (range.isUnset) return immutable.List();
+      var _range8 = range,
+          startKey = _range8.startKey,
+          endKey = _range8.endKey;
+
+      return new immutable.List(this.getTextsBetweenPositionsAsArray(startKey, endKey));
+    }
+
+    /**
+     * Get all of the text nodes in a `range` as an array.
+     * PERF: use key in arguments for cache
+     *
+     * @param {string} startKey
+     * @param {string} endKey
+     * @returns {Array}
+     */
+
+  }, {
+    key: 'getTextsBetweenPositionsAsArray',
+    value: function getTextsBetweenPositionsAsArray(startKey, endKey) {
+      var startText = this.getDescendant(startKey);
+
+      // PERF: the most common case is when the range is in a single text node,
+      // where we can avoid a lot of iterating of the tree.
+      if (startKey == endKey) return [startText];
+
+      var endText = this.getDescendant(endKey);
+      var texts = this.getTextsAsArray();
+      var start = texts.indexOf(startText);
+      var end = texts.indexOf(endText, start);
+      return texts.slice(start, end + 1);
     }
 
     /**
@@ -46697,22 +47092,11 @@ var Node = function () {
     value: function getTextsAtRangeAsArray(range) {
       range = range.normalize(this);
       if (range.isUnset) return [];
+      var _range9 = range,
+          startKey = _range9.startKey,
+          endKey = _range9.endKey;
 
-      var _range4 = range,
-          startKey = _range4.startKey,
-          endKey = _range4.endKey;
-
-      var startText = this.getDescendant(startKey);
-
-      // PERF: the most common case is when the range is in a single text node,
-      // where we can avoid a lot of iterating of the tree.
-      if (startKey == endKey) return [startText];
-
-      var endText = this.getDescendant(endKey);
-      var texts = this.getTextsAsArray();
-      var start = texts.indexOf(startText);
-      var end = texts.indexOf(endText);
-      return texts.slice(start, end + 1);
+      return this.getTextsBetweenPositionsAsArray(startKey, endKey);
     }
 
     /**
@@ -46726,6 +47110,38 @@ var Node = function () {
     key: 'hasChild',
     value: function hasChild(key) {
       return !!this.getChild(key);
+    }
+
+    /**
+     * Check if a node has block node children.
+     *
+     * @param {String} key
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'hasBlocks',
+    value: function hasBlocks(key) {
+      var node = this.assertNode(key);
+      return !!(node.nodes && node.nodes.find(function (n) {
+        return n.object === 'block';
+      }));
+    }
+
+    /**
+     * Check if a node has inline node children.
+     *
+     * @param {String} key
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'hasInlines',
+    value: function hasInlines(key) {
+      var node = this.assertNode(key);
+      return !!(node.nodes && node.nodes.find(function (n) {
+        return Inline.isInline(n) || Text.isText(n);
+      }));
     }
 
     /**
@@ -46764,9 +47180,7 @@ var Node = function () {
   }, {
     key: 'hasVoidParent',
     value: function hasVoidParent(key) {
-      return !!this.getClosest(key, function (parent) {
-        return parent.isVoid;
-      });
+      return !!this.getClosestVoid(key);
     }
 
     /**
@@ -46809,10 +47223,10 @@ var Node = function () {
       range = range.normalize(this);
 
       var node = this;
-      var _range5 = range,
-          startKey = _range5.startKey,
-          endKey = _range5.endKey,
-          isCollapsed = _range5.isCollapsed;
+      var _range10 = range,
+          startKey = _range10.startKey,
+          endKey = _range10.endKey,
+          isCollapsed = _range10.isCollapsed;
 
       // PERF: solve the most common cast where the start or end key are inside
       // the node, for collapsed selections.
@@ -46945,13 +47359,12 @@ var Node = function () {
       var nodes = this.nodes;
 
 
-      nodes.forEach(function (node, i) {
+      nodes.forEach(function (node, index) {
         var ret = node;
         if (ret.object != 'text') ret = ret.mapDescendants(iterator);
-        ret = iterator(ret, i, _this3.nodes);
+        ret = iterator(ret, index, _this3.nodes);
         if (ret == node) return;
 
-        var index = nodes.indexOf(node);
         nodes = nodes.set(index, ret);
       });
 
@@ -47092,6 +47505,24 @@ var Node = function () {
     key: 'validate',
     value: function validate(schema) {
       return schema.validateNode(this);
+    }
+
+    /**
+     * Get the first invalid descendant
+     *
+     * @param {Schema} schema
+     * @return {Node|Text|Null}
+     */
+
+  }, {
+    key: 'getFirstInvalidDescendant',
+    value: function getFirstInvalidDescendant(schema) {
+      var result = null;
+      this.nodes.find(function (n) {
+        result = n.validate(schema) ? n : n.getFirstInvalidDescendant(schema);
+        return result;
+      });
+      return result;
     }
   }], [{
     key: 'create',
@@ -47281,13 +47712,7 @@ function assertKey(arg) {
  * Memoize read methods.
  */
 
-memoize(Node.prototype, ['getBlocksAsArray', 'getCharactersAsArray', 'getFirstText', 'getInlinesAsArray', 'getKeysAsArray', 'getLastText', 'getMarksAsArray', 'getText', 'getTextDirection', 'getTextsAsArray', 'isLeafBlock', 'isLeafInline'], {
-  takesArguments: false
-});
-
-memoize(Node.prototype, ['areDescendantsSorted', 'getActiveMarksAtRangeAsArray', 'getAncestors', 'getBlocksAtRangeAsArray', 'getBlocksByTypeAsArray', 'getCharactersAtRangeAsArray', 'getChild', 'getClosestBlock', 'getClosestInline', 'getClosestVoid', 'getCommonAncestor', 'getDecorations', 'getDepth', 'getDescendant', 'getDescendantAtPath', 'getFragmentAtRange', 'getFurthestBlock', 'getFurthestInline', 'getFurthestAncestor', 'getFurthestOnlyChildAncestor', 'getInlinesAtRangeAsArray', 'getInlinesByTypeAsArray', 'getMarksAtRangeAsArray', 'getInsertMarksAtRangeAsArray', 'getMarksByTypeAsArray', 'getNextBlock', 'getNextSibling', 'getNextText', 'getNode', 'getNodeAtPath', 'getOffset', 'getOffsetAtRange', 'getParent', 'getPath', 'getPlaceholder', 'getPreviousBlock', 'getPreviousSibling', 'getPreviousText', 'getTextAtOffset', 'getTextsAtRangeAsArray', 'hasVoidParent', 'validate'], {
-  takesArguments: true
-});
+memoize(Node.prototype, ['areDescendantsSorted', 'getAncestors', 'getBlocksAsArray', 'getBlocksAtRangeAsArray', 'getBlocksByTypeAsArray', 'getChild', 'getClosestBlock', 'getClosestInline', 'getClosestVoid', 'getCommonAncestor', 'getDecorations', 'getDepth', 'getDescendant', 'getDescendantAtPath', 'getFirstText', 'getFragmentAtRange', 'getFurthestBlock', 'getFurthestInline', 'getFurthestAncestor', 'getFurthestOnlyChildAncestor', 'getInlinesAsArray', 'getInlinesAtRangeAsArray', 'getInlinesByTypeAsArray', 'getMarksAsArray', 'getMarksAtPosition', 'getOrderedMarksBetweenPositions', 'getInsertMarksAtRange', 'getKeysAsArray', 'getLastText', 'getMarksByTypeAsArray', 'getNextBlock', 'getNextSibling', 'getNextText', 'getNode', 'getNodeAtPath', 'getOffset', 'getOffsetAtRange', 'getParent', 'getPath', 'getPlaceholder', 'getPreviousBlock', 'getPreviousSibling', 'getPreviousText', 'getText', 'getTextAtOffset', 'getTextDirection', 'getTextsAsArray', 'getTextsBetweenPositionsAsArray', 'isLeafBlock', 'isLeafInline', 'validate', 'getFirstInvalidDescendant']);
 
 /**
  * Prevent circular dependencies.
@@ -47387,6 +47812,8 @@ var Inline = function (_Record) {
 
     /**
      * Check if the inline is empty.
+     * Returns true if inline is not void and all it's children nodes are empty.
+     * Void node is never empty, regardless of it's content.
      *
      * @return {Boolean}
      */
@@ -47394,7 +47821,9 @@ var Inline = function (_Record) {
   }, {
     key: 'isEmpty',
     get: function get$$1() {
-      return this.text == '';
+      return !this.isVoid && !this.nodes.some(function (child) {
+        return !child.isEmpty;
+      });
     }
 
     /**
@@ -47643,6 +48072,7 @@ var Document = function (_Record) {
 
     /**
      * Check if the document is empty.
+     * Returns true if all it's children nodes are empty.
      *
      * @return {Boolean}
      */
@@ -47650,7 +48080,9 @@ var Document = function (_Record) {
   }, {
     key: 'isEmpty',
     get: function get$$1() {
-      return this.text == '';
+      return !this.nodes.some(function (child) {
+        return !child.isEmpty;
+      });
     }
 
     /**
@@ -47859,6 +48291,8 @@ var Block = function (_Record) {
 
     /**
      * Check if the block is empty.
+     * Returns true if block is not void and all it's children nodes are empty.
+     * Void node is never empty, regardless of it's content.
      *
      * @return {Boolean}
      */
@@ -47866,7 +48300,9 @@ var Block = function (_Record) {
   }, {
     key: 'isEmpty',
     get: function get$$1() {
-      return this.text == '';
+      return !this.isVoid && !this.nodes.some(function (child) {
+        return !child.isEmpty;
+      });
     }
 
     /**
@@ -48034,7 +48470,7 @@ var Changes = {};
  * they don't have any effect on the selection.
  */
 
-var PROXY_TRANSFORMS = ['deleteBackward', 'deleteCharBackward', 'deleteLineBackward', 'deleteWordBackward', 'deleteForward', 'deleteCharForward', 'deleteWordForward', 'deleteLineForward', 'setBlock', 'setInline', 'splitInline', 'unwrapBlock', 'unwrapInline', 'wrapBlock', 'wrapInline'];
+var PROXY_TRANSFORMS = ['deleteBackward', 'deleteCharBackward', 'deleteLineBackward', 'deleteWordBackward', 'deleteForward', 'deleteCharForward', 'deleteWordForward', 'deleteLineForward', 'setBlocks', 'setInlines', 'splitInline', 'unwrapBlock', 'unwrapInline', 'wrapBlock', 'wrapInline'];
 
 PROXY_TRANSFORMS.forEach(function (method) {
   Changes[method] = function (change) {
@@ -48047,8 +48483,23 @@ PROXY_TRANSFORMS.forEach(function (method) {
 
     var methodAtRange = method + 'AtRange';
     change[methodAtRange].apply(change, [selection].concat(args));
+    if (method.match(/Backward$/)) {
+      change.collapseToStart();
+    } else if (method.match(/Forward$/)) {
+      change.collapseToEnd();
+    }
   };
 });
+
+Changes.setBlock = function () {
+  logger.deprecate('slate@0.33.0', 'The `setBlock` method of Slate changes has been renamed to `setBlocks`.');
+  Changes.setBlocks.apply(Changes, arguments);
+};
+
+Changes.setInline = function () {
+  logger.deprecate('slate@0.33.0', 'The `setInline` method of Slate changes has been renamed to `setInlines`.');
+  Changes.setInlines.apply(Changes, arguments);
+};
 
 /**
  * Add a `mark` to the characters in the current selection.
@@ -48148,10 +48599,14 @@ Changes.insertFragment = function (change, fragment) {
 
   var lastText = fragment.getLastText();
   var lastInline = fragment.getClosestInline(lastText.key);
+  var firstChild = fragment.nodes.first();
+  var lastChild = fragment.nodes.last();
   var keys = document.getTexts().map(function (text) {
     return text.key;
   });
   var isAppending = !startInline || selection.hasEdgeAtStartOf(startText) || selection.hasEdgeAtEndOf(endText);
+
+  var isInserting = fragment.hasBlocks(firstChild.key) || fragment.hasBlocks(lastChild.key);
 
   change.insertFragmentAtRange(selection, fragment);
   value = change.value;
@@ -48162,7 +48617,7 @@ Changes.insertFragment = function (change, fragment) {
   });
   var newText = isAppending ? newTexts.last() : newTexts.takeLast(2).first();
 
-  if (newText && lastInline) {
+  if (newText && lastInline || isInserting) {
     change.select(selection.collapseToEndOf(newText));
   } else if (newText) {
     change.select(selection.collapseToStartOf(newText).move(lastText.text.length));
@@ -48223,9 +48678,14 @@ Changes.insertText = function (change, text, marks) {
 Changes.splitBlock = function (change) {
   var depth = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
   var value = change.value;
-  var selection = value.selection;
+  var selection = value.selection,
+      document = value.document;
 
+  var marks = selection.marks || document.getInsertMarksAtRange(selection);
   change.splitBlockAtRange(selection, depth).collapseToEnd();
+  if (marks && marks.size !== 0) {
+    change.select({ marks: marks });
+  }
 };
 
 /**
@@ -48804,22 +49264,8 @@ Changes$1.deleteLineBackwardAtRange = function (change, range, options) {
 
   var startBlock = document.getClosestBlock(startKey);
   var offset = startBlock.getOffset(startKey);
-  var startWithVoidInline = startBlock.nodes.size > 1 && startBlock.nodes.get(0).text == '' && startBlock.nodes.get(1).object == 'inline';
-
   var o = offset + startOffset;
-
-  // If line starts with an void inline node, the text node inside this inline
-  // node disturbs the offset. Ignore this inline node and delete it afterwards.
-  if (startWithVoidInline) {
-    o -= 1;
-  }
-
   change.deleteBackwardAtRange(range, o, options);
-
-  // Delete the remaining first inline node if needed.
-  if (startWithVoidInline) {
-    change.deleteBackward();
-  }
 };
 
 /**
@@ -48874,24 +49320,19 @@ Changes$1.deleteBackwardAtRange = function (change, range) {
     return;
   }
 
+  var voidParent = document.getClosestVoid(startKey);
+
+  // If there is a void parent, delete it.
+  if (voidParent) {
+    change.removeNodeByKey(voidParent.key, { normalize: normalize });
+    return;
+  }
+
   var block = document.getClosestBlock(startKey);
 
-  // If the closest block is void, delete it.
-  if (block && block.isVoid) {
-    change.removeNodeByKey(block.key, { normalize: normalize });
-    return;
-  }
-
   // If the closest is not void, but empty, remove it
-  if (block && !block.isVoid && block.isEmpty && document.nodes.size !== 1) {
+  if (block && block.isEmpty && document.nodes.size !== 1) {
     change.removeNodeByKey(block.key, { normalize: normalize });
-    return;
-  }
-
-  // If the closest inline is void, delete it.
-  var inline = document.getClosestInline(startKey);
-  if (inline && inline.isVoid) {
-    change.removeNodeByKey(inline.key, { normalize: normalize });
     return;
   }
 
@@ -48906,17 +49347,11 @@ Changes$1.deleteBackwardAtRange = function (change, range) {
   if (range.isAtStartOf(text)) {
     var prev = document.getPreviousText(text.key);
     var prevBlock = document.getClosestBlock(prev.key);
-    var prevInline = document.getClosestInline(prev.key);
+    var prevVoid = document.getClosestVoid(prev.key);
 
-    // If the previous block is void, remove it.
-    if (prevBlock && prevBlock.isVoid) {
-      change.removeNodeByKey(prevBlock.key, { normalize: normalize });
-      return;
-    }
-
-    // If the previous inline is void, remove it.
-    if (prevInline && prevInline.isVoid) {
-      change.removeNodeByKey(prevInline.key, { normalize: normalize });
+    // If the previous text node has a void parent, remove it.
+    if (prevVoid) {
+      change.removeNodeByKey(prevVoid.key, { normalize: normalize });
       return;
     }
 
@@ -48959,13 +49394,6 @@ Changes$1.deleteBackwardAtRange = function (change, range) {
     } else {
       traversed = next;
     }
-  }
-
-  // If the focus node is inside a void, go up until right after it.
-  if (document.hasVoidParent(node.key)) {
-    var parent = document.getClosestVoid(node.key);
-    node = document.getNextText(parent.key);
-    offset = 0;
   }
 
   range = range.merge({
@@ -49074,28 +49502,23 @@ Changes$1.deleteForwardAtRange = function (change, range) {
     return;
   }
 
-  var block = document.getClosestBlock(startKey);
+  var voidParent = document.getClosestVoid(startKey);
 
-  // If the closest block is void, delete it.
-  if (block && block.isVoid) {
-    change.removeNodeByKey(block.key, { normalize: normalize });
+  // If the node has a void parent, delete it.
+  if (voidParent) {
+    change.removeNodeByKey(voidParent.key, { normalize: normalize });
     return;
   }
 
+  var block = document.getClosestBlock(startKey);
+
   // If the closest is not void, but empty, remove it
-  if (block && !block.isVoid && block.isEmpty && document.nodes.size !== 1) {
+  if (block && block.isEmpty && document.nodes.size !== 1) {
     var nextBlock = document.getNextBlock(block.key);
     change.removeNodeByKey(block.key, { normalize: normalize });
     if (nextBlock && nextBlock.key) {
       change.moveToStartOf(nextBlock);
     }
-    return;
-  }
-
-  // If the closest inline is void, delete it.
-  var inline = document.getClosestInline(startKey);
-  if (inline && inline.isVoid) {
-    change.removeNodeByKey(inline.key, { normalize: normalize });
     return;
   }
 
@@ -49110,17 +49533,11 @@ Changes$1.deleteForwardAtRange = function (change, range) {
   if (range.isAtEndOf(text)) {
     var next = document.getNextText(text.key);
     var _nextBlock = document.getClosestBlock(next.key);
-    var nextInline = document.getClosestInline(next.key);
+    var nextVoid = document.getClosestVoid(next.key);
 
-    // If the previous block is void, remove it.
-    if (_nextBlock && _nextBlock.isVoid) {
-      change.removeNodeByKey(_nextBlock.key, { normalize: normalize });
-      return;
-    }
-
-    // If the previous inline is void, remove it.
-    if (nextInline && nextInline.isVoid) {
-      change.removeNodeByKey(nextInline.key, { normalize: normalize });
+    // If the next text node has a void parent, remove it.
+    if (nextVoid) {
+      change.removeNodeByKey(nextVoid.key, { normalize: normalize });
       return;
     }
 
@@ -49250,7 +49667,11 @@ Changes$1.insertFragmentAtRange = function (change, range, fragment) {
   // If the range is expanded, delete it first.
   if (range.isExpanded) {
     change.deleteAtRange(range, { normalize: false });
-    range = range.collapseToStart();
+    if (change.value.document.getDescendant(range.startKey)) {
+      range = range.collapseToStart();
+    } else {
+      range = range.collapseTo(range.endKey, 0);
+    }
   }
 
   // If the fragment is empty, there's nothing to do after deleting.
@@ -49278,12 +49699,23 @@ Changes$1.insertFragmentAtRange = function (change, range, fragment) {
   var parent = document.getParent(startBlock.key);
   var index = parent.nodes.indexOf(startBlock);
   var blocks = fragment.getBlocks();
+  var firstChild = fragment.nodes.first();
+  var lastChild = fragment.nodes.last();
   var firstBlock = blocks.first();
   var lastBlock = blocks.last();
 
   // If the fragment only contains a void block, use `insertBlock` instead.
   if (firstBlock == lastBlock && firstBlock.isVoid) {
     change.insertBlockAtRange(range, firstBlock, options);
+    return;
+  }
+
+  // If the fragment starts or ends with single nested block, (e.g., table),
+  // do not merge this fragment with existing blocks.
+  if (fragment.hasBlocks(firstChild.key) || fragment.hasBlocks(lastChild.key)) {
+    fragment.nodes.reverse().forEach(function (node) {
+      change.insertBlockAtRange(range, node, options);
+    });
     return;
   }
 
@@ -49440,8 +49872,17 @@ Changes$1.insertTextAtRange = function (change, range, text, marks) {
   if (normalize !== undefined) {
     normalize = range.isExpanded;
   }
+  change.insertTextByKey(key, offset, text, marks, { normalize: false });
 
-  change.insertTextByKey(key, offset, text, marks, { normalize: normalize });
+  if (normalize) {
+    // normalize in the narrowest existing block that originally contains startKey and endKey
+    var commonAncestor = document.getCommonAncestor(startKey, range.endKey);
+    var ancestors = document.getAncestors(commonAncestor.key).push(commonAncestor);
+    var normalizeAncestor = ancestors.findLast(function (n) {
+      return change.value.document.getDescendant(n.key);
+    });
+    change.normalizeNodeByKey(normalizeAncestor.key);
+  }
 };
 
 /**
@@ -49494,7 +49935,7 @@ Changes$1.removeMarkAtRange = function (change, range, mark) {
  *   @property {Boolean} normalize
  */
 
-Changes$1.setBlockAtRange = function (change, range, properties) {
+Changes$1.setBlocksAtRange = function (change, range, properties) {
   var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
 
   var normalize = change.getFlag('normalize', options);
@@ -49526,6 +49967,11 @@ Changes$1.setBlockAtRange = function (change, range, properties) {
   });
 };
 
+Changes$1.setBlockAtRange = function () {
+  logger.deprecate('slate@0.33.0', 'The `setBlockAtRange` method of Slate changes has been renamed to `setBlocksAtRange`.');
+  Changes$1.setBlocksAtRange.apply(Changes$1, arguments);
+};
+
 /**
  * Set the `properties` of inline nodes in a `range`.
  *
@@ -49536,7 +49982,7 @@ Changes$1.setBlockAtRange = function (change, range, properties) {
  *   @property {Boolean} normalize
  */
 
-Changes$1.setInlineAtRange = function (change, range, properties) {
+Changes$1.setInlinesAtRange = function (change, range, properties) {
   var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
 
   var normalize = change.getFlag('normalize', options);
@@ -49548,6 +49994,11 @@ Changes$1.setInlineAtRange = function (change, range, properties) {
   inlines.forEach(function (inline) {
     change.setNodeByKey(inline.key, properties, { normalize: normalize });
   });
+};
+
+Changes$1.setInlineAtRange = function () {
+  logger.deprecate('slate@0.33.0', 'The `setInlineAtRange` method of Slate changes has been renamed to `setInlinesAtRange`.');
+  Changes$1.setInlinesAtRange.apply(Changes$1, arguments);
 };
 
 /**
@@ -49566,14 +50017,11 @@ Changes$1.splitBlockAtRange = function (change, range) {
 
   var normalize = change.getFlag('normalize', options);
 
-  if (range.isExpanded) {
-    change.deleteAtRange(range, { normalize: normalize });
-    range = range.collapseToStart();
-  }
-
   var _range6 = range,
       startKey = _range6.startKey,
-      startOffset = _range6.startOffset;
+      startOffset = _range6.startOffset,
+      endOffset = _range6.endOffset,
+      endKey = _range6.endKey;
   var value = change.value;
   var document = value.document;
 
@@ -49587,7 +50035,19 @@ Changes$1.splitBlockAtRange = function (change, range) {
     h++;
   }
 
-  change.splitDescendantsByKey(node.key, startKey, startOffset, { normalize: normalize });
+  change.splitDescendantsByKey(node.key, startKey, startOffset, {
+    normalize: normalize && range.isCollapsed
+  });
+
+  if (range.isExpanded) {
+    if (range.isBackward) range = range.flip();
+    var nextBlock = change.value.document.getNextBlock(node.key);
+    range = range.moveAnchorToStartOf(nextBlock);
+    if (startKey === endKey) {
+      range = range.moveFocusTo(range.anchorKey, endOffset - startOffset);
+    }
+    change.deleteAtRange(range, { normalize: normalize });
+  }
 };
 
 /**
@@ -50408,6 +50868,68 @@ Changes$2.removeNodeByKey = function (change, key) {
 };
 
 /**
+ * Insert `text` at `offset` in node by `key`.
+ *
+ * @param {Change} change
+ * @param {String} key
+ * @param {String} text
+ * @param {Set<Mark>} marks (optional)
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes$2.setTextByKey = function (change, key, text, marks) {
+  var options = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : {};
+
+  var textNode = change.value.document.getDescendant(key);
+  change.replaceTextByKey(key, 0, textNode.text.length, text, marks, options);
+};
+
+/**
+ * Replace A Length of Text with another string or text
+ * @param {Change} change
+ * @param {String} key
+ * @param {Number} offset
+ * @param {Number} length
+ * @param {string} text
+ * @param {Set<Mark>} marks (optional)
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ *
+ */
+
+Changes$2.replaceTextByKey = function (change, key, offset, length, text, marks, options) {
+  var document = change.value.document;
+
+  var textNode = document.getDescendant(key);
+  if (length + offset > textNode.text.length) {
+    length = textNode.text.length - offset;
+  }
+  var range = Range.create({
+    anchorKey: key,
+    focusKey: key,
+    anchorOffset: offset,
+    focusOffset: offset + length
+  });
+  var activeMarks = document.getActiveMarksAtRange(range);
+
+  change.removeTextByKey(key, offset, length, { normalize: false });
+  if (!marks) {
+    // Do not use mark at index when marks and activeMarks are both empty
+    marks = activeMarks ? activeMarks : [];
+  } else if (activeMarks) {
+    // Do not use `has` because we may want to reset marks like font-size with an updated data;
+    activeMarks = activeMarks.filter(function (activeMark) {
+      return !marks.find(function (m) {
+        return activeMark.type === m.type;
+      });
+    });
+    marks = activeMarks.merge(marks);
+  }
+  change.insertTextByKey(key, offset, text, marks, options);
+};
+
+/**
  * Remove text at `offset` and `length` in node by `key`.
  *
  * @param {Change} change
@@ -50491,7 +51013,7 @@ Changes$2.replaceNodeByKey = function (change, key, newNode) {
   var parent = document.getParent(key);
   var index = parent.nodes.indexOf(node);
   change.removeNodeByKey(key, { normalize: false });
-  change.insertNodeByKey(parent.key, index, newNode, options);
+  change.insertNodeByKey(parent.key, index, newNode, { normalize: false });
   if (normalize) {
     change.normalizeNodeByKey(parent.key);
   }
@@ -51202,47 +51724,23 @@ var CORE_SCHEMA_RULES = [
 },
 
 /**
- * Ensure that void nodes contain a text node with a single space of text.
+ * Ensure that inline non-void nodes are never empty.
+ *
+ * This rule is applied to all blocks and inlines, because when they contain an empty
+ * inline, we need to remove the empty inline from that parent node. If `validate`
+ * was to be memoized, it should be against the parent node, not the empty inline itself.
  *
  * @type {Object}
  */
 
 {
   validateNode: function validateNode(node) {
-    if (!node.isVoid) return;
-    if (node.object != 'block' && node.object != 'inline') return;
-    if (node.text == ' ' && node.nodes.size == 1) return;
+    if (node.object != 'inline' && node.object != 'block') return;
 
-    return function (change) {
-      var text = Text.create(' ');
-      var index = node.nodes.size;
-
-      change.insertNodeByKey(node.key, index, text, { normalize: false });
-
-      node.nodes.forEach(function (child) {
-        change.removeNodeByKey(child.key, { normalize: false });
-      });
-    };
-  }
-},
-
-/**
- * Ensure that inline nodes are never empty.
- *
- * This rule is applied to all blocks, because when they contain an empty
- * inline, we need to remove the inline from that parent block. If `validate`
- * was to be memoized, it should be against the parent node, not the inline
- * themselves.
- *
- * @type {Object}
- */
-
-{
-  validateNode: function validateNode(node) {
-    if (node.object != 'block') return;
-    var invalids = node.nodes.filter(function (n) {
-      return n.object == 'inline' && n.text == '';
+    var invalids = node.nodes.filter(function (child) {
+      return child.object === 'inline' && child.isEmpty;
     });
+
     if (!invalids.size) return;
 
     return function (change) {
@@ -51276,7 +51774,9 @@ var CORE_SCHEMA_RULES = [
 
       var prev = index > 0 ? node.nodes.get(index - 1) : null;
       var next = node.nodes.get(index + 1);
-      // We don't test if "prev" is inline, since it has already been processed in the loop
+
+      // We don't test if "prev" is inline, since it has already been
+      // processed in the loop
       var insertBefore = !prev;
       var insertAfter = !next || next.object == 'inline';
 
@@ -51674,9 +52174,7 @@ Stack.prototype[MODEL_TYPES.STACK] = true;
  * Memoize read methods.
  */
 
-memoize(Stack.prototype, ['getPluginsWith'], {
-  takesArguments: true
-});
+memoize(Stack.prototype, ['getPluginsWith']);
 
 /**
  * Debug.
@@ -52312,9 +52810,7 @@ Schema.prototype[MODEL_TYPES.SCHEMA] = true;
  * Memoize read methods.
  */
 
-memoize(Schema.prototype, ['getParentRules'], {
-  takesArguments: true
-});
+memoize(Schema.prototype, ['getParentRules']);
 
 /**
  * Default properties.
@@ -52946,7 +53442,7 @@ var Value = function (_Record) {
     get: function get$$1() {
       if (this.isCollapsed) return true;
       if (this.endOffset != 0 && this.startOffset != 0) return false;
-      return this.fragment.text.length == 0;
+      return this.fragment.isEmpty;
     }
 
     /**
@@ -52974,12 +53470,14 @@ var Value = function (_Record) {
 
     value: function create() {
       var attrs = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
       if (Value.isValue(attrs)) {
         return attrs;
       }
 
       if (isPlainObject(attrs)) {
-        return Value.fromJSON(attrs);
+        return Value.fromJSON(attrs, options);
       }
 
       throw new Error('`Value.create` only accepts objects or values, but you passed it: ' + attrs);
@@ -54284,7 +54782,9 @@ Changes$6.normalizeNodeByKey = function (change, key) {
   if (!ancestors) return;
 
   ancestors.forEach(function (ancestor) {
-    normalizeNode(change, ancestor, schema);
+    if (change.value.document.getDescendant(ancestor.key)) {
+      normalizeNode(change, ancestor, schema);
+    }
   });
 };
 
@@ -54302,34 +54802,17 @@ function normalizeNodeAndChildren(change, node, schema) {
     return;
   }
 
-  var normalizedKeys = [];
-  var child = node.nodes.first();
+  var child = node.getFirstInvalidDescendant(schema);
   var path = change.value.document.getPath(node.key);
-
-  // We can't just loop the children and normalize them, because in the process
-  // of normalizing one child, we might end up creating another. Instead, we
-  // have to normalize one at a time, and check for new children along the way.
   while (node && child) {
-    var lastSize = change.operations.size;
     normalizeNodeAndChildren(change, child, schema);
-    normalizedKeys.push(child.key);
-
-    // PERF: if size is unchanged, then no operation happens
-    // Therefore we can simply normalize the next child
-    if (lastSize === change.operations.size) {
-      var nextIndex = node.nodes.indexOf(child) + 1;
-      child = node.nodes.get(nextIndex);
+    node = change.value.document.refindNode(path, node.key);
+    if (!node) {
+      path = [];
+      child = null;
     } else {
-      node = change.value.document.refindNode(path, node.key);
-      if (!node) {
-        path = [];
-        child = null;
-      } else {
-        path = change.value.document.refindPath(path, node.key);
-        child = node.nodes.find(function (c) {
-          return !normalizedKeys.includes(c.key);
-        });
-      }
+      path = change.value.document.refindPath(path, node.key);
+      child = node.getFirstInvalidDescendant(schema);
     }
   }
 
@@ -55253,10 +55736,11 @@ exports.useMemoization = useMemoization;
 exports.default = index;
 
 
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"debug":4,"direction":6,"esrever":7,"immutable":42,"is-empty":44,"is-plain-object":47,"lodash/isEqual":199,"lodash/mergeWith":211,"lodash/omit":212,"lodash/pick":213,"slate-dev-logger":439,"slate-schema-violations":437}],439:[function(require,module,exports){
-arguments[4][436][0].apply(exports,arguments)
-},{"dup":436}],440:[function(require,module,exports){
+},{"debug":443,"direction":6,"esrever":7,"immutable":42,"is-empty":44,"is-plain-object":47,"lodash/isEqual":199,"lodash/mergeWith":211,"lodash/omit":212,"lodash/pick":213,"slate-dev-logger":416,"slate-schema-violations":441}],443:[function(require,module,exports){
+arguments[4][420][0].apply(exports,arguments)
+},{"./debug":444,"_process":222,"dup":420}],444:[function(require,module,exports){
+arguments[4][421][0].apply(exports,arguments)
+},{"dup":421,"ms":218}],445:[function(require,module,exports){
 var toString = Object.prototype.toString
 
 module.exports = function(val){
@@ -55287,7 +55771,7 @@ module.exports = function(val){
   return typeof val
 }
 
-},{}],441:[function(require,module,exports){
+},{}],446:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -55328,7 +55812,7 @@ var valueEqual = function valueEqual(a, b) {
 };
 
 exports.default = valueEqual;
-},{}],442:[function(require,module,exports){
+},{}],447:[function(require,module,exports){
 /**
  * Copyright 2014-2015, Facebook, Inc.
  * All rights reserved.
@@ -55390,7 +55874,200 @@ if ("production" !== 'production') {
 
 module.exports = warning;
 
-},{}],443:[function(require,module,exports){
+},{}],448:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.renderNodeHOF = undefined;
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var PLUGIN_BLOCK_TYPE = 'autoReplaceIframe-iframe';
+
+var YOUTUBE_REGEX = /^https:\/\/www\.youtube\.com\/watch\?v=(.*)$/;
+var VIMEO_REGEX = /^https:\/\/vimeo\.com\/channels\/.*\/(.*)/;
+var TWITCH_REGEX = /^https:\/\/www\.twitch\.tv\/(.*)/;
+
+var DEFAULT_IFRAME_PROVIDERS_MAP = {
+  youtube: {
+    regex: YOUTUBE_REGEX,
+    getIframeSrc: function getIframeSrc(regexMatches) {
+      return 'https://www.youtube.com/embed/' + regexMatches[1];
+    }
+  },
+  vimeo: {
+    regex: VIMEO_REGEX,
+    getIframeSrc: function getIframeSrc(regexMatches) {
+      return 'https://player.vimeo.com/video/' + regexMatches[1];
+    }
+  },
+  twitch: {
+    regex: TWITCH_REGEX,
+    getIframeSrc: function getIframeSrc(regexMatches) {
+      return 'https://player.twitch.tv/?channel=' + regexMatches[1];
+    }
+  }
+};
+
+var renderNodeHOF = exports.renderNodeHOF = function renderNodeHOF() {
+  var opts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  return function (props) {
+    var iframeProvidersMap = opts.iframeProvidersMap || DEFAULT_IFRAME_PROVIDERS_MAP;
+    var activeIframeStyles = opts.activeIframeStyles || '3px solid blue';
+
+    var node = props.node,
+        attributes = props.attributes,
+        children = props.children,
+        isSelected = props.isSelected;
+
+    switch (node.type) {
+      case PLUGIN_BLOCK_TYPE:
+        var provider = node.data.get('provider');
+        var regexMatches = node.data.get('regexMatches');
+
+        return _react2.default.createElement(
+          'div',
+          attributes,
+          _react2.default.createElement('iframe', {
+            width: opts.width || '700',
+            height: opts.height || '393',
+            src: iframeProvidersMap[provider].getIframeSrc(regexMatches),
+            style: {
+              border: isSelected ? activeIframeStyles : '0px solid blue'
+            },
+            title: provider + ' embed',
+            frameBorder: '0',
+            allowFullScreen: true
+          })
+        );
+      default:
+        return null;
+    }
+  };
+};
+
+/**
+ * A Slate plugin to automatically replace a block with an iframe whenever a matching
+ * string is typed.
+ *
+ * @param {Object} opts
+ * @return {Object}
+ */
+function AutoReplaceIframe() {
+  var opts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+  var ignoreIn = opts.ignoreIn && normalizeMatcher(opts.ignoreIn);
+  var onlyIn = opts.onlyIn && normalizeMatcher(opts.onlyIn);
+
+  var iframeProvidersMap = opts.iframeProvidersMap || DEFAULT_IFRAME_PROVIDERS_MAP;
+
+  /**
+   * On key down.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   * @return {Value}
+   */
+
+  function onKeyDown(event, change, editor) {
+    if (event.key !== 'Enter') {
+      return;
+    }
+
+    var value = change.value;
+    var startBlock = value.startBlock,
+        startText = value.startText;
+
+    if (!startBlock) {
+      return;
+    }
+
+    var type = startBlock.type;
+
+    if (onlyIn && !onlyIn(type)) {
+      return;
+    }
+
+    if (ignoreIn && ignoreIn(type)) {
+      return;
+    }
+
+    var text = startText.text;
+
+    var _ref = Object.entries(iframeProvidersMap).find(function (_ref3) {
+      var _ref4 = _slicedToArray(_ref3, 2),
+          provider = _ref4[0],
+          regex = _ref4[1].regex;
+
+      return text.match(regex);
+    }) || [],
+        _ref2 = _slicedToArray(_ref, 1),
+        matchedProvider = _ref2[0];
+
+    if (matchedProvider) {
+      change.setBlocks({
+        data: {
+          regexMatches: text.match(iframeProvidersMap[matchedProvider].regex),
+          provider: matchedProvider
+        },
+        isVoid: true,
+        type: PLUGIN_BLOCK_TYPE
+      }).insertBlock('paragraph');
+
+      return true;
+    }
+  }
+
+  /**
+   * Return the plugin.
+   *
+   * @type {Object}
+   */
+
+  return { onKeyDown: onKeyDown };
+}
+
+/**
+ * Normalize a node matching plugin option.
+ *
+ * @param {Function|Array|String} matcher
+ * @return {Function}
+ */
+
+function normalizeMatcher(matcher) {
+  switch (typeOf(matcher)) {
+    case 'function':
+      return matcher;
+    case 'array':
+      return function (node) {
+        return matcher.includes(node);
+      };
+    case 'string':
+      return function (node) {
+        return node == matcher;
+      };
+    default:
+      throw new Error('unexpected type for matcher received');
+  }
+}
+
+/**
+ * Export.
+ *
+ * @type {Function}
+ */
+
+exports.default = AutoReplaceIframe;
+},{"react":411}],449:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -55413,14 +56090,6 @@ var _typeOf = require('type-of');
 var _typeOf2 = _interopRequireDefault(_typeOf);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/**
- * A Slate plugin to automatically replace a block when a string of matching
- * text is typed.
- *
- * @param {Object} opts
- * @return {Object}
- */
 
 var DEFAULT_KEYS_TO_MARKS = {
   b: 'bold',
@@ -55466,17 +56135,21 @@ var renderMark = exports.renderMark = function renderMark(props) {
   }
 };
 
+/**
+ * A Slate plugin to automatically replace a block when a string of matching
+ * text is typed.
+ *
+ * @param {Object} opts
+ * @return {Object}
+ */
 function MarkHotkeys() {
   var opts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var _opts$keysToMarks = opts.keysToMarks,
       keysToMarks = _opts$keysToMarks === undefined ? DEFAULT_KEYS_TO_MARKS : _opts$keysToMarks;
 
 
-  var ignoreIn = void 0;
-  var onlyIn = void 0;
-
-  if (opts.ignoreIn) ignoreIn = normalizeMatcher(opts.ignoreIn);
-  if (opts.onlyIn) onlyIn = normalizeMatcher(opts.onlyIn);
+  var ignoreIn = opts.ignoreIn && normalizeMatcher(opts.ignoreIn);
+  var onlyIn = opts.onlyIn && normalizeMatcher(opts.onlyIn);
 
   var normalizedHotkeys = Object.entries(keysToMarks).map(function (_ref) {
     var _ref2 = _slicedToArray(_ref, 2),
@@ -55484,7 +56157,7 @@ function MarkHotkeys() {
         mark = _ref2[1];
 
     return {
-      key: key.indexOf('+') === -1 ? 'mod+' + key : key,
+      triggerFn: (0, _isHotkey2.default)(key.indexOf('+') === -1 ? 'mod+' + key : key),
       mark: mark
     };
   });
@@ -55500,8 +56173,8 @@ function MarkHotkeys() {
 
   function onKeyDown(event, change, editor) {
     var _ref3 = normalizedHotkeys.find(function (_ref4) {
-      var key = _ref4.key;
-      return (0, _isHotkey2.default)(key, event);
+      var triggerFn = _ref4.triggerFn;
+      return triggerFn(event);
     }) || {},
         markToApply = _ref3.mark;
 
@@ -55574,7 +56247,7 @@ function normalizeMatcher(matcher) {
  */
 
 exports.default = MarkHotkeys;
-},{"is-hotkey":444,"react":411,"type-of":440}],444:[function(require,module,exports){
+},{"is-hotkey":450,"react":411,"type-of":445}],450:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
