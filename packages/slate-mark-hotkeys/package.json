@@ -1,7 +1,7 @@
 {
   "name": "slate-mark-hotkeys",
   "description": "A Slate plugin to toggle marks based on hotkeys.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "license": "MIT",
   "repository": "git://github.com/davidchang/slate-mark-hotkeys.git",
   "main": "./lib/index.js",

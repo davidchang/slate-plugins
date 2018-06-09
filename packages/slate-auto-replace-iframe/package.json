@@ -1,12 +1,10 @@
 {
   "name": "slate-auto-replace-iframe",
-  "description":
-    "A Slate plugin to automatically embed iframes into your editor.",
+  "description": "A Slate plugin to automatically embed iframes into your editor.",
   "version": "0.1.1",
   "license": "MIT",
   "repository": "git://github.com/davidchang/slate-auto-replace-iframe.git",
   "main": "./lib/index.js",
-  "dependencies": {},
   "peerDependencies": {
     "react": "^0.14.0 || ^15.0.0 || ^16.0.0",
     "slate": ">=0.29.0",
@@ -21,10 +19,8 @@
   },
   "scripts": {
     "build": "babel --out-dir ./lib ./src",
-    "build:max":
-      "mkdir -p ./dist && NODE_ENV=production browserify ./src/index.js --transform babelify --transform envify --transform [ browserify-global-shim --global ] --standalone SlateAutoReplaceIframe > ./dist/slate-auto-replace-iframe.js",
-    "build:min":
-      "mkdir -p ./dist && NODE_ENV=production browserify ./src/index.js --transform babelify --transform envify --transform [ browserify-global-shim --global ] --transform uglifyify --standalone SlateAutoReplaceIframe | uglifyjs > ./dist/slate-auto-replace-iframe.min.js",
+    "build:max": "mkdir -p ./dist && NODE_ENV=production browserify ./src/index.js --transform babelify --transform envify --transform [ browserify-global-shim --global ] --standalone SlateAutoReplaceIframe > ./dist/slate-auto-replace-iframe.js",
+    "build:min": "mkdir -p ./dist && NODE_ENV=production browserify ./src/index.js --transform babelify --transform envify --transform [ browserify-global-shim --global ] --transform uglifyify --standalone SlateAutoReplaceIframe | uglifyjs > ./dist/slate-auto-replace-iframe.min.js",
     "clean": "rm -rf ./dist ./lib ./node_modules",
     "prepublish": "yarn run build:max && yarn run build:min",
     "watch": "babel --watch --out-dir ./lib ./src --source-maps inline"
@@ -33,5 +29,7 @@
     "slate": "Slate",
     "slate-react": "SlateReact"
   },
-  "keywords": ["slate"]
+  "keywords": [
+    "slate"
+  ]
 }
