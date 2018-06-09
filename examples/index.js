@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { HashRouter, NavLink, Route, Redirect, Switch } from 'react-router-dom';
 
 import MarkHotkeys from './slate-mark-hotkeys';
+import AutoReplaceIframe from './slate-auto-replace-iframe';
 
 /**
  * Examples.
@@ -10,7 +11,14 @@ import MarkHotkeys from './slate-mark-hotkeys';
  * @type {Array}
  */
 
-const EXAMPLES = [['slate-mark-hotkeys', MarkHotkeys, '/slate-mark-hotkeys']];
+const EXAMPLES = [
+  ['slate-mark-hotkeys', MarkHotkeys, '/slate-mark-hotkeys'],
+  [
+    'slate-auto-replace-iframe',
+    AutoReplaceIframe,
+    '/slate-auto-replace-iframe',
+  ],
+];
 
 /**
  * App.

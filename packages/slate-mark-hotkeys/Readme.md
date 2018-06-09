@@ -24,5 +24,6 @@ const plugins = [
 
 Option | Type | Description
 --- | --- | ---
+**`keysToMarks`** | `Object` | An optional object whose keys are hotkey descriptors and whose respective values are the marks to be applied when the hotkey is triggered. Keys without a `+` in them are automatically prepended with `mod+`, but those with an `+` are not modified. They are all passed to `isHotkey`, which has its own [API](https://www.npmjs.com/package/is-hotkey) for defining hotkeys. Defaults to a map containing marks for bold, underline, italics, strikethrough, and code.
 **`ignoreIn`** | `Function` `Array` `String` | An optional block matcher to ignore triggers inside. If passed an array or string it will match by `node.type`.
 **`onlyIn`** | `Function` `Array` `String` | An optional block matcher to only replace triggers inside. If passed an array or string it will match by `node.type`.

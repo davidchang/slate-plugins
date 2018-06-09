@@ -2,14 +2,6 @@ import React from 'react';
 import isHotkey from 'is-hotkey';
 import typeOf from 'type-of';
 
-/**
- * A Slate plugin to automatically replace a block when a string of matching
- * text is typed.
- *
- * @param {Object} opts
- * @return {Object}
- */
-
 const DEFAULT_KEYS_TO_MARKS = {
   b: 'bold',
   i: 'italic',
@@ -34,17 +26,21 @@ export const renderMark = props => {
   }
 };
 
+/**
+ * A Slate plugin to automatically replace a block when a string of matching
+ * text is typed.
+ *
+ * @param {Object} opts
+ * @return {Object}
+ */
 function MarkHotkeys(opts = {}) {
   const { keysToMarks = DEFAULT_KEYS_TO_MARKS } = opts;
 
-  let ignoreIn;
-  let onlyIn;
-
-  if (opts.ignoreIn) ignoreIn = normalizeMatcher(opts.ignoreIn);
-  if (opts.onlyIn) onlyIn = normalizeMatcher(opts.onlyIn);
+  const ignoreIn = opts.ignoreIn && normalizeMatcher(opts.ignoreIn);
+  const onlyIn = opts.onlyIn && normalizeMatcher(opts.onlyIn);
 
   const normalizedHotkeys = Object.entries(keysToMarks).map(([key, mark]) => ({
-    key: key.indexOf('+') === -1 ? `mod+${key}` : key,
+    triggerFn: isHotkey(key.indexOf('+') === -1 ? `mod+${key}` : key),
     mark,
   }));
 
@@ -59,7 +55,7 @@ function MarkHotkeys(opts = {}) {
 
   function onKeyDown(event, change, editor) {
     const { mark: markToApply } =
-      normalizedHotkeys.find(({ key }) => isHotkey(key, event)) || {};
+      normalizedHotkeys.find(({ triggerFn }) => triggerFn(event)) || {};
     if (!markToApply) {
       return;
     }
@@ -70,8 +66,7 @@ function MarkHotkeys(opts = {}) {
       return;
     }
 
-    const type = startBlock.type;
-
+    const { type } = startBlock;
     if (onlyIn && !onlyIn(type)) {
       return;
     }

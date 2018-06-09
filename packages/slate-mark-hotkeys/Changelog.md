@@ -6,6 +6,6 @@ This document maintains a list of changes to the `slate-mark-hotkeys` package wi
 
 ---
 
-### `0.1.0` — June 7, 2018
+### `0.1.1` — June 8, 2018
 
 :tada:
