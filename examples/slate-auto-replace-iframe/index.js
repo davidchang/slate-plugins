@@ -1,4 +1,4 @@
-import AutoReplaceIframe, { renderNodeHOF } from 'slate-auto-replace-iframe';
+import AutoReplaceIframe from 'slate-auto-replace-iframe';
 import React from 'react';
 import initialValue from './value.json';
 import { Editor } from 'slate-react';
@@ -27,7 +27,6 @@ class Example extends React.Component {
         value={this.state.value}
         plugins={this.plugins}
         onChange={this.onChange}
-        renderNode={renderNodeHOF()}
       />
     );
   };

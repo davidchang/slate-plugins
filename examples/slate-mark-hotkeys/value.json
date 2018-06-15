@@ -12,7 +12,7 @@
                 "text": "This block is bold. Toggle by modifier+b",
                 "marks": [
                   {
-                    "type": "bold"
+                    "type": "markHotkeys-bold"
                   }
                 ]
               }
@@ -31,7 +31,7 @@
                 "text": "This block is italicized. Toggle by modifier+i",
                 "marks": [
                   {
-                    "type": "italic"
+                    "type": "markHotkeys-italic"
                   }
                 ]
               }
@@ -50,7 +50,7 @@
                 "text": "This block is underlined. Toggle by modifier+u",
                 "marks": [
                   {
-                    "type": "underline"
+                    "type": "markHotkeys-underline"
                   }
                 ]
               }
@@ -69,7 +69,7 @@
                 "text": "This block is code. Toggle by modifier+`",
                 "marks": [
                   {
-                    "type": "code"
+                    "type": "markHotkeys-code"
                   }
                 ]
               }
@@ -88,7 +88,7 @@
                 "text": "This block is striked through. Toggle by modifier+~",
                 "marks": [
                   {
-                    "type": "strikethrough"
+                    "type": "markHotkeys-strikethrough"
                   }
                 ]
               }

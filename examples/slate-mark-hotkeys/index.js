@@ -1,4 +1,4 @@
-import MarkHotkeys, { renderMark } from 'slate-mark-hotkeys';
+import MarkHotkeys from 'slate-mark-hotkeys';
 import React from 'react';
 import initialValue from './value.json';
 import { Editor } from 'slate-react';
@@ -27,7 +27,6 @@ class Example extends React.Component {
         value={this.state.value}
         plugins={this.plugins}
         onChange={this.onChange}
-        renderMark={renderMark}
       />
     );
   };

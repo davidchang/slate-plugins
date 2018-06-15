@@ -3,27 +3,11 @@ import isHotkey from 'is-hotkey';
 import typeOf from 'type-of';
 
 const DEFAULT_KEYS_TO_MARKS = {
-  b: 'bold',
-  i: 'italic',
-  u: 'underline',
-  '`': 'code',
-  '~': 'strikethrough',
-};
-
-export const renderMark = props => {
-  switch (props.mark.type) {
-    case 'bold':
-      return <strong>{props.children}</strong>;
-    // Add our new mark renderers...
-    case 'code':
-      return <code>{props.children}</code>;
-    case 'italic':
-      return <em>{props.children}</em>;
-    case 'strikethrough':
-      return <del>{props.children}</del>;
-    case 'underline':
-      return <u>{props.children}</u>;
-  }
+  b: 'markHotkeys-bold',
+  i: 'markHotkeys-italic',
+  u: 'markHotkeys-underline',
+  '`': 'markHotkeys-code',
+  '~': 'markHotkeys-strikethrough',
 };
 
 /**
@@ -34,6 +18,7 @@ export const renderMark = props => {
  * @return {Object}
  */
 function MarkHotkeys(opts = {}) {
+  const customKeysToMarksDefined = typeof opts.keysToMarks !== 'undefined';
   const { keysToMarks = DEFAULT_KEYS_TO_MARKS } = opts;
 
   const ignoreIn = opts.ignoreIn && normalizeMatcher(opts.ignoreIn);
@@ -83,13 +68,32 @@ function MarkHotkeys(opts = {}) {
     return true;
   }
 
+  const renderMark = props => {
+    switch (props.mark.type) {
+      case 'markHotkeys-bold':
+        return <strong>{props.children}</strong>;
+      case 'markHotkeys-code':
+        return <code>{props.children}</code>;
+      case 'markHotkeys-italic':
+        return <em>{props.children}</em>;
+      case 'markHotkeys-strikethrough':
+        return <del>{props.children}</del>;
+      case 'markHotkeys-underline':
+        return <u>{props.children}</u>;
+    }
+  };
+
   /**
    * Return the plugin.
    *
    * @type {Object}
    */
 
-  return { onKeyDown };
+  if (customKeysToMarksDefined) {
+    return { onKeyDown };
+  }
+
+  return { onKeyDown, renderMark };
 }
 
 /**

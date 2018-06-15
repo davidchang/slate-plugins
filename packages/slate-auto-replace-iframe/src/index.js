@@ -24,37 +24,6 @@ const DEFAULT_IFRAME_PROVIDERS_MAP = {
   },
 };
 
-export const renderNodeHOF = (opts = {}) => props => {
-  const iframeProvidersMap =
-    opts.iframeProvidersMap || DEFAULT_IFRAME_PROVIDERS_MAP;
-  const activeIframeStyles = opts.activeIframeStyles || '3px solid blue';
-
-  const { node, attributes, children, isSelected } = props;
-  switch (node.type) {
-    case PLUGIN_BLOCK_TYPE:
-      const provider = node.data.get('provider');
-      const regexMatches = node.data.get('regexMatches');
-
-      return (
-        <div {...attributes}>
-          <iframe
-            width={opts.width || '700'}
-            height={opts.height || '393'}
-            src={iframeProvidersMap[provider].getIframeSrc(regexMatches)}
-            style={{
-              border: isSelected ? activeIframeStyles : '0px solid blue',
-            }}
-            title={`${provider} embed`}
-            frameBorder="0"
-            allowFullScreen
-          />
-        </div>
-      );
-    default:
-      return null;
-  }
-};
-
 /**
  * A Slate plugin to automatically replace a block with an iframe whenever a matching
  * string is typed.
@@ -121,13 +90,44 @@ function AutoReplaceIframe(opts = {}) {
     }
   }
 
+  const renderNode = props => {
+    const iframeProvidersMap =
+      opts.iframeProvidersMap || DEFAULT_IFRAME_PROVIDERS_MAP;
+    const activeIframeStyles = opts.activeIframeStyles || '3px solid blue';
+
+    const { node, attributes, children, isSelected } = props;
+    switch (node.type) {
+      case PLUGIN_BLOCK_TYPE:
+        const provider = node.data.get('provider');
+        const regexMatches = node.data.get('regexMatches');
+
+        return (
+          <div {...attributes}>
+            <iframe
+              width={opts.width || '700'}
+              height={opts.height || '393'}
+              src={iframeProvidersMap[provider].getIframeSrc(regexMatches)}
+              style={{
+                border: isSelected ? activeIframeStyles : '0px solid blue',
+              }}
+              title={`${provider} embed`}
+              frameBorder="0"
+              allowFullScreen
+            />
+          </div>
+        );
+      default:
+        return null;
+    }
+  };
+
   /**
    * Return the plugin.
    *
    * @type {Object}
    */
 
-  return { onKeyDown };
+  return { onKeyDown, renderNode };
 }
 
 /**

@@ -6,7 +6,7 @@ A [**Slate**](https://github.com/ianstormtaylor/slate) plugin to toggle marks ba
 [View Demo ⬈](https://davidchang.github.io/slate-plugins/#/slate-mark-hotkeys)
 
 ```js
-import MarkHotkeys, { renderMark } from 'slate-mark-hotkeys';
+import MarkHotkeys from 'slate-mark-hotkeys';
 import { Editor } from 'slate-react';
 
 // Add the plugin to your set of plugins...
@@ -18,7 +18,6 @@ const plugins = [
 <Editor
   ...
   plugins={plugins}
-  renderMark={renderMark}
 />
 ```
 
