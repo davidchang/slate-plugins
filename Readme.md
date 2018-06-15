@@ -3,6 +3,7 @@ This is a repo based off of @ianstormtaylor's monorepo for his own [Slate plugin
 ### Plugins
 
 - [`slate-mark-hotkeys`](./packages/slate-mark-hotkeys)
+- [`slate-auto-replace-iframe`](./packages/slate-auto-replace-iframe)
 
 ### Demo
 

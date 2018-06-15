@@ -1,5 +1,5 @@
 
-### `slate-mark-hotkeys`
+### `slate-auto-replace-iframe`
 
 A [**Slate**](https://github.com/ianstormtaylor/slate) plugin to replace matching text with iframes. This is triggered upon the Enter button on a block that matches a regular expression. For example, if you copy/paste a Youtube link into a block and then press Enter, that block will be transformed from the URL into the iframe text.
 
