@@ -206,8 +206,7 @@ var Example = function (_React$Component) {
       return _react2.default.createElement(_slateReact.Editor, {
         value: _this.state.value,
         plugins: _this.plugins,
-        onChange: _this.onChange,
-        renderNode: (0, _slateAutoReplaceIframe.renderNodeHOF)()
+        onChange: _this.onChange
       });
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
@@ -405,8 +404,7 @@ var Example = function (_React$Component) {
       return _react2.default.createElement(_slateReact.Editor, {
         value: _this.state.value,
         plugins: _this.plugins,
-        onChange: _this.onChange,
-        renderMark: _slateMarkHotkeys.renderMark
+        onChange: _this.onChange
       });
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
@@ -437,7 +435,7 @@ module.exports={
                 "text": "This block is bold. Toggle by modifier+b",
                 "marks": [
                   {
-                    "type": "bold"
+                    "type": "markHotkeys-bold"
                   }
                 ]
               }
@@ -456,7 +454,7 @@ module.exports={
                 "text": "This block is italicized. Toggle by modifier+i",
                 "marks": [
                   {
-                    "type": "italic"
+                    "type": "markHotkeys-italic"
                   }
                 ]
               }
@@ -475,7 +473,7 @@ module.exports={
                 "text": "This block is underlined. Toggle by modifier+u",
                 "marks": [
                   {
-                    "type": "underline"
+                    "type": "markHotkeys-underline"
                   }
                 ]
               }
@@ -494,7 +492,7 @@ module.exports={
                 "text": "This block is code. Toggle by modifier+`",
                 "marks": [
                   {
-                    "type": "code"
+                    "type": "markHotkeys-code"
                   }
                 ]
               }
@@ -513,7 +511,7 @@ module.exports={
                 "text": "This block is striked through. Toggle by modifier+~",
                 "marks": [
                   {
-                    "type": "strikethrough"
+                    "type": "markHotkeys-strikethrough"
                   }
                 ]
               }
@@ -55880,7 +55878,6 @@ module.exports = warning;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.renderNodeHOF = undefined;
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
@@ -55915,43 +55912,6 @@ var DEFAULT_IFRAME_PROVIDERS_MAP = {
       return 'https://player.twitch.tv/?channel=' + regexMatches[1];
     }
   }
-};
-
-var renderNodeHOF = exports.renderNodeHOF = function renderNodeHOF() {
-  var opts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  return function (props) {
-    var iframeProvidersMap = opts.iframeProvidersMap || DEFAULT_IFRAME_PROVIDERS_MAP;
-    var activeIframeStyles = opts.activeIframeStyles || '3px solid blue';
-
-    var node = props.node,
-        attributes = props.attributes,
-        children = props.children,
-        isSelected = props.isSelected;
-
-    switch (node.type) {
-      case PLUGIN_BLOCK_TYPE:
-        var provider = node.data.get('provider');
-        var regexMatches = node.data.get('regexMatches');
-
-        return _react2.default.createElement(
-          'div',
-          attributes,
-          _react2.default.createElement('iframe', {
-            width: opts.width || '700',
-            height: opts.height || '393',
-            src: iframeProvidersMap[provider].getIframeSrc(regexMatches),
-            style: {
-              border: isSelected ? activeIframeStyles : '0px solid blue'
-            },
-            title: provider + ' embed',
-            frameBorder: '0',
-            allowFullScreen: true
-          })
-        );
-      default:
-        return null;
-    }
-  };
 };
 
 /**
@@ -56027,13 +55987,47 @@ function AutoReplaceIframe() {
     }
   }
 
+  var renderNode = function renderNode(props) {
+    var iframeProvidersMap = opts.iframeProvidersMap || DEFAULT_IFRAME_PROVIDERS_MAP;
+    var activeIframeStyles = opts.activeIframeStyles || '3px solid blue';
+
+    var node = props.node,
+        attributes = props.attributes,
+        children = props.children,
+        isSelected = props.isSelected;
+
+    switch (node.type) {
+      case PLUGIN_BLOCK_TYPE:
+        var provider = node.data.get('provider');
+        var regexMatches = node.data.get('regexMatches');
+
+        return _react2.default.createElement(
+          'div',
+          attributes,
+          _react2.default.createElement('iframe', {
+            width: opts.width || '700',
+            height: opts.height || '393',
+            src: iframeProvidersMap[provider].getIframeSrc(regexMatches),
+            style: {
+              border: isSelected ? activeIframeStyles : '0px solid blue'
+            },
+            title: provider + ' embed',
+            frameBorder: '0',
+            allowFullScreen: true
+          })
+        );
+      default:
+        return null;
+    }
+  };
+
   /**
    * Return the plugin.
    *
    * @type {Object}
    */
 
-  return { onKeyDown: onKeyDown };
+  return { onKeyDown: onKeyDown, renderNode: renderNode };
 }
 
 /**
@@ -56073,7 +56067,6 @@ exports.default = AutoReplaceIframe;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.renderMark = undefined;
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
@@ -56092,47 +56085,11 @@ var _typeOf2 = _interopRequireDefault(_typeOf);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var DEFAULT_KEYS_TO_MARKS = {
-  b: 'bold',
-  i: 'italic',
-  u: 'underline',
-  '`': 'code',
-  '~': 'strikethrough'
-};
-
-var renderMark = exports.renderMark = function renderMark(props) {
-  switch (props.mark.type) {
-    case 'bold':
-      return _react2.default.createElement(
-        'strong',
-        null,
-        props.children
-      );
-    // Add our new mark renderers...
-    case 'code':
-      return _react2.default.createElement(
-        'code',
-        null,
-        props.children
-      );
-    case 'italic':
-      return _react2.default.createElement(
-        'em',
-        null,
-        props.children
-      );
-    case 'strikethrough':
-      return _react2.default.createElement(
-        'del',
-        null,
-        props.children
-      );
-    case 'underline':
-      return _react2.default.createElement(
-        'u',
-        null,
-        props.children
-      );
-  }
+  b: 'markHotkeys-bold',
+  i: 'markHotkeys-italic',
+  u: 'markHotkeys-underline',
+  '`': 'markHotkeys-code',
+  '~': 'markHotkeys-strikethrough'
 };
 
 /**
@@ -56144,6 +56101,8 @@ var renderMark = exports.renderMark = function renderMark(props) {
  */
 function MarkHotkeys() {
   var opts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+  var customKeysToMarksDefined = typeof opts.keysToMarks !== 'undefined';
   var _opts$keysToMarks = opts.keysToMarks,
       keysToMarks = _opts$keysToMarks === undefined ? DEFAULT_KEYS_TO_MARKS : _opts$keysToMarks;
 
@@ -56207,13 +56166,52 @@ function MarkHotkeys() {
     return true;
   }
 
+  var renderMark = function renderMark(props) {
+    switch (props.mark.type) {
+      case 'markHotkeys-bold':
+        return _react2.default.createElement(
+          'strong',
+          null,
+          props.children
+        );
+      case 'markHotkeys-code':
+        return _react2.default.createElement(
+          'code',
+          null,
+          props.children
+        );
+      case 'markHotkeys-italic':
+        return _react2.default.createElement(
+          'em',
+          null,
+          props.children
+        );
+      case 'markHotkeys-strikethrough':
+        return _react2.default.createElement(
+          'del',
+          null,
+          props.children
+        );
+      case 'markHotkeys-underline':
+        return _react2.default.createElement(
+          'u',
+          null,
+          props.children
+        );
+    }
+  };
+
   /**
    * Return the plugin.
    *
    * @type {Object}
    */
 
-  return { onKeyDown: onKeyDown };
+  if (customKeysToMarksDefined) {
+    return { onKeyDown: onKeyDown };
+  }
+
+  return { onKeyDown: onKeyDown, renderMark: renderMark };
 }
 
 /**
