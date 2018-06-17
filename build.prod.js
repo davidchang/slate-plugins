@@ -56725,7 +56725,7 @@ function AutoReplaceIframe() {
     var potentialLinkText = startText.text;
     if (!potentialLinkText) {
       var previousSibling = document.getPreviousSibling(anchorKey);
-      if (previousSibling && previousSibling.kind === 'inline' && previousSibling.type === 'link') {
+      if (previousSibling && previousSibling.object === 'inline' && previousSibling.type === 'link') {
         potentialLinkText = previousSibling.text;
       }
     }
