@@ -4,6 +4,7 @@ import { HashRouter, NavLink, Route, Redirect, Switch } from 'react-router-dom';
 
 import MarkHotkeys from './slate-mark-hotkeys';
 import AutoReplaceIframe from './slate-auto-replace-iframe';
+import BibleReferences from './slate-bible-references';
 
 /**
  * Examples.
@@ -18,6 +19,7 @@ const EXAMPLES = [
     AutoReplaceIframe,
     '/slate-auto-replace-iframe',
   ],
+  ['slate-bible-references', BibleReferences, '/slate-bible-references'],
 ];
 
 /**
