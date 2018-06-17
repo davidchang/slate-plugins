@@ -63,7 +63,7 @@ function AutoReplaceIframe(opts = {}) {
       const previousSibling = document.getPreviousSibling(anchorKey);
       if (
         previousSibling &&
-        previousSibling.kind === 'inline' &&
+        previousSibling.object === 'inline' &&
         previousSibling.type === 'link'
       ) {
         potentialLinkText = previousSibling.text;
