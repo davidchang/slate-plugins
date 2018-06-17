@@ -91,7 +91,7 @@ function BibleReferences(opts = {}) {
    */
 
   function onKeyDown(event, change, editor) {
-    if (event.key !== 'Enter' && event.key !== 'Backspace') {
+    if (!['Enter', 'Backspace'].includes(event.key)) {
       return;
     }
 

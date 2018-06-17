@@ -30,13 +30,13 @@ To get the examples running on your machine, you need to have the Slate reposito
 
 ```
 yarn install
-yarn run bootstrap
+yarn bootstrap
 ```
 
 Then start the watcher and examples server:
 
 ```
-yarn run watch
+yarn watch
 ```
 
 Now you can open up `http://localhost:8080/dev.html` in your browser and you'll see the examples site. Any changes you make to the source code will be immediately reflected when you refresh the page.
@@ -48,24 +48,24 @@ To run the tests, you need to have the Slate repository cloned to your computer.
 
 ```
 yarn install
-yarn run bootstrap
+yarn bootstrap
 ```
 
 Then run the tests with:
 
 ```
-yarn run test
+yarn test
 ```
 
 To keep the source rebuilding on every file change, you need to run an additional watching command in a separate process:
 
 ```
-yarn run watch
+yarn watch
 ```
 
-If you need to debug something, you can add a `debugger` line to the source, and then run `yarn run test debug`.
+If you need to debug something, you can add a `debugger` line to the source, and then run `yarn test debug`.
 
-If you only want to run a specific test or tests, you can run `yarn run test --fgrep="slate-react rendering"` flag which will filter the tests being run by grepping for the string in each test.
+If you only want to run a specific test or tests, you can run `yarn test --fgrep="slate-react rendering"` flag which will filter the tests being run by grepping for the string in each test.
 
 
 ## Publishing Releases

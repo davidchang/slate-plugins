@@ -6,7 +6,7 @@ A [**Slate**](https://github.com/ianstormtaylor/slate) plugin to replace matchin
 [View Demo ⬈](https://davidchang.github.io/slate-plugins/#/slate-auto-replace-iframe)
 
 ```js
-import AutoIframeReplace, { renderNodeHOF } from 'slate-auto-replace-iframe';
+import AutoIframeReplace from 'slate-auto-replace-iframe';
 import { Editor } from 'slate-react';
 
 // Add the plugin to your set of plugins...
@@ -18,7 +18,6 @@ const plugins = [
 <Editor
   ...
   plugins={plugins}
-  renderNode={renderNodeHOF()}
 />
 ```
 

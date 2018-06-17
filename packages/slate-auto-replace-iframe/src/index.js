@@ -48,13 +48,40 @@ function AutoReplaceIframe(opts = {}) {
    */
 
   function onKeyDown(event, change, editor) {
-    if (event.key !== 'Enter') {
+    if (!['Enter', 'Backspace'].includes(event.key)) {
       return;
     }
 
     const { value } = change;
-    const { startBlock, startText } = value;
+    const { anchorKey, document, startBlock, startText } = value;
     if (!startBlock) {
+      return;
+    }
+
+    let potentialLinkText = startText.text;
+    if (!potentialLinkText) {
+      const previousSibling = document.getPreviousSibling(anchorKey);
+      if (
+        previousSibling &&
+        previousSibling.kind === 'inline' &&
+        previousSibling.type === 'link'
+      ) {
+        potentialLinkText = previousSibling.text;
+      }
+    }
+
+    if (event.key === 'Backspace') {
+      if (
+        value.isCollapsed &&
+        startBlock.type === PLUGIN_BLOCK_TYPE &&
+        value.selection.startOffset === 0
+      ) {
+        change
+          .setBlocks({ type: 'paragraph', isVoid: false })
+          .collapseToEndOf(startBlock);
+        return true;
+      }
+
       return;
     }
 
@@ -67,18 +94,18 @@ function AutoReplaceIframe(opts = {}) {
       return;
     }
 
-    const { text } = startText;
-
     const [matchedProvider] =
       Object.entries(iframeProvidersMap).find(([provider, { regex }]) =>
-        text.match(regex),
+        potentialLinkText.match(regex),
       ) || [];
 
     if (matchedProvider) {
       change
         .setBlocks({
           data: {
-            regexMatches: text.match(iframeProvidersMap[matchedProvider].regex),
+            regexMatches: potentialLinkText.match(
+              iframeProvidersMap[matchedProvider].regex,
+            ),
             provider: matchedProvider,
           },
           isVoid: true,
