@@ -1,7 +1,6 @@
 {
   "name": "slate-bible-references",
-  "description":
-    "A Slate plugin to automatically insert Bible references into your editor.",
+  "description": "A Slate plugin to automatically insert Bible references into your editor.",
   "version": "0.1.0",
   "license": "MIT",
   "repository": "git://github.com/davidchang/slate-bible-references.git",
@@ -20,10 +19,8 @@
   },
   "scripts": {
     "build": "babel --out-dir ./lib ./src",
-    "build:max":
-      "mkdir -p ./dist && NODE_ENV=production browserify ./src/index.js --transform babelify --transform envify --transform [ browserify-global-shim --global ] --standalone SlateBibleReferences > ./dist/slate-bible-references.js",
-    "build:min":
-      "mkdir -p ./dist && NODE_ENV=production browserify ./src/index.js --transform babelify --transform envify --transform [ browserify-global-shim --global ] --transform uglifyify --standalone SlateBibleReferences | uglifyjs > ./dist/slate-bible-references.min.js",
+    "build:max": "mkdir -p ./dist && NODE_ENV=production browserify ./src/index.js --transform babelify --transform envify --transform [ browserify-global-shim --global ] --standalone SlateBibleReferences > ./dist/slate-bible-references.js",
+    "build:min": "mkdir -p ./dist && NODE_ENV=production browserify ./src/index.js --transform babelify --transform envify --transform [ browserify-global-shim --global ] --transform uglifyify --standalone SlateBibleReferences | uglifyjs > ./dist/slate-bible-references.min.js",
     "clean": "rm -rf ./dist ./lib ./node_modules",
     "prepublish": "yarn run build:max && yarn run build:min",
     "watch": "babel --watch --out-dir ./lib ./src --source-maps inline"
@@ -32,7 +29,11 @@
     "slate": "Slate",
     "slate-react": "SlateReact"
   },
-  "keywords": ["slate", "slate-plugins", "plugin"],
+  "keywords": [
+    "slate",
+    "slate-plugins",
+    "plugin"
+  ],
   "dependencies": {
     "@omysoul/bible-references": "^0.0.33"
   }

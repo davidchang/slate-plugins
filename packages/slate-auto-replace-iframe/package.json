@@ -1,7 +1,7 @@
 {
   "name": "slate-auto-replace-iframe",
   "description": "A Slate plugin to automatically embed iframes into your editor.",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "license": "MIT",
   "repository": "git://github.com/davidchang/slate-auto-replace-iframe.git",
   "main": "./lib/index.js",
